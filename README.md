@@ -483,6 +483,7 @@ Class | Method | HTTP request | Description
  - [GuildProductPurchaseResponse](docs/GuildProductPurchaseResponse.md)
  - [GuildPruneResponse](docs/GuildPruneResponse.md)
  - [GuildResponse](docs/GuildResponse.md)
+ - [GuildRoleColorsResponse](docs/GuildRoleColorsResponse.md)
  - [GuildRoleResponse](docs/GuildRoleResponse.md)
  - [GuildRoleTagsResponse](docs/GuildRoleTagsResponse.md)
  - [GuildStickerResponse](docs/GuildStickerResponse.md)

@@ -59,6 +59,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**addThreadMember**](docs/DefaultApi.md#addthreadmember) | **PUT** /channels/{channel_id}/thread-members/{user_id} | 
 *DefaultApi* | [**applicationsGetActivityInstance**](docs/DefaultApi.md#applicationsgetactivityinstance) | **GET** /applications/{application_id}/activity-instances/{instance_id} | 
 *DefaultApi* | [**banUserFromGuild**](docs/DefaultApi.md#banuserfromguild) | **PUT** /guilds/{guild_id}/bans/{user_id} | 
+*DefaultApi* | [**botPartnerSdkToken**](docs/DefaultApi.md#botpartnersdktoken) | **POST** /partner-sdk/token/bot | 
 *DefaultApi* | [**bulkBanUsersFromGuild**](docs/DefaultApi.md#bulkbanusersfromguild) | **POST** /guilds/{guild_id}/bulk-ban | 
 *DefaultApi* | [**bulkDeleteMessages**](docs/DefaultApi.md#bulkdeletemessages) | **POST** /channels/{channel_id}/messages/bulk-delete | 
 *DefaultApi* | [**bulkSetApplicationCommands**](docs/DefaultApi.md#bulksetapplicationcommands) | **PUT** /applications/{application_id}/commands | 
@@ -84,6 +85,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**createGuildSticker**](docs/DefaultApi.md#createguildsticker) | **POST** /guilds/{guild_id}/stickers | 
 *DefaultApi* | [**createGuildTemplate**](docs/DefaultApi.md#createguildtemplate) | **POST** /guilds/{guild_id}/templates | 
 *DefaultApi* | [**createInteractionResponse**](docs/DefaultApi.md#createinteractionresponse) | **POST** /interactions/{interaction_id}/{interaction_token}/callback | 
+*DefaultApi* | [**createLinkedLobbyGuildInviteForSelf**](docs/DefaultApi.md#createlinkedlobbyguildinviteforself) | **POST** /lobbies/{lobby_id}/members/@me/invites | 
+*DefaultApi* | [**createLinkedLobbyGuildInviteForUser**](docs/DefaultApi.md#createlinkedlobbyguildinviteforuser) | **POST** /lobbies/{lobby_id}/members/{user_id}/invites | 
 *DefaultApi* | [**createLobby**](docs/DefaultApi.md#createlobby) | **POST** /lobbies | 
 *DefaultApi* | [**createLobbyMessage**](docs/DefaultApi.md#createlobbymessage) | **POST** /lobbies/{lobby_id}/messages | 
 *DefaultApi* | [**createMessage**](docs/DefaultApi.md#createmessage) | **POST** /channels/{channel_id}/messages | 
@@ -286,7 +289,6 @@ Class | Method | HTTP request | Description
  - [ActivitiesAttachmentResponse](docs/ActivitiesAttachmentResponse.md)
  - [AddGroupDmUser201Response](docs/AddGroupDmUser201Response.md)
  - [AddGroupDmUserRequest](docs/AddGroupDmUserRequest.md)
- - [AddGuildMemberRequest](docs/AddGuildMemberRequest.md)
  - [AddLobbyMemberRequest](docs/AddLobbyMemberRequest.md)
  - [ApplicationCommandAttachmentOption](docs/ApplicationCommandAttachmentOption.md)
  - [ApplicationCommandAttachmentOptionResponse](docs/ApplicationCommandAttachmentOptionResponse.md)
@@ -356,6 +358,8 @@ Class | Method | HTTP request | Description
  - [BlockMessageActionMetadataResponse](docs/BlockMessageActionMetadataResponse.md)
  - [BlockMessageActionResponse](docs/BlockMessageActionResponse.md)
  - [BotAccountPatchRequest](docs/BotAccountPatchRequest.md)
+ - [BotAddGuildMemberRequest](docs/BotAddGuildMemberRequest.md)
+ - [BotPartnerSdkTokenRequest](docs/BotPartnerSdkTokenRequest.md)
  - [BulkBanUsersFromGuildRequest](docs/BulkBanUsersFromGuildRequest.md)
  - [BulkBanUsersResponse](docs/BulkBanUsersResponse.md)
  - [BulkDeleteMessagesRequest](docs/BulkDeleteMessagesRequest.md)
@@ -527,6 +531,7 @@ Class | Method | HTTP request | Description
  - [ListGuildIntegrations200ResponseInner](docs/ListGuildIntegrations200ResponseInner.md)
  - [ListGuildScheduledEvents200ResponseInner](docs/ListGuildScheduledEvents200ResponseInner.md)
  - [ListGuildSoundboardSoundsResponse](docs/ListGuildSoundboardSoundsResponse.md)
+ - [LobbyGuildInviteResponse](docs/LobbyGuildInviteResponse.md)
  - [LobbyMemberRequest](docs/LobbyMemberRequest.md)
  - [LobbyMemberResponse](docs/LobbyMemberResponse.md)
  - [LobbyMessageResponse](docs/LobbyMessageResponse.md)
@@ -617,6 +622,7 @@ Class | Method | HTTP request | Description
  - [PurchaseNotificationResponse](docs/PurchaseNotificationResponse.md)
  - [QuarantineUserAction](docs/QuarantineUserAction.md)
  - [QuarantineUserActionResponse](docs/QuarantineUserActionResponse.md)
+ - [RatelimitedResponse](docs/RatelimitedResponse.md)
  - [ResolvedObjectsResponse](docs/ResolvedObjectsResponse.md)
  - [ResourceChannelResponse](docs/ResourceChannelResponse.md)
  - [RichEmbed](docs/RichEmbed.md)

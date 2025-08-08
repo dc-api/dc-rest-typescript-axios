@@ -12,6 +12,7 @@ All URIs are relative to *https://discord.com/api/v10*
 |[**addThreadMember**](#addthreadmember) | **PUT** /channels/{channel_id}/thread-members/{user_id} | |
 |[**applicationsGetActivityInstance**](#applicationsgetactivityinstance) | **GET** /applications/{application_id}/activity-instances/{instance_id} | |
 |[**banUserFromGuild**](#banuserfromguild) | **PUT** /guilds/{guild_id}/bans/{user_id} | |
+|[**botPartnerSdkToken**](#botpartnersdktoken) | **POST** /partner-sdk/token/bot | |
 |[**bulkBanUsersFromGuild**](#bulkbanusersfromguild) | **POST** /guilds/{guild_id}/bulk-ban | |
 |[**bulkDeleteMessages**](#bulkdeletemessages) | **POST** /channels/{channel_id}/messages/bulk-delete | |
 |[**bulkSetApplicationCommands**](#bulksetapplicationcommands) | **PUT** /applications/{application_id}/commands | |
@@ -26,17 +27,17 @@ All URIs are relative to *https://discord.com/api/v10*
 |[**createChannelInvite**](#createchannelinvite) | **POST** /channels/{channel_id}/invites | |
 |[**createDm**](#createdm) | **POST** /users/@me/channels | |
 |[**createEntitlement**](#createentitlement) | **POST** /applications/{application_id}/entitlements | |
-|[**createGuild**](#createguild) | **POST** /guilds | |
 |[**createGuildApplicationCommand**](#createguildapplicationcommand) | **POST** /applications/{application_id}/guilds/{guild_id}/commands | |
 |[**createGuildChannel**](#createguildchannel) | **POST** /guilds/{guild_id}/channels | |
 |[**createGuildEmoji**](#createguildemoji) | **POST** /guilds/{guild_id}/emojis | |
-|[**createGuildFromTemplate**](#createguildfromtemplate) | **POST** /guilds/templates/{code} | |
 |[**createGuildRole**](#createguildrole) | **POST** /guilds/{guild_id}/roles | |
 |[**createGuildScheduledEvent**](#createguildscheduledevent) | **POST** /guilds/{guild_id}/scheduled-events | |
 |[**createGuildSoundboardSound**](#createguildsoundboardsound) | **POST** /guilds/{guild_id}/soundboard-sounds | |
 |[**createGuildSticker**](#createguildsticker) | **POST** /guilds/{guild_id}/stickers | |
 |[**createGuildTemplate**](#createguildtemplate) | **POST** /guilds/{guild_id}/templates | |
 |[**createInteractionResponse**](#createinteractionresponse) | **POST** /interactions/{interaction_id}/{interaction_token}/callback | |
+|[**createLinkedLobbyGuildInviteForSelf**](#createlinkedlobbyguildinviteforself) | **POST** /lobbies/{lobby_id}/members/@me/invites | |
+|[**createLinkedLobbyGuildInviteForUser**](#createlinkedlobbyguildinviteforuser) | **POST** /lobbies/{lobby_id}/members/{user_id}/invites | |
 |[**createLobby**](#createlobby) | **POST** /lobbies | |
 |[**createLobbyMessage**](#createlobbymessage) | **POST** /lobbies/{lobby_id}/messages | |
 |[**createMessage**](#createmessage) | **POST** /channels/{channel_id}/messages | |
@@ -280,14 +281,15 @@ const { status, data } = await apiInstance.addGroupDmUser(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | 201 response for add_group_dm_user |  -  |
-|**204** | 204 response for add_group_dm_user |  -  |
-|**4XX** | Client error response |  -  |
+|**201** | 201 response for add_group_dm_user |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**204** | 204 response for add_group_dm_user |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **addGuildMember**
-> GuildMemberResponse addGuildMember(addGuildMemberRequest)
+> GuildMemberResponse addGuildMember(botAddGuildMemberRequest)
 
 
 ### Example
@@ -296,7 +298,7 @@ const { status, data } = await apiInstance.addGroupDmUser(
 import {
     DefaultApi,
     Configuration,
-    AddGuildMemberRequest
+    BotAddGuildMemberRequest
 } from 'dc_rest';
 
 const configuration = new Configuration();
@@ -304,12 +306,12 @@ const apiInstance = new DefaultApi(configuration);
 
 let guildId: string; // (default to undefined)
 let userId: string; // (default to undefined)
-let addGuildMemberRequest: AddGuildMemberRequest; //
+let botAddGuildMemberRequest: BotAddGuildMemberRequest; //
 
 const { status, data } = await apiInstance.addGuildMember(
     guildId,
     userId,
-    addGuildMemberRequest
+    botAddGuildMemberRequest
 );
 ```
 
@@ -317,7 +319,7 @@ const { status, data } = await apiInstance.addGuildMember(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **addGuildMemberRequest** | **AddGuildMemberRequest**|  | |
+| **botAddGuildMemberRequest** | **BotAddGuildMemberRequest**|  | |
 | **guildId** | [**string**] |  | defaults to undefined|
 | **userId** | [**string**] |  | defaults to undefined|
 
@@ -339,9 +341,10 @@ const { status, data } = await apiInstance.addGuildMember(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | 201 response for add_guild_member |  -  |
-|**204** | 204 response for add_guild_member |  -  |
-|**4XX** | Client error response |  -  |
+|**201** | 201 response for add_guild_member |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**204** | 204 response for add_guild_member |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -397,8 +400,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for add_guild_member_role |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for add_guild_member_role |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -455,8 +459,9 @@ const { status, data } = await apiInstance.addLobbyMember(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for add_lobby_member |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for add_lobby_member |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -512,8 +517,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for add_my_message_reaction |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for add_my_message_reaction |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -566,8 +572,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for add_thread_member |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for add_thread_member |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -620,8 +627,9 @@ const { status, data } = await apiInstance.applicationsGetActivityInstance(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for applications_get_activity_instance |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for applications_get_activity_instance |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -678,8 +686,62 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for ban_user_from_guild |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for ban_user_from_guild |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **botPartnerSdkToken**
+> ProvisionalTokenResponse botPartnerSdkToken(botPartnerSdkTokenRequest)
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration,
+    BotPartnerSdkTokenRequest
+} from 'dc_rest';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let botPartnerSdkTokenRequest: BotPartnerSdkTokenRequest; //
+
+const { status, data } = await apiInstance.botPartnerSdkToken(
+    botPartnerSdkTokenRequest
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **botPartnerSdkTokenRequest** | **BotPartnerSdkTokenRequest**|  | |
+
+
+### Return type
+
+**ProvisionalTokenResponse**
+
+### Authorization
+
+[BotToken](../README.md#BotToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | 200 response for bot_partner_sdk_token |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -733,8 +795,9 @@ const { status, data } = await apiInstance.bulkBanUsersFromGuild(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for bulk_ban_users_from_guild |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for bulk_ban_users_from_guild |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -788,8 +851,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for bulk_delete_messages |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for bulk_delete_messages |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -842,8 +906,9 @@ const { status, data } = await apiInstance.bulkSetApplicationCommands(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for bulk_set_application_commands |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for bulk_set_application_commands |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -899,8 +964,9 @@ const { status, data } = await apiInstance.bulkSetGuildApplicationCommands(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for bulk_set_guild_application_commands |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for bulk_set_guild_application_commands |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -953,13 +1019,14 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for bulk_update_guild_channels |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for bulk_update_guild_channels |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **bulkUpdateGuildRoles**
-> Array<GuildRoleResponse> bulkUpdateGuildRoles(bulkUpdateGuildRolesRequestInner)
+> Array<GuildRoleResponse> bulkUpdateGuildRoles(updateRolePositionsRequest)
 
 
 ### Example
@@ -974,11 +1041,11 @@ const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
 let guildId: string; // (default to undefined)
-let bulkUpdateGuildRolesRequestInner: Array<BulkUpdateGuildRolesRequestInner>; //
+let updateRolePositionsRequest: Array<UpdateRolePositionsRequest>; //
 
 const { status, data } = await apiInstance.bulkUpdateGuildRoles(
     guildId,
-    bulkUpdateGuildRolesRequestInner
+    updateRolePositionsRequest
 );
 ```
 
@@ -986,7 +1053,7 @@ const { status, data } = await apiInstance.bulkUpdateGuildRoles(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **bulkUpdateGuildRolesRequestInner** | **Array<BulkUpdateGuildRolesRequestInner>**|  | |
+| **updateRolePositionsRequest** | **Array<UpdateRolePositionsRequest>**|  | |
 | **guildId** | [**string**] |  | defaults to undefined|
 
 
@@ -1007,8 +1074,9 @@ const { status, data } = await apiInstance.bulkUpdateGuildRoles(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for bulk_update_guild_roles |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for bulk_update_guild_roles |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1061,8 +1129,9 @@ const { status, data } = await apiInstance.bulkUpdateLobbyMembers(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for bulk_update_lobby_members |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for bulk_update_lobby_members |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1115,8 +1184,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for consume_entitlement |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for consume_entitlement |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1170,9 +1240,10 @@ const { status, data } = await apiInstance.createApplicationCommand(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for create_application_command |  -  |
-|**201** | 201 response for create_application_command |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for create_application_command |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**201** | 201 response for create_application_command |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1226,8 +1297,9 @@ const { status, data } = await apiInstance.createApplicationEmoji(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | 201 response for create_application_emoji |  -  |
-|**4XX** | Client error response |  -  |
+|**201** | 201 response for create_application_emoji |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1281,8 +1353,9 @@ const { status, data } = await apiInstance.createAutoModerationRule(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for create_auto_moderation_rule |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for create_auto_moderation_rule |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1336,9 +1409,10 @@ const { status, data } = await apiInstance.createChannelInvite(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for create_channel_invite |  -  |
-|**204** | 204 response for create_channel_invite |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for create_channel_invite |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**204** | 204 response for create_channel_invite |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1389,8 +1463,9 @@ const { status, data } = await apiInstance.createDm(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for create_dm |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for create_dm |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1444,60 +1519,9 @@ const { status, data } = await apiInstance.createEntitlement(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for create_entitlement |  -  |
-|**4XX** | Client error response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createGuild**
-> GuildResponse createGuild(guildCreateRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    GuildCreateRequest
-} from 'dc_rest';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let guildCreateRequest: GuildCreateRequest; //
-
-const { status, data } = await apiInstance.createGuild(
-    guildCreateRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **guildCreateRequest** | **GuildCreateRequest**|  | |
-
-
-### Return type
-
-**GuildResponse**
-
-### Authorization
-
-[BotToken](../README.md#BotToken)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | 201 response for create_guild |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for create_entitlement |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1554,9 +1578,10 @@ const { status, data } = await apiInstance.createGuildApplicationCommand(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for create_guild_application_command |  -  |
-|**201** | 201 response for create_guild_application_command |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for create_guild_application_command |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**201** | 201 response for create_guild_application_command |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1610,8 +1635,9 @@ const { status, data } = await apiInstance.createGuildChannel(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | 201 response for create_guild_channel |  -  |
-|**4XX** | Client error response |  -  |
+|**201** | 201 response for create_guild_channel |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1665,68 +1691,14 @@ const { status, data } = await apiInstance.createGuildEmoji(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | 201 response for create_guild_emoji |  -  |
-|**4XX** | Client error response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createGuildFromTemplate**
-> GuildResponse createGuildFromTemplate(createGuildFromTemplateRequest)
-
-
-### Example
-
-```typescript
-import {
-    DefaultApi,
-    Configuration,
-    CreateGuildFromTemplateRequest
-} from 'dc_rest';
-
-const configuration = new Configuration();
-const apiInstance = new DefaultApi(configuration);
-
-let code: string; // (default to undefined)
-let createGuildFromTemplateRequest: CreateGuildFromTemplateRequest; //
-
-const { status, data } = await apiInstance.createGuildFromTemplate(
-    code,
-    createGuildFromTemplateRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **createGuildFromTemplateRequest** | **CreateGuildFromTemplateRequest**|  | |
-| **code** | [**string**] |  | defaults to undefined|
-
-
-### Return type
-
-**GuildResponse**
-
-### Authorization
-
-[BotToken](../README.md#BotToken)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | 201 response for create_guild_from_template |  -  |
-|**4XX** | Client error response |  -  |
+|**201** | 201 response for create_guild_emoji |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createGuildRole**
-> GuildRoleResponse createGuildRole(createGuildRoleRequest)
+> GuildRoleResponse createGuildRole(createRoleRequest)
 
 
 ### Example
@@ -1735,18 +1707,18 @@ const { status, data } = await apiInstance.createGuildFromTemplate(
 import {
     DefaultApi,
     Configuration,
-    CreateGuildRoleRequest
+    CreateRoleRequest
 } from 'dc_rest';
 
 const configuration = new Configuration();
 const apiInstance = new DefaultApi(configuration);
 
 let guildId: string; // (default to undefined)
-let createGuildRoleRequest: CreateGuildRoleRequest; //
+let createRoleRequest: CreateRoleRequest; //
 
 const { status, data } = await apiInstance.createGuildRole(
     guildId,
-    createGuildRoleRequest
+    createRoleRequest
 );
 ```
 
@@ -1754,7 +1726,7 @@ const { status, data } = await apiInstance.createGuildRole(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **createGuildRoleRequest** | **CreateGuildRoleRequest**|  | |
+| **createRoleRequest** | **CreateRoleRequest**|  | |
 | **guildId** | [**string**] |  | defaults to undefined|
 
 
@@ -1775,8 +1747,9 @@ const { status, data } = await apiInstance.createGuildRole(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for create_guild_role |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for create_guild_role |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1830,8 +1803,9 @@ const { status, data } = await apiInstance.createGuildScheduledEvent(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for create_guild_scheduled_event |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for create_guild_scheduled_event |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1885,8 +1859,9 @@ const { status, data } = await apiInstance.createGuildSoundboardSound(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | 201 response for create_guild_soundboard_sound |  -  |
-|**4XX** | Client error response |  -  |
+|**201** | 201 response for create_guild_soundboard_sound |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1948,8 +1923,9 @@ const { status, data } = await apiInstance.createGuildSticker(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | 201 response for create_guild_sticker |  -  |
-|**4XX** | Client error response |  -  |
+|**201** | 201 response for create_guild_sticker |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2003,8 +1979,9 @@ const { status, data } = await apiInstance.createGuildTemplate(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for create_guild_template |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for create_guild_template |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2064,9 +2041,117 @@ const { status, data } = await apiInstance.createInteractionResponse(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for create_interaction_response |  -  |
-|**204** | 204 response for create_interaction_response |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for create_interaction_response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**204** | 204 response for create_interaction_response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createLinkedLobbyGuildInviteForSelf**
+> LobbyGuildInviteResponse createLinkedLobbyGuildInviteForSelf()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'dc_rest';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let lobbyId: string; // (default to undefined)
+
+const { status, data } = await apiInstance.createLinkedLobbyGuildInviteForSelf(
+    lobbyId
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **lobbyId** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+**LobbyGuildInviteResponse**
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [OAuth2](../README.md#OAuth2), [OAuth2](../README.md#OAuth2), [BotToken](../README.md#BotToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | 200 response for create_linked_lobby_guild_invite_for_self |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createLinkedLobbyGuildInviteForUser**
+> LobbyGuildInviteResponse createLinkedLobbyGuildInviteForUser()
+
+
+### Example
+
+```typescript
+import {
+    DefaultApi,
+    Configuration
+} from 'dc_rest';
+
+const configuration = new Configuration();
+const apiInstance = new DefaultApi(configuration);
+
+let lobbyId: string; // (default to undefined)
+let userId: string; // (default to undefined)
+
+const { status, data } = await apiInstance.createLinkedLobbyGuildInviteForUser(
+    lobbyId,
+    userId
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **lobbyId** | [**string**] |  | defaults to undefined|
+| **userId** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+**LobbyGuildInviteResponse**
+
+### Authorization
+
+[BotToken](../README.md#BotToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | 200 response for create_linked_lobby_guild_invite_for_user |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2117,8 +2202,9 @@ const { status, data } = await apiInstance.createLobby(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | 201 response for create_lobby |  -  |
-|**4XX** | Client error response |  -  |
+|**201** | 201 response for create_lobby |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2172,8 +2258,9 @@ const { status, data } = await apiInstance.createLobbyMessage(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | 201 response for create_lobby_message |  -  |
-|**4XX** | Client error response |  -  |
+|**201** | 201 response for create_lobby_message |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2227,8 +2314,9 @@ const { status, data } = await apiInstance.createMessage(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for create_message |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for create_message |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2279,8 +2367,9 @@ const { status, data } = await apiInstance.createOrJoinLobby(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for create_or_join_lobby |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for create_or_join_lobby |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2333,8 +2422,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for create_pin |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for create_pin |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2385,8 +2475,9 @@ const { status, data } = await apiInstance.createStageInstance(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for create_stage_instance |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for create_stage_instance |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2440,8 +2531,9 @@ const { status, data } = await apiInstance.createThread(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | 201 response for create_thread |  -  |
-|**4XX** | Client error response |  -  |
+|**201** | 201 response for create_thread |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2498,8 +2590,9 @@ const { status, data } = await apiInstance.createThreadFromMessage(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | 201 response for create_thread_from_message |  -  |
-|**4XX** | Client error response |  -  |
+|**201** | 201 response for create_thread_from_message |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2553,8 +2646,9 @@ const { status, data } = await apiInstance.createWebhook(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for create_webhook |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for create_webhook |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2607,8 +2701,9 @@ const { status, data } = await apiInstance.crosspostMessage(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for crosspost_message |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for crosspost_message |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2661,8 +2756,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_all_message_reactions |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_all_message_reactions |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2718,8 +2814,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_all_message_reactions_by_emoji |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_all_message_reactions_by_emoji |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2772,8 +2869,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_application_command |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_application_command |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2826,8 +2924,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_application_emoji |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_application_emoji |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2877,8 +2976,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_application_user_role_connection |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_application_user_role_connection |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2931,8 +3031,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_auto_moderation_rule |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_auto_moderation_rule |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2982,8 +3083,9 @@ const { status, data } = await apiInstance.deleteChannel(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for delete_channel |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for delete_channel |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3036,8 +3138,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_channel_permission_overwrite |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_channel_permission_overwrite |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3090,8 +3193,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_entitlement |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_entitlement |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3144,8 +3248,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_group_dm_user |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_group_dm_user |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3195,8 +3300,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_guild |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_guild |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3252,8 +3358,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_guild_application_command |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_guild_application_command |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3306,8 +3413,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_guild_emoji |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_guild_emoji |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3360,8 +3468,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_guild_integration |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_guild_integration |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3414,8 +3523,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_guild_member |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_guild_member |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3471,8 +3581,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_guild_member_role |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_guild_member_role |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3525,8 +3636,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_guild_role |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_guild_role |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3579,8 +3691,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_guild_scheduled_event |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_guild_scheduled_event |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3633,8 +3746,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_guild_soundboard_sound |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_guild_soundboard_sound |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3687,8 +3801,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_guild_sticker |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_guild_sticker |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3741,8 +3856,9 @@ const { status, data } = await apiInstance.deleteGuildTemplate(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for delete_guild_template |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for delete_guild_template |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3795,8 +3911,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_lobby_member |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_lobby_member |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3849,8 +3966,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_message |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_message |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3906,8 +4024,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_my_message_reaction |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_my_message_reaction |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3963,8 +4082,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_original_webhook_message |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_original_webhook_message |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4017,8 +4137,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_pin |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_pin |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4068,8 +4189,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_stage_instance |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_stage_instance |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4122,8 +4244,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_thread_member |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_thread_member |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4182,8 +4305,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_user_message_reaction |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_user_message_reaction |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4233,8 +4357,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_webhook |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_webhook |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4287,8 +4412,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_webhook_by_token |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_webhook_by_token |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4347,8 +4473,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for delete_webhook_message |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for delete_webhook_message |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4401,8 +4528,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for deprecated_create_pin |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for deprecated_create_pin |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4455,8 +4583,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for deprecated_delete_pin |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for deprecated_delete_pin |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4506,8 +4635,9 @@ const { status, data } = await apiInstance.deprecatedListPins(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for deprecated_list_pins |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for deprecated_list_pins |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4561,8 +4691,9 @@ const { status, data } = await apiInstance.editLobby(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for edit_lobby |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for edit_lobby |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4616,8 +4747,9 @@ const { status, data } = await apiInstance.editLobbyChannelLink(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for edit_lobby_channel_link |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for edit_lobby_channel_link |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4680,8 +4812,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for execute_github_compatible_webhook |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for execute_github_compatible_webhook |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4744,8 +4877,9 @@ const { status, data } = await apiInstance.executeSlackCompatibleWebhook(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for execute_slack_compatible_webhook |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for execute_slack_compatible_webhook |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4811,9 +4945,10 @@ const { status, data } = await apiInstance.executeWebhook(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for execute_webhook |  -  |
-|**204** | 204 response for execute_webhook |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for execute_webhook |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**204** | 204 response for execute_webhook |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4867,8 +5002,9 @@ const { status, data } = await apiInstance.followChannel(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for follow_channel |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for follow_channel |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4918,8 +5054,9 @@ const { status, data } = await apiInstance.getActiveGuildThreads(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_active_guild_threads |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_active_guild_threads |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4981,8 +5118,9 @@ const { status, data } = await apiInstance.getAnswerVoters(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_answer_voters |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_answer_voters |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5032,8 +5170,9 @@ const { status, data } = await apiInstance.getApplication(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_application |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_application |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5086,8 +5225,9 @@ const { status, data } = await apiInstance.getApplicationCommand(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_application_command |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_application_command |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5140,8 +5280,9 @@ const { status, data } = await apiInstance.getApplicationEmoji(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_application_emoji |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_application_emoji |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5191,8 +5332,9 @@ const { status, data } = await apiInstance.getApplicationRoleConnectionsMetadata
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_application_role_connections_metadata |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_application_role_connections_metadata |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5242,8 +5384,9 @@ const { status, data } = await apiInstance.getApplicationUserRoleConnection(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_application_user_role_connection |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_application_user_role_connection |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5296,8 +5439,9 @@ const { status, data } = await apiInstance.getAutoModerationRule(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_auto_moderation_rule |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_auto_moderation_rule |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5340,8 +5484,9 @@ This endpoint does not have any parameters.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_bot_gateway |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_bot_gateway |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5391,8 +5536,9 @@ const { status, data } = await apiInstance.getChannel(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_channel |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_channel |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5445,8 +5591,9 @@ const { status, data } = await apiInstance.getEntitlement(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_entitlement |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_entitlement |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5524,8 +5671,9 @@ const { status, data } = await apiInstance.getEntitlements(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_entitlements |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_entitlements |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5568,8 +5716,9 @@ This endpoint does not have any parameters.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_gateway |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_gateway |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5622,8 +5771,9 @@ const { status, data } = await apiInstance.getGuild(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_guild |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_guild |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5679,8 +5829,9 @@ const { status, data } = await apiInstance.getGuildApplicationCommand(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_guild_application_command |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_guild_application_command |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5736,8 +5887,9 @@ const { status, data } = await apiInstance.getGuildApplicationCommandPermissions
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_guild_application_command_permissions |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_guild_application_command_permissions |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5790,8 +5942,9 @@ const { status, data } = await apiInstance.getGuildBan(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_guild_ban |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_guild_ban |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5844,8 +5997,9 @@ const { status, data } = await apiInstance.getGuildEmoji(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_guild_emoji |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_guild_emoji |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5898,8 +6052,9 @@ const { status, data } = await apiInstance.getGuildMember(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_guild_member |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_guild_member |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5949,9 +6104,10 @@ const { status, data } = await apiInstance.getGuildNewMemberWelcome(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_guild_new_member_welcome |  -  |
-|**204** | 204 response for get_guild_new_member_welcome |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_guild_new_member_welcome |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**204** | 204 response for get_guild_new_member_welcome |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6001,8 +6157,9 @@ const { status, data } = await apiInstance.getGuildPreview(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_guild_preview |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_guild_preview |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6055,8 +6212,9 @@ const { status, data } = await apiInstance.getGuildRole(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_guild_role |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_guild_role |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6112,8 +6270,9 @@ const { status, data } = await apiInstance.getGuildScheduledEvent(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_guild_scheduled_event |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_guild_scheduled_event |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6166,8 +6325,9 @@ const { status, data } = await apiInstance.getGuildSoundboardSound(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_guild_soundboard_sound |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_guild_soundboard_sound |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6220,8 +6380,9 @@ const { status, data } = await apiInstance.getGuildSticker(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_guild_sticker |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_guild_sticker |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6271,8 +6432,9 @@ const { status, data } = await apiInstance.getGuildTemplate(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_guild_template |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_guild_template |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6322,8 +6484,9 @@ const { status, data } = await apiInstance.getGuildVanityUrl(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_guild_vanity_url |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_guild_vanity_url |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6373,8 +6536,9 @@ const { status, data } = await apiInstance.getGuildWebhooks(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_guild_webhooks |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_guild_webhooks |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6424,8 +6588,9 @@ const { status, data } = await apiInstance.getGuildWelcomeScreen(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_guild_welcome_screen |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_guild_welcome_screen |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6475,8 +6640,9 @@ const { status, data } = await apiInstance.getGuildWidget(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_guild_widget |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_guild_widget |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6529,8 +6695,9 @@ const { status, data } = await apiInstance.getGuildWidgetPng(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_guild_widget_png |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_guild_widget_png |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6580,8 +6747,9 @@ const { status, data } = await apiInstance.getGuildWidgetSettings(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_guild_widget_settings |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_guild_widget_settings |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6631,8 +6799,9 @@ const { status, data } = await apiInstance.getGuildsOnboarding(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_guilds_onboarding |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_guilds_onboarding |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6682,8 +6851,9 @@ const { status, data } = await apiInstance.getLobby(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_lobby |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_lobby |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6736,8 +6906,9 @@ const { status, data } = await apiInstance.getLobbyMessages(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_lobby_messages |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_lobby_messages |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6790,8 +6961,9 @@ const { status, data } = await apiInstance.getMessage(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_message |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_message |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6834,8 +7006,9 @@ This endpoint does not have any parameters.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_my_application |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_my_application |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6885,8 +7058,9 @@ const { status, data } = await apiInstance.getMyGuildMember(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_my_guild_member |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_my_guild_member |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6929,8 +7103,9 @@ This endpoint does not have any parameters.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_my_oauth2_application |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_my_oauth2_application |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6973,8 +7148,9 @@ This endpoint does not have any parameters.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_my_oauth2_authorization |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_my_oauth2_authorization |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7017,8 +7193,9 @@ This endpoint does not have any parameters.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_my_user |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_my_user |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7061,8 +7238,9 @@ This endpoint does not have any parameters.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_openid_connect_userinfo |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_openid_connect_userinfo |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7118,8 +7296,9 @@ const { status, data } = await apiInstance.getOriginalWebhookMessage(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_original_webhook_message |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_original_webhook_message |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7162,8 +7341,9 @@ This endpoint does not have any parameters.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_public_keys |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_public_keys |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7213,8 +7393,9 @@ const { status, data } = await apiInstance.getSelfVoiceState(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_self_voice_state |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_self_voice_state |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7257,8 +7438,9 @@ This endpoint does not have any parameters.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_soundboard_default_sounds |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_soundboard_default_sounds |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7308,8 +7490,9 @@ const { status, data } = await apiInstance.getStageInstance(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_stage_instance |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_stage_instance |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7359,8 +7542,9 @@ const { status, data } = await apiInstance.getSticker(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_sticker |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_sticker |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7410,8 +7594,9 @@ const { status, data } = await apiInstance.getStickerPack(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_sticker_pack |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_sticker_pack |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7467,8 +7652,9 @@ const { status, data } = await apiInstance.getThreadMember(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_thread_member |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_thread_member |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7518,8 +7704,9 @@ const { status, data } = await apiInstance.getUser(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_user |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_user |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7572,8 +7759,9 @@ const { status, data } = await apiInstance.getVoiceState(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_voice_state |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_voice_state |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7623,8 +7811,9 @@ const { status, data } = await apiInstance.getWebhook(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_webhook |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_webhook |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7677,8 +7866,9 @@ const { status, data } = await apiInstance.getWebhookByToken(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_webhook_by_token |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_webhook_by_token |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7737,8 +7927,9 @@ const { status, data } = await apiInstance.getWebhookMessage(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for get_webhook_message |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for get_webhook_message |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7794,8 +7985,9 @@ const { status, data } = await apiInstance.inviteResolve(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for invite_resolve |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for invite_resolve |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7845,8 +8037,9 @@ const { status, data } = await apiInstance.inviteRevoke(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for invite_revoke |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for invite_revoke |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7896,8 +8089,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for join_thread |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for join_thread |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7947,8 +8141,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for leave_guild |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for leave_guild |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7998,8 +8193,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for leave_lobby |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for leave_lobby |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8049,8 +8245,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for leave_thread |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for leave_thread |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8103,8 +8300,9 @@ const { status, data } = await apiInstance.listApplicationCommands(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_application_commands |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_application_commands |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8154,8 +8352,9 @@ const { status, data } = await apiInstance.listApplicationEmojis(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_application_emojis |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_application_emojis |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8205,8 +8404,9 @@ const { status, data } = await apiInstance.listAutoModerationRules(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_auto_moderation_rules |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_auto_moderation_rules |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8256,8 +8456,9 @@ const { status, data } = await apiInstance.listChannelInvites(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_channel_invites |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_channel_invites |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8307,8 +8508,9 @@ const { status, data } = await apiInstance.listChannelWebhooks(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_channel_webhooks |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_channel_webhooks |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8361,8 +8563,9 @@ const { status, data } = await apiInstance.listGuildApplicationCommandPermission
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_guild_application_command_permissions |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_guild_application_command_permissions |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8418,8 +8621,9 @@ const { status, data } = await apiInstance.listGuildApplicationCommands(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_guild_application_commands |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_guild_application_commands |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8487,8 +8691,9 @@ const { status, data } = await apiInstance.listGuildAuditLogEntries(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_guild_audit_log_entries |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_guild_audit_log_entries |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8547,8 +8752,9 @@ const { status, data } = await apiInstance.listGuildBans(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_guild_bans |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_guild_bans |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8598,8 +8804,9 @@ const { status, data } = await apiInstance.listGuildChannels(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_guild_channels |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_guild_channels |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8649,8 +8856,9 @@ const { status, data } = await apiInstance.listGuildEmojis(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_guild_emojis |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_guild_emojis |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8700,8 +8908,9 @@ const { status, data } = await apiInstance.listGuildIntegrations(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_guild_integrations |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_guild_integrations |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8751,8 +8960,9 @@ const { status, data } = await apiInstance.listGuildInvites(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_guild_invites |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_guild_invites |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8808,8 +9018,9 @@ const { status, data } = await apiInstance.listGuildMembers(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_guild_members |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_guild_members |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8859,8 +9070,9 @@ const { status, data } = await apiInstance.listGuildRoles(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_guild_roles |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_guild_roles |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8925,8 +9137,9 @@ const { status, data } = await apiInstance.listGuildScheduledEventUsers(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_guild_scheduled_event_users |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_guild_scheduled_event_users |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8979,8 +9192,9 @@ const { status, data } = await apiInstance.listGuildScheduledEvents(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_guild_scheduled_events |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_guild_scheduled_events |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -9030,8 +9244,9 @@ const { status, data } = await apiInstance.listGuildSoundboardSounds(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_guild_soundboard_sounds |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_guild_soundboard_sounds |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -9081,8 +9296,9 @@ const { status, data } = await apiInstance.listGuildStickers(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_guild_stickers |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_guild_stickers |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -9132,8 +9348,9 @@ const { status, data } = await apiInstance.listGuildTemplates(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_guild_templates |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_guild_templates |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -9183,8 +9400,9 @@ const { status, data } = await apiInstance.listGuildVoiceRegions(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_guild_voice_regions |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_guild_voice_regions |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -9249,8 +9467,9 @@ const { status, data } = await apiInstance.listMessageReactionsByEmoji(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_message_reactions_by_emoji |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_message_reactions_by_emoji |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -9312,8 +9531,9 @@ const { status, data } = await apiInstance.listMessages(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_messages |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_messages |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -9356,8 +9576,9 @@ This endpoint does not have any parameters.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_my_connections |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_my_connections |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -9416,8 +9637,9 @@ const { status, data } = await apiInstance.listMyGuilds(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_my_guilds |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_my_guilds |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -9473,8 +9695,9 @@ const { status, data } = await apiInstance.listMyPrivateArchivedThreads(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_my_private_archived_threads |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_my_private_archived_threads |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -9530,8 +9753,9 @@ const { status, data } = await apiInstance.listPins(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_pins |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_pins |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -9587,8 +9811,9 @@ const { status, data } = await apiInstance.listPrivateArchivedThreads(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_private_archived_threads |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_private_archived_threads |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -9644,8 +9869,9 @@ const { status, data } = await apiInstance.listPublicArchivedThreads(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_public_archived_threads |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_public_archived_threads |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -9688,8 +9914,9 @@ This endpoint does not have any parameters.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_sticker_packs |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_sticker_packs |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -9748,8 +9975,9 @@ const { status, data } = await apiInstance.listThreadMembers(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_thread_members |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_thread_members |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -9792,8 +10020,9 @@ This endpoint does not have any parameters.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for list_voice_regions |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for list_voice_regions |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -9844,8 +10073,9 @@ const { status, data } = await apiInstance.partnerSdkToken(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for partner_sdk_token |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for partner_sdk_token |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -9896,8 +10126,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for partner_sdk_unmerge_provisional_account |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for partner_sdk_unmerge_provisional_account |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -9950,8 +10181,9 @@ const { status, data } = await apiInstance.pollExpire(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for poll_expire |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for poll_expire |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -10008,8 +10240,9 @@ const { status, data } = await apiInstance.previewPruneGuild(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for preview_prune_guild |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for preview_prune_guild |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -10063,8 +10296,9 @@ const { status, data } = await apiInstance.pruneGuild(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for prune_guild |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for prune_guild |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -10118,8 +10352,9 @@ const { status, data } = await apiInstance.putGuildsOnboarding(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for put_guilds_onboarding |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for put_guilds_onboarding |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -10175,8 +10410,9 @@ const { status, data } = await apiInstance.searchGuildMembers(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for search_guild_members |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for search_guild_members |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -10230,8 +10466,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for send_soundboard_sound |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for send_soundboard_sound |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -10288,8 +10525,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for set_channel_permission_overwrite |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for set_channel_permission_overwrite |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -10349,8 +10587,9 @@ const { status, data } = await apiInstance.setGuildApplicationCommandPermissions
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for set_guild_application_command_permissions |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for set_guild_application_command_permissions |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -10404,8 +10643,9 @@ const { status, data } = await apiInstance.setGuildMfaLevel(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for set_guild_mfa_level |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for set_guild_mfa_level |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -10458,8 +10698,9 @@ const { status, data } = await apiInstance.syncGuildTemplate(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for sync_guild_template |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for sync_guild_template |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -10543,8 +10784,9 @@ const { status, data } = await apiInstance.threadSearch(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for thread_search |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for thread_search |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -10594,9 +10836,10 @@ const { status, data } = await apiInstance.triggerTypingIndicator(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for trigger_typing_indicator |  -  |
-|**204** | 204 response for trigger_typing_indicator |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for trigger_typing_indicator |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**204** | 204 response for trigger_typing_indicator |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -10649,8 +10892,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for unban_user_from_guild |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for unban_user_from_guild |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -10704,8 +10948,9 @@ const { status, data } = await apiInstance.updateApplication(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_application |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_application |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -10762,8 +11007,9 @@ const { status, data } = await apiInstance.updateApplicationCommand(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_application_command |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_application_command |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -10820,8 +11066,9 @@ const { status, data } = await apiInstance.updateApplicationEmoji(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_application_emoji |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_application_emoji |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -10874,8 +11121,9 @@ const { status, data } = await apiInstance.updateApplicationRoleConnectionsMetad
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_application_role_connections_metadata |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_application_role_connections_metadata |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -10929,8 +11177,9 @@ const { status, data } = await apiInstance.updateApplicationUserRoleConnection(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_application_user_role_connection |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_application_user_role_connection |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -10987,8 +11236,9 @@ const { status, data } = await apiInstance.updateAutoModerationRule(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_auto_moderation_rule |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_auto_moderation_rule |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11042,8 +11292,9 @@ const { status, data } = await apiInstance.updateChannel(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_channel |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_channel |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11097,8 +11348,9 @@ const { status, data } = await apiInstance.updateGuild(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_guild |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_guild |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11158,8 +11410,9 @@ const { status, data } = await apiInstance.updateGuildApplicationCommand(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_guild_application_command |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_guild_application_command |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11216,8 +11469,9 @@ const { status, data } = await apiInstance.updateGuildEmoji(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_guild_emoji |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_guild_emoji |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11274,14 +11528,15 @@ const { status, data } = await apiInstance.updateGuildMember(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_guild_member |  -  |
-|**204** | 204 response for update_guild_member |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_guild_member |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**204** | 204 response for update_guild_member |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateGuildRole**
-> GuildRoleResponse updateGuildRole(createGuildRoleRequest)
+> GuildRoleResponse updateGuildRole(updateRoleRequestPartial)
 
 
 ### Example
@@ -11290,7 +11545,7 @@ const { status, data } = await apiInstance.updateGuildMember(
 import {
     DefaultApi,
     Configuration,
-    CreateGuildRoleRequest
+    UpdateRoleRequestPartial
 } from 'dc_rest';
 
 const configuration = new Configuration();
@@ -11298,12 +11553,12 @@ const apiInstance = new DefaultApi(configuration);
 
 let guildId: string; // (default to undefined)
 let roleId: string; // (default to undefined)
-let createGuildRoleRequest: CreateGuildRoleRequest; //
+let updateRoleRequestPartial: UpdateRoleRequestPartial; //
 
 const { status, data } = await apiInstance.updateGuildRole(
     guildId,
     roleId,
-    createGuildRoleRequest
+    updateRoleRequestPartial
 );
 ```
 
@@ -11311,7 +11566,7 @@ const { status, data } = await apiInstance.updateGuildRole(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **createGuildRoleRequest** | **CreateGuildRoleRequest**|  | |
+| **updateRoleRequestPartial** | **UpdateRoleRequestPartial**|  | |
 | **guildId** | [**string**] |  | defaults to undefined|
 | **roleId** | [**string**] |  | defaults to undefined|
 
@@ -11333,8 +11588,9 @@ const { status, data } = await apiInstance.updateGuildRole(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_guild_role |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_guild_role |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11391,8 +11647,9 @@ const { status, data } = await apiInstance.updateGuildScheduledEvent(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_guild_scheduled_event |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_guild_scheduled_event |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11449,8 +11706,9 @@ const { status, data } = await apiInstance.updateGuildSoundboardSound(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_guild_soundboard_sound |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_guild_soundboard_sound |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11507,8 +11765,9 @@ const { status, data } = await apiInstance.updateGuildSticker(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_guild_sticker |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_guild_sticker |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11565,8 +11824,9 @@ const { status, data } = await apiInstance.updateGuildTemplate(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_guild_template |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_guild_template |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11620,8 +11880,9 @@ const { status, data } = await apiInstance.updateGuildWelcomeScreen(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_guild_welcome_screen |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_guild_welcome_screen |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11675,8 +11936,9 @@ const { status, data } = await apiInstance.updateGuildWidgetSettings(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_guild_widget_settings |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_guild_widget_settings |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11733,8 +11995,9 @@ const { status, data } = await apiInstance.updateMessage(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_message |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_message |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11785,8 +12048,9 @@ const { status, data } = await apiInstance.updateMyApplication(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_my_application |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_my_application |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11840,8 +12104,9 @@ const { status, data } = await apiInstance.updateMyGuildMember(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_my_guild_member |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_my_guild_member |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11892,8 +12157,9 @@ const { status, data } = await apiInstance.updateMyUser(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_my_user |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_my_user |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11956,8 +12222,9 @@ const { status, data } = await apiInstance.updateOriginalWebhookMessage(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_original_webhook_message |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_original_webhook_message |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -12011,8 +12278,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for update_self_voice_state |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for update_self_voice_state |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -12066,8 +12334,9 @@ const { status, data } = await apiInstance.updateStageInstance(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_stage_instance |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_stage_instance |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -12124,8 +12393,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | 204 response for update_voice_state |  -  |
-|**4XX** | Client error response |  -  |
+|**204** | 204 response for update_voice_state |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -12179,8 +12449,9 @@ const { status, data } = await apiInstance.updateWebhook(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_webhook |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_webhook |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -12237,8 +12508,9 @@ const { status, data } = await apiInstance.updateWebhookByToken(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_webhook_by_token |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_webhook_by_token |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -12304,8 +12576,9 @@ const { status, data } = await apiInstance.updateWebhookMessage(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for update_webhook_message |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for update_webhook_message |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -12358,8 +12631,9 @@ const { status, data } = await apiInstance.uploadApplicationAttachment(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | 200 response for upload_application_attachment |  -  |
-|**4XX** | Client error response |  -  |
+|**200** | 200 response for upload_application_attachment |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**429** | Client ratelimited response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
+|**4XX** | Client error response |  * X-RateLimit-Limit -  <br>  * X-RateLimit-Remaining -  <br>  * X-RateLimit-Reset -  <br>  * X-RateLimit-Reset-After -  <br>  * X-RateLimit-Bucket -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

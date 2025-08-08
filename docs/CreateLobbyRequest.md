@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **idle_timeout_seconds** | **number** |  | [optional] [default to undefined]
 **members** | [**Array&lt;LobbyMemberRequest&gt;**](LobbyMemberRequest.md) |  | [optional] [default to undefined]
 **metadata** | **{ [key: string]: string; }** |  | [optional] [default to undefined]
+**flags** | **number** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -18,6 +19,7 @@ const instance: CreateLobbyRequest = {
     idle_timeout_seconds,
     members,
     metadata,
+    flags,
 };
 ```
 

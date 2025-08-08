@@ -1,21 +1,19 @@
-# ComponentEmojiForMessageRequest
+# LobbyGuildInviteResponse
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** |  | [default to undefined]
-**id** | **string** |  | [optional] [default to undefined]
+**code** | **string** |  | [default to undefined]
 
 ## Example
 
 ```typescript
-import { ComponentEmojiForMessageRequest } from 'dc_rest';
+import { LobbyGuildInviteResponse } from 'dc_rest';
 
-const instance: ComponentEmojiForMessageRequest = {
-    name,
-    id,
+const instance: LobbyGuildInviteResponse = {
+    code,
 };
 ```
 

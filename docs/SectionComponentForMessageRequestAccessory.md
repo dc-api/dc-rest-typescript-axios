@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **disabled** | **boolean** |  | [optional] [default to undefined]
 **url** | **string** |  | [optional] [default to undefined]
 **sku_id** | **string** |  | [optional] [default to undefined]
-**emoji** | [**ComponentEmojiForMessageRequest**](ComponentEmojiForMessageRequest.md) |  | [optional] [default to undefined]
+**emoji** | [**ComponentEmojiForRequest**](ComponentEmojiForRequest.md) |  | [optional] [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
 **spoiler** | **boolean** |  | [optional] [default to undefined]
 

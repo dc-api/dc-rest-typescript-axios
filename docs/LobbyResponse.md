@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
 **application_id** | **string** |  | [default to undefined]
+**flags** | **number** |  | [default to undefined]
 **metadata** | **{ [key: string]: string; }** |  | [optional] [default to undefined]
 **members** | [**Array&lt;LobbyMemberResponse&gt;**](LobbyMemberResponse.md) |  | [optional] [default to undefined]
 **linked_channel** | [**GuildChannelResponse**](GuildChannelResponse.md) |  | [optional] [default to undefined]
@@ -19,6 +20,7 @@ import { LobbyResponse } from 'dc_rest';
 const instance: LobbyResponse = {
     id,
     application_id,
+    flags,
     metadata,
     members,
     linked_channel,

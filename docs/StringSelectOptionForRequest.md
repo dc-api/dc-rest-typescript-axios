@@ -1,4 +1,4 @@
-# StringSelectOptionForMessageRequest
+# StringSelectOptionForRequest
 
 
 ## Properties
@@ -9,14 +9,14 @@ Name | Type | Description | Notes
 **value** | **string** |  | [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
 **_default** | **boolean** |  | [optional] [default to undefined]
-**emoji** | [**ComponentEmojiForMessageRequest**](ComponentEmojiForMessageRequest.md) |  | [optional] [default to undefined]
+**emoji** | [**ComponentEmojiForRequest**](ComponentEmojiForRequest.md) |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { StringSelectOptionForMessageRequest } from 'dc_rest';
+import { StringSelectOptionForRequest } from 'dc_rest';
 
-const instance: StringSelectOptionForMessageRequest = {
+const instance: StringSelectOptionForRequest = {
     label,
     value,
     description,

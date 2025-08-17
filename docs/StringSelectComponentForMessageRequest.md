@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **number** |  | [default to undefined]
 **custom_id** | **string** |  | [default to undefined]
-**_options** | [**Array&lt;StringSelectOptionForMessageRequest&gt;**](StringSelectOptionForMessageRequest.md) |  | [default to undefined]
+**_options** | [**Array&lt;StringSelectOptionForRequest&gt;**](StringSelectOptionForRequest.md) |  | [default to undefined]
 **placeholder** | **string** |  | [optional] [default to undefined]
 **min_values** | **number** |  | [optional] [default to undefined]
 **max_values** | **number** |  | [optional] [default to undefined]

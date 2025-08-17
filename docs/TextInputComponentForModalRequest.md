@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **type** | **number** |  | [default to undefined]
 **custom_id** | **string** |  | [default to undefined]
 **style** | **number** |  | [default to undefined]
-**label** | **string** |  | [default to undefined]
+**label** | **string** |  | [optional] [default to undefined]
 **value** | **string** |  | [optional] [default to undefined]
 **placeholder** | **string** |  | [optional] [default to undefined]
 **required** | **boolean** |  | [optional] [default to undefined]

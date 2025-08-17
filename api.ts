@@ -9,7 +9,7 @@
  * - **Copyright**: Copyright (c) 2025 Qntx
  * - **Author**: ΣX <gitctrlx@gmail.com>
  * - **Version**: 10
- * - **Modified**: 2025-07-05T02:42:23.045889949Z[Etc/UTC]
+ * - **Modified**: 2025-08-17T02:10:56.398865336Z[Etc/UTC]
  * - **Generator Version**: 7.14.0
  *
  * <details>
@@ -187,49 +187,6 @@ export interface AddGroupDmUserRequest {
      * @memberof AddGroupDmUserRequest
      */
     'nick'?: string | null;
-}
-/**
- * 
- * @export
- * @interface AddGuildMemberRequest
- */
-export interface AddGuildMemberRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof AddGuildMemberRequest
-     */
-    'access_token': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof AddGuildMemberRequest
-     */
-    'nick'?: string | null;
-    /**
-     * 
-     * @type {Set<string | null>}
-     * @memberof AddGuildMemberRequest
-     */
-    'roles'?: Set<string | null> | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof AddGuildMemberRequest
-     */
-    'mute'?: boolean | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof AddGuildMemberRequest
-     */
-    'deaf'?: boolean | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof AddGuildMemberRequest
-     */
-    'flags'?: number | null;
 }
 /**
  * 
@@ -3271,19 +3228,81 @@ export interface BotAccountPatchRequest {
 /**
  * 
  * @export
- * @interface BulkBanUsersFromGuildRequest
+ * @interface BotAddGuildMemberRequest
  */
-export interface BulkBanUsersFromGuildRequest {
+export interface BotAddGuildMemberRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof BotAddGuildMemberRequest
+     */
+    'access_token': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotAddGuildMemberRequest
+     */
+    'nick'?: string | null;
     /**
      * 
      * @type {Set<string>}
-     * @memberof BulkBanUsersFromGuildRequest
+     * @memberof BotAddGuildMemberRequest
+     */
+    'roles'?: Set<string> | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof BotAddGuildMemberRequest
+     */
+    'mute'?: boolean | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof BotAddGuildMemberRequest
+     */
+    'deaf'?: boolean | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof BotAddGuildMemberRequest
+     */
+    'flags'?: number | null;
+}
+/**
+ * 
+ * @export
+ * @interface BotPartnerSdkTokenRequest
+ */
+export interface BotPartnerSdkTokenRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof BotPartnerSdkTokenRequest
+     */
+    'external_user_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotPartnerSdkTokenRequest
+     */
+    'preferred_global_name'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface BulkBanUsersRequest
+ */
+export interface BulkBanUsersRequest {
+    /**
+     * 
+     * @type {Set<string>}
+     * @memberof BulkBanUsersRequest
      */
     'user_ids': Set<string>;
     /**
      * 
      * @type {number}
-     * @memberof BulkBanUsersFromGuildRequest
+     * @memberof BulkBanUsersRequest
      */
     'delete_message_seconds'?: number | null;
 }
@@ -3391,25 +3410,6 @@ export interface BulkUpdateGuildChannelsRequestInner {
 /**
  * 
  * @export
- * @interface BulkUpdateGuildRolesRequestInner
- */
-export interface BulkUpdateGuildRolesRequestInner {
-    /**
-     * 
-     * @type {string}
-     * @memberof BulkUpdateGuildRolesRequestInner
-     */
-    'id'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof BulkUpdateGuildRolesRequestInner
-     */
-    'position'?: number | null;
-}
-/**
- * 
- * @export
  * @interface ButtonComponentForMessageRequest
  */
 export interface ButtonComponentForMessageRequest {
@@ -3457,10 +3457,10 @@ export interface ButtonComponentForMessageRequest {
     'sku_id'?: string;
     /**
      * 
-     * @type {ComponentEmojiForMessageRequest}
+     * @type {ComponentEmojiForRequest}
      * @memberof ButtonComponentForMessageRequest
      */
-    'emoji'?: ComponentEmojiForMessageRequest | null;
+    'emoji'?: ComponentEmojiForRequest | null;
 }
 /**
  * 
@@ -3884,19 +3884,19 @@ export interface CommandPermissionsResponse {
 /**
  * 
  * @export
- * @interface ComponentEmojiForMessageRequest
+ * @interface ComponentEmojiForRequest
  */
-export interface ComponentEmojiForMessageRequest {
+export interface ComponentEmojiForRequest {
     /**
      * 
      * @type {string}
-     * @memberof ComponentEmojiForMessageRequest
+     * @memberof ComponentEmojiForRequest
      */
     'name': string;
     /**
      * 
      * @type {string}
-     * @memberof ComponentEmojiForMessageRequest
+     * @memberof ComponentEmojiForRequest
      */
     'id'?: string;
 }
@@ -4432,25 +4432,6 @@ export interface CreateGuildEmojiRequest {
 /**
  * 
  * @export
- * @interface CreateGuildFromTemplateRequest
- */
-export interface CreateGuildFromTemplateRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildFromTemplateRequest
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildFromTemplateRequest
-     */
-    'icon'?: string | null;
-}
-/**
- * 
- * @export
  * @interface CreateGuildInviteRequest
  */
 export interface CreateGuildInviteRequest {
@@ -4496,231 +4477,6 @@ export interface CreateGuildInviteRequest {
      * @memberof CreateGuildInviteRequest
      */
     'target_type'?: number | null;
-}
-/**
- * 
- * @export
- * @interface CreateGuildRequestChannelItem
- */
-export interface CreateGuildRequestChannelItem {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'name': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'type'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'position'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'topic'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'bitrate'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'user_limit'?: number | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'nsfw'?: boolean | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'rate_limit_per_user'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'parent_id'?: string;
-    /**
-     * 
-     * @type {Array<ChannelPermissionOverwriteRequest>}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'permission_overwrites'?: Array<ChannelPermissionOverwriteRequest> | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'rtc_region'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'video_quality_mode'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'default_auto_archive_duration'?: number;
-    /**
-     * 
-     * @type {UpdateDefaultReactionEmojiRequest}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'default_reaction_emoji'?: UpdateDefaultReactionEmojiRequest | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'default_thread_rate_limit_per_user'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'default_sort_order'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'default_forum_layout'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'default_tag_setting'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'id'?: string;
-    /**
-     * 
-     * @type {Array<CreateOrUpdateThreadTagRequest>}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'available_tags'?: Array<CreateOrUpdateThreadTagRequest> | null;
-}
-/**
- * 
- * @export
- * @interface CreateGuildRequestRoleItem
- */
-export interface CreateGuildRequestRoleItem {
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestRoleItem
-     */
-    'id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRequestRoleItem
-     */
-    'name'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestRoleItem
-     */
-    'permissions'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestRoleItem
-     */
-    'color'?: number | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateGuildRequestRoleItem
-     */
-    'hoist'?: boolean | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateGuildRequestRoleItem
-     */
-    'mentionable'?: boolean | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRequestRoleItem
-     */
-    'unicode_emoji'?: string | null;
-}
-/**
- * 
- * @export
- * @interface CreateGuildRoleRequest
- */
-export interface CreateGuildRoleRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRoleRequest
-     */
-    'name'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRoleRequest
-     */
-    'permissions'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRoleRequest
-     */
-    'color'?: number | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateGuildRoleRequest
-     */
-    'hoist'?: boolean | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateGuildRoleRequest
-     */
-    'mentionable'?: boolean | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRoleRequest
-     */
-    'icon'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRoleRequest
-     */
-    'unicode_emoji'?: string | null;
 }
 /**
  * @type CreateGuildScheduledEventRequest
@@ -4790,7 +4546,20 @@ export interface CreateLobbyRequest {
      * @memberof CreateLobbyRequest
      */
     'metadata'?: { [key: string]: string; };
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateLobbyRequest
+     */
+    'flags'?: CreateLobbyRequestFlagsEnum | null;
 }
+
+export const CreateLobbyRequestFlagsEnum = {
+    NUMBER_1: 1
+} as const;
+
+export type CreateLobbyRequestFlagsEnum = typeof CreateLobbyRequestFlagsEnum[keyof typeof CreateLobbyRequestFlagsEnum];
+
 /**
  * 
  * @export
@@ -4859,7 +4628,20 @@ export interface CreateOrJoinLobbyRequest {
      * @memberof CreateOrJoinLobbyRequest
      */
     'member_metadata'?: { [key: string]: string; };
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateOrJoinLobbyRequest
+     */
+    'flags'?: CreateOrJoinLobbyRequestFlagsEnum | null;
 }
+
+export const CreateOrJoinLobbyRequestFlagsEnum = {
+    NUMBER_1: 1
+} as const;
+
+export type CreateOrJoinLobbyRequestFlagsEnum = typeof CreateOrJoinLobbyRequestFlagsEnum[keyof typeof CreateOrJoinLobbyRequestFlagsEnum];
+
 /**
  * 
  * @export
@@ -4915,6 +4697,55 @@ export interface CreatePrivateChannelRequest {
      * @memberof CreatePrivateChannelRequest
      */
     'nicks'?: { [key: string]: string | null; };
+}
+/**
+ * 
+ * @export
+ * @interface CreateRoleRequest
+ */
+export interface CreateRoleRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateRoleRequest
+     */
+    'name'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateRoleRequest
+     */
+    'permissions'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateRoleRequest
+     */
+    'color'?: number | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateRoleRequest
+     */
+    'hoist'?: boolean | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateRoleRequest
+     */
+    'mentionable'?: boolean | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateRoleRequest
+     */
+    'icon'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateRoleRequest
+     */
+    'unicode_emoji'?: string | null;
 }
 /**
  * 
@@ -7424,97 +7255,6 @@ export interface GuildChannelResponse {
 /**
  * 
  * @export
- * @interface GuildCreateRequest
- */
-export interface GuildCreateRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildCreateRequest
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildCreateRequest
-     */
-    'description'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildCreateRequest
-     */
-    'region'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildCreateRequest
-     */
-    'icon'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildCreateRequest
-     */
-    'verification_level'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildCreateRequest
-     */
-    'default_message_notifications'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildCreateRequest
-     */
-    'explicit_content_filter'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildCreateRequest
-     */
-    'preferred_locale'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildCreateRequest
-     */
-    'afk_timeout'?: number | null;
-    /**
-     * 
-     * @type {Array<CreateGuildRequestRoleItem>}
-     * @memberof GuildCreateRequest
-     */
-    'roles'?: Array<CreateGuildRequestRoleItem> | null;
-    /**
-     * 
-     * @type {Array<CreateGuildRequestChannelItem>}
-     * @memberof GuildCreateRequest
-     */
-    'channels'?: Array<CreateGuildRequestChannelItem> | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildCreateRequest
-     */
-    'afk_channel_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildCreateRequest
-     */
-    'system_channel_id'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildCreateRequest
-     */
-    'system_channel_flags'?: number | null;
-}
-/**
- * 
- * @export
  * @interface GuildHomeSettingsResponse
  */
 export interface GuildHomeSettingsResponse {
@@ -7765,6 +7505,19 @@ export interface GuildMFALevelResponse {
 /**
  * 
  * @export
+ * @interface GuildMFARequest
+ */
+export interface GuildMFARequest {
+    /**
+     * 
+     * @type {number}
+     * @memberof GuildMFARequest
+     */
+    'level': number;
+}
+/**
+ * 
+ * @export
  * @interface GuildMemberResponse
  */
 export interface GuildMemberResponse {
@@ -7846,6 +7599,12 @@ export interface GuildMemberResponse {
      * @memberof GuildMemberResponse
      */
     'premium_since'?: string | null;
+    /**
+     * 
+     * @type {UserCollectiblesResponse}
+     * @memberof GuildMemberResponse
+     */
+    'collectibles'?: UserCollectiblesResponse | null;
 }
 /**
  * 
@@ -10463,6 +10222,19 @@ export interface ListGuildSoundboardSoundsResponse {
 /**
  * 
  * @export
+ * @interface LobbyGuildInviteResponse
+ */
+export interface LobbyGuildInviteResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof LobbyGuildInviteResponse
+     */
+    'code': string;
+}
+/**
+ * 
+ * @export
  * @interface LobbyMemberRequest
  */
 export interface LobbyMemberRequest {
@@ -10596,6 +10368,12 @@ export interface LobbyResponse {
      * @memberof LobbyResponse
      */
     'application_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof LobbyResponse
+     */
+    'flags': number;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -13895,6 +13673,12 @@ export interface PrivateGuildMemberResponse {
      * @memberof PrivateGuildMemberResponse
      */
     'premium_since'?: string | null;
+    /**
+     * 
+     * @type {UserCollectiblesResponse}
+     * @memberof PrivateGuildMemberResponse
+     */
+    'collectibles'?: UserCollectiblesResponse | null;
 }
 /**
  * 
@@ -13980,7 +13764,7 @@ export interface PruneGuildRequest {
  * @type PruneGuildRequestIncludeRoles
  * @export
  */
-export type PruneGuildRequestIncludeRoles = Set<string | null> | string;
+export type PruneGuildRequestIncludeRoles = Set<string> | string;
 
 /**
  * 
@@ -14038,6 +13822,37 @@ export interface QuarantineUserActionResponse {
      * @memberof QuarantineUserActionResponse
      */
     'metadata': object;
+}
+/**
+ * Ratelimit error object returned by the Discord API
+ * @export
+ * @interface RatelimitedResponse
+ */
+export interface RatelimitedResponse {
+    /**
+     * Discord internal error code. See error code reference
+     * @type {number}
+     * @memberof RatelimitedResponse
+     */
+    'code': number;
+    /**
+     * Human-readable error message
+     * @type {string}
+     * @memberof RatelimitedResponse
+     */
+    'message': string;
+    /**
+     * The number of seconds to wait before retrying your request
+     * @type {number}
+     * @memberof RatelimitedResponse
+     */
+    'retry_after': number;
+    /**
+     * Whether you are being ratelimited by the global ratelimit or a per-endpoint ratelimit
+     * @type {boolean}
+     * @memberof RatelimitedResponse
+     */
+    'global': boolean;
 }
 /**
  * 
@@ -14953,19 +14768,6 @@ export interface SetGuildApplicationCommandPermissionsRequest {
 /**
  * 
  * @export
- * @interface SetGuildMfaLevelRequest
- */
-export interface SetGuildMfaLevelRequest {
-    /**
-     * 
-     * @type {number}
-     * @memberof SetGuildMfaLevelRequest
-     */
-    'level': number;
-}
-/**
- * 
- * @export
  * @interface SettingsEmojiResponse
  */
 export interface SettingsEmojiResponse {
@@ -15657,10 +15459,10 @@ export interface StringSelectComponentForMessageRequest {
     'custom_id': string;
     /**
      * 
-     * @type {Array<StringSelectOptionForMessageRequest>}
+     * @type {Array<StringSelectOptionForRequest>}
      * @memberof StringSelectComponentForMessageRequest
      */
-    'options': Array<StringSelectOptionForMessageRequest>;
+    'options': Array<StringSelectOptionForRequest>;
     /**
      * 
      * @type {string}
@@ -15744,39 +15546,39 @@ export interface StringSelectComponentResponse {
 /**
  * 
  * @export
- * @interface StringSelectOptionForMessageRequest
+ * @interface StringSelectOptionForRequest
  */
-export interface StringSelectOptionForMessageRequest {
+export interface StringSelectOptionForRequest {
     /**
      * 
      * @type {string}
-     * @memberof StringSelectOptionForMessageRequest
+     * @memberof StringSelectOptionForRequest
      */
     'label': string;
     /**
      * 
      * @type {string}
-     * @memberof StringSelectOptionForMessageRequest
+     * @memberof StringSelectOptionForRequest
      */
     'value': string;
     /**
      * 
      * @type {string}
-     * @memberof StringSelectOptionForMessageRequest
+     * @memberof StringSelectOptionForRequest
      */
     'description'?: string | null;
     /**
      * 
      * @type {boolean}
-     * @memberof StringSelectOptionForMessageRequest
+     * @memberof StringSelectOptionForRequest
      */
     'default'?: boolean | null;
     /**
      * 
-     * @type {ComponentEmojiForMessageRequest}
-     * @memberof StringSelectOptionForMessageRequest
+     * @type {ComponentEmojiForRequest}
+     * @memberof StringSelectOptionForRequest
      */
-    'emoji'?: ComponentEmojiForMessageRequest | null;
+    'emoji'?: ComponentEmojiForRequest | null;
 }
 /**
  * 
@@ -15950,7 +15752,7 @@ export interface TextInputComponentForModalRequest {
      * @type {string}
      * @memberof TextInputComponentForModalRequest
      */
-    'label': string;
+    'label'?: string | null;
     /**
      * 
      * @type {string}
@@ -17241,6 +17043,74 @@ export interface UpdateOnboardingPromptRequest {
      * @memberof UpdateOnboardingPromptRequest
      */
     'type'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface UpdateRolePositionsRequest
+ */
+export interface UpdateRolePositionsRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateRolePositionsRequest
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof UpdateRolePositionsRequest
+     */
+    'position'?: number | null;
+}
+/**
+ * 
+ * @export
+ * @interface UpdateRoleRequestPartial
+ */
+export interface UpdateRoleRequestPartial {
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateRoleRequestPartial
+     */
+    'name'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof UpdateRoleRequestPartial
+     */
+    'permissions'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof UpdateRoleRequestPartial
+     */
+    'color'?: number | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UpdateRoleRequestPartial
+     */
+    'hoist'?: boolean | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UpdateRoleRequestPartial
+     */
+    'mentionable'?: boolean | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateRoleRequestPartial
+     */
+    'icon'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateRoleRequestPartial
+     */
+    'unicode_emoji'?: string | null;
 }
 /**
  * 
@@ -18857,17 +18727,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @param {string} guildId 
          * @param {string} userId 
-         * @param {AddGuildMemberRequest} addGuildMemberRequest 
+         * @param {BotAddGuildMemberRequest} botAddGuildMemberRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addGuildMember: async (guildId: string, userId: string, addGuildMemberRequest: AddGuildMemberRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        addGuildMember: async (guildId: string, userId: string, botAddGuildMemberRequest: BotAddGuildMemberRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'guildId' is not null or undefined
             assertParamExists('addGuildMember', 'guildId', guildId)
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('addGuildMember', 'userId', userId)
-            // verify required parameter 'addGuildMemberRequest' is not null or undefined
-            assertParamExists('addGuildMember', 'addGuildMemberRequest', addGuildMemberRequest)
+            // verify required parameter 'botAddGuildMemberRequest' is not null or undefined
+            assertParamExists('addGuildMember', 'botAddGuildMemberRequest', botAddGuildMemberRequest)
             const localVarPath = `/guilds/{guild_id}/members/{user_id}`
                 .replace(`{${"guild_id"}}`, encodeURIComponent(String(guildId)))
                 .replace(`{${"user_id"}}`, encodeURIComponent(String(userId)));
@@ -18892,7 +18762,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(addGuildMemberRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(botAddGuildMemberRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -19161,16 +19031,54 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} guildId 
-         * @param {BulkBanUsersFromGuildRequest} bulkBanUsersFromGuildRequest 
+         * @param {BotPartnerSdkTokenRequest} botPartnerSdkTokenRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bulkBanUsersFromGuild: async (guildId: string, bulkBanUsersFromGuildRequest: BulkBanUsersFromGuildRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        botPartnerSdkToken: async (botPartnerSdkTokenRequest: BotPartnerSdkTokenRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'botPartnerSdkTokenRequest' is not null or undefined
+            assertParamExists('botPartnerSdkToken', 'botPartnerSdkTokenRequest', botPartnerSdkTokenRequest)
+            const localVarPath = `/partner-sdk/token/bot`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BotToken required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(botPartnerSdkTokenRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} guildId 
+         * @param {BulkBanUsersRequest} bulkBanUsersRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bulkBanUsersFromGuild: async (guildId: string, bulkBanUsersRequest: BulkBanUsersRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'guildId' is not null or undefined
             assertParamExists('bulkBanUsersFromGuild', 'guildId', guildId)
-            // verify required parameter 'bulkBanUsersFromGuildRequest' is not null or undefined
-            assertParamExists('bulkBanUsersFromGuild', 'bulkBanUsersFromGuildRequest', bulkBanUsersFromGuildRequest)
+            // verify required parameter 'bulkBanUsersRequest' is not null or undefined
+            assertParamExists('bulkBanUsersFromGuild', 'bulkBanUsersRequest', bulkBanUsersRequest)
             const localVarPath = `/guilds/{guild_id}/bulk-ban`
                 .replace(`{${"guild_id"}}`, encodeURIComponent(String(guildId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -19194,7 +19102,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bulkBanUsersFromGuildRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(bulkBanUsersRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -19400,15 +19308,15 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @param {string} guildId 
-         * @param {Array<BulkUpdateGuildRolesRequestInner>} bulkUpdateGuildRolesRequestInner 
+         * @param {Array<UpdateRolePositionsRequest>} updateRolePositionsRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bulkUpdateGuildRoles: async (guildId: string, bulkUpdateGuildRolesRequestInner: Array<BulkUpdateGuildRolesRequestInner>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        bulkUpdateGuildRoles: async (guildId: string, updateRolePositionsRequest: Array<UpdateRolePositionsRequest>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'guildId' is not null or undefined
             assertParamExists('bulkUpdateGuildRoles', 'guildId', guildId)
-            // verify required parameter 'bulkUpdateGuildRolesRequestInner' is not null or undefined
-            assertParamExists('bulkUpdateGuildRoles', 'bulkUpdateGuildRolesRequestInner', bulkUpdateGuildRolesRequestInner)
+            // verify required parameter 'updateRolePositionsRequest' is not null or undefined
+            assertParamExists('bulkUpdateGuildRoles', 'updateRolePositionsRequest', updateRolePositionsRequest)
             const localVarPath = `/guilds/{guild_id}/roles`
                 .replace(`{${"guild_id"}}`, encodeURIComponent(String(guildId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -19432,7 +19340,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bulkUpdateGuildRolesRequestInner, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(updateRolePositionsRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -19795,44 +19703,6 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {GuildCreateRequest} guildCreateRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createGuild: async (guildCreateRequest: GuildCreateRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'guildCreateRequest' is not null or undefined
-            assertParamExists('createGuild', 'guildCreateRequest', guildCreateRequest)
-            const localVarPath = `/guilds`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication BotToken required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(guildCreateRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
          * @param {string} applicationId 
          * @param {string} guildId 
          * @param {ApplicationCommandCreateRequest} applicationCommandCreateRequest 
@@ -19975,58 +19845,16 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} code 
-         * @param {CreateGuildFromTemplateRequest} createGuildFromTemplateRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createGuildFromTemplate: async (code: string, createGuildFromTemplateRequest: CreateGuildFromTemplateRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'code' is not null or undefined
-            assertParamExists('createGuildFromTemplate', 'code', code)
-            // verify required parameter 'createGuildFromTemplateRequest' is not null or undefined
-            assertParamExists('createGuildFromTemplate', 'createGuildFromTemplateRequest', createGuildFromTemplateRequest)
-            const localVarPath = `/guilds/templates/{code}`
-                .replace(`{${"code"}}`, encodeURIComponent(String(code)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication BotToken required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createGuildFromTemplateRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
          * @param {string} guildId 
-         * @param {CreateGuildRoleRequest} createGuildRoleRequest 
+         * @param {CreateRoleRequest} createRoleRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createGuildRole: async (guildId: string, createGuildRoleRequest: CreateGuildRoleRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createGuildRole: async (guildId: string, createRoleRequest: CreateRoleRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'guildId' is not null or undefined
             assertParamExists('createGuildRole', 'guildId', guildId)
-            // verify required parameter 'createGuildRoleRequest' is not null or undefined
-            assertParamExists('createGuildRole', 'createGuildRoleRequest', createGuildRoleRequest)
+            // verify required parameter 'createRoleRequest' is not null or undefined
+            assertParamExists('createGuildRole', 'createRoleRequest', createRoleRequest)
             const localVarPath = `/guilds/{guild_id}/roles`
                 .replace(`{${"guild_id"}}`, encodeURIComponent(String(guildId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -20050,7 +19878,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createGuildRoleRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(createRoleRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -20294,6 +20122,94 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(createInteractionResponseRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} lobbyId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createLinkedLobbyGuildInviteForSelf: async (lobbyId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'lobbyId' is not null or undefined
+            assertParamExists('createLinkedLobbyGuildInviteForSelf', 'lobbyId', lobbyId)
+            const localVarPath = `/lobbies/{lobby_id}/members/@me/invites`
+                .replace(`{${"lobby_id"}}`, encodeURIComponent(String(lobbyId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2", [], configuration)
+
+            // authentication OAuth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2", [], configuration)
+
+            // authentication OAuth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2", [], configuration)
+
+            // authentication BotToken required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} lobbyId 
+         * @param {string} userId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createLinkedLobbyGuildInviteForUser: async (lobbyId: string, userId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'lobbyId' is not null or undefined
+            assertParamExists('createLinkedLobbyGuildInviteForUser', 'lobbyId', lobbyId)
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('createLinkedLobbyGuildInviteForUser', 'userId', userId)
+            const localVarPath = `/lobbies/{lobby_id}/members/{user_id}/invites`
+                .replace(`{${"lobby_id"}}`, encodeURIComponent(String(lobbyId)))
+                .replace(`{${"user_id"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BotToken required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -25311,14 +25227,14 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} guildId 
          * @param {string} [userId] 
          * @param {string} [targetId] 
-         * @param {number} [actionType] 
+         * @param {number | null} [actionType] 
          * @param {string} [before] 
          * @param {string} [after] 
          * @param {number} [limit] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listGuildAuditLogEntries: async (guildId: string, userId?: string, targetId?: string, actionType?: number, before?: string, after?: string, limit?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listGuildAuditLogEntries: async (guildId: string, userId?: string, targetId?: string, actionType?: number | null, before?: string, after?: string, limit?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'guildId' is not null or undefined
             assertParamExists('listGuildAuditLogEntries', 'guildId', guildId)
             const localVarPath = `/guilds/{guild_id}/audit-logs`
@@ -26885,15 +26801,15 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @param {string} guildId 
-         * @param {SetGuildMfaLevelRequest} setGuildMfaLevelRequest 
+         * @param {GuildMFARequest} guildMFARequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setGuildMfaLevel: async (guildId: string, setGuildMfaLevelRequest: SetGuildMfaLevelRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        setGuildMfaLevel: async (guildId: string, guildMFARequest: GuildMFARequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'guildId' is not null or undefined
             assertParamExists('setGuildMfaLevel', 'guildId', guildId)
-            // verify required parameter 'setGuildMfaLevelRequest' is not null or undefined
-            assertParamExists('setGuildMfaLevel', 'setGuildMfaLevelRequest', setGuildMfaLevelRequest)
+            // verify required parameter 'guildMFARequest' is not null or undefined
+            assertParamExists('setGuildMfaLevel', 'guildMFARequest', guildMFARequest)
             const localVarPath = `/guilds/{guild_id}/mfa`
                 .replace(`{${"guild_id"}}`, encodeURIComponent(String(guildId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -26917,7 +26833,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(setGuildMfaLevelRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(guildMFARequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -27097,14 +27013,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @param {string} guildId 
          * @param {string} userId 
+         * @param {object} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        unbanUserFromGuild: async (guildId: string, userId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        unbanUserFromGuild: async (guildId: string, userId: string, body: object, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'guildId' is not null or undefined
             assertParamExists('unbanUserFromGuild', 'guildId', guildId)
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('unbanUserFromGuild', 'userId', userId)
+            // verify required parameter 'body' is not null or undefined
+            assertParamExists('unbanUserFromGuild', 'body', body)
             const localVarPath = `/guilds/{guild_id}/bans/{user_id}`
                 .replace(`{${"guild_id"}}`, encodeURIComponent(String(guildId)))
                 .replace(`{${"user_id"}}`, encodeURIComponent(String(userId)));
@@ -27124,9 +27043,12 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -27660,17 +27582,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @param {string} guildId 
          * @param {string} roleId 
-         * @param {CreateGuildRoleRequest} createGuildRoleRequest 
+         * @param {UpdateRoleRequestPartial} updateRoleRequestPartial 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateGuildRole: async (guildId: string, roleId: string, createGuildRoleRequest: CreateGuildRoleRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateGuildRole: async (guildId: string, roleId: string, updateRoleRequestPartial: UpdateRoleRequestPartial, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'guildId' is not null or undefined
             assertParamExists('updateGuildRole', 'guildId', guildId)
             // verify required parameter 'roleId' is not null or undefined
             assertParamExists('updateGuildRole', 'roleId', roleId)
-            // verify required parameter 'createGuildRoleRequest' is not null or undefined
-            assertParamExists('updateGuildRole', 'createGuildRoleRequest', createGuildRoleRequest)
+            // verify required parameter 'updateRoleRequestPartial' is not null or undefined
+            assertParamExists('updateGuildRole', 'updateRoleRequestPartial', updateRoleRequestPartial)
             const localVarPath = `/guilds/{guild_id}/roles/{role_id}`
                 .replace(`{${"guild_id"}}`, encodeURIComponent(String(guildId)))
                 .replace(`{${"role_id"}}`, encodeURIComponent(String(roleId)));
@@ -27695,7 +27617,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createGuildRoleRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(updateRoleRequestPartial, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -28555,12 +28477,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} guildId 
          * @param {string} userId 
-         * @param {AddGuildMemberRequest} addGuildMemberRequest 
+         * @param {BotAddGuildMemberRequest} botAddGuildMemberRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addGuildMember(guildId: string, userId: string, addGuildMemberRequest: AddGuildMemberRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildMemberResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.addGuildMember(guildId, userId, addGuildMemberRequest, options);
+        async addGuildMember(guildId: string, userId: string, botAddGuildMemberRequest: BotAddGuildMemberRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildMemberResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addGuildMember(guildId, userId, botAddGuildMemberRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.addGuildMember']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -28649,13 +28571,25 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} guildId 
-         * @param {BulkBanUsersFromGuildRequest} bulkBanUsersFromGuildRequest 
+         * @param {BotPartnerSdkTokenRequest} botPartnerSdkTokenRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async bulkBanUsersFromGuild(guildId: string, bulkBanUsersFromGuildRequest: BulkBanUsersFromGuildRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BulkBanUsersResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.bulkBanUsersFromGuild(guildId, bulkBanUsersFromGuildRequest, options);
+        async botPartnerSdkToken(botPartnerSdkTokenRequest: BotPartnerSdkTokenRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProvisionalTokenResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.botPartnerSdkToken(botPartnerSdkTokenRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.botPartnerSdkToken']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} guildId 
+         * @param {BulkBanUsersRequest} bulkBanUsersRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async bulkBanUsersFromGuild(guildId: string, bulkBanUsersRequest: BulkBanUsersRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BulkBanUsersResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.bulkBanUsersFromGuild(guildId, bulkBanUsersRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.bulkBanUsersFromGuild']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -28716,12 +28650,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} guildId 
-         * @param {Array<BulkUpdateGuildRolesRequestInner>} bulkUpdateGuildRolesRequestInner 
+         * @param {Array<UpdateRolePositionsRequest>} updateRolePositionsRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async bulkUpdateGuildRoles(guildId: string, bulkUpdateGuildRolesRequestInner: Array<BulkUpdateGuildRolesRequestInner>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GuildRoleResponse>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.bulkUpdateGuildRoles(guildId, bulkUpdateGuildRolesRequestInner, options);
+        async bulkUpdateGuildRoles(guildId: string, updateRolePositionsRequest: Array<UpdateRolePositionsRequest>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GuildRoleResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.bulkUpdateGuildRoles(guildId, updateRolePositionsRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.bulkUpdateGuildRoles']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -28831,18 +28765,6 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {GuildCreateRequest} guildCreateRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async createGuild(guildCreateRequest: GuildCreateRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createGuild(guildCreateRequest, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.createGuild']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
          * @param {string} applicationId 
          * @param {string} guildId 
          * @param {ApplicationCommandCreateRequest} applicationCommandCreateRequest 
@@ -28883,26 +28805,13 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} code 
-         * @param {CreateGuildFromTemplateRequest} createGuildFromTemplateRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async createGuildFromTemplate(code: string, createGuildFromTemplateRequest: CreateGuildFromTemplateRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createGuildFromTemplate(code, createGuildFromTemplateRequest, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.createGuildFromTemplate']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
          * @param {string} guildId 
-         * @param {CreateGuildRoleRequest} createGuildRoleRequest 
+         * @param {CreateRoleRequest} createRoleRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createGuildRole(guildId: string, createGuildRoleRequest: CreateGuildRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildRoleResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createGuildRole(guildId, createGuildRoleRequest, options);
+        async createGuildRole(guildId: string, createRoleRequest: CreateRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildRoleResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createGuildRole(guildId, createRoleRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.createGuildRole']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -28975,6 +28884,31 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createInteractionResponse(interactionId, interactionToken, createInteractionResponseRequest, withResponse, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.createInteractionResponse']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} lobbyId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createLinkedLobbyGuildInviteForSelf(lobbyId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LobbyGuildInviteResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createLinkedLobbyGuildInviteForSelf(lobbyId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.createLinkedLobbyGuildInviteForSelf']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} lobbyId 
+         * @param {string} userId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createLinkedLobbyGuildInviteForUser(lobbyId: string, userId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LobbyGuildInviteResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createLinkedLobbyGuildInviteForUser(lobbyId, userId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.createLinkedLobbyGuildInviteForUser']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -30511,14 +30445,14 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} guildId 
          * @param {string} [userId] 
          * @param {string} [targetId] 
-         * @param {number} [actionType] 
+         * @param {number | null} [actionType] 
          * @param {string} [before] 
          * @param {string} [after] 
          * @param {number} [limit] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listGuildAuditLogEntries(guildId: string, userId?: string, targetId?: string, actionType?: number, before?: string, after?: string, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildAuditLogResponse>> {
+        async listGuildAuditLogEntries(guildId: string, userId?: string, targetId?: string, actionType?: number | null, before?: string, after?: string, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildAuditLogResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listGuildAuditLogEntries(guildId, userId, targetId, actionType, before, after, limit, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.listGuildAuditLogEntries']?.[localVarOperationServerIndex]?.url;
@@ -30979,12 +30913,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} guildId 
-         * @param {SetGuildMfaLevelRequest} setGuildMfaLevelRequest 
+         * @param {GuildMFARequest} guildMFARequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async setGuildMfaLevel(guildId: string, setGuildMfaLevelRequest: SetGuildMfaLevelRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildMFALevelResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.setGuildMfaLevel(guildId, setGuildMfaLevelRequest, options);
+        async setGuildMfaLevel(guildId: string, guildMFARequest: GuildMFARequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildMFALevelResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.setGuildMfaLevel(guildId, guildMFARequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.setGuildMfaLevel']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -31041,11 +30975,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} guildId 
          * @param {string} userId 
+         * @param {object} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async unbanUserFromGuild(guildId: string, userId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.unbanUserFromGuild(guildId, userId, options);
+        async unbanUserFromGuild(guildId: string, userId: string, body: object, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.unbanUserFromGuild(guildId, userId, body, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.unbanUserFromGuild']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -31204,12 +31139,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} guildId 
          * @param {string} roleId 
-         * @param {CreateGuildRoleRequest} createGuildRoleRequest 
+         * @param {UpdateRoleRequestPartial} updateRoleRequestPartial 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateGuildRole(guildId: string, roleId: string, createGuildRoleRequest: CreateGuildRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildRoleResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateGuildRole(guildId, roleId, createGuildRoleRequest, options);
+        async updateGuildRole(guildId: string, roleId: string, updateRoleRequestPartial: UpdateRoleRequestPartial, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildRoleResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateGuildRole(guildId, roleId, updateRoleRequestPartial, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateGuildRole']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -31485,12 +31420,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * 
          * @param {string} guildId 
          * @param {string} userId 
-         * @param {AddGuildMemberRequest} addGuildMemberRequest 
+         * @param {BotAddGuildMemberRequest} botAddGuildMemberRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addGuildMember(guildId: string, userId: string, addGuildMemberRequest: AddGuildMemberRequest, options?: RawAxiosRequestConfig): AxiosPromise<GuildMemberResponse> {
-            return localVarFp.addGuildMember(guildId, userId, addGuildMemberRequest, options).then((request) => request(axios, basePath));
+        addGuildMember(guildId: string, userId: string, botAddGuildMemberRequest: BotAddGuildMemberRequest, options?: RawAxiosRequestConfig): AxiosPromise<GuildMemberResponse> {
+            return localVarFp.addGuildMember(guildId, userId, botAddGuildMemberRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -31558,13 +31493,22 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @param {string} guildId 
-         * @param {BulkBanUsersFromGuildRequest} bulkBanUsersFromGuildRequest 
+         * @param {BotPartnerSdkTokenRequest} botPartnerSdkTokenRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bulkBanUsersFromGuild(guildId: string, bulkBanUsersFromGuildRequest: BulkBanUsersFromGuildRequest, options?: RawAxiosRequestConfig): AxiosPromise<BulkBanUsersResponse> {
-            return localVarFp.bulkBanUsersFromGuild(guildId, bulkBanUsersFromGuildRequest, options).then((request) => request(axios, basePath));
+        botPartnerSdkToken(botPartnerSdkTokenRequest: BotPartnerSdkTokenRequest, options?: RawAxiosRequestConfig): AxiosPromise<ProvisionalTokenResponse> {
+            return localVarFp.botPartnerSdkToken(botPartnerSdkTokenRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} guildId 
+         * @param {BulkBanUsersRequest} bulkBanUsersRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bulkBanUsersFromGuild(guildId: string, bulkBanUsersRequest: BulkBanUsersRequest, options?: RawAxiosRequestConfig): AxiosPromise<BulkBanUsersResponse> {
+            return localVarFp.bulkBanUsersFromGuild(guildId, bulkBanUsersRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -31610,12 +31554,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @param {string} guildId 
-         * @param {Array<BulkUpdateGuildRolesRequestInner>} bulkUpdateGuildRolesRequestInner 
+         * @param {Array<UpdateRolePositionsRequest>} updateRolePositionsRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bulkUpdateGuildRoles(guildId: string, bulkUpdateGuildRolesRequestInner: Array<BulkUpdateGuildRolesRequestInner>, options?: RawAxiosRequestConfig): AxiosPromise<Array<GuildRoleResponse>> {
-            return localVarFp.bulkUpdateGuildRoles(guildId, bulkUpdateGuildRolesRequestInner, options).then((request) => request(axios, basePath));
+        bulkUpdateGuildRoles(guildId: string, updateRolePositionsRequest: Array<UpdateRolePositionsRequest>, options?: RawAxiosRequestConfig): AxiosPromise<Array<GuildRoleResponse>> {
+            return localVarFp.bulkUpdateGuildRoles(guildId, updateRolePositionsRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -31698,15 +31642,6 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @param {GuildCreateRequest} guildCreateRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createGuild(guildCreateRequest: GuildCreateRequest, options?: RawAxiosRequestConfig): AxiosPromise<GuildResponse> {
-            return localVarFp.createGuild(guildCreateRequest, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @param {string} applicationId 
          * @param {string} guildId 
          * @param {ApplicationCommandCreateRequest} applicationCommandCreateRequest 
@@ -31738,23 +31673,13 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @param {string} code 
-         * @param {CreateGuildFromTemplateRequest} createGuildFromTemplateRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createGuildFromTemplate(code: string, createGuildFromTemplateRequest: CreateGuildFromTemplateRequest, options?: RawAxiosRequestConfig): AxiosPromise<GuildResponse> {
-            return localVarFp.createGuildFromTemplate(code, createGuildFromTemplateRequest, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @param {string} guildId 
-         * @param {CreateGuildRoleRequest} createGuildRoleRequest 
+         * @param {CreateRoleRequest} createRoleRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createGuildRole(guildId: string, createGuildRoleRequest: CreateGuildRoleRequest, options?: RawAxiosRequestConfig): AxiosPromise<GuildRoleResponse> {
-            return localVarFp.createGuildRole(guildId, createGuildRoleRequest, options).then((request) => request(axios, basePath));
+        createGuildRole(guildId: string, createRoleRequest: CreateRoleRequest, options?: RawAxiosRequestConfig): AxiosPromise<GuildRoleResponse> {
+            return localVarFp.createGuildRole(guildId, createRoleRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -31810,6 +31735,25 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         createInteractionResponse(interactionId: string, interactionToken: string, createInteractionResponseRequest: CreateInteractionResponseRequest, withResponse?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<InteractionCallbackResponse> {
             return localVarFp.createInteractionResponse(interactionId, interactionToken, createInteractionResponseRequest, withResponse, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} lobbyId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createLinkedLobbyGuildInviteForSelf(lobbyId: string, options?: RawAxiosRequestConfig): AxiosPromise<LobbyGuildInviteResponse> {
+            return localVarFp.createLinkedLobbyGuildInviteForSelf(lobbyId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} lobbyId 
+         * @param {string} userId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createLinkedLobbyGuildInviteForUser(lobbyId: string, userId: string, options?: RawAxiosRequestConfig): AxiosPromise<LobbyGuildInviteResponse> {
+            return localVarFp.createLinkedLobbyGuildInviteForUser(lobbyId, userId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -32988,14 +32932,14 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {string} guildId 
          * @param {string} [userId] 
          * @param {string} [targetId] 
-         * @param {number} [actionType] 
+         * @param {number | null} [actionType] 
          * @param {string} [before] 
          * @param {string} [after] 
          * @param {number} [limit] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listGuildAuditLogEntries(guildId: string, userId?: string, targetId?: string, actionType?: number, before?: string, after?: string, limit?: number, options?: RawAxiosRequestConfig): AxiosPromise<GuildAuditLogResponse> {
+        listGuildAuditLogEntries(guildId: string, userId?: string, targetId?: string, actionType?: number | null, before?: string, after?: string, limit?: number, options?: RawAxiosRequestConfig): AxiosPromise<GuildAuditLogResponse> {
             return localVarFp.listGuildAuditLogEntries(guildId, userId, targetId, actionType, before, after, limit, options).then((request) => request(axios, basePath));
         },
         /**
@@ -33351,12 +33295,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @param {string} guildId 
-         * @param {SetGuildMfaLevelRequest} setGuildMfaLevelRequest 
+         * @param {GuildMFARequest} guildMFARequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setGuildMfaLevel(guildId: string, setGuildMfaLevelRequest: SetGuildMfaLevelRequest, options?: RawAxiosRequestConfig): AxiosPromise<GuildMFALevelResponse> {
-            return localVarFp.setGuildMfaLevel(guildId, setGuildMfaLevelRequest, options).then((request) => request(axios, basePath));
+        setGuildMfaLevel(guildId: string, guildMFARequest: GuildMFARequest, options?: RawAxiosRequestConfig): AxiosPromise<GuildMFALevelResponse> {
+            return localVarFp.setGuildMfaLevel(guildId, guildMFARequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -33401,11 +33345,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * 
          * @param {string} guildId 
          * @param {string} userId 
+         * @param {object} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        unbanUserFromGuild(guildId: string, userId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.unbanUserFromGuild(guildId, userId, options).then((request) => request(axios, basePath));
+        unbanUserFromGuild(guildId: string, userId: string, body: object, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.unbanUserFromGuild(guildId, userId, body, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -33528,12 +33473,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * 
          * @param {string} guildId 
          * @param {string} roleId 
-         * @param {CreateGuildRoleRequest} createGuildRoleRequest 
+         * @param {UpdateRoleRequestPartial} updateRoleRequestPartial 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateGuildRole(guildId: string, roleId: string, createGuildRoleRequest: CreateGuildRoleRequest, options?: RawAxiosRequestConfig): AxiosPromise<GuildRoleResponse> {
-            return localVarFp.updateGuildRole(guildId, roleId, createGuildRoleRequest, options).then((request) => request(axios, basePath));
+        updateGuildRole(guildId: string, roleId: string, updateRoleRequestPartial: UpdateRoleRequestPartial, options?: RawAxiosRequestConfig): AxiosPromise<GuildRoleResponse> {
+            return localVarFp.updateGuildRole(guildId, roleId, updateRoleRequestPartial, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -33754,13 +33699,13 @@ export class DefaultApi extends BaseAPI {
      * 
      * @param {string} guildId 
      * @param {string} userId 
-     * @param {AddGuildMemberRequest} addGuildMemberRequest 
+     * @param {BotAddGuildMemberRequest} botAddGuildMemberRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public addGuildMember(guildId: string, userId: string, addGuildMemberRequest: AddGuildMemberRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).addGuildMember(guildId, userId, addGuildMemberRequest, options).then((request) => request(this.axios, this.basePath));
+    public addGuildMember(guildId: string, userId: string, botAddGuildMemberRequest: BotAddGuildMemberRequest, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).addGuildMember(guildId, userId, botAddGuildMemberRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -33841,14 +33786,25 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} guildId 
-     * @param {BulkBanUsersFromGuildRequest} bulkBanUsersFromGuildRequest 
+     * @param {BotPartnerSdkTokenRequest} botPartnerSdkTokenRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public bulkBanUsersFromGuild(guildId: string, bulkBanUsersFromGuildRequest: BulkBanUsersFromGuildRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).bulkBanUsersFromGuild(guildId, bulkBanUsersFromGuildRequest, options).then((request) => request(this.axios, this.basePath));
+    public botPartnerSdkToken(botPartnerSdkTokenRequest: BotPartnerSdkTokenRequest, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).botPartnerSdkToken(botPartnerSdkTokenRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} guildId 
+     * @param {BulkBanUsersRequest} bulkBanUsersRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public bulkBanUsersFromGuild(guildId: string, bulkBanUsersRequest: BulkBanUsersRequest, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).bulkBanUsersFromGuild(guildId, bulkBanUsersRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -33903,13 +33859,13 @@ export class DefaultApi extends BaseAPI {
     /**
      * 
      * @param {string} guildId 
-     * @param {Array<BulkUpdateGuildRolesRequestInner>} bulkUpdateGuildRolesRequestInner 
+     * @param {Array<UpdateRolePositionsRequest>} updateRolePositionsRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public bulkUpdateGuildRoles(guildId: string, bulkUpdateGuildRolesRequestInner: Array<BulkUpdateGuildRolesRequestInner>, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).bulkUpdateGuildRoles(guildId, bulkUpdateGuildRolesRequestInner, options).then((request) => request(this.axios, this.basePath));
+    public bulkUpdateGuildRoles(guildId: string, updateRolePositionsRequest: Array<UpdateRolePositionsRequest>, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).bulkUpdateGuildRoles(guildId, updateRolePositionsRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -34009,17 +33965,6 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @param {GuildCreateRequest} guildCreateRequest 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public createGuild(guildCreateRequest: GuildCreateRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).createGuild(guildCreateRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
      * @param {string} applicationId 
      * @param {string} guildId 
      * @param {ApplicationCommandCreateRequest} applicationCommandCreateRequest 
@@ -34057,26 +34002,14 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} code 
-     * @param {CreateGuildFromTemplateRequest} createGuildFromTemplateRequest 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public createGuildFromTemplate(code: string, createGuildFromTemplateRequest: CreateGuildFromTemplateRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).createGuildFromTemplate(code, createGuildFromTemplateRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
      * @param {string} guildId 
-     * @param {CreateGuildRoleRequest} createGuildRoleRequest 
+     * @param {CreateRoleRequest} createRoleRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public createGuildRole(guildId: string, createGuildRoleRequest: CreateGuildRoleRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).createGuildRole(guildId, createGuildRoleRequest, options).then((request) => request(this.axios, this.basePath));
+    public createGuildRole(guildId: string, createRoleRequest: CreateRoleRequest, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).createGuildRole(guildId, createRoleRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -34142,6 +34075,29 @@ export class DefaultApi extends BaseAPI {
      */
     public createInteractionResponse(interactionId: string, interactionToken: string, createInteractionResponseRequest: CreateInteractionResponseRequest, withResponse?: boolean, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).createInteractionResponse(interactionId, interactionToken, createInteractionResponseRequest, withResponse, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} lobbyId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public createLinkedLobbyGuildInviteForSelf(lobbyId: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).createLinkedLobbyGuildInviteForSelf(lobbyId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} lobbyId 
+     * @param {string} userId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public createLinkedLobbyGuildInviteForUser(lobbyId: string, userId: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).createLinkedLobbyGuildInviteForUser(lobbyId, userId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -35559,7 +35515,7 @@ export class DefaultApi extends BaseAPI {
      * @param {string} guildId 
      * @param {string} [userId] 
      * @param {string} [targetId] 
-     * @param {number} [actionType] 
+     * @param {number | null} [actionType] 
      * @param {string} [before] 
      * @param {string} [after] 
      * @param {number} [limit] 
@@ -35567,7 +35523,7 @@ export class DefaultApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public listGuildAuditLogEntries(guildId: string, userId?: string, targetId?: string, actionType?: number, before?: string, after?: string, limit?: number, options?: RawAxiosRequestConfig) {
+    public listGuildAuditLogEntries(guildId: string, userId?: string, targetId?: string, actionType?: number | null, before?: string, after?: string, limit?: number, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listGuildAuditLogEntries(guildId, userId, targetId, actionType, before, after, limit, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -35992,13 +35948,13 @@ export class DefaultApi extends BaseAPI {
     /**
      * 
      * @param {string} guildId 
-     * @param {SetGuildMfaLevelRequest} setGuildMfaLevelRequest 
+     * @param {GuildMFARequest} guildMFARequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public setGuildMfaLevel(guildId: string, setGuildMfaLevelRequest: SetGuildMfaLevelRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).setGuildMfaLevel(guildId, setGuildMfaLevelRequest, options).then((request) => request(this.axios, this.basePath));
+    public setGuildMfaLevel(guildId: string, guildMFARequest: GuildMFARequest, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).setGuildMfaLevel(guildId, guildMFARequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -36050,12 +36006,13 @@ export class DefaultApi extends BaseAPI {
      * 
      * @param {string} guildId 
      * @param {string} userId 
+     * @param {object} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public unbanUserFromGuild(guildId: string, userId: string, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).unbanUserFromGuild(guildId, userId, options).then((request) => request(this.axios, this.basePath));
+    public unbanUserFromGuild(guildId: string, userId: string, body: object, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).unbanUserFromGuild(guildId, userId, body, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -36201,13 +36158,13 @@ export class DefaultApi extends BaseAPI {
      * 
      * @param {string} guildId 
      * @param {string} roleId 
-     * @param {CreateGuildRoleRequest} createGuildRoleRequest 
+     * @param {UpdateRoleRequestPartial} updateRoleRequestPartial 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public updateGuildRole(guildId: string, roleId: string, createGuildRoleRequest: CreateGuildRoleRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).updateGuildRole(guildId, roleId, createGuildRoleRequest, options).then((request) => request(this.axios, this.basePath));
+    public updateGuildRole(guildId: string, roleId: string, updateRoleRequestPartial: UpdateRoleRequestPartial, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).updateGuildRole(guildId, roleId, updateRoleRequestPartial, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

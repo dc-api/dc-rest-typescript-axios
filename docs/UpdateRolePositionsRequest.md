@@ -1,19 +1,21 @@
-# SetGuildMfaLevelRequest
+# UpdateRolePositionsRequest
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**level** | **number** |  | [default to undefined]
+**id** | **string** |  | [optional] [default to undefined]
+**position** | **number** |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { SetGuildMfaLevelRequest } from 'dc_rest';
+import { UpdateRolePositionsRequest } from 'dc_rest';
 
-const instance: SetGuildMfaLevelRequest = {
-    level,
+const instance: UpdateRolePositionsRequest = {
+    id,
+    position,
 };
 ```
 

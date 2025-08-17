@@ -1,4 +1,4 @@
-# CreateGuildFromTemplateRequest
+# ComponentEmojiForRequest
 
 
 ## Properties
@@ -6,16 +6,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  | [default to undefined]
-**icon** | **string** |  | [optional] [default to undefined]
+**id** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { CreateGuildFromTemplateRequest } from 'dc_rest';
+import { ComponentEmojiForRequest } from 'dc_rest';
 
-const instance: CreateGuildFromTemplateRequest = {
+const instance: ComponentEmojiForRequest = {
     name,
-    icon,
+    id,
 };
 ```
 

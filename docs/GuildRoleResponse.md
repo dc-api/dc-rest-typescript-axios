@@ -10,12 +10,12 @@ Name | Type | Description | Notes
 **permissions** | **string** |  | [default to undefined]
 **position** | **number** |  | [default to undefined]
 **color** | **number** |  | [default to undefined]
+**colors** | [**GuildRoleColorsResponse**](GuildRoleColorsResponse.md) |  | [default to undefined]
 **hoist** | **boolean** |  | [default to undefined]
 **managed** | **boolean** |  | [default to undefined]
 **mentionable** | **boolean** |  | [default to undefined]
 **flags** | **number** |  | [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
-**colors** | [**GuildRoleColorsResponse**](GuildRoleColorsResponse.md) |  | [optional] [default to undefined]
 **icon** | **string** |  | [optional] [default to undefined]
 **unicode_emoji** | **string** |  | [optional] [default to undefined]
 **tags** | [**GuildRoleTagsResponse**](GuildRoleTagsResponse.md) |  | [optional] [default to undefined]
@@ -31,12 +31,12 @@ const instance: GuildRoleResponse = {
     permissions,
     position,
     color,
+    colors,
     hoist,
     managed,
     mentionable,
     flags,
     description,
-    colors,
     icon,
     unicode_emoji,
     tags,

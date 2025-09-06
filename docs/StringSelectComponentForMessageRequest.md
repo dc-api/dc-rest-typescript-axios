@@ -7,11 +7,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **number** |  | [default to undefined]
 **custom_id** | **string** |  | [default to undefined]
-**_options** | [**Array&lt;StringSelectOptionForMessageRequest&gt;**](StringSelectOptionForMessageRequest.md) |  | [default to undefined]
+**_options** | [**Array&lt;StringSelectOptionForRequest&gt;**](StringSelectOptionForRequest.md) |  | [default to undefined]
+**id** | **number** |  | [optional] [default to undefined]
 **placeholder** | **string** |  | [optional] [default to undefined]
 **min_values** | **number** |  | [optional] [default to undefined]
 **max_values** | **number** |  | [optional] [default to undefined]
 **disabled** | **boolean** |  | [optional] [default to undefined]
+**required** | **boolean** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -22,10 +24,12 @@ const instance: StringSelectComponentForMessageRequest = {
     type,
     custom_id,
     _options,
+    id,
     placeholder,
     min_values,
     max_values,
     disabled,
+    required,
 };
 ```
 

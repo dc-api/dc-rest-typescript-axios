@@ -1,21 +1,21 @@
-# ComponentEmojiForMessageRequest
+# UpdateRolePositionsRequest
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** |  | [default to undefined]
 **id** | **string** |  | [optional] [default to undefined]
+**position** | **number** |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { ComponentEmojiForMessageRequest } from 'dc_rest';
+import { UpdateRolePositionsRequest } from 'dc_rest';
 
-const instance: ComponentEmojiForMessageRequest = {
-    name,
+const instance: UpdateRolePositionsRequest = {
     id,
+    position,
 };
 ```
 

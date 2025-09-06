@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **items** | [**Array&lt;MediaGalleryItemRequest&gt;**](MediaGalleryItemRequest.md) |  | [default to undefined]
 **accessory** | [**SectionComponentForMessageRequestAccessory**](SectionComponentForMessageRequestAccessory.md) |  | [default to undefined]
 **content** | **string** |  | [default to undefined]
+**id** | **number** |  | [optional] [default to undefined]
 **spoiler** | **boolean** |  | [optional] [default to undefined]
 **spacing** | **number** |  | [optional] [default to undefined]
 **divider** | **boolean** |  | [optional] [default to undefined]
@@ -27,6 +28,7 @@ const instance: ContainerComponentForMessageRequestComponentsInner = {
     items,
     accessory,
     content,
+    id,
     spoiler,
     spacing,
     divider,

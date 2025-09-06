@@ -1,21 +1,19 @@
-# CreateGuildFromTemplateRequest
+# GuildMFARequest
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** |  | [default to undefined]
-**icon** | **string** |  | [optional] [default to undefined]
+**level** | **number** |  | [default to undefined]
 
 ## Example
 
 ```typescript
-import { CreateGuildFromTemplateRequest } from 'dc_rest';
+import { GuildMFARequest } from 'dc_rest';
 
-const instance: CreateGuildFromTemplateRequest = {
-    name,
-    icon,
+const instance: GuildMFARequest = {
+    level,
 };
 ```
 

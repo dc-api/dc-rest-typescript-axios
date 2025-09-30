@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**type** | **number** |  | [default to undefined]
 **code** | **string** |  | [default to undefined]
-**type** | **number** |  | [optional] [default to undefined]
+**channel** | [**InviteChannelResponse**](InviteChannelResponse.md) |  | [default to undefined]
 **inviter** | [**UserResponse**](UserResponse.md) |  | [optional] [default to undefined]
 **max_age** | **number** |  | [optional] [default to undefined]
 **created_at** | **string** |  | [optional] [default to undefined]
 **expires_at** | **string** |  | [optional] [default to undefined]
-**channel** | [**InviteChannelResponse**](InviteChannelResponse.md) |  | [optional] [default to undefined]
 **approximate_member_count** | **number** |  | [optional] [default to undefined]
 
 ## Example
@@ -20,13 +20,13 @@ Name | Type | Description | Notes
 import { GroupDMInviteResponse } from 'dc_rest';
 
 const instance: GroupDMInviteResponse = {
-    code,
     type,
+    code,
+    channel,
     inviter,
     max_age,
     created_at,
     expires_at,
-    channel,
     approximate_member_count,
 };
 ```

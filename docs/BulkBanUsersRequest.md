@@ -1,21 +1,21 @@
-# BulkUpdateGuildRolesRequestInner
+# BulkBanUsersRequest
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional] [default to undefined]
-**position** | **number** |  | [optional] [default to undefined]
+**user_ids** | **Set&lt;string&gt;** |  | [default to undefined]
+**delete_message_seconds** | **number** |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { BulkUpdateGuildRolesRequestInner } from 'dc_rest';
+import { BulkBanUsersRequest } from 'dc_rest';
 
-const instance: BulkUpdateGuildRolesRequestInner = {
-    id,
-    position,
+const instance: BulkBanUsersRequest = {
+    user_ids,
+    delete_message_seconds,
 };
 ```
 

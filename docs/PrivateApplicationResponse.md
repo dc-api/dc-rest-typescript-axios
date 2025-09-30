@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **role_connections_verification_url** | **string** |  | [optional] [default to undefined]
 **approximate_guild_count** | **number** |  | [optional] [default to undefined]
 **team** | [**TeamResponse**](TeamResponse.md) |  | [optional] [default to undefined]
+**linked_games** | **Array&lt;object&gt;** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -74,6 +75,7 @@ const instance: PrivateApplicationResponse = {
     role_connections_verification_url,
     approximate_guild_count,
     team,
+    linked_games,
 };
 ```
 

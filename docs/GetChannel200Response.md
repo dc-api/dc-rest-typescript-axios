@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **position** | **number** |  | [default to undefined]
 **recipients** | [**Array&lt;UserResponse&gt;**](UserResponse.md) |  | [default to undefined]
 **owner_id** | **string** |  | [default to undefined]
+**thread_metadata** | [**ThreadMetadataResponse**](ThreadMetadataResponse.md) |  | [default to undefined]
 **message_count** | **number** |  | [default to undefined]
 **member_count** | **number** |  | [default to undefined]
 **total_message_sent** | **number** |  | [default to undefined]
@@ -40,7 +41,6 @@ Name | Type | Description | Notes
 **icon** | **string** |  | [optional] [default to undefined]
 **managed** | **boolean** |  | [optional] [default to undefined]
 **application_id** | **string** |  | [optional] [default to undefined]
-**thread_metadata** | [**ThreadMetadataResponse**](ThreadMetadataResponse.md) |  | [optional] [default to undefined]
 **applied_tags** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
 **member** | [**ThreadMemberResponse**](ThreadMemberResponse.md) |  | [optional] [default to undefined]
 
@@ -58,6 +58,7 @@ const instance: GetChannel200Response = {
     position,
     recipients,
     owner_id,
+    thread_metadata,
     message_count,
     member_count,
     total_message_sent,
@@ -85,7 +86,6 @@ const instance: GetChannel200Response = {
     icon,
     managed,
     application_id,
-    thread_metadata,
     applied_tags,
     member,
 };

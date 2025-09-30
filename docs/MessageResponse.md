@@ -21,7 +21,6 @@ Name | Type | Description | Notes
 **mention_everyone** | **boolean** |  | [default to undefined]
 **tts** | **boolean** |  | [default to undefined]
 **edited_timestamp** | **string** |  | [optional] [default to undefined]
-**resolved** | [**ResolvedObjectsResponse**](ResolvedObjectsResponse.md) |  | [optional] [default to undefined]
 **stickers** | [**Array&lt;GetSticker200Response&gt;**](GetSticker200Response.md) |  | [optional] [default to undefined]
 **sticker_items** | [**Array&lt;MessageStickerItemResponse&gt;**](MessageStickerItemResponse.md) |  | [optional] [default to undefined]
 **call** | [**MessageCallResponse**](MessageCallResponse.md) |  | [optional] [default to undefined]
@@ -37,7 +36,9 @@ Name | Type | Description | Notes
 **role_subscription_data** | [**MessageRoleSubscriptionDataResponse**](MessageRoleSubscriptionDataResponse.md) |  | [optional] [default to undefined]
 **purchase_notification** | [**PurchaseNotificationResponse**](PurchaseNotificationResponse.md) |  | [optional] [default to undefined]
 **position** | **number** |  | [optional] [default to undefined]
+**resolved** | [**ResolvedObjectsResponse**](ResolvedObjectsResponse.md) |  | [optional] [default to undefined]
 **poll** | [**PollResponse**](PollResponse.md) |  | [optional] [default to undefined]
+**shared_client_theme** | [**CustomClientThemeResponse**](CustomClientThemeResponse.md) |  | [optional] [default to undefined]
 **interaction_metadata** | [**BasicMessageResponseInteractionMetadata**](BasicMessageResponseInteractionMetadata.md) |  | [optional] [default to undefined]
 **message_snapshots** | [**Array&lt;MessageSnapshotResponse&gt;**](MessageSnapshotResponse.md) |  | [optional] [default to undefined]
 **reactions** | [**Array&lt;MessageReactionResponse&gt;**](MessageReactionResponse.md) |  | [optional] [default to undefined]
@@ -65,7 +66,6 @@ const instance: MessageResponse = {
     mention_everyone,
     tts,
     edited_timestamp,
-    resolved,
     stickers,
     sticker_items,
     call,
@@ -81,7 +81,9 @@ const instance: MessageResponse = {
     role_subscription_data,
     purchase_notification,
     position,
+    resolved,
     poll,
+    shared_client_theme,
     interaction_metadata,
     message_snapshots,
     reactions,

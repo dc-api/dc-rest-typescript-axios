@@ -59,6 +59,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**addThreadMember**](docs/DefaultApi.md#addthreadmember) | **PUT** /channels/{channel_id}/thread-members/{user_id} | 
 *DefaultApi* | [**applicationsGetActivityInstance**](docs/DefaultApi.md#applicationsgetactivityinstance) | **GET** /applications/{application_id}/activity-instances/{instance_id} | 
 *DefaultApi* | [**banUserFromGuild**](docs/DefaultApi.md#banuserfromguild) | **PUT** /guilds/{guild_id}/bans/{user_id} | 
+*DefaultApi* | [**botPartnerSdkToken**](docs/DefaultApi.md#botpartnersdktoken) | **POST** /partner-sdk/token/bot | 
 *DefaultApi* | [**bulkBanUsersFromGuild**](docs/DefaultApi.md#bulkbanusersfromguild) | **POST** /guilds/{guild_id}/bulk-ban | 
 *DefaultApi* | [**bulkDeleteMessages**](docs/DefaultApi.md#bulkdeletemessages) | **POST** /channels/{channel_id}/messages/bulk-delete | 
 *DefaultApi* | [**bulkSetApplicationCommands**](docs/DefaultApi.md#bulksetapplicationcommands) | **PUT** /applications/{application_id}/commands | 
@@ -73,17 +74,17 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**createChannelInvite**](docs/DefaultApi.md#createchannelinvite) | **POST** /channels/{channel_id}/invites | 
 *DefaultApi* | [**createDm**](docs/DefaultApi.md#createdm) | **POST** /users/@me/channels | 
 *DefaultApi* | [**createEntitlement**](docs/DefaultApi.md#createentitlement) | **POST** /applications/{application_id}/entitlements | 
-*DefaultApi* | [**createGuild**](docs/DefaultApi.md#createguild) | **POST** /guilds | 
 *DefaultApi* | [**createGuildApplicationCommand**](docs/DefaultApi.md#createguildapplicationcommand) | **POST** /applications/{application_id}/guilds/{guild_id}/commands | 
 *DefaultApi* | [**createGuildChannel**](docs/DefaultApi.md#createguildchannel) | **POST** /guilds/{guild_id}/channels | 
 *DefaultApi* | [**createGuildEmoji**](docs/DefaultApi.md#createguildemoji) | **POST** /guilds/{guild_id}/emojis | 
-*DefaultApi* | [**createGuildFromTemplate**](docs/DefaultApi.md#createguildfromtemplate) | **POST** /guilds/templates/{code} | 
 *DefaultApi* | [**createGuildRole**](docs/DefaultApi.md#createguildrole) | **POST** /guilds/{guild_id}/roles | 
 *DefaultApi* | [**createGuildScheduledEvent**](docs/DefaultApi.md#createguildscheduledevent) | **POST** /guilds/{guild_id}/scheduled-events | 
 *DefaultApi* | [**createGuildSoundboardSound**](docs/DefaultApi.md#createguildsoundboardsound) | **POST** /guilds/{guild_id}/soundboard-sounds | 
 *DefaultApi* | [**createGuildSticker**](docs/DefaultApi.md#createguildsticker) | **POST** /guilds/{guild_id}/stickers | 
 *DefaultApi* | [**createGuildTemplate**](docs/DefaultApi.md#createguildtemplate) | **POST** /guilds/{guild_id}/templates | 
 *DefaultApi* | [**createInteractionResponse**](docs/DefaultApi.md#createinteractionresponse) | **POST** /interactions/{interaction_id}/{interaction_token}/callback | 
+*DefaultApi* | [**createLinkedLobbyGuildInviteForSelf**](docs/DefaultApi.md#createlinkedlobbyguildinviteforself) | **POST** /lobbies/{lobby_id}/members/@me/invites | 
+*DefaultApi* | [**createLinkedLobbyGuildInviteForUser**](docs/DefaultApi.md#createlinkedlobbyguildinviteforuser) | **POST** /lobbies/{lobby_id}/members/{user_id}/invites | 
 *DefaultApi* | [**createLobby**](docs/DefaultApi.md#createlobby) | **POST** /lobbies | 
 *DefaultApi* | [**createLobbyMessage**](docs/DefaultApi.md#createlobbymessage) | **POST** /lobbies/{lobby_id}/messages | 
 *DefaultApi* | [**createMessage**](docs/DefaultApi.md#createmessage) | **POST** /channels/{channel_id}/messages | 
@@ -286,7 +287,6 @@ Class | Method | HTTP request | Description
  - [ActivitiesAttachmentResponse](docs/ActivitiesAttachmentResponse.md)
  - [AddGroupDmUser201Response](docs/AddGroupDmUser201Response.md)
  - [AddGroupDmUserRequest](docs/AddGroupDmUserRequest.md)
- - [AddGuildMemberRequest](docs/AddGuildMemberRequest.md)
  - [AddLobbyMemberRequest](docs/AddLobbyMemberRequest.md)
  - [ApplicationCommandAttachmentOption](docs/ApplicationCommandAttachmentOption.md)
  - [ApplicationCommandAttachmentOptionResponse](docs/ApplicationCommandAttachmentOptionResponse.md)
@@ -347,6 +347,7 @@ Class | Method | HTTP request | Description
  - [BaseCreateMessageCreateRequest](docs/BaseCreateMessageCreateRequest.md)
  - [BaseCreateMessageCreateRequestComponentsInner](docs/BaseCreateMessageCreateRequestComponentsInner.md)
  - [BasicApplicationResponse](docs/BasicApplicationResponse.md)
+ - [BasicGuildMemberResponse](docs/BasicGuildMemberResponse.md)
  - [BasicMessageResponse](docs/BasicMessageResponse.md)
  - [BasicMessageResponseComponentsInner](docs/BasicMessageResponseComponentsInner.md)
  - [BasicMessageResponseInteractionMetadata](docs/BasicMessageResponseInteractionMetadata.md)
@@ -356,12 +357,13 @@ Class | Method | HTTP request | Description
  - [BlockMessageActionMetadataResponse](docs/BlockMessageActionMetadataResponse.md)
  - [BlockMessageActionResponse](docs/BlockMessageActionResponse.md)
  - [BotAccountPatchRequest](docs/BotAccountPatchRequest.md)
- - [BulkBanUsersFromGuildRequest](docs/BulkBanUsersFromGuildRequest.md)
+ - [BotAddGuildMemberRequest](docs/BotAddGuildMemberRequest.md)
+ - [BotPartnerSdkTokenRequest](docs/BotPartnerSdkTokenRequest.md)
+ - [BulkBanUsersRequest](docs/BulkBanUsersRequest.md)
  - [BulkBanUsersResponse](docs/BulkBanUsersResponse.md)
  - [BulkDeleteMessagesRequest](docs/BulkDeleteMessagesRequest.md)
  - [BulkLobbyMemberRequest](docs/BulkLobbyMemberRequest.md)
  - [BulkUpdateGuildChannelsRequestInner](docs/BulkUpdateGuildChannelsRequestInner.md)
- - [BulkUpdateGuildRolesRequestInner](docs/BulkUpdateGuildRolesRequestInner.md)
  - [ButtonComponentForMessageRequest](docs/ButtonComponentForMessageRequest.md)
  - [ButtonComponentResponse](docs/ButtonComponentResponse.md)
  - [ChannelFollowerResponse](docs/ChannelFollowerResponse.md)
@@ -369,12 +371,13 @@ Class | Method | HTTP request | Description
  - [ChannelPermissionOverwriteRequest](docs/ChannelPermissionOverwriteRequest.md)
  - [ChannelPermissionOverwriteResponse](docs/ChannelPermissionOverwriteResponse.md)
  - [ChannelSelectComponentForMessageRequest](docs/ChannelSelectComponentForMessageRequest.md)
+ - [ChannelSelectComponentForModalRequest](docs/ChannelSelectComponentForModalRequest.md)
  - [ChannelSelectComponentResponse](docs/ChannelSelectComponentResponse.md)
  - [ChannelSelectDefaultValue](docs/ChannelSelectDefaultValue.md)
  - [ChannelSelectDefaultValueResponse](docs/ChannelSelectDefaultValueResponse.md)
  - [CommandPermissionResponse](docs/CommandPermissionResponse.md)
  - [CommandPermissionsResponse](docs/CommandPermissionsResponse.md)
- - [ComponentEmojiForMessageRequest](docs/ComponentEmojiForMessageRequest.md)
+ - [ComponentEmojiForRequest](docs/ComponentEmojiForRequest.md)
  - [ComponentEmojiResponse](docs/ComponentEmojiResponse.md)
  - [ConnectedAccountGuildResponse](docs/ConnectedAccountGuildResponse.md)
  - [ConnectedAccountIntegrationResponse](docs/ConnectedAccountIntegrationResponse.md)
@@ -386,17 +389,14 @@ Class | Method | HTTP request | Description
  - [CreateApplicationEmojiRequest](docs/CreateApplicationEmojiRequest.md)
  - [CreateAutoModerationRule200Response](docs/CreateAutoModerationRule200Response.md)
  - [CreateAutoModerationRuleRequest](docs/CreateAutoModerationRuleRequest.md)
+ - [CreateChannelInvite200Response](docs/CreateChannelInvite200Response.md)
  - [CreateChannelInviteRequest](docs/CreateChannelInviteRequest.md)
  - [CreateEntitlementRequestData](docs/CreateEntitlementRequestData.md)
  - [CreateForumThreadRequest](docs/CreateForumThreadRequest.md)
  - [CreateGroupDMInviteRequest](docs/CreateGroupDMInviteRequest.md)
  - [CreateGuildChannelRequest](docs/CreateGuildChannelRequest.md)
  - [CreateGuildEmojiRequest](docs/CreateGuildEmojiRequest.md)
- - [CreateGuildFromTemplateRequest](docs/CreateGuildFromTemplateRequest.md)
  - [CreateGuildInviteRequest](docs/CreateGuildInviteRequest.md)
- - [CreateGuildRequestChannelItem](docs/CreateGuildRequestChannelItem.md)
- - [CreateGuildRequestRoleItem](docs/CreateGuildRequestRoleItem.md)
- - [CreateGuildRoleRequest](docs/CreateGuildRoleRequest.md)
  - [CreateGuildScheduledEventRequest](docs/CreateGuildScheduledEventRequest.md)
  - [CreateGuildTemplateRequest](docs/CreateGuildTemplateRequest.md)
  - [CreateInteractionResponseRequest](docs/CreateInteractionResponseRequest.md)
@@ -406,12 +406,15 @@ Class | Method | HTTP request | Description
  - [CreateOrJoinLobbyRequest](docs/CreateOrJoinLobbyRequest.md)
  - [CreateOrUpdateThreadTagRequest](docs/CreateOrUpdateThreadTagRequest.md)
  - [CreatePrivateChannelRequest](docs/CreatePrivateChannelRequest.md)
+ - [CreateRoleRequest](docs/CreateRoleRequest.md)
  - [CreateStageInstanceRequest](docs/CreateStageInstanceRequest.md)
  - [CreateTextThreadWithMessageRequest](docs/CreateTextThreadWithMessageRequest.md)
  - [CreateTextThreadWithoutMessageRequest](docs/CreateTextThreadWithoutMessageRequest.md)
  - [CreateThreadRequest](docs/CreateThreadRequest.md)
  - [CreateWebhookRequest](docs/CreateWebhookRequest.md)
  - [CreatedThreadResponse](docs/CreatedThreadResponse.md)
+ - [CustomClientThemeResponse](docs/CustomClientThemeResponse.md)
+ - [CustomClientThemeShareRequest](docs/CustomClientThemeShareRequest.md)
  - [DefaultKeywordListTriggerMetadata](docs/DefaultKeywordListTriggerMetadata.md)
  - [DefaultKeywordListTriggerMetadataResponse](docs/DefaultKeywordListTriggerMetadataResponse.md)
  - [DefaultKeywordListUpsertRequest](docs/DefaultKeywordListUpsertRequest.md)
@@ -471,11 +474,11 @@ Class | Method | HTTP request | Description
  - [GuildBanResponse](docs/GuildBanResponse.md)
  - [GuildChannelLocation](docs/GuildChannelLocation.md)
  - [GuildChannelResponse](docs/GuildChannelResponse.md)
- - [GuildCreateRequest](docs/GuildCreateRequest.md)
  - [GuildHomeSettingsResponse](docs/GuildHomeSettingsResponse.md)
  - [GuildIncomingWebhookResponse](docs/GuildIncomingWebhookResponse.md)
  - [GuildInviteResponse](docs/GuildInviteResponse.md)
  - [GuildMFALevelResponse](docs/GuildMFALevelResponse.md)
+ - [GuildMFARequest](docs/GuildMFARequest.md)
  - [GuildMemberResponse](docs/GuildMemberResponse.md)
  - [GuildOnboardingResponse](docs/GuildOnboardingResponse.md)
  - [GuildPatchRequestPartial](docs/GuildPatchRequestPartial.md)
@@ -491,6 +494,7 @@ Class | Method | HTTP request | Description
  - [GuildTemplateChannelResponse](docs/GuildTemplateChannelResponse.md)
  - [GuildTemplateChannelTags](docs/GuildTemplateChannelTags.md)
  - [GuildTemplateResponse](docs/GuildTemplateResponse.md)
+ - [GuildTemplateRoleColorsResponse](docs/GuildTemplateRoleColorsResponse.md)
  - [GuildTemplateRoleResponse](docs/GuildTemplateRoleResponse.md)
  - [GuildTemplateSnapshotResponse](docs/GuildTemplateSnapshotResponse.md)
  - [GuildWelcomeChannel](docs/GuildWelcomeChannel.md)
@@ -518,6 +522,8 @@ Class | Method | HTTP request | Description
  - [KeywordTriggerMetadataResponse](docs/KeywordTriggerMetadataResponse.md)
  - [KeywordUpsertRequest](docs/KeywordUpsertRequest.md)
  - [KeywordUpsertRequestPartial](docs/KeywordUpsertRequestPartial.md)
+ - [LabelComponentForModalRequest](docs/LabelComponentForModalRequest.md)
+ - [LabelComponentForModalRequestComponent](docs/LabelComponentForModalRequestComponent.md)
  - [LaunchActivityInteractionCallbackRequest](docs/LaunchActivityInteractionCallbackRequest.md)
  - [LaunchActivityInteractionCallbackResponse](docs/LaunchActivityInteractionCallbackResponse.md)
  - [ListApplicationEmojisResponse](docs/ListApplicationEmojisResponse.md)
@@ -527,6 +533,7 @@ Class | Method | HTTP request | Description
  - [ListGuildIntegrations200ResponseInner](docs/ListGuildIntegrations200ResponseInner.md)
  - [ListGuildScheduledEvents200ResponseInner](docs/ListGuildScheduledEvents200ResponseInner.md)
  - [ListGuildSoundboardSoundsResponse](docs/ListGuildSoundboardSoundsResponse.md)
+ - [LobbyGuildInviteResponse](docs/LobbyGuildInviteResponse.md)
  - [LobbyMemberRequest](docs/LobbyMemberRequest.md)
  - [LobbyMemberResponse](docs/LobbyMemberResponse.md)
  - [LobbyMessageResponse](docs/LobbyMessageResponse.md)
@@ -545,6 +552,7 @@ Class | Method | HTTP request | Description
  - [MentionSpamUpsertRequestPartial](docs/MentionSpamUpsertRequestPartial.md)
  - [MentionableSelectComponentForMessageRequest](docs/MentionableSelectComponentForMessageRequest.md)
  - [MentionableSelectComponentForMessageRequestDefaultValuesInner](docs/MentionableSelectComponentForMessageRequestDefaultValuesInner.md)
+ - [MentionableSelectComponentForModalRequest](docs/MentionableSelectComponentForModalRequest.md)
  - [MentionableSelectComponentResponse](docs/MentionableSelectComponentResponse.md)
  - [MentionableSelectComponentResponseDefaultValuesInner](docs/MentionableSelectComponentResponseDefaultValuesInner.md)
  - [MessageAllowedMentionsRequest](docs/MessageAllowedMentionsRequest.md)
@@ -575,6 +583,7 @@ Class | Method | HTTP request | Description
  - [MinimalContentMessageResponse](docs/MinimalContentMessageResponse.md)
  - [ModalInteractionCallbackRequest](docs/ModalInteractionCallbackRequest.md)
  - [ModalInteractionCallbackRequestData](docs/ModalInteractionCallbackRequestData.md)
+ - [ModalInteractionCallbackRequestDataComponentsInner](docs/ModalInteractionCallbackRequestDataComponentsInner.md)
  - [ModalSubmitInteractionMetadataResponse](docs/ModalSubmitInteractionMetadataResponse.md)
  - [ModalSubmitInteractionMetadataResponseTriggeringInteractionMetadata](docs/ModalSubmitInteractionMetadataResponseTriggeringInteractionMetadata.md)
  - [ModelError](docs/ModelError.md)
@@ -617,6 +626,7 @@ Class | Method | HTTP request | Description
  - [PurchaseNotificationResponse](docs/PurchaseNotificationResponse.md)
  - [QuarantineUserAction](docs/QuarantineUserAction.md)
  - [QuarantineUserActionResponse](docs/QuarantineUserActionResponse.md)
+ - [RatelimitedResponse](docs/RatelimitedResponse.md)
  - [ResolvedObjectsResponse](docs/ResolvedObjectsResponse.md)
  - [ResourceChannelResponse](docs/ResourceChannelResponse.md)
  - [RichEmbed](docs/RichEmbed.md)
@@ -628,6 +638,7 @@ Class | Method | HTTP request | Description
  - [RichEmbedThumbnail](docs/RichEmbedThumbnail.md)
  - [RichEmbedVideo](docs/RichEmbedVideo.md)
  - [RoleSelectComponentForMessageRequest](docs/RoleSelectComponentForMessageRequest.md)
+ - [RoleSelectComponentForModalRequest](docs/RoleSelectComponentForModalRequest.md)
  - [RoleSelectComponentResponse](docs/RoleSelectComponentResponse.md)
  - [RoleSelectDefaultValue](docs/RoleSelectDefaultValue.md)
  - [RoleSelectDefaultValueResponse](docs/RoleSelectDefaultValueResponse.md)
@@ -642,7 +653,6 @@ Class | Method | HTTP request | Description
  - [SeparatorComponentResponse](docs/SeparatorComponentResponse.md)
  - [SetChannelPermissionOverwriteRequest](docs/SetChannelPermissionOverwriteRequest.md)
  - [SetGuildApplicationCommandPermissionsRequest](docs/SetGuildApplicationCommandPermissionsRequest.md)
- - [SetGuildMfaLevelRequest](docs/SetGuildMfaLevelRequest.md)
  - [SettingsEmojiResponse](docs/SettingsEmojiResponse.md)
  - [SlackWebhook](docs/SlackWebhook.md)
  - [SoundboardCreateRequest](docs/SoundboardCreateRequest.md)
@@ -658,12 +668,14 @@ Class | Method | HTTP request | Description
  - [StickerPackCollectionResponse](docs/StickerPackCollectionResponse.md)
  - [StickerPackResponse](docs/StickerPackResponse.md)
  - [StringSelectComponentForMessageRequest](docs/StringSelectComponentForMessageRequest.md)
+ - [StringSelectComponentForModalRequest](docs/StringSelectComponentForModalRequest.md)
  - [StringSelectComponentResponse](docs/StringSelectComponentResponse.md)
- - [StringSelectOptionForMessageRequest](docs/StringSelectOptionForMessageRequest.md)
+ - [StringSelectOptionForRequest](docs/StringSelectOptionForRequest.md)
  - [StringSelectOptionResponse](docs/StringSelectOptionResponse.md)
  - [TeamMemberResponse](docs/TeamMemberResponse.md)
  - [TeamResponse](docs/TeamResponse.md)
  - [TextDisplayComponentForMessageRequest](docs/TextDisplayComponentForMessageRequest.md)
+ - [TextDisplayComponentForModalRequest](docs/TextDisplayComponentForModalRequest.md)
  - [TextDisplayComponentResponse](docs/TextDisplayComponentResponse.md)
  - [TextInputComponentForModalRequest](docs/TextInputComponentForModalRequest.md)
  - [TextInputComponentResponse](docs/TextInputComponentResponse.md)
@@ -697,11 +709,13 @@ Class | Method | HTTP request | Description
  - [UpdateMessageInteractionCallbackResponse](docs/UpdateMessageInteractionCallbackResponse.md)
  - [UpdateMyGuildMemberRequest](docs/UpdateMyGuildMemberRequest.md)
  - [UpdateOnboardingPromptRequest](docs/UpdateOnboardingPromptRequest.md)
- - [UpdateSelfVoiceStateRequest](docs/UpdateSelfVoiceStateRequest.md)
+ - [UpdateRolePositionsRequest](docs/UpdateRolePositionsRequest.md)
+ - [UpdateRoleRequestPartial](docs/UpdateRoleRequestPartial.md)
+ - [UpdateSelfVoiceStateRequestPartial](docs/UpdateSelfVoiceStateRequestPartial.md)
  - [UpdateStageInstanceRequest](docs/UpdateStageInstanceRequest.md)
  - [UpdateThreadRequestPartial](docs/UpdateThreadRequestPartial.md)
  - [UpdateThreadTagRequest](docs/UpdateThreadTagRequest.md)
- - [UpdateVoiceStateRequest](docs/UpdateVoiceStateRequest.md)
+ - [UpdateVoiceStateRequestPartial](docs/UpdateVoiceStateRequestPartial.md)
  - [UpdateWebhookByTokenRequest](docs/UpdateWebhookByTokenRequest.md)
  - [UpdateWebhookRequest](docs/UpdateWebhookRequest.md)
  - [UserAvatarDecorationResponse](docs/UserAvatarDecorationResponse.md)
@@ -716,6 +730,7 @@ Class | Method | HTTP request | Description
  - [UserPrimaryGuildResponse](docs/UserPrimaryGuildResponse.md)
  - [UserResponse](docs/UserResponse.md)
  - [UserSelectComponentForMessageRequest](docs/UserSelectComponentForMessageRequest.md)
+ - [UserSelectComponentForModalRequest](docs/UserSelectComponentForModalRequest.md)
  - [UserSelectComponentResponse](docs/UserSelectComponentResponse.md)
  - [UserSelectDefaultValue](docs/UserSelectDefaultValue.md)
  - [UserSelectDefaultValueResponse](docs/UserSelectDefaultValueResponse.md)

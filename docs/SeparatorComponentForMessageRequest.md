@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **number** |  | [default to undefined]
+**id** | **number** |  | [optional] [default to undefined]
 **spacing** | **number** |  | [optional] [default to undefined]
 **divider** | **boolean** |  | [optional] [default to undefined]
 
@@ -16,6 +17,7 @@ import { SeparatorComponentForMessageRequest } from 'dc_rest';
 
 const instance: SeparatorComponentForMessageRequest = {
     type,
+    id,
     spacing,
     divider,
 };

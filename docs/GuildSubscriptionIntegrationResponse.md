@@ -6,10 +6,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **string** |  | [default to undefined]
+**account** | [**AccountResponse**](AccountResponse.md) |  | [default to undefined]
+**enabled** | **boolean** |  | [default to undefined]
 **id** | **string** |  | [default to undefined]
 **name** | **string** |  | [optional] [default to undefined]
-**account** | [**AccountResponse**](AccountResponse.md) |  | [optional] [default to undefined]
-**enabled** | **boolean** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -18,10 +18,10 @@ import { GuildSubscriptionIntegrationResponse } from 'dc_rest';
 
 const instance: GuildSubscriptionIntegrationResponse = {
     type,
-    id,
-    name,
     account,
     enabled,
+    id,
+    name,
 };
 ```
 

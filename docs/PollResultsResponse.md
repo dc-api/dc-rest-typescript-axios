@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**answer_counts** | [**Array&lt;PollResultsEntryResponse&gt;**](PollResultsEntryResponse.md) |  | [default to undefined]
 **is_finalized** | **boolean** |  | [default to undefined]
-**answer_counts** | [**Array&lt;PollResultsEntryResponse&gt;**](PollResultsEntryResponse.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { PollResultsResponse } from 'dc_rest';
 
 const instance: PollResultsResponse = {
-    is_finalized,
     answer_counts,
+    is_finalized,
 };
 ```
 

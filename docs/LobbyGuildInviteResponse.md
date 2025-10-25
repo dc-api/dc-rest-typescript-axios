@@ -1,19 +1,19 @@
-# SetGuildMfaLevelRequest
+# LobbyGuildInviteResponse
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**level** | **number** |  | [default to undefined]
+**code** | **string** |  | [default to undefined]
 
 ## Example
 
 ```typescript
-import { SetGuildMfaLevelRequest } from 'dc_rest';
+import { LobbyGuildInviteResponse } from 'dc_rest';
 
-const instance: SetGuildMfaLevelRequest = {
-    level,
+const instance: LobbyGuildInviteResponse = {
+    code,
 };
 ```
 

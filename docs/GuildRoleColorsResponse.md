@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**primary_color** | **number** |  | [optional] [default to undefined]
+**primary_color** | **number** |  | [default to undefined]
 **secondary_color** | **number** |  | [optional] [default to undefined]
 **tertiary_color** | **number** |  | [optional] [default to undefined]
 

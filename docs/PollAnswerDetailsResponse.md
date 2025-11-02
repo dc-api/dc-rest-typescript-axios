@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**users** | [**Array&lt;UserResponse&gt;**](UserResponse.md) |  | [optional] [default to undefined]
+**users** | [**Array&lt;UserResponse&gt;**](UserResponse.md) |  | [default to undefined]
 
 ## Example
 

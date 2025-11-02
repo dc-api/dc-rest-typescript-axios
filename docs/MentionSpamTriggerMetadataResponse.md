@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **mention_total_limit** | **number** |  | [default to undefined]
-**mention_raid_protection_enabled** | **boolean** |  | [optional] [default to undefined]
+**mention_raid_protection_enabled** | **boolean** |  | [default to undefined]
 
 ## Example
 

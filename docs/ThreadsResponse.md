@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **threads** | [**Array&lt;ThreadResponse&gt;**](ThreadResponse.md) |  | [default to undefined]
 **members** | [**Array&lt;ThreadMemberResponse&gt;**](ThreadMemberResponse.md) |  | [default to undefined]
-**has_more** | **boolean** |  | [optional] [default to undefined]
+**has_more** | **boolean** |  | [default to undefined]
 **first_messages** | [**Array&lt;MessageResponse&gt;**](MessageResponse.md) |  | [optional] [default to undefined]
 
 ## Example

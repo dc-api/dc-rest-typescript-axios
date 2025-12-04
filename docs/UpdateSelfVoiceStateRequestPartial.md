@@ -1,4 +1,4 @@
-# UpdateSelfVoiceStateRequest
+# UpdateSelfVoiceStateRequestPartial
 
 
 ## Properties
@@ -12,9 +12,9 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { UpdateSelfVoiceStateRequest } from 'dc_rest';
+import { UpdateSelfVoiceStateRequestPartial } from 'dc_rest';
 
-const instance: UpdateSelfVoiceStateRequest = {
+const instance: UpdateSelfVoiceStateRequestPartial = {
     request_to_speak_timestamp,
     suppress,
     channel_id,

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **number** |  | [default to undefined]
 **components** | [**Array&lt;ActionRowComponentForMessageRequestComponentsInner&gt;**](ActionRowComponentForMessageRequestComponentsInner.md) |  | [default to undefined]
+**id** | **number** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -16,6 +17,7 @@ import { ActionRowComponentForMessageRequest } from 'dc_rest';
 const instance: ActionRowComponentForMessageRequest = {
     type,
     components,
+    id,
 };
 ```
 

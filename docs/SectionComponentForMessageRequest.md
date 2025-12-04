@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **type** | **number** |  | [default to undefined]
 **components** | [**Array&lt;TextDisplayComponentForMessageRequest&gt;**](TextDisplayComponentForMessageRequest.md) |  | [default to undefined]
 **accessory** | [**SectionComponentForMessageRequestAccessory**](SectionComponentForMessageRequestAccessory.md) |  | [default to undefined]
+**id** | **number** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -18,6 +19,7 @@ const instance: SectionComponentForMessageRequest = {
     type,
     components,
     accessory,
+    id,
 };
 ```
 

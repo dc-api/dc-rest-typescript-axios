@@ -6,11 +6,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **string** |  | [default to undefined]
+**account** | [**AccountResponse**](AccountResponse.md) |  | [default to undefined]
+**enabled** | **boolean** |  | [default to undefined]
 **id** | **string** |  | [default to undefined]
 **user** | [**UserResponse**](UserResponse.md) |  | [default to undefined]
 **name** | **string** |  | [optional] [default to undefined]
-**account** | [**AccountResponse**](AccountResponse.md) |  | [optional] [default to undefined]
-**enabled** | **boolean** |  | [optional] [default to undefined]
 **revoked** | **boolean** |  | [optional] [default to undefined]
 **expire_behavior** | **number** |  | [optional] [default to undefined]
 **expire_grace_period** | **number** |  | [optional] [default to undefined]
@@ -27,11 +27,11 @@ import { ExternalConnectionIntegrationResponse } from 'dc_rest';
 
 const instance: ExternalConnectionIntegrationResponse = {
     type,
+    account,
+    enabled,
     id,
     user,
     name,
-    account,
-    enabled,
     revoked,
     expire_behavior,
     expire_grace_period,

@@ -1,27 +1,27 @@
-# StringSelectOptionForMessageRequest
+# LabelComponentForModalRequest
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**type** | **number** |  | [default to undefined]
 **label** | **string** |  | [default to undefined]
-**value** | **string** |  | [default to undefined]
+**component** | [**LabelComponentForModalRequestComponent**](LabelComponentForModalRequestComponent.md) |  | [default to undefined]
+**id** | **number** |  | [optional] [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
-**_default** | **boolean** |  | [optional] [default to undefined]
-**emoji** | [**ComponentEmojiForMessageRequest**](ComponentEmojiForMessageRequest.md) |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { StringSelectOptionForMessageRequest } from 'dc_rest';
+import { LabelComponentForModalRequest } from 'dc_rest';
 
-const instance: StringSelectOptionForMessageRequest = {
+const instance: LabelComponentForModalRequest = {
+    type,
     label,
-    value,
+    component,
+    id,
     description,
-    _default,
-    emoji,
 };
 ```
 

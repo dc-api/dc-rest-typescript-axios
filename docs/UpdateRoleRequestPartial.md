@@ -1,30 +1,30 @@
-# CreateGuildRequestRoleItem
+# UpdateRoleRequestPartial
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **number** |  | [default to undefined]
 **name** | **string** |  | [optional] [default to undefined]
 **permissions** | **number** |  | [optional] [default to undefined]
 **color** | **number** |  | [optional] [default to undefined]
 **hoist** | **boolean** |  | [optional] [default to undefined]
 **mentionable** | **boolean** |  | [optional] [default to undefined]
+**icon** | **string** |  | [optional] [default to undefined]
 **unicode_emoji** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { CreateGuildRequestRoleItem } from 'dc_rest';
+import { UpdateRoleRequestPartial } from 'dc_rest';
 
-const instance: CreateGuildRequestRoleItem = {
-    id,
+const instance: UpdateRoleRequestPartial = {
     name,
     permissions,
     color,
     hoist,
     mentionable,
+    icon,
     unicode_emoji,
 };
 ```

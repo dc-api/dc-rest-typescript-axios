@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **flags** | **number** |  | [optional] [default to undefined]
 **attachments** | [**Array&lt;MessageAttachmentRequest&gt;**](MessageAttachmentRequest.md) |  | [optional] [default to undefined]
 **poll** | [**PollCreateRequest**](PollCreateRequest.md) |  | [optional] [default to undefined]
+**shared_client_theme** | [**CustomClientThemeShareRequest**](CustomClientThemeShareRequest.md) |  | [optional] [default to undefined]
 **confetti_potion** | **object** |  | [optional] [default to undefined]
 
 ## Example
@@ -29,6 +30,7 @@ const instance: BaseCreateMessageCreateRequest = {
     flags,
     attachments,
     poll,
+    shared_client_theme,
     confetti_potion,
 };
 ```

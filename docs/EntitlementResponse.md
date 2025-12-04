@@ -17,6 +17,8 @@ Name | Type | Description | Notes
 **fulfilled_at** | **string** |  | [optional] [default to undefined]
 **fulfillment_status** | **number** |  | [optional] [default to undefined]
 **consumed** | **boolean** |  | [optional] [default to undefined]
+**gifter_user_id** | **string** |  | [optional] [default to undefined]
+**parent_id** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -36,6 +38,8 @@ const instance: EntitlementResponse = {
     fulfilled_at,
     fulfillment_status,
     consumed,
+    gifter_user_id,
+    parent_id,
 };
 ```
 

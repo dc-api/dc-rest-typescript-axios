@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **communication_disabled_until** | **string** |  | [optional] [default to undefined]
 **nick** | **string** |  | [optional] [default to undefined]
 **premium_since** | **string** |  | [optional] [default to undefined]
+**collectibles** | [**UserCollectiblesResponse**](UserCollectiblesResponse.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -38,6 +39,7 @@ const instance: GuildMemberResponse = {
     communication_disabled_until,
     nick,
     premium_since,
+    collectibles,
 };
 ```
 

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **number** |  | [default to undefined]
 **components** | [**Array&lt;ContainerComponentForMessageRequestComponentsInner&gt;**](ContainerComponentForMessageRequestComponentsInner.md) |  | [default to undefined]
+**id** | **number** |  | [optional] [default to undefined]
 **accent_color** | **number** |  | [optional] [default to undefined]
 **spoiler** | **boolean** |  | [optional] [default to undefined]
 
@@ -18,6 +19,7 @@ import { ContainerComponentForMessageRequest } from 'dc_rest';
 const instance: ContainerComponentForMessageRequest = {
     type,
     components,
+    id,
     accent_color,
     spoiler,
 };

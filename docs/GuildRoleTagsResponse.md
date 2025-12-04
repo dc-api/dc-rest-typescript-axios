@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**premium_subscriber** | **any** |  | [optional] [default to undefined]
+**premium_subscriber** | [**Null**](Null.md) |  | [optional] [default to undefined]
 **bot_id** | **string** |  | [optional] [default to undefined]
 **integration_id** | **string** |  | [optional] [default to undefined]
 **subscription_listing_id** | **string** |  | [optional] [default to undefined]
-**available_for_purchase** | **any** |  | [optional] [default to undefined]
-**guild_connections** | **any** |  | [optional] [default to undefined]
+**available_for_purchase** | [**Null**](Null.md) |  | [optional] [default to undefined]
+**guild_connections** | [**Null**](Null.md) |  | [optional] [default to undefined]
 
 ## Example
 

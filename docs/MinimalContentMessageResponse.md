@@ -15,7 +15,6 @@ Name | Type | Description | Notes
 **flags** | **number** |  | [default to undefined]
 **components** | [**Array&lt;BasicMessageResponseComponentsInner&gt;**](BasicMessageResponseComponentsInner.md) |  | [default to undefined]
 **edited_timestamp** | **string** |  | [optional] [default to undefined]
-**resolved** | [**ResolvedObjectsResponse**](ResolvedObjectsResponse.md) |  | [optional] [default to undefined]
 **stickers** | [**Array&lt;GetSticker200Response&gt;**](GetSticker200Response.md) |  | [optional] [default to undefined]
 **sticker_items** | [**Array&lt;MessageStickerItemResponse&gt;**](MessageStickerItemResponse.md) |  | [optional] [default to undefined]
 
@@ -35,7 +34,6 @@ const instance: MinimalContentMessageResponse = {
     flags,
     components,
     edited_timestamp,
-    resolved,
     stickers,
     sticker_items,
 };

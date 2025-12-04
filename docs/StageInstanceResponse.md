@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **topic** | **string** |  | [default to undefined]
 **privacy_level** | **number** |  | [default to undefined]
 **id** | **string** |  | [default to undefined]
-**discoverable_disabled** | **boolean** |  | [optional] [default to undefined]
+**discoverable_disabled** | **boolean** |  | [default to undefined]
 **guild_scheduled_event_id** | **string** |  | [optional] [default to undefined]
 
 ## Example

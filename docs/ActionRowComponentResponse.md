@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **number** |  | [default to undefined]
 **id** | **number** |  | [default to undefined]
-**components** | [**Array&lt;ActionRowComponentResponseComponentsInner&gt;**](ActionRowComponentResponseComponentsInner.md) |  | [optional] [default to undefined]
+**components** | [**Array&lt;ActionRowComponentResponseComponentsInner&gt;**](ActionRowComponentResponseComponentsInner.md) |  | [default to undefined]
 
 ## Example
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **custom_id** | **string** |  | [default to undefined]
 **title** | **string** |  | [default to undefined]
-**components** | [**Array&lt;ActionRowComponentForModalRequest&gt;**](ActionRowComponentForModalRequest.md) |  | [default to undefined]
+**components** | [**Array&lt;ModalInteractionCallbackRequestDataComponentsInner&gt;**](ModalInteractionCallbackRequestDataComponentsInner.md) |  | [default to undefined]
 
 ## Example
 

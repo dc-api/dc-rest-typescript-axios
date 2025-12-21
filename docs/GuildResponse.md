@@ -18,6 +18,9 @@ Name | Type | Description | Notes
 **default_message_notifications** | **number** |  | [default to undefined]
 **mfa_level** | **number** |  | [default to undefined]
 **explicit_content_filter** | **number** |  | [default to undefined]
+**max_members** | **number** |  | [default to undefined]
+**max_stage_video_channel_users** | **number** |  | [default to undefined]
+**max_video_channel_users** | **number** |  | [default to undefined]
 **premium_tier** | **number** |  | [default to undefined]
 **premium_subscription_count** | **number** |  | [default to undefined]
 **preferred_locale** | **string** |  | [default to undefined]
@@ -37,9 +40,6 @@ Name | Type | Description | Notes
 **system_channel_id** | **string** |  | [optional] [default to undefined]
 **widget_channel_id** | **string** |  | [optional] [default to undefined]
 **max_presences** | **number** |  | [optional] [default to undefined]
-**max_members** | **number** |  | [optional] [default to undefined]
-**max_stage_video_channel_users** | **number** |  | [optional] [default to undefined]
-**max_video_channel_users** | **number** |  | [optional] [default to undefined]
 **vanity_url_code** | **string** |  | [optional] [default to undefined]
 **rules_channel_id** | **string** |  | [optional] [default to undefined]
 **safety_alerts_channel_id** | **string** |  | [optional] [default to undefined]
@@ -64,6 +64,9 @@ const instance: GuildResponse = {
     default_message_notifications,
     mfa_level,
     explicit_content_filter,
+    max_members,
+    max_stage_video_channel_users,
+    max_video_channel_users,
     premium_tier,
     premium_subscription_count,
     preferred_locale,
@@ -83,9 +86,6 @@ const instance: GuildResponse = {
     system_channel_id,
     widget_channel_id,
     max_presences,
-    max_members,
-    max_stage_video_channel_users,
-    max_video_channel_users,
     vanity_url_code,
     rules_channel_id,
     safety_alerts_channel_id,

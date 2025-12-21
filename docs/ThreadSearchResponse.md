@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **threads** | [**Array&lt;ThreadResponse&gt;**](ThreadResponse.md) |  | [default to undefined]
 **members** | [**Array&lt;ThreadMemberResponse&gt;**](ThreadMemberResponse.md) |  | [default to undefined]
-**has_more** | **boolean** |  | [optional] [default to undefined]
+**has_more** | **boolean** |  | [default to undefined]
+**total_results** | **number** |  | [default to undefined]
 **first_messages** | [**Array&lt;MessageResponse&gt;**](MessageResponse.md) |  | [optional] [default to undefined]
-**total_results** | **number** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -20,8 +20,8 @@ const instance: ThreadSearchResponse = {
     threads,
     members,
     has_more,
-    first_messages,
     total_results,
+    first_messages,
 };
 ```
 

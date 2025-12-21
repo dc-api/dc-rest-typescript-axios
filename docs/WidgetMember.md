@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **discriminator** | **string** |  | [default to undefined]
 **status** | **string** |  | [default to undefined]
 **avatar_url** | **string** |  | [default to undefined]
-**avatar** | **any** |  | [optional] [default to undefined]
+**avatar** | [**Null**](Null.md) |  | [optional] [default to undefined]
 **activity** | [**WidgetActivity**](WidgetActivity.md) |  | [optional] [default to undefined]
 **deaf** | **boolean** |  | [optional] [default to undefined]
 **mute** | **boolean** |  | [optional] [default to undefined]

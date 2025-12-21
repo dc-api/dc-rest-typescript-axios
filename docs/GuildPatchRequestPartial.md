@@ -16,7 +16,6 @@ Name | Type | Description | Notes
 **afk_timeout** | **number** |  | [optional] [default to undefined]
 **afk_channel_id** | **string** |  | [optional] [default to undefined]
 **system_channel_id** | **string** |  | [optional] [default to undefined]
-**owner_id** | **string** |  | [optional] [default to undefined]
 **splash** | **string** |  | [optional] [default to undefined]
 **banner** | **string** |  | [optional] [default to undefined]
 **system_channel_flags** | **number** |  | [optional] [default to undefined]
@@ -45,7 +44,6 @@ const instance: GuildPatchRequestPartial = {
     afk_timeout,
     afk_channel_id,
     system_channel_id,
-    owner_id,
     splash,
     banner,
     system_channel_flags,

@@ -1,4 +1,4 @@
-# BulkUpdateGuildRolesRequestInner
+# UpdateRolePositionsRequest
 
 
 ## Properties
@@ -11,9 +11,9 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { BulkUpdateGuildRolesRequestInner } from 'dc_rest';
+import { UpdateRolePositionsRequest } from 'dc_rest';
 
-const instance: BulkUpdateGuildRolesRequestInner = {
+const instance: UpdateRolePositionsRequest = {
     id,
     position,
 };

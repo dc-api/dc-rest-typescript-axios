@@ -1,21 +1,21 @@
-# ComponentEmojiForMessageRequest
+# UpdateVoiceStateRequestPartial
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** |  | [default to undefined]
-**id** | **string** |  | [optional] [default to undefined]
+**suppress** | **boolean** |  | [optional] [default to undefined]
+**channel_id** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { ComponentEmojiForMessageRequest } from 'dc_rest';
+import { UpdateVoiceStateRequestPartial } from 'dc_rest';
 
-const instance: ComponentEmojiForMessageRequest = {
-    name,
-    id,
+const instance: UpdateVoiceStateRequestPartial = {
+    suppress,
+    channel_id,
 };
 ```
 

@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
 **type** | **string** |  | [default to undefined]
+**account** | [**AccountResponse**](AccountResponse.md) |  | [default to undefined]
 **name** | **string** |  | [optional] [default to undefined]
-**account** | [**AccountResponse**](AccountResponse.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -18,8 +18,8 @@ import { PartialGuildSubscriptionIntegrationResponse } from 'dc_rest';
 const instance: PartialGuildSubscriptionIntegrationResponse = {
     id,
     type,
-    name,
     account,
+    name,
 };
 ```
 

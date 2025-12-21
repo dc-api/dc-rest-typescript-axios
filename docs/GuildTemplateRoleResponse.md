@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **color** | **number** |  | [default to undefined]
 **hoist** | **boolean** |  | [default to undefined]
 **mentionable** | **boolean** |  | [default to undefined]
+**colors** | [**GuildTemplateRoleColorsResponse**](GuildTemplateRoleColorsResponse.md) |  | [optional] [default to undefined]
 **icon** | **string** |  | [optional] [default to undefined]
 **unicode_emoji** | **string** |  | [optional] [default to undefined]
 
@@ -26,6 +27,7 @@ const instance: GuildTemplateRoleResponse = {
     color,
     hoist,
     mentionable,
+    colors,
     icon,
     unicode_emoji,
 };

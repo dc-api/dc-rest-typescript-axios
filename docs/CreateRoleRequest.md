@@ -1,4 +1,4 @@
-# CreateGuildRoleRequest
+# CreateRoleRequest
 
 
 ## Properties
@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { CreateGuildRoleRequest } from 'dc_rest';
+import { CreateRoleRequest } from 'dc_rest';
 
-const instance: CreateGuildRoleRequest = {
+const instance: CreateRoleRequest = {
     name,
     permissions,
     color,

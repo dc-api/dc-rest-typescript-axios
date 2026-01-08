@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **single_select** | **boolean** |  | [optional] [default to undefined]
 **required** | **boolean** |  | [optional] [default to undefined]
 **in_onboarding** | **boolean** |  | [optional] [default to undefined]
-**type** | **number** |  | [optional] [default to undefined]
+**type** | [**UpdateOnboardingPromptRequestType**](UpdateOnboardingPromptRequestType.md) |  | [optional] [default to undefined]
 
 ## Example
 

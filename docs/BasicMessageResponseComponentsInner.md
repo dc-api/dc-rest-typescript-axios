@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
+**type** | [**MessageComponentTypes**](MessageComponentTypes.md) |  | [default to undefined]
 **id** | **number** |  | [default to undefined]
 **components** | [**Array&lt;TextDisplayComponentResponse&gt;**](TextDisplayComponentResponse.md) |  | [default to undefined]
 **spoiler** | **boolean** |  | [default to undefined]
 **file** | [**UnfurledMediaResponse**](UnfurledMediaResponse.md) |  | [default to undefined]
 **items** | [**Array&lt;MediaGalleryItemResponse&gt;**](MediaGalleryItemResponse.md) |  | [default to undefined]
 **accessory** | [**SectionComponentResponseAccessory**](SectionComponentResponseAccessory.md) |  | [default to undefined]
-**spacing** | **number** |  | [default to undefined]
+**spacing** | [**MessageComponentSeparatorSpacingSize**](MessageComponentSeparatorSpacingSize.md) |  | [default to undefined]
 **divider** | **boolean** |  | [default to undefined]
 **content** | **string** |  | [default to undefined]
 **accent_color** | **number** |  | [optional] [default to undefined]

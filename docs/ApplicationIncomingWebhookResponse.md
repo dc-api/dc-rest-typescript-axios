@@ -7,11 +7,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
-**type** | **number** |  | [default to undefined]
-**application_id** | **string** |  | [optional] [default to undefined]
+**type** | [**WebhookTypes**](WebhookTypes.md) |  | [default to undefined]
+**application_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **avatar** | **string** |  | [optional] [default to undefined]
-**channel_id** | **string** |  | [optional] [default to undefined]
-**guild_id** | **string** |  | [optional] [default to undefined]
+**channel_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
+**guild_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **user** | [**UserResponse**](UserResponse.md) |  | [optional] [default to undefined]
 
 ## Example

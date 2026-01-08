@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**choices** | [**Array&lt;ApplicationCommandOptionIntegerChoice | null&gt;**](ApplicationCommandOptionIntegerChoice.md) |  | [optional] [default to undefined]
+**choices** | [**Array&lt;InteractionApplicationCommandAutocompleteCallbackIntegerDataChoicesInner&gt;**](InteractionApplicationCommandAutocompleteCallbackIntegerDataChoicesInner.md) |  | [optional] [default to undefined]
 
 ## Example
 

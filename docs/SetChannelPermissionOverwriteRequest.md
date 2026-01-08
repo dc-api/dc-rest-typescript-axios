@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [optional] [default to undefined]
+**type** | [**SetChannelPermissionOverwriteRequestType**](SetChannelPermissionOverwriteRequestType.md) |  | [optional] [default to undefined]
 **allow** | **number** |  | [optional] [default to undefined]
 **deny** | **number** |  | [optional] [default to undefined]
 

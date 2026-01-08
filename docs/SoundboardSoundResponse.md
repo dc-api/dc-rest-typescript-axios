@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **sound_id** | **string** |  | [default to undefined]
 **volume** | **number** |  | [default to undefined]
 **available** | **boolean** |  | [default to undefined]
-**emoji_id** | **string** |  | [optional] [default to undefined]
+**emoji_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **emoji_name** | **string** |  | [optional] [default to undefined]
 **guild_id** | **string** |  | [optional] [default to undefined]
 **user** | [**UserResponse**](UserResponse.md) |  | [optional] [default to undefined]

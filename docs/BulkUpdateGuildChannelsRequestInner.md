@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional] [default to undefined]
+**id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **position** | **number** |  | [optional] [default to undefined]
-**parent_id** | **string** |  | [optional] [default to undefined]
+**parent_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **lock_permissions** | **boolean** |  | [optional] [default to undefined]
 
 ## Example

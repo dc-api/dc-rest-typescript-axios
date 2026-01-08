@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user** | [**UserResponse**](UserResponse.md) |  | [default to undefined]
 **team_id** | **string** |  | [default to undefined]
-**membership_state** | **number** |  | [default to undefined]
+**membership_state** | [**TeamMembershipStates**](TeamMembershipStates.md) |  | [default to undefined]
 
 ## Example
 

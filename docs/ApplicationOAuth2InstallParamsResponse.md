@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**scopes** | **Set&lt;string&gt;** |  | [default to undefined]
+**scopes** | [**Set&lt;OAuth2Scopes&gt;**](OAuth2Scopes.md) |  | [default to undefined]
 **permissions** | **string** |  | [default to undefined]
 
 ## Example

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
-**kind** | **string** |  | [default to undefined]
+**kind** | [**EmbeddedActivityLocationKind**](EmbeddedActivityLocationKind.md) |  | [default to undefined]
 **channel_id** | **string** |  | [default to undefined]
 
 ## Example

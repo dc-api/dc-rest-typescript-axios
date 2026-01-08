@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional] [default to undefined]
+**id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **name** | **string** |  | [optional] [default to undefined]
 **animated** | **boolean** |  | [optional] [default to undefined]
 

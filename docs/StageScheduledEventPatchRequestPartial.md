@@ -5,16 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | **number** |  | [optional] [default to undefined]
+**status** | [**ExternalScheduledEventPatchRequestPartialStatus**](ExternalScheduledEventPatchRequestPartialStatus.md) |  | [optional] [default to undefined]
 **name** | **string** |  | [optional] [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
 **image** | **string** |  | [optional] [default to undefined]
 **scheduled_start_time** | **string** |  | [optional] [default to undefined]
 **scheduled_end_time** | **string** |  | [optional] [default to undefined]
-**entity_type** | **number** |  | [optional] [default to undefined]
-**privacy_level** | **any** |  | [optional] [default to undefined]
-**channel_id** | **string** |  | [optional] [default to undefined]
-**entity_metadata** | **object** |  | [optional] [default to undefined]
+**entity_type** | [**StageScheduledEventPatchRequestPartialEntityType**](StageScheduledEventPatchRequestPartialEntityType.md) |  | [optional] [default to undefined]
+**privacy_level** | [**GuildScheduledEventPrivacyLevels**](GuildScheduledEventPrivacyLevels.md) |  | [optional] [default to undefined]
+**channel_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
+**entity_metadata** | [**StageScheduledEventCreateRequestEntityMetadata**](StageScheduledEventCreateRequestEntityMetadata.md) |  | [optional] [default to undefined]
 
 ## Example
 

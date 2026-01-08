@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
+**type** | [**MessageComponentTypes**](MessageComponentTypes.md) |  | [default to undefined]
 **id** | **number** |  | [default to undefined]
-**style** | **number** |  | [default to undefined]
+**style** | [**ButtonStyleTypes**](ButtonStyleTypes.md) |  | [default to undefined]
 **media** | [**UnfurledMediaResponse**](UnfurledMediaResponse.md) |  | [default to undefined]
 **spoiler** | **boolean** |  | [default to undefined]
 **custom_id** | **string** |  | [optional] [default to undefined]

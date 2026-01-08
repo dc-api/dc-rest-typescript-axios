@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
+**type** | [**AutomodActionType**](AutomodActionType.md) |  | [default to undefined]
 **metadata** | [**FlagToChannelActionMetadata**](FlagToChannelActionMetadata.md) |  | [default to undefined]
 
 ## Example

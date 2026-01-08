@@ -6,7 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  | [default to undefined]
-**emoji_id** | **string** |  | [optional] [default to undefined]
+**id** | **number** |  | [optional] [default to undefined]
+**emoji_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **emoji_name** | **string** |  | [optional] [default to undefined]
 **moderated** | **boolean** |  | [optional] [default to undefined]
 
@@ -17,6 +18,7 @@ import { GuildTemplateChannelTags } from 'dc_rest';
 
 const instance: GuildTemplateChannelTags = {
     name,
+    id,
     emoji_id,
     emoji_name,
     moderated,

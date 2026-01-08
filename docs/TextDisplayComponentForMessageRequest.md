@@ -5,8 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
+**type** | [**MessageComponentTypes**](MessageComponentTypes.md) |  | [default to undefined]
 **content** | **string** |  | [default to undefined]
+**id** | **number** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -16,6 +17,7 @@ import { TextDisplayComponentForMessageRequest } from 'dc_rest';
 const instance: TextDisplayComponentForMessageRequest = {
     type,
     content,
+    id,
 };
 ```
 

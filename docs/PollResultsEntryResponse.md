@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** |  | [default to undefined]
 **count** | **number** |  | [default to undefined]
-**me_voted** | **boolean** |  | [optional] [default to undefined]
+**me_voted** | **boolean** |  | [default to undefined]
 
 ## Example
 

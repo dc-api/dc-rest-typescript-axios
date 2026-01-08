@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **name** | **string** |  | [default to undefined]
 **description** | **string** |  | [default to undefined]
 **icon** | **string** |  | [optional] [default to undefined]
-**type** | **number** |  | [optional] [default to undefined]
+**type** | [**ApplicationFormPartialType**](ApplicationFormPartialType.md) |  | [optional] [default to undefined]
 **cover_image** | **string** |  | [optional] [default to undefined]
 **primary_sku_id** | **string** |  | [optional] [default to undefined]
 **bot** | [**UserResponse**](UserResponse.md) |  | [optional] [default to undefined]

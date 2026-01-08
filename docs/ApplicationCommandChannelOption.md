@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
+**type** | [**ApplicationCommandOptionType**](ApplicationCommandOptionType.md) |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
 **description** | **string** |  | [default to undefined]
 **name_localizations** | **{ [key: string]: string; }** |  | [optional] [default to undefined]
 **description_localizations** | **{ [key: string]: string; }** |  | [optional] [default to undefined]
 **required** | **boolean** |  | [optional] [default to undefined]
-**channel_types** | **Set&lt;number&gt;** |  | [optional] [default to undefined]
+**channel_types** | [**Set&lt;ChannelTypes&gt;**](ChannelTypes.md) |  | [optional] [default to undefined]
 
 ## Example
 

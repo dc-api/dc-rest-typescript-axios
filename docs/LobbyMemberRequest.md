@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
 **metadata** | **{ [key: string]: string; }** |  | [optional] [default to undefined]
-**flags** | **number** |  | [optional] [default to undefined]
+**flags** | [**CreateOrJoinLobbyRequestFlags**](CreateOrJoinLobbyRequestFlags.md) |  | [optional] [default to undefined]
 
 ## Example
 

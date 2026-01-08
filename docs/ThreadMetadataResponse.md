@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **archived** | **boolean** |  | [default to undefined]
-**auto_archive_duration** | **number** |  | [default to undefined]
+**auto_archive_duration** | [**ThreadAutoArchiveDuration**](ThreadAutoArchiveDuration.md) |  | [default to undefined]
 **locked** | **boolean** |  | [default to undefined]
 **archive_timestamp** | **string** |  | [optional] [default to undefined]
 **create_timestamp** | **string** |  | [optional] [default to undefined]

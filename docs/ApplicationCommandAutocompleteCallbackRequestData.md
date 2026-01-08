@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**choices** | [**Array&lt;ApplicationCommandOptionStringChoice&gt;**](ApplicationCommandOptionStringChoice.md) |  | [optional] [default to undefined]
+**choices** | [**Array&lt;InteractionApplicationCommandAutocompleteCallbackStringDataChoicesInner&gt;**](InteractionApplicationCommandAutocompleteCallbackStringDataChoicesInner.md) |  | [optional] [default to undefined]
 
 ## Example
 

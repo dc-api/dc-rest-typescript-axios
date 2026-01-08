@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
-**metadata** | **object** |  | [optional] [default to undefined]
+**type** | [**AutomodActionType**](AutomodActionType.md) |  | [default to undefined]
+**metadata** | [**QuarantineUserActionMetadata**](QuarantineUserActionMetadata.md) |  | [optional] [default to undefined]
 
 ## Example
 

@@ -1,0 +1,46 @@
+# GetEntitlements200ResponseInner
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **string** |  | [default to undefined]
+**sku_id** | **string** |  | [default to undefined]
+**application_id** | **string** |  | [default to undefined]
+**user_id** | **string** |  | [default to undefined]
+**deleted** | **boolean** |  | [default to undefined]
+**type** | [**EntitlementTypes**](EntitlementTypes.md) |  | [default to undefined]
+**guild_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
+**starts_at** | **string** |  | [optional] [default to undefined]
+**ends_at** | **string** |  | [optional] [default to undefined]
+**fulfilled_at** | **string** |  | [optional] [default to undefined]
+**fulfillment_status** | [**EntitlementResponseFulfillmentStatus**](EntitlementResponseFulfillmentStatus.md) |  | [optional] [default to undefined]
+**consumed** | **boolean** |  | [optional] [default to undefined]
+**gifter_user_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
+**parent_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
+
+## Example
+
+```typescript
+import { GetEntitlements200ResponseInner } from 'dc_rest';
+
+const instance: GetEntitlements200ResponseInner = {
+    id,
+    sku_id,
+    application_id,
+    user_id,
+    deleted,
+    type,
+    guild_id,
+    starts_at,
+    ends_at,
+    fulfilled_at,
+    fulfillment_status,
+    consumed,
+    gifter_user_id,
+    parent_id,
+};
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

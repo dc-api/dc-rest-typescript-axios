@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
+**type** | [**ApplicationCommandOptionType**](ApplicationCommandOptionType.md) |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
 **description** | **string** |  | [default to undefined]
 **name_localizations** | **{ [key: string]: string; }** |  | [optional] [default to undefined]
@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **required** | **boolean** |  | [optional] [default to undefined]
 **autocomplete** | **boolean** |  | [optional] [default to undefined]
 **choices** | [**Array&lt;ApplicationCommandOptionIntegerChoice&gt;**](ApplicationCommandOptionIntegerChoice.md) |  | [optional] [default to undefined]
-**min_value** | **number** |  | [optional] [default to undefined]
-**max_value** | **number** |  | [optional] [default to undefined]
+**min_value** | [**ApplicationCommandIntegerOptionMinValue**](ApplicationCommandIntegerOptionMinValue.md) |  | [optional] [default to undefined]
+**max_value** | [**ApplicationCommandIntegerOptionMinValue**](ApplicationCommandIntegerOptionMinValue.md) |  | [optional] [default to undefined]
 
 ## Example
 

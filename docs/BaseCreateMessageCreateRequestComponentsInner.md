@@ -5,15 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
+**type** | [**MessageComponentTypes**](MessageComponentTypes.md) |  | [default to undefined]
 **components** | [**Array&lt;TextDisplayComponentForMessageRequest&gt;**](TextDisplayComponentForMessageRequest.md) |  | [default to undefined]
 **file** | [**UnfurledMediaRequestWithAttachmentReferenceRequired**](UnfurledMediaRequestWithAttachmentReferenceRequired.md) |  | [default to undefined]
 **items** | [**Array&lt;MediaGalleryItemRequest&gt;**](MediaGalleryItemRequest.md) |  | [default to undefined]
 **accessory** | [**SectionComponentForMessageRequestAccessory**](SectionComponentForMessageRequestAccessory.md) |  | [default to undefined]
 **content** | **string** |  | [default to undefined]
+**id** | **number** |  | [optional] [default to undefined]
 **accent_color** | **number** |  | [optional] [default to undefined]
 **spoiler** | **boolean** |  | [optional] [default to undefined]
-**spacing** | **number** |  | [optional] [default to undefined]
+**spacing** | [**SeparatorComponentForMessageRequestSpacing**](SeparatorComponentForMessageRequestSpacing.md) |  | [optional] [default to undefined]
 **divider** | **boolean** |  | [optional] [default to undefined]
 
 ## Example
@@ -28,6 +29,7 @@ const instance: BaseCreateMessageCreateRequestComponentsInner = {
     items,
     accessory,
     content,
+    id,
     accent_color,
     spoiler,
     spacing,

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
-**type** | **number** |  | [default to undefined]
+**type** | [**ChannelTypes**](ChannelTypes.md) |  | [default to undefined]
 **name** | **string** |  | [optional] [default to undefined]
 **icon** | **string** |  | [optional] [default to undefined]
 **recipients** | [**Array&lt;InviteChannelRecipientResponse&gt;**](InviteChannelRecipientResponse.md) |  | [optional] [default to undefined]

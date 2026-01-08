@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **application** | [**ApplicationResponse**](ApplicationResponse.md) |  | [default to undefined]
 **expires** | **string** |  | [default to undefined]
-**scopes** | **Set&lt;string&gt;** |  | [default to undefined]
+**scopes** | [**Set&lt;OAuth2Scopes&gt;**](OAuth2Scopes.md) |  | [default to undefined]
 **user** | [**UserResponse**](UserResponse.md) |  | [optional] [default to undefined]
 
 ## Example

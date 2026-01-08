@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
-**type** | **string** |  | [default to undefined]
+**type** | [**IntegrationTypes**](IntegrationTypes.md) |  | [default to undefined]
 **account** | [**AccountResponse**](AccountResponse.md) |  | [default to undefined]
 **guild** | [**ConnectedAccountGuildResponse**](ConnectedAccountGuildResponse.md) |  | [default to undefined]
 

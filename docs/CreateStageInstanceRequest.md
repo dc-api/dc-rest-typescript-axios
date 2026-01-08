@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **topic** | **string** |  | [default to undefined]
 **channel_id** | **string** |  | [default to undefined]
-**privacy_level** | **number** |  | [optional] [default to undefined]
-**guild_scheduled_event_id** | **string** |  | [optional] [default to undefined]
+**privacy_level** | [**CreateStageInstanceRequestPrivacyLevel**](CreateStageInstanceRequestPrivacyLevel.md) |  | [optional] [default to undefined]
+**guild_scheduled_event_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **send_start_notification** | **boolean** |  | [optional] [default to undefined]
 
 ## Example

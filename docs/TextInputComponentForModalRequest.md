@@ -5,10 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
+**type** | [**MessageComponentTypes**](MessageComponentTypes.md) |  | [default to undefined]
 **custom_id** | **string** |  | [default to undefined]
-**style** | **number** |  | [default to undefined]
-**label** | **string** |  | [default to undefined]
+**style** | [**TextInputStyleTypes**](TextInputStyleTypes.md) |  | [default to undefined]
+**id** | **number** |  | [optional] [default to undefined]
+**label** | **string** |  | [optional] [default to undefined]
 **value** | **string** |  | [optional] [default to undefined]
 **placeholder** | **string** |  | [optional] [default to undefined]
 **required** | **boolean** |  | [optional] [default to undefined]
@@ -24,6 +25,7 @@ const instance: TextInputComponentForModalRequest = {
     type,
     custom_id,
     style,
+    id,
     label,
     value,
     placeholder,

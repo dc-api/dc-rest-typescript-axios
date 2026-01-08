@@ -5,15 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
-**style** | **number** |  | [default to undefined]
+**type** | [**MessageComponentTypes**](MessageComponentTypes.md) |  | [default to undefined]
+**style** | [**ButtonStyleTypes**](ButtonStyleTypes.md) |  | [default to undefined]
 **media** | [**UnfurledMediaRequest**](UnfurledMediaRequest.md) |  | [default to undefined]
+**id** | **number** |  | [optional] [default to undefined]
 **custom_id** | **string** |  | [optional] [default to undefined]
 **label** | **string** |  | [optional] [default to undefined]
 **disabled** | **boolean** |  | [optional] [default to undefined]
 **url** | **string** |  | [optional] [default to undefined]
-**sku_id** | **string** |  | [optional] [default to undefined]
-**emoji** | [**ComponentEmojiForMessageRequest**](ComponentEmojiForMessageRequest.md) |  | [optional] [default to undefined]
+**sku_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
+**emoji** | [**ButtonComponentForMessageRequestEmoji**](ButtonComponentForMessageRequestEmoji.md) |  | [optional] [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
 **spoiler** | **boolean** |  | [optional] [default to undefined]
 
@@ -26,6 +27,7 @@ const instance: SectionComponentForMessageRequestAccessory = {
     type,
     style,
     media,
+    id,
     custom_id,
     label,
     disabled,

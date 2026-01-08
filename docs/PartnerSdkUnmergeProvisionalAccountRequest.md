@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **client_id** | **string** |  | [default to undefined]
 **external_auth_token** | **string** |  | [default to undefined]
-**external_auth_type** | **string** |  | [default to undefined]
+**external_auth_type** | [**ApplicationIdentityProviderAuthType**](ApplicationIdentityProviderAuthType.md) |  | [default to undefined]
 **client_secret** | **string** |  | [optional] [default to undefined]
 
 ## Example

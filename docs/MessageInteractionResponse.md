@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
-**type** | **number** |  | [default to undefined]
+**type** | [**InteractionTypes**](InteractionTypes.md) |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
 **user** | [**UserResponse**](UserResponse.md) |  | [optional] [default to undefined]
 **name_localized** | **string** |  | [optional] [default to undefined]

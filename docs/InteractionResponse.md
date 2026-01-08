@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
-**type** | **number** |  | [default to undefined]
+**type** | [**InteractionTypes**](InteractionTypes.md) |  | [default to undefined]
 **response_message_id** | **string** |  | [optional] [default to undefined]
 **response_message_loading** | **boolean** |  | [optional] [default to undefined]
 **response_message_ephemeral** | **boolean** |  | [optional] [default to undefined]

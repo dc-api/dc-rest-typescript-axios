@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
+**type** | [**MessageComponentTypes**](MessageComponentTypes.md) |  | [default to undefined]
 **id** | **number** |  | [default to undefined]
 **custom_id** | **string** |  | [default to undefined]
-**style** | **number** |  | [default to undefined]
+**style** | [**TextInputStyleTypes**](TextInputStyleTypes.md) |  | [default to undefined]
 **_options** | [**Array&lt;StringSelectOptionResponse&gt;**](StringSelectOptionResponse.md) |  | [default to undefined]
 **label** | **string** |  | [optional] [default to undefined]
 **disabled** | **boolean** |  | [optional] [default to undefined]
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **placeholder** | **string** |  | [optional] [default to undefined]
 **min_values** | **number** |  | [optional] [default to undefined]
 **max_values** | **number** |  | [optional] [default to undefined]
-**channel_types** | **Set&lt;number&gt;** |  | [optional] [default to undefined]
+**channel_types** | [**Set&lt;ChannelTypes&gt;**](ChannelTypes.md) |  | [optional] [default to undefined]
 **default_values** | [**Array&lt;UserSelectDefaultValueResponse&gt;**](UserSelectDefaultValueResponse.md) |  | [optional] [default to undefined]
 **value** | **string** |  | [optional] [default to undefined]
 **required** | **boolean** |  | [optional] [default to undefined]

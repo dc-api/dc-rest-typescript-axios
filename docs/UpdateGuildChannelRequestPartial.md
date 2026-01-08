@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [optional] [default to undefined]
+**type** | [**CreateGuildChannelRequestType**](CreateGuildChannelRequestType.md) |  | [optional] [default to undefined]
 **name** | **string** |  | [optional] [default to undefined]
 **position** | **number** |  | [optional] [default to undefined]
 **topic** | **string** |  | [optional] [default to undefined]
@@ -13,16 +13,16 @@ Name | Type | Description | Notes
 **user_limit** | **number** |  | [optional] [default to undefined]
 **nsfw** | **boolean** |  | [optional] [default to undefined]
 **rate_limit_per_user** | **number** |  | [optional] [default to undefined]
-**parent_id** | **string** |  | [optional] [default to undefined]
+**parent_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **permission_overwrites** | [**Array&lt;ChannelPermissionOverwriteRequest&gt;**](ChannelPermissionOverwriteRequest.md) |  | [optional] [default to undefined]
 **rtc_region** | **string** |  | [optional] [default to undefined]
-**video_quality_mode** | **number** |  | [optional] [default to undefined]
-**default_auto_archive_duration** | **number** |  | [optional] [default to undefined]
-**default_reaction_emoji** | [**UpdateDefaultReactionEmojiRequest**](UpdateDefaultReactionEmojiRequest.md) |  | [optional] [default to undefined]
+**video_quality_mode** | [**CreateGuildChannelRequestVideoQualityMode**](CreateGuildChannelRequestVideoQualityMode.md) |  | [optional] [default to undefined]
+**default_auto_archive_duration** | [**CreateForumThreadRequestAutoArchiveDuration**](CreateForumThreadRequestAutoArchiveDuration.md) |  | [optional] [default to undefined]
+**default_reaction_emoji** | [**CreateGuildChannelRequestDefaultReactionEmoji**](CreateGuildChannelRequestDefaultReactionEmoji.md) |  | [optional] [default to undefined]
 **default_thread_rate_limit_per_user** | **number** |  | [optional] [default to undefined]
-**default_sort_order** | **number** |  | [optional] [default to undefined]
-**default_forum_layout** | **number** |  | [optional] [default to undefined]
-**default_tag_setting** | **string** |  | [optional] [default to undefined]
+**default_sort_order** | [**CreateGuildChannelRequestDefaultSortOrder**](CreateGuildChannelRequestDefaultSortOrder.md) |  | [optional] [default to undefined]
+**default_forum_layout** | [**CreateGuildChannelRequestDefaultForumLayout**](CreateGuildChannelRequestDefaultForumLayout.md) |  | [optional] [default to undefined]
+**default_tag_setting** | [**CreateGuildChannelRequestDefaultTagSetting**](CreateGuildChannelRequestDefaultTagSetting.md) |  | [optional] [default to undefined]
 **flags** | **number** |  | [optional] [default to undefined]
 **available_tags** | [**Array&lt;UpdateThreadTagRequest&gt;**](UpdateThreadTagRequest.md) |  | [optional] [default to undefined]
 

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  | [optional] [default to undefined]
-**roles** | **Set&lt;string | null&gt;** |  | [optional] [default to undefined]
+**roles** | [**Set&lt;GetEntitlementsSkuIdsParameterOneOfInner&gt;**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 
 ## Example
 

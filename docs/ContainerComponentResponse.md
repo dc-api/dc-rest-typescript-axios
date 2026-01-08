@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
+**type** | [**MessageComponentTypes**](MessageComponentTypes.md) |  | [default to undefined]
 **id** | **number** |  | [default to undefined]
 **components** | [**Array&lt;ContainerComponentResponseComponentsInner&gt;**](ContainerComponentResponseComponentsInner.md) |  | [default to undefined]
 **spoiler** | **boolean** |  | [default to undefined]

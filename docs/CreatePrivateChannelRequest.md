@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**recipient_id** | **string** |  | [optional] [default to undefined]
+**recipient_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **access_tokens** | **Set&lt;string&gt;** |  | [optional] [default to undefined]
-**nicks** | **{ [key: string]: string | null; }** |  | [optional] [default to undefined]
+**nicks** | **{ [key: string]: string; }** |  | [optional] [default to undefined]
 
 ## Example
 

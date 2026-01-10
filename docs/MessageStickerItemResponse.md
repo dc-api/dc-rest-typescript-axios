@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
-**format_type** | **number** |  | [default to undefined]
+**format_type** | [**StickerFormatTypes**](StickerFormatTypes.md) |  | [default to undefined]
 
 ## Example
 

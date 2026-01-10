@@ -6,12 +6,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
-**type** | **string** |  | [default to undefined]
+**type** | [**ConnectedAccountProviders**](ConnectedAccountProviders.md) |  | [default to undefined]
 **friend_sync** | **boolean** |  | [default to undefined]
 **show_activity** | **boolean** |  | [default to undefined]
 **two_way_link** | **boolean** |  | [default to undefined]
 **verified** | **boolean** |  | [default to undefined]
-**visibility** | **number** |  | [default to undefined]
+**visibility** | [**ConnectedAccountVisibility**](ConnectedAccountVisibility.md) |  | [default to undefined]
 **name** | **string** |  | [optional] [default to undefined]
 **integrations** | [**Array&lt;ConnectedAccountIntegrationResponse&gt;**](ConnectedAccountIntegrationResponse.md) |  | [optional] [default to undefined]
 **revoked** | **boolean** |  | [optional] [default to undefined]

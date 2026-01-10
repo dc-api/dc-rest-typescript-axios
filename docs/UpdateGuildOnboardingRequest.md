@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **prompts** | [**Array&lt;UpdateOnboardingPromptRequest&gt;**](UpdateOnboardingPromptRequest.md) |  | [optional] [default to undefined]
 **enabled** | **boolean** |  | [optional] [default to undefined]
 **default_channel_ids** | **Set&lt;string&gt;** |  | [optional] [default to undefined]
-**mode** | **number** |  | [optional] [default to undefined]
+**mode** | [**UpdateGuildOnboardingRequestMode**](UpdateGuildOnboardingRequestMode.md) |  | [optional] [default to undefined]
 
 ## Example
 

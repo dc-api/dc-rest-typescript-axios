@@ -7,23 +7,26 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
-**features** | **Set&lt;string&gt;** |  | [default to undefined]
+**features** | [**Set&lt;GuildFeatures&gt;**](GuildFeatures.md) |  | [default to undefined]
 **owner_id** | **string** |  | [default to undefined]
 **region** | **string** |  | [default to undefined]
-**afk_timeout** | **number** |  | [default to undefined]
+**afk_timeout** | [**AfkTimeouts**](AfkTimeouts.md) |  | [default to undefined]
 **system_channel_flags** | **number** |  | [default to undefined]
 **widget_enabled** | **boolean** |  | [default to undefined]
-**verification_level** | **number** |  | [default to undefined]
+**verification_level** | [**VerificationLevels**](VerificationLevels.md) |  | [default to undefined]
 **roles** | [**Array&lt;GuildRoleResponse&gt;**](GuildRoleResponse.md) |  | [default to undefined]
-**default_message_notifications** | **number** |  | [default to undefined]
-**mfa_level** | **number** |  | [default to undefined]
-**explicit_content_filter** | **number** |  | [default to undefined]
-**premium_tier** | **number** |  | [default to undefined]
+**default_message_notifications** | [**UserNotificationSettings**](UserNotificationSettings.md) |  | [default to undefined]
+**mfa_level** | [**GuildMFALevel**](GuildMFALevel.md) |  | [default to undefined]
+**explicit_content_filter** | [**GuildExplicitContentFilterTypes**](GuildExplicitContentFilterTypes.md) |  | [default to undefined]
+**max_members** | **number** |  | [default to undefined]
+**max_stage_video_channel_users** | **number** |  | [default to undefined]
+**max_video_channel_users** | **number** |  | [default to undefined]
+**premium_tier** | [**PremiumGuildTiers**](PremiumGuildTiers.md) |  | [default to undefined]
 **premium_subscription_count** | **number** |  | [default to undefined]
-**preferred_locale** | **string** |  | [default to undefined]
+**preferred_locale** | [**AvailableLocalesEnum**](AvailableLocalesEnum.md) |  | [default to undefined]
 **premium_progress_bar_enabled** | **boolean** |  | [default to undefined]
 **nsfw** | **boolean** |  | [default to undefined]
-**nsfw_level** | **number** |  | [default to undefined]
+**nsfw_level** | [**GuildNSFWContentLevel**](GuildNSFWContentLevel.md) |  | [default to undefined]
 **emojis** | [**Array&lt;EmojiResponse&gt;**](EmojiResponse.md) |  | [default to undefined]
 **stickers** | [**Array&lt;GuildStickerResponse&gt;**](GuildStickerResponse.md) |  | [default to undefined]
 **icon** | **string** |  | [optional] [default to undefined]
@@ -32,18 +35,15 @@ Name | Type | Description | Notes
 **splash** | **string** |  | [optional] [default to undefined]
 **discovery_splash** | **string** |  | [optional] [default to undefined]
 **banner** | **string** |  | [optional] [default to undefined]
-**application_id** | **string** |  | [optional] [default to undefined]
-**afk_channel_id** | **string** |  | [optional] [default to undefined]
-**system_channel_id** | **string** |  | [optional] [default to undefined]
-**widget_channel_id** | **string** |  | [optional] [default to undefined]
+**application_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
+**afk_channel_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
+**system_channel_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
+**widget_channel_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **max_presences** | **number** |  | [optional] [default to undefined]
-**max_members** | **number** |  | [optional] [default to undefined]
-**max_stage_video_channel_users** | **number** |  | [optional] [default to undefined]
-**max_video_channel_users** | **number** |  | [optional] [default to undefined]
 **vanity_url_code** | **string** |  | [optional] [default to undefined]
-**rules_channel_id** | **string** |  | [optional] [default to undefined]
-**safety_alerts_channel_id** | **string** |  | [optional] [default to undefined]
-**public_updates_channel_id** | **string** |  | [optional] [default to undefined]
+**rules_channel_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
+**safety_alerts_channel_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
+**public_updates_channel_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -64,6 +64,9 @@ const instance: GuildResponse = {
     default_message_notifications,
     mfa_level,
     explicit_content_filter,
+    max_members,
+    max_stage_video_channel_users,
+    max_video_channel_users,
     premium_tier,
     premium_subscription_count,
     preferred_locale,
@@ -83,9 +86,6 @@ const instance: GuildResponse = {
     system_channel_id,
     widget_channel_id,
     max_presences,
-    max_members,
-    max_stage_video_channel_users,
-    max_video_channel_users,
     vanity_url_code,
     rules_channel_id,
     safety_alerts_channel_id,

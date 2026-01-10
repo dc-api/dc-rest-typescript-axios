@@ -10,13 +10,15 @@ Name | Type | Description | Notes
 **application_id** | **string** |  | [default to undefined]
 **user_id** | **string** |  | [default to undefined]
 **deleted** | **boolean** |  | [default to undefined]
-**type** | **number** |  | [default to undefined]
-**guild_id** | **string** |  | [optional] [default to undefined]
+**type** | [**EntitlementTypes**](EntitlementTypes.md) |  | [default to undefined]
+**guild_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **starts_at** | **string** |  | [optional] [default to undefined]
 **ends_at** | **string** |  | [optional] [default to undefined]
 **fulfilled_at** | **string** |  | [optional] [default to undefined]
-**fulfillment_status** | **number** |  | [optional] [default to undefined]
+**fulfillment_status** | [**EntitlementResponseFulfillmentStatus**](EntitlementResponseFulfillmentStatus.md) |  | [optional] [default to undefined]
 **consumed** | **boolean** |  | [optional] [default to undefined]
+**gifter_user_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
+**parent_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -36,6 +38,8 @@ const instance: EntitlementResponse = {
     fulfilled_at,
     fulfillment_status,
     consumed,
+    gifter_user_id,
+    parent_id,
 };
 ```
 

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**type** | [**MessageReferenceType**](MessageReferenceType.md) |  | [default to undefined]
 **channel_id** | **string** |  | [default to undefined]
-**type** | **any** |  | [optional] [default to undefined]
 **message_id** | **string** |  | [optional] [default to undefined]
 **guild_id** | **string** |  | [optional] [default to undefined]
 
@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 import { MessageReferenceResponse } from 'dc_rest';
 
 const instance: MessageReferenceResponse = {
-    channel_id,
     type,
+    channel_id,
     message_id,
     guild_id,
 };

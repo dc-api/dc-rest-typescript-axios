@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
-**type** | **number** |  | [default to undefined]
+**type** | [**InteractionTypes**](InteractionTypes.md) |  | [default to undefined]
 **authorizing_integration_owners** | **{ [key: string]: string; }** |  | [default to undefined]
 **interacted_message_id** | **string** |  | [default to undefined]
 **user** | [**UserResponse**](UserResponse.md) |  | [optional] [default to undefined]

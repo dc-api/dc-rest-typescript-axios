@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
-**type** | **number** |  | [default to undefined]
+**type** | [**ApplicationCommandPermissionType**](ApplicationCommandPermissionType.md) |  | [default to undefined]
 **permission** | **boolean** |  | [default to undefined]
 
 ## Example

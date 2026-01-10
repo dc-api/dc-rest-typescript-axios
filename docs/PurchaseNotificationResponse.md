@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
+**type** | [**PurchaseType**](PurchaseType.md) |  | [default to undefined]
 **guild_product_purchase** | [**GuildProductPurchaseResponse**](GuildProductPurchaseResponse.md) |  | [optional] [default to undefined]
 
 ## Example

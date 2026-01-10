@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
+**type** | [**MessageComponentTypes**](MessageComponentTypes.md) |  | [default to undefined]
 **id** | **number** |  | [default to undefined]
 **custom_id** | **string** |  | [default to undefined]
 **_options** | [**Array&lt;StringSelectOptionResponse&gt;**](StringSelectOptionResponse.md) |  | [default to undefined]

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
-**data** | [**IncomingWebhookInteractionRequest**](IncomingWebhookInteractionRequest.md) |  | [optional] [default to undefined]
+**type** | [**InteractionCallbackTypes**](InteractionCallbackTypes.md) |  | [default to undefined]
+**data** | [**CreateMessageInteractionCallbackRequestData**](CreateMessageInteractionCallbackRequestData.md) |  | [optional] [default to undefined]
 
 ## Example
 

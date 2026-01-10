@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** |  | [default to undefined]
+**type** | [**SnowflakeSelectDefaultValueTypes**](SnowflakeSelectDefaultValueTypes.md) |  | [default to undefined]
 **id** | **string** |  | [default to undefined]
 
 ## Example

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
+**type** | [**MessageComponentTypes**](MessageComponentTypes.md) |  | [default to undefined]
 **id** | **number** |  | [default to undefined]
 **custom_id** | **string** |  | [default to undefined]
 **placeholder** | **string** |  | [optional] [default to undefined]

@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  | [default to undefined]
 **message** | [**BaseCreateMessageCreateRequest**](BaseCreateMessageCreateRequest.md) |  | [default to undefined]
-**auto_archive_duration** | **number** |  | [optional] [default to undefined]
+**auto_archive_duration** | [**CreateForumThreadRequestAutoArchiveDuration**](CreateForumThreadRequestAutoArchiveDuration.md) |  | [optional] [default to undefined]
 **rate_limit_per_user** | **number** |  | [optional] [default to undefined]
 **applied_tags** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
-**type** | **number** |  | [optional] [default to undefined]
+**type** | [**CreateTextThreadWithoutMessageRequestType**](CreateTextThreadWithoutMessageRequestType.md) |  | [optional] [default to undefined]
 **invitable** | **boolean** |  | [optional] [default to undefined]
 
 ## Example

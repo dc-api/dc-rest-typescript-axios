@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
-**type** | **number** |  | [default to undefined]
+**type** | [**ChannelTypes**](ChannelTypes.md) |  | [default to undefined]
 **guild_id** | **string** |  | [default to undefined]
 
 ## Example

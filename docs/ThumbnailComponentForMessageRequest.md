@@ -5,8 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
+**type** | [**MessageComponentTypes**](MessageComponentTypes.md) |  | [default to undefined]
 **media** | [**UnfurledMediaRequest**](UnfurledMediaRequest.md) |  | [default to undefined]
+**id** | **number** |  | [optional] [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
 **spoiler** | **boolean** |  | [optional] [default to undefined]
 
@@ -18,6 +19,7 @@ import { ThumbnailComponentForMessageRequest } from 'dc_rest';
 const instance: ThumbnailComponentForMessageRequest = {
     type,
     media,
+    id,
     description,
     spoiler,
 };

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**nameplate** | [**UserNameplateResponse**](UserNameplateResponse.md) |  | [optional] [default to undefined]
+**nameplate** | [**UserCollectiblesResponseNameplate**](UserCollectiblesResponseNameplate.md) |  | [optional] [default to undefined]
 
 ## Example
 

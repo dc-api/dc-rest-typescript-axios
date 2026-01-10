@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **text** | **string** |  | [optional] [default to undefined]
-**emoji** | [**PollEmojiCreateRequest**](PollEmojiCreateRequest.md) |  | [optional] [default to undefined]
+**emoji** | [**PollMediaCreateRequestEmoji**](PollMediaCreateRequestEmoji.md) |  | [optional] [default to undefined]
 
 ## Example
 

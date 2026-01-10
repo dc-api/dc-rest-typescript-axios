@@ -6,10 +6,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  | [default to undefined]
-**emoji_id** | **string** |  | [optional] [default to undefined]
+**emoji_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **emoji_name** | **string** |  | [optional] [default to undefined]
 **moderated** | **boolean** |  | [optional] [default to undefined]
-**id** | **string** |  | [optional] [default to undefined]
+**id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 
 ## Example
 

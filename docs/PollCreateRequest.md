@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **question** | [**PollMedia**](PollMedia.md) |  | [default to undefined]
 **answers** | [**Array&lt;PollAnswerCreateRequest&gt;**](PollAnswerCreateRequest.md) |  | [default to undefined]
 **allow_multiselect** | **boolean** |  | [optional] [default to undefined]
-**layout_type** | **number** |  | [optional] [default to undefined]
+**layout_type** | [**PollCreateRequestLayoutType**](PollCreateRequestLayoutType.md) |  | [optional] [default to undefined]
 **duration** | **number** |  | [optional] [default to undefined]
 
 ## Example

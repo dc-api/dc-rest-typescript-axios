@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 **guild_id** | **string** |  | [default to undefined]
 **channel_id** | **string** |  | [default to undefined]
 **topic** | **string** |  | [default to undefined]
-**privacy_level** | **number** |  | [default to undefined]
+**privacy_level** | [**StageInstancesPrivacyLevels**](StageInstancesPrivacyLevels.md) |  | [default to undefined]
 **id** | **string** |  | [default to undefined]
-**discoverable_disabled** | **boolean** |  | [optional] [default to undefined]
-**guild_scheduled_event_id** | **string** |  | [optional] [default to undefined]
+**discoverable_disabled** | **boolean** |  | [default to undefined]
+**guild_scheduled_event_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 
 ## Example
 

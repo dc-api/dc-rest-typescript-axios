@@ -5,14 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
-**style** | **number** |  | [default to undefined]
+**type** | [**MessageComponentTypes**](MessageComponentTypes.md) |  | [default to undefined]
+**style** | [**ButtonStyleTypes**](ButtonStyleTypes.md) |  | [default to undefined]
+**id** | **number** |  | [optional] [default to undefined]
 **custom_id** | **string** |  | [optional] [default to undefined]
 **label** | **string** |  | [optional] [default to undefined]
 **disabled** | **boolean** |  | [optional] [default to undefined]
 **url** | **string** |  | [optional] [default to undefined]
-**sku_id** | **string** |  | [optional] [default to undefined]
-**emoji** | [**ComponentEmojiForMessageRequest**](ComponentEmojiForMessageRequest.md) |  | [optional] [default to undefined]
+**sku_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
+**emoji** | [**ButtonComponentForMessageRequestEmoji**](ButtonComponentForMessageRequestEmoji.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -22,6 +23,7 @@ import { ButtonComponentForMessageRequest } from 'dc_rest';
 const instance: ButtonComponentForMessageRequest = {
     type,
     style,
+    id,
     custom_id,
     label,
     disabled,

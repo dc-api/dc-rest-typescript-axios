@@ -6,10 +6,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **message_id** | **string** |  | [default to undefined]
-**guild_id** | **string** |  | [optional] [default to undefined]
-**channel_id** | **string** |  | [optional] [default to undefined]
+**guild_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
+**channel_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **fail_if_not_exists** | **boolean** |  | [optional] [default to undefined]
-**type** | **any** |  | [optional] [default to undefined]
+**type** | [**MessageReferenceRequestType**](MessageReferenceRequestType.md) |  | [optional] [default to undefined]
 
 ## Example
 

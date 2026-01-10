@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional] [default to undefined]
+**animated** | **boolean** |  | [default to undefined]
+**id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **name** | **string** |  | [optional] [default to undefined]
-**animated** | **boolean** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 import { SettingsEmojiResponse } from 'dc_rest';
 
 const instance: SettingsEmojiResponse = {
+    animated,
     id,
     name,
-    animated,
 };
 ```
 

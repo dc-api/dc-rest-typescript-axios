@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**parse** | **Set&lt;string | null&gt;** |  | [optional] [default to undefined]
-**users** | **Set&lt;string | null&gt;** |  | [optional] [default to undefined]
-**roles** | **Set&lt;string | null&gt;** |  | [optional] [default to undefined]
+**parse** | [**Set&lt;MessageAllowedMentionsRequestParseInner&gt;**](MessageAllowedMentionsRequestParseInner.md) |  | [optional] [default to undefined]
+**users** | [**Set&lt;GetEntitlementsSkuIdsParameterOneOfInner&gt;**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
+**roles** | [**Set&lt;GetEntitlementsSkuIdsParameterOneOfInner&gt;**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **replied_user** | **boolean** |  | [optional] [default to undefined]
 
 ## Example

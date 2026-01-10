@@ -12,11 +12,11 @@ Name | Type | Description | Notes
 **_options** | [**Array&lt;ApplicationCommandCreateRequestOptionsInner&gt;**](ApplicationCommandCreateRequestOptionsInner.md) |  | [optional] [default to undefined]
 **default_member_permissions** | **number** |  | [optional] [default to undefined]
 **dm_permission** | **boolean** |  | [optional] [default to undefined]
-**contexts** | **Set&lt;number&gt;** |  | [optional] [default to undefined]
-**integration_types** | **Set&lt;number&gt;** |  | [optional] [default to undefined]
-**handler** | **number** |  | [optional] [default to undefined]
-**type** | **number** |  | [optional] [default to undefined]
-**id** | **string** |  | [optional] [default to undefined]
+**contexts** | [**Set&lt;InteractionContextType&gt;**](InteractionContextType.md) |  | [optional] [default to undefined]
+**integration_types** | [**Set&lt;ApplicationIntegrationType&gt;**](ApplicationIntegrationType.md) |  | [optional] [default to undefined]
+**handler** | [**ApplicationCommandCreateRequestHandler**](ApplicationCommandCreateRequestHandler.md) |  | [optional] [default to undefined]
+**type** | [**ApplicationCommandCreateRequestType**](ApplicationCommandCreateRequestType.md) |  | [optional] [default to undefined]
+**id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 
 ## Example
 

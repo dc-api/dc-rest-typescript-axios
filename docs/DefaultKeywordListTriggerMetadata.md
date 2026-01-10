@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **allow_list** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
-**presets** | **Set&lt;number&gt;** |  | [optional] [default to undefined]
+**presets** | [**Set&lt;AutomodKeywordPresetType&gt;**](AutomodKeywordPresetType.md) |  | [optional] [default to undefined]
 
 ## Example
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **name** | **string** |  | [default to undefined]
 **owner** | **boolean** |  | [default to undefined]
 **permissions** | **string** |  | [default to undefined]
-**features** | **Set&lt;string&gt;** |  | [default to undefined]
+**features** | [**Set&lt;GuildFeatures&gt;**](GuildFeatures.md) |  | [default to undefined]
 **icon** | **string** |  | [optional] [default to undefined]
 **banner** | **string** |  | [optional] [default to undefined]
 **approximate_member_count** | **number** |  | [optional] [default to undefined]

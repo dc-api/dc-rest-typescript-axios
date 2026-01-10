@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
+**type** | [**MessageComponentTypes**](MessageComponentTypes.md) |  | [default to undefined]
 **id** | **number** |  | [default to undefined]
-**spacing** | **number** |  | [default to undefined]
+**spacing** | [**MessageComponentSeparatorSpacingSize**](MessageComponentSeparatorSpacingSize.md) |  | [default to undefined]
 **divider** | **boolean** |  | [default to undefined]
 
 ## Example

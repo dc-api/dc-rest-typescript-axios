@@ -6,18 +6,18 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  | [default to undefined]
-**verification_level** | **number** |  | [default to undefined]
-**default_message_notifications** | **number** |  | [default to undefined]
-**explicit_content_filter** | **number** |  | [default to undefined]
-**preferred_locale** | **string** |  | [default to undefined]
-**afk_timeout** | **number** |  | [default to undefined]
+**verification_level** | [**VerificationLevels**](VerificationLevels.md) |  | [default to undefined]
+**default_message_notifications** | [**UserNotificationSettings**](UserNotificationSettings.md) |  | [default to undefined]
+**explicit_content_filter** | [**GuildExplicitContentFilterTypes**](GuildExplicitContentFilterTypes.md) |  | [default to undefined]
+**preferred_locale** | [**AvailableLocalesEnum**](AvailableLocalesEnum.md) |  | [default to undefined]
+**afk_timeout** | [**AfkTimeouts**](AfkTimeouts.md) |  | [default to undefined]
 **system_channel_flags** | **number** |  | [default to undefined]
 **roles** | [**Array&lt;GuildTemplateRoleResponse&gt;**](GuildTemplateRoleResponse.md) |  | [default to undefined]
 **channels** | [**Array&lt;GuildTemplateChannelResponse&gt;**](GuildTemplateChannelResponse.md) |  | [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
 **region** | **string** |  | [optional] [default to undefined]
-**afk_channel_id** | **string** |  | [optional] [default to undefined]
-**system_channel_id** | **string** |  | [optional] [default to undefined]
+**afk_channel_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
+**system_channel_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 
 ## Example
 

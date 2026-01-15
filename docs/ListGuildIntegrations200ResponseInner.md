@@ -5,20 +5,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** |  | [default to undefined]
+**type** | [**IntegrationTypes**](IntegrationTypes.md) |  | [default to undefined]
+**account** | [**AccountResponse**](AccountResponse.md) |  | [default to undefined]
+**enabled** | **boolean** |  | [default to undefined]
 **id** | **string** |  | [default to undefined]
 **application** | [**IntegrationApplicationResponse**](IntegrationApplicationResponse.md) |  | [default to undefined]
-**scopes** | **Set&lt;string&gt;** |  | [default to undefined]
+**scopes** | [**Set&lt;OAuth2Scopes&gt;**](OAuth2Scopes.md) |  | [default to undefined]
 **user** | [**UserResponse**](UserResponse.md) |  | [default to undefined]
 **name** | **string** |  | [optional] [default to undefined]
-**account** | [**AccountResponse**](AccountResponse.md) |  | [optional] [default to undefined]
-**enabled** | **boolean** |  | [optional] [default to undefined]
 **revoked** | **boolean** |  | [optional] [default to undefined]
-**expire_behavior** | **number** |  | [optional] [default to undefined]
-**expire_grace_period** | **number** |  | [optional] [default to undefined]
+**expire_behavior** | [**IntegrationExpireBehaviorTypes**](IntegrationExpireBehaviorTypes.md) |  | [optional] [default to undefined]
+**expire_grace_period** | [**IntegrationExpireGracePeriodTypes**](IntegrationExpireGracePeriodTypes.md) |  | [optional] [default to undefined]
 **subscriber_count** | **number** |  | [optional] [default to undefined]
 **synced_at** | **string** |  | [optional] [default to undefined]
-**role_id** | **string** |  | [optional] [default to undefined]
+**role_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **syncing** | **boolean** |  | [optional] [default to undefined]
 **enable_emoticons** | **boolean** |  | [optional] [default to undefined]
 
@@ -29,13 +29,13 @@ import { ListGuildIntegrations200ResponseInner } from 'dc_rest';
 
 const instance: ListGuildIntegrations200ResponseInner = {
     type,
+    account,
+    enabled,
     id,
     application,
     scopes,
     user,
     name,
-    account,
-    enabled,
     revoked,
     expire_behavior,
     expire_grace_period,

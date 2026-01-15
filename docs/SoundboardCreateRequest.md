@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **name** | **string** |  | [default to undefined]
 **sound** | **string** |  | [default to undefined]
 **volume** | **number** |  | [optional] [default to undefined]
-**emoji_id** | **string** |  | [optional] [default to undefined]
+**emoji_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **emoji_name** | **string** |  | [optional] [default to undefined]
 
 ## Example

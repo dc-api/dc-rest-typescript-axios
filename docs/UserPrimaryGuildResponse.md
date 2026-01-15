@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**identity_guild_id** | **string** |  | [optional] [default to undefined]
+**identity_guild_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **identity_enabled** | **boolean** |  | [optional] [default to undefined]
 **tag** | **string** |  | [optional] [default to undefined]
 **badge** | **string** |  | [optional] [default to undefined]

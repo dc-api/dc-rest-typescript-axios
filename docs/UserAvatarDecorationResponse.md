@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **asset** | **string** |  | [default to undefined]
-**sku_id** | **string** |  | [optional] [default to undefined]
+**sku_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 
 ## Example
 

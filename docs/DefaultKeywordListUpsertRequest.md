@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  | [default to undefined]
-**event_type** | **number** |  | [default to undefined]
-**trigger_type** | **number** |  | [default to undefined]
+**event_type** | [**AutomodEventType**](AutomodEventType.md) |  | [default to undefined]
+**trigger_type** | [**AutomodTriggerType**](AutomodTriggerType.md) |  | [default to undefined]
 **trigger_metadata** | [**DefaultKeywordListTriggerMetadata**](DefaultKeywordListTriggerMetadata.md) |  | [default to undefined]
 **actions** | [**Array&lt;DefaultKeywordListUpsertRequestActionsInner&gt;**](DefaultKeywordListUpsertRequestActionsInner.md) |  | [optional] [default to undefined]
 **enabled** | **boolean** |  | [optional] [default to undefined]

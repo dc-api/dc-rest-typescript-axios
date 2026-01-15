@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**type** | [**InviteTypes**](InviteTypes.md) |  | [default to undefined]
 **code** | **string** |  | [default to undefined]
-**type** | **number** |  | [optional] [default to undefined]
 **inviter** | [**UserResponse**](UserResponse.md) |  | [optional] [default to undefined]
 **max_age** | **number** |  | [optional] [default to undefined]
 **created_at** | **string** |  | [optional] [default to undefined]
 **expires_at** | **string** |  | [optional] [default to undefined]
 **friends_count** | **number** |  | [optional] [default to undefined]
-**channel** | [**InviteChannelResponse**](InviteChannelResponse.md) |  | [optional] [default to undefined]
+**channel** | [**FriendInviteResponseChannel**](FriendInviteResponseChannel.md) |  | [optional] [default to undefined]
 **is_contact** | **boolean** |  | [optional] [default to undefined]
 **uses** | **number** |  | [optional] [default to undefined]
 **max_uses** | **number** |  | [optional] [default to undefined]
@@ -24,8 +24,8 @@ Name | Type | Description | Notes
 import { FriendInviteResponse } from 'dc_rest';
 
 const instance: FriendInviteResponse = {
-    code,
     type,
+    code,
     inviter,
     max_age,
     created_at,

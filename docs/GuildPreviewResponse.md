@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
-**features** | **Set&lt;string&gt;** |  | [default to undefined]
+**features** | [**Set&lt;GuildFeatures&gt;**](GuildFeatures.md) |  | [default to undefined]
 **approximate_member_count** | **number** |  | [default to undefined]
 **approximate_presence_count** | **number** |  | [default to undefined]
 **emojis** | [**Array&lt;EmojiResponse&gt;**](EmojiResponse.md) |  | [default to undefined]

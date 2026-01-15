@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | [**MinimalContentMessageResponse**](MinimalContentMessageResponse.md) |  | [optional] [default to undefined]
+**message** | [**MinimalContentMessageResponse**](MinimalContentMessageResponse.md) |  | [default to undefined]
 
 ## Example
 

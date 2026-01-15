@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
-**type** | **number** |  | [default to undefined]
+**type** | [**MessageType**](MessageType.md) |  | [default to undefined]
 **content** | **string** |  | [default to undefined]
 **lobby_id** | **string** |  | [default to undefined]
 **channel_id** | **string** |  | [default to undefined]

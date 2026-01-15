@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **guild_id** | **string** |  | [default to undefined]
 **creator_id** | **string** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
-**event_type** | **number** |  | [default to undefined]
+**event_type** | [**AutomodEventType**](AutomodEventType.md) |  | [default to undefined]
 **actions** | [**Array&lt;DefaultKeywordRuleResponseActionsInner&gt;**](DefaultKeywordRuleResponseActionsInner.md) |  | [default to undefined]
-**trigger_type** | **number** |  | [default to undefined]
+**trigger_type** | [**AutomodTriggerType**](AutomodTriggerType.md) |  | [default to undefined]
+**enabled** | **boolean** |  | [default to undefined]
+**exempt_roles** | **Set&lt;string&gt;** |  | [default to undefined]
+**exempt_channels** | **Set&lt;string&gt;** |  | [default to undefined]
 **trigger_metadata** | **object** |  | [default to undefined]
-**enabled** | **boolean** |  | [optional] [default to undefined]
-**exempt_roles** | **Set&lt;string&gt;** |  | [optional] [default to undefined]
-**exempt_channels** | **Set&lt;string&gt;** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -30,10 +30,10 @@ const instance: ListAutoModerationRules200ResponseInner = {
     event_type,
     actions,
     trigger_type,
-    trigger_metadata,
     enabled,
     exempt_roles,
     exempt_channels,
+    trigger_metadata,
 };
 ```
 

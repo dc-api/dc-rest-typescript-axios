@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**oauth2_install_params** | [**ApplicationOAuth2InstallParams**](ApplicationOAuth2InstallParams.md) |  | [optional] [default to undefined]
+**oauth2_install_params** | [**ApplicationFormPartialInstallParams**](ApplicationFormPartialInstallParams.md) |  | [optional] [default to undefined]
 
 ## Example
 

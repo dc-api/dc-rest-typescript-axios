@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sku_id** | **string** |  | [optional] [default to undefined]
-**asset** | **string** |  | [optional] [default to undefined]
-**label** | **string** |  | [optional] [default to undefined]
-**palette** | **string** |  | [optional] [default to undefined]
+**asset** | **string** |  | [default to undefined]
+**label** | **string** |  | [default to undefined]
+**palette** | **string** |  | [default to undefined]
+**sku_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -16,10 +16,10 @@ Name | Type | Description | Notes
 import { UserNameplateResponse } from 'dc_rest';
 
 const instance: UserNameplateResponse = {
-    sku_id,
     asset,
     label,
     palette,
+    sku_id,
 };
 ```
 

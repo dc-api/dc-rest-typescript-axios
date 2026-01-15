@@ -6,9 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **string** |  | [default to undefined]
-**id** | **string** |  | [optional] [default to undefined]
+**id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
-**emoji_id** | **string** |  | [optional] [default to undefined]
+**emoji_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **emoji_name** | **string** |  | [optional] [default to undefined]
 **emoji_animated** | **boolean** |  | [optional] [default to undefined]
 **role_ids** | **Set&lt;string&gt;** |  | [optional] [default to undefined]

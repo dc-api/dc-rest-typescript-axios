@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
+**type** | [**InteractionCallbackTypes**](InteractionCallbackTypes.md) |  | [default to undefined]
 **message** | [**MessageResponse**](MessageResponse.md) |  | [default to undefined]
 
 ## Example

@@ -13,11 +13,13 @@ Name | Type | Description | Notes
 **mute** | **boolean** |  | [default to undefined]
 **deaf** | **boolean** |  | [default to undefined]
 **avatar** | **string** |  | [optional] [default to undefined]
-**avatar_decoration_data** | [**UserAvatarDecorationResponse**](UserAvatarDecorationResponse.md) |  | [optional] [default to undefined]
+**avatar_decoration_data** | [**BasicGuildMemberResponseAvatarDecorationData**](BasicGuildMemberResponseAvatarDecorationData.md) |  | [optional] [default to undefined]
 **banner** | **string** |  | [optional] [default to undefined]
 **communication_disabled_until** | **string** |  | [optional] [default to undefined]
 **nick** | **string** |  | [optional] [default to undefined]
 **premium_since** | **string** |  | [optional] [default to undefined]
+**collectibles** | [**BasicGuildMemberResponseCollectibles**](BasicGuildMemberResponseCollectibles.md) |  | [optional] [default to undefined]
+**permissions** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -38,6 +40,8 @@ const instance: PrivateGuildMemberResponse = {
     communication_disabled_until,
     nick,
     premium_since,
+    collectibles,
+    permissions,
 };
 ```
 

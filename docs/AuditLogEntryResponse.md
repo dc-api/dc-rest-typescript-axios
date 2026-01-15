@@ -6,9 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
-**action_type** | **number** |  | [default to undefined]
-**user_id** | **string** |  | [optional] [default to undefined]
-**target_id** | **string** |  | [optional] [default to undefined]
+**action_type** | [**AuditLogActionTypes**](AuditLogActionTypes.md) |  | [default to undefined]
+**user_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
+**target_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **changes** | [**Array&lt;AuditLogObjectChangeResponse&gt;**](AuditLogObjectChangeResponse.md) |  | [optional] [default to undefined]
 **_options** | **{ [key: string]: string; }** |  | [optional] [default to undefined]
 **reason** | **string** |  | [optional] [default to undefined]

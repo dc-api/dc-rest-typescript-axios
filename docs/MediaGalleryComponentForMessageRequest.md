@@ -5,8 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
+**type** | [**MessageComponentTypes**](MessageComponentTypes.md) |  | [default to undefined]
 **items** | [**Array&lt;MediaGalleryItemRequest&gt;**](MediaGalleryItemRequest.md) |  | [default to undefined]
+**id** | **number** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -16,6 +17,7 @@ import { MediaGalleryComponentForMessageRequest } from 'dc_rest';
 const instance: MediaGalleryComponentForMessageRequest = {
     type,
     items,
+    id,
 };
 ```
 

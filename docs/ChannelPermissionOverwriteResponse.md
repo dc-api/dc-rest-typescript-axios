@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
-**type** | **number** |  | [default to undefined]
+**type** | [**ChannelPermissionOverwrites**](ChannelPermissionOverwrites.md) |  | [default to undefined]
 **allow** | **string** |  | [default to undefined]
 **deny** | **string** |  | [default to undefined]
 

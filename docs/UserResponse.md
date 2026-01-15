@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 **banner** | **string** |  | [optional] [default to undefined]
 **accent_color** | **number** |  | [optional] [default to undefined]
 **global_name** | **string** |  | [optional] [default to undefined]
-**avatar_decoration_data** | [**UserAvatarDecorationResponse**](UserAvatarDecorationResponse.md) |  | [optional] [default to undefined]
-**collectibles** | [**UserCollectiblesResponse**](UserCollectiblesResponse.md) |  | [optional] [default to undefined]
-**primary_guild** | [**UserPrimaryGuildResponse**](UserPrimaryGuildResponse.md) |  | [optional] [default to undefined]
+**avatar_decoration_data** | [**BasicGuildMemberResponseAvatarDecorationData**](BasicGuildMemberResponseAvatarDecorationData.md) |  | [optional] [default to undefined]
+**collectibles** | [**BasicGuildMemberResponseCollectibles**](BasicGuildMemberResponseCollectibles.md) |  | [optional] [default to undefined]
+**primary_guild** | [**UserPIIResponsePrimaryGuild**](UserPIIResponsePrimaryGuild.md) |  | [optional] [default to undefined]
 
 ## Example
 

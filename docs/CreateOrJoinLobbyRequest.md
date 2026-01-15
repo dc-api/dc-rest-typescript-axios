@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **idle_timeout_seconds** | **number** |  | [optional] [default to undefined]
 **lobby_metadata** | **{ [key: string]: string; }** |  | [optional] [default to undefined]
 **member_metadata** | **{ [key: string]: string; }** |  | [optional] [default to undefined]
+**flags** | [**CreateOrJoinLobbyRequestFlags**](CreateOrJoinLobbyRequestFlags.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -20,6 +21,7 @@ const instance: CreateOrJoinLobbyRequest = {
     idle_timeout_seconds,
     lobby_metadata,
     member_metadata,
+    flags,
 };
 ```
 

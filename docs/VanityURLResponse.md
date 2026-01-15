@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **uses** | **number** |  | [default to undefined]
 **code** | **string** |  | [optional] [default to undefined]
-**error** | [**VanityURLErrorResponse**](VanityURLErrorResponse.md) |  | [optional] [default to undefined]
+**error** | [**VanityURLResponseError**](VanityURLResponseError.md) |  | [optional] [default to undefined]
 
 ## Example
 

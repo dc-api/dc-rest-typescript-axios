@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **temporary** | **boolean** |  | [optional] [default to undefined]
 **max_uses** | **number** |  | [optional] [default to undefined]
 **unique** | **boolean** |  | [optional] [default to undefined]
-**target_user_id** | **string** |  | [optional] [default to undefined]
-**target_application_id** | **string** |  | [optional] [default to undefined]
-**target_type** | **number** |  | [optional] [default to undefined]
+**target_user_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
+**target_application_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
+**target_type** | [**CreateGuildInviteRequestTargetType**](CreateGuildInviteRequestTargetType.md) |  | [optional] [default to undefined]
 
 ## Example
 

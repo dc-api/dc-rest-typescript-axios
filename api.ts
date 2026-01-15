@@ -6,11 +6,11 @@
  * 
  * ## Metadata
  *   
- * - **Copyright**: Copyright (c) 2025 Qntx
+ * - **Copyright**: Copyright (c) 2026 Qntx
  * - **Author**: ΣX <gitctrlx@gmail.com>
  * - **Version**: 10
- * - **Modified**: 2025-07-05T02:42:23.045889949Z[Etc/UTC]
- * - **Generator Version**: 7.14.0
+ * - **Modified**: 2026-01-15T01:01:02.557511083Z[Etc/UTC]
+ * - **Generator Version**: 7.18.0
  *
  * <details>
  * <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@
  * </details>
  */
 
-
 import type { Configuration } from './configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
@@ -73,7 +72,7 @@ export interface AccountResponse {
      * @type {string}
      * @memberof AccountResponse
      */
-    'name'?: string | null;
+    'name'?: string;
 }
 /**
  * 
@@ -83,16 +82,22 @@ export interface AccountResponse {
 export interface ActionRowComponentForMessageRequest {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof ActionRowComponentForMessageRequest
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {Array<ActionRowComponentForMessageRequestComponentsInner>}
      * @memberof ActionRowComponentForMessageRequest
      */
     'components': Array<ActionRowComponentForMessageRequestComponentsInner>;
+    /**
+     * 
+     * @type {number}
+     * @memberof ActionRowComponentForMessageRequest
+     */
+    'id'?: number;
 }
 /**
  * @type ActionRowComponentForMessageRequestComponentsInner
@@ -108,16 +113,22 @@ export type ActionRowComponentForMessageRequestComponentsInner = ButtonComponent
 export interface ActionRowComponentForModalRequest {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof ActionRowComponentForModalRequest
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {Array<TextInputComponentForModalRequest>}
      * @memberof ActionRowComponentForModalRequest
      */
     'components': Array<TextInputComponentForModalRequest>;
+    /**
+     * 
+     * @type {number}
+     * @memberof ActionRowComponentForModalRequest
+     */
+    'id'?: number;
 }
 /**
  * 
@@ -127,10 +138,10 @@ export interface ActionRowComponentForModalRequest {
 export interface ActionRowComponentResponse {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof ActionRowComponentResponse
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {number}
@@ -142,7 +153,7 @@ export interface ActionRowComponentResponse {
      * @type {Array<ActionRowComponentResponseComponentsInner>}
      * @memberof ActionRowComponentResponse
      */
-    'components'?: Array<ActionRowComponentResponseComponentsInner> | null;
+    'components': Array<ActionRowComponentResponseComponentsInner>;
 }
 /**
  * @type ActionRowComponentResponseComponentsInner
@@ -180,56 +191,13 @@ export interface AddGroupDmUserRequest {
      * @type {string}
      * @memberof AddGroupDmUserRequest
      */
-    'access_token'?: string | null;
+    'access_token'?: string;
     /**
      * 
      * @type {string}
      * @memberof AddGroupDmUserRequest
      */
-    'nick'?: string | null;
-}
-/**
- * 
- * @export
- * @interface AddGuildMemberRequest
- */
-export interface AddGuildMemberRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof AddGuildMemberRequest
-     */
-    'access_token': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof AddGuildMemberRequest
-     */
-    'nick'?: string | null;
-    /**
-     * 
-     * @type {Set<string | null>}
-     * @memberof AddGuildMemberRequest
-     */
-    'roles'?: Set<string | null> | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof AddGuildMemberRequest
-     */
-    'mute'?: boolean | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof AddGuildMemberRequest
-     */
-    'deaf'?: boolean | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof AddGuildMemberRequest
-     */
-    'flags'?: number | null;
+    'nick'?: string;
 }
 /**
  * 
@@ -245,17 +213,22 @@ export interface AddLobbyMemberRequest {
     'metadata'?: { [key: string]: string; };
     /**
      * 
-     * @type {number}
+     * @type {CreateOrJoinLobbyRequestFlags}
      * @memberof AddLobbyMemberRequest
      */
-    'flags'?: AddLobbyMemberRequestFlagsEnum | null;
+    'flags'?: CreateOrJoinLobbyRequestFlags;
 }
+/**
+ * @type AfkTimeouts
+ * @export
+ */
+export type AfkTimeouts = any;
 
-export const AddLobbyMemberRequestFlagsEnum = {
-    NUMBER_1: 1
-} as const;
-
-export type AddLobbyMemberRequestFlagsEnum = typeof AddLobbyMemberRequestFlagsEnum[keyof typeof AddLobbyMemberRequestFlagsEnum];
+/**
+ * @type AllowedMentionTypes
+ * @export
+ */
+export type AllowedMentionTypes = any;
 
 /**
  * 
@@ -265,10 +238,10 @@ export type AddLobbyMemberRequestFlagsEnum = typeof AddLobbyMemberRequestFlagsEn
 export interface ApplicationCommandAttachmentOption {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandAttachmentOption
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -298,7 +271,7 @@ export interface ApplicationCommandAttachmentOption {
      * @type {boolean}
      * @memberof ApplicationCommandAttachmentOption
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
 }
 /**
  * 
@@ -308,10 +281,10 @@ export interface ApplicationCommandAttachmentOption {
 export interface ApplicationCommandAttachmentOptionResponse {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandAttachmentOptionResponse
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -329,7 +302,7 @@ export interface ApplicationCommandAttachmentOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandAttachmentOptionResponse
      */
-    'name_localized'?: string | null;
+    'name_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -341,7 +314,7 @@ export interface ApplicationCommandAttachmentOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandAttachmentOptionResponse
      */
-    'description_localized'?: string | null;
+    'description_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -353,7 +326,7 @@ export interface ApplicationCommandAttachmentOptionResponse {
      * @type {boolean}
      * @memberof ApplicationCommandAttachmentOptionResponse
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
 }
 /**
  * 
@@ -363,10 +336,10 @@ export interface ApplicationCommandAttachmentOptionResponse {
 export interface ApplicationCommandAutocompleteCallbackRequest {
     /**
      * 
-     * @type {number}
+     * @type {InteractionCallbackTypes}
      * @memberof ApplicationCommandAutocompleteCallbackRequest
      */
-    'type': number | null;
+    'type': InteractionCallbackTypes;
     /**
      * 
      * @type {ApplicationCommandAutocompleteCallbackRequestData}
@@ -382,10 +355,10 @@ export interface ApplicationCommandAutocompleteCallbackRequest {
 export interface ApplicationCommandAutocompleteCallbackRequestData {
     /**
      * 
-     * @type {Array<ApplicationCommandOptionStringChoice>}
+     * @type {Array<InteractionApplicationCommandAutocompleteCallbackStringDataChoicesInner>}
      * @memberof ApplicationCommandAutocompleteCallbackRequestData
      */
-    'choices'?: Array<ApplicationCommandOptionStringChoice>;
+    'choices'?: Array<InteractionApplicationCommandAutocompleteCallbackStringDataChoicesInner>;
 }
 /**
  * 
@@ -395,10 +368,10 @@ export interface ApplicationCommandAutocompleteCallbackRequestData {
 export interface ApplicationCommandBooleanOption {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandBooleanOption
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -428,7 +401,7 @@ export interface ApplicationCommandBooleanOption {
      * @type {boolean}
      * @memberof ApplicationCommandBooleanOption
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
 }
 /**
  * 
@@ -438,10 +411,10 @@ export interface ApplicationCommandBooleanOption {
 export interface ApplicationCommandBooleanOptionResponse {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandBooleanOptionResponse
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -459,7 +432,7 @@ export interface ApplicationCommandBooleanOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandBooleanOptionResponse
      */
-    'name_localized'?: string | null;
+    'name_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -471,7 +444,7 @@ export interface ApplicationCommandBooleanOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandBooleanOptionResponse
      */
-    'description_localized'?: string | null;
+    'description_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -483,7 +456,7 @@ export interface ApplicationCommandBooleanOptionResponse {
      * @type {boolean}
      * @memberof ApplicationCommandBooleanOptionResponse
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
 }
 /**
  * 
@@ -493,10 +466,10 @@ export interface ApplicationCommandBooleanOptionResponse {
 export interface ApplicationCommandChannelOption {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandChannelOption
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -526,13 +499,13 @@ export interface ApplicationCommandChannelOption {
      * @type {boolean}
      * @memberof ApplicationCommandChannelOption
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
     /**
      * 
-     * @type {Set<number>}
+     * @type {Set<ChannelTypes>}
      * @memberof ApplicationCommandChannelOption
      */
-    'channel_types'?: Set<number> | null;
+    'channel_types'?: Set<ChannelTypes>;
 }
 /**
  * 
@@ -542,10 +515,10 @@ export interface ApplicationCommandChannelOption {
 export interface ApplicationCommandChannelOptionResponse {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandChannelOptionResponse
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -563,7 +536,7 @@ export interface ApplicationCommandChannelOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandChannelOptionResponse
      */
-    'name_localized'?: string | null;
+    'name_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -575,7 +548,7 @@ export interface ApplicationCommandChannelOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandChannelOptionResponse
      */
-    'description_localized'?: string | null;
+    'description_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -587,13 +560,13 @@ export interface ApplicationCommandChannelOptionResponse {
      * @type {boolean}
      * @memberof ApplicationCommandChannelOptionResponse
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
     /**
      * 
-     * @type {Set<number>}
+     * @type {Set<ChannelTypes>}
      * @memberof ApplicationCommandChannelOptionResponse
      */
-    'channel_types'?: Set<number> | null;
+    'channel_types'?: Set<ChannelTypes>;
 }
 /**
  * 
@@ -618,7 +591,7 @@ export interface ApplicationCommandCreateRequest {
      * @type {string}
      * @memberof ApplicationCommandCreateRequest
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -630,49 +603,61 @@ export interface ApplicationCommandCreateRequest {
      * @type {Array<ApplicationCommandCreateRequestOptionsInner>}
      * @memberof ApplicationCommandCreateRequest
      */
-    'options'?: Array<ApplicationCommandCreateRequestOptionsInner> | null;
+    'options'?: Array<ApplicationCommandCreateRequestOptionsInner>;
     /**
      * 
      * @type {number}
      * @memberof ApplicationCommandCreateRequest
      */
-    'default_member_permissions'?: number | null;
+    'default_member_permissions'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof ApplicationCommandCreateRequest
      */
-    'dm_permission'?: boolean | null;
+    'dm_permission'?: boolean;
     /**
      * 
-     * @type {Set<number>}
+     * @type {Set<InteractionContextType>}
      * @memberof ApplicationCommandCreateRequest
      */
-    'contexts'?: Set<number> | null;
+    'contexts'?: Set<InteractionContextType>;
     /**
      * 
-     * @type {Set<number>}
+     * @type {Set<ApplicationIntegrationType>}
      * @memberof ApplicationCommandCreateRequest
      */
-    'integration_types'?: Set<number> | null;
+    'integration_types'?: Set<ApplicationIntegrationType>;
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandCreateRequestHandler}
      * @memberof ApplicationCommandCreateRequest
      */
-    'handler'?: number;
+    'handler'?: ApplicationCommandCreateRequestHandler;
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandCreateRequestType}
      * @memberof ApplicationCommandCreateRequest
      */
-    'type'?: number;
+    'type'?: ApplicationCommandCreateRequestType;
 }
+/**
+ * @type ApplicationCommandCreateRequestHandler
+ * @export
+ */
+export type ApplicationCommandCreateRequestHandler = Null | number;
+
 /**
  * @type ApplicationCommandCreateRequestOptionsInner
  * @export
  */
 export type ApplicationCommandCreateRequestOptionsInner = ApplicationCommandAttachmentOption | ApplicationCommandBooleanOption | ApplicationCommandChannelOption | ApplicationCommandIntegerOption | ApplicationCommandMentionableOption | ApplicationCommandNumberOption | ApplicationCommandRoleOption | ApplicationCommandStringOption | ApplicationCommandSubcommandGroupOption | ApplicationCommandSubcommandOption | ApplicationCommandUserOption;
+
+/**
+ * @type ApplicationCommandCreateRequestType
+ * @export
+ */
+export type ApplicationCommandCreateRequestType = ApplicationCommandType | Null;
 
 /**
  * 
@@ -682,10 +667,10 @@ export type ApplicationCommandCreateRequestOptionsInner = ApplicationCommandAtta
 export interface ApplicationCommandIntegerOption {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandIntegerOption
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -715,32 +700,38 @@ export interface ApplicationCommandIntegerOption {
      * @type {boolean}
      * @memberof ApplicationCommandIntegerOption
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof ApplicationCommandIntegerOption
      */
-    'autocomplete'?: boolean | null;
+    'autocomplete'?: boolean;
     /**
      * 
      * @type {Array<ApplicationCommandOptionIntegerChoice>}
      * @memberof ApplicationCommandIntegerOption
      */
-    'choices'?: Array<ApplicationCommandOptionIntegerChoice> | null;
+    'choices'?: Array<ApplicationCommandOptionIntegerChoice>;
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandIntegerOptionMinValue}
      * @memberof ApplicationCommandIntegerOption
      */
-    'min_value'?: number;
+    'min_value'?: ApplicationCommandIntegerOptionMinValue;
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandIntegerOptionMinValue}
      * @memberof ApplicationCommandIntegerOption
      */
-    'max_value'?: number;
+    'max_value'?: ApplicationCommandIntegerOptionMinValue;
 }
+/**
+ * @type ApplicationCommandIntegerOptionMinValue
+ * @export
+ */
+export type ApplicationCommandIntegerOptionMinValue = Null | number;
+
 /**
  * 
  * @export
@@ -749,10 +740,10 @@ export interface ApplicationCommandIntegerOption {
 export interface ApplicationCommandIntegerOptionResponse {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandIntegerOptionResponse
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -770,7 +761,7 @@ export interface ApplicationCommandIntegerOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandIntegerOptionResponse
      */
-    'name_localized'?: string | null;
+    'name_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -782,7 +773,7 @@ export interface ApplicationCommandIntegerOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandIntegerOptionResponse
      */
-    'description_localized'?: string | null;
+    'description_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -794,19 +785,19 @@ export interface ApplicationCommandIntegerOptionResponse {
      * @type {boolean}
      * @memberof ApplicationCommandIntegerOptionResponse
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof ApplicationCommandIntegerOptionResponse
      */
-    'autocomplete'?: boolean | null;
+    'autocomplete'?: boolean;
     /**
      * 
      * @type {Array<ApplicationCommandOptionIntegerChoiceResponse>}
      * @memberof ApplicationCommandIntegerOptionResponse
      */
-    'choices'?: Array<ApplicationCommandOptionIntegerChoiceResponse> | null;
+    'choices'?: Array<ApplicationCommandOptionIntegerChoiceResponse>;
     /**
      * 
      * @type {number}
@@ -834,10 +825,10 @@ export interface ApplicationCommandInteractionMetadataResponse {
     'id': string;
     /**
      * 
-     * @type {number}
+     * @type {InteractionTypes}
      * @memberof ApplicationCommandInteractionMetadataResponse
      */
-    'type': number;
+    'type': InteractionTypes;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -849,7 +840,7 @@ export interface ApplicationCommandInteractionMetadataResponse {
      * @type {UserResponse}
      * @memberof ApplicationCommandInteractionMetadataResponse
      */
-    'user'?: UserResponse | null;
+    'user'?: UserResponse;
     /**
      * 
      * @type {string}
@@ -861,7 +852,7 @@ export interface ApplicationCommandInteractionMetadataResponse {
      * @type {UserResponse}
      * @memberof ApplicationCommandInteractionMetadataResponse
      */
-    'target_user'?: UserResponse | null;
+    'target_user'?: UserResponse;
     /**
      * 
      * @type {string}
@@ -877,10 +868,10 @@ export interface ApplicationCommandInteractionMetadataResponse {
 export interface ApplicationCommandMentionableOption {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandMentionableOption
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -910,7 +901,7 @@ export interface ApplicationCommandMentionableOption {
      * @type {boolean}
      * @memberof ApplicationCommandMentionableOption
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
 }
 /**
  * 
@@ -920,10 +911,10 @@ export interface ApplicationCommandMentionableOption {
 export interface ApplicationCommandMentionableOptionResponse {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandMentionableOptionResponse
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -941,7 +932,7 @@ export interface ApplicationCommandMentionableOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandMentionableOptionResponse
      */
-    'name_localized'?: string | null;
+    'name_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -953,7 +944,7 @@ export interface ApplicationCommandMentionableOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandMentionableOptionResponse
      */
-    'description_localized'?: string | null;
+    'description_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -965,7 +956,7 @@ export interface ApplicationCommandMentionableOptionResponse {
      * @type {boolean}
      * @memberof ApplicationCommandMentionableOptionResponse
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
 }
 /**
  * 
@@ -975,10 +966,10 @@ export interface ApplicationCommandMentionableOptionResponse {
 export interface ApplicationCommandNumberOption {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandNumberOption
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -1008,31 +999,31 @@ export interface ApplicationCommandNumberOption {
      * @type {boolean}
      * @memberof ApplicationCommandNumberOption
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof ApplicationCommandNumberOption
      */
-    'autocomplete'?: boolean | null;
+    'autocomplete'?: boolean;
     /**
      * 
      * @type {Array<ApplicationCommandOptionNumberChoice>}
      * @memberof ApplicationCommandNumberOption
      */
-    'choices'?: Array<ApplicationCommandOptionNumberChoice> | null;
+    'choices'?: Array<ApplicationCommandOptionNumberChoice>;
     /**
      * 
      * @type {number}
      * @memberof ApplicationCommandNumberOption
      */
-    'min_value'?: number | null;
+    'min_value'?: number;
     /**
      * 
      * @type {number}
      * @memberof ApplicationCommandNumberOption
      */
-    'max_value'?: number | null;
+    'max_value'?: number;
 }
 /**
  * 
@@ -1042,10 +1033,10 @@ export interface ApplicationCommandNumberOption {
 export interface ApplicationCommandNumberOptionResponse {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandNumberOptionResponse
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -1063,7 +1054,7 @@ export interface ApplicationCommandNumberOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandNumberOptionResponse
      */
-    'name_localized'?: string | null;
+    'name_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -1075,7 +1066,7 @@ export interface ApplicationCommandNumberOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandNumberOptionResponse
      */
-    'description_localized'?: string | null;
+    'description_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -1087,31 +1078,31 @@ export interface ApplicationCommandNumberOptionResponse {
      * @type {boolean}
      * @memberof ApplicationCommandNumberOptionResponse
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof ApplicationCommandNumberOptionResponse
      */
-    'autocomplete'?: boolean | null;
+    'autocomplete'?: boolean;
     /**
      * 
      * @type {Array<ApplicationCommandOptionNumberChoiceResponse>}
      * @memberof ApplicationCommandNumberOptionResponse
      */
-    'choices'?: Array<ApplicationCommandOptionNumberChoiceResponse> | null;
+    'choices'?: Array<ApplicationCommandOptionNumberChoiceResponse>;
     /**
      * 
      * @type {number}
      * @memberof ApplicationCommandNumberOptionResponse
      */
-    'min_value'?: number | null;
+    'min_value'?: number;
     /**
      * 
      * @type {number}
      * @memberof ApplicationCommandNumberOptionResponse
      */
-    'max_value'?: number | null;
+    'max_value'?: number;
 }
 /**
  * 
@@ -1161,7 +1152,7 @@ export interface ApplicationCommandOptionIntegerChoiceResponse {
      * @type {string}
      * @memberof ApplicationCommandOptionIntegerChoiceResponse
      */
-    'name_localized'?: string | null;
+    'name_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -1217,7 +1208,7 @@ export interface ApplicationCommandOptionNumberChoiceResponse {
      * @type {string}
      * @memberof ApplicationCommandOptionNumberChoiceResponse
      */
-    'name_localized'?: string | null;
+    'name_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -1273,7 +1264,7 @@ export interface ApplicationCommandOptionStringChoiceResponse {
      * @type {string}
      * @memberof ApplicationCommandOptionStringChoiceResponse
      */
-    'name_localized'?: string | null;
+    'name_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -1281,6 +1272,12 @@ export interface ApplicationCommandOptionStringChoiceResponse {
      */
     'name_localizations'?: { [key: string]: string; };
 }
+/**
+ * @type ApplicationCommandOptionType
+ * @export
+ */
+export type ApplicationCommandOptionType = any;
+
 /**
  * 
  * @export
@@ -1304,7 +1301,7 @@ export interface ApplicationCommandPatchRequestPartial {
      * @type {string}
      * @memberof ApplicationCommandPatchRequestPartial
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -1316,37 +1313,37 @@ export interface ApplicationCommandPatchRequestPartial {
      * @type {Array<ApplicationCommandCreateRequestOptionsInner>}
      * @memberof ApplicationCommandPatchRequestPartial
      */
-    'options'?: Array<ApplicationCommandCreateRequestOptionsInner> | null;
+    'options'?: Array<ApplicationCommandCreateRequestOptionsInner>;
     /**
      * 
      * @type {number}
      * @memberof ApplicationCommandPatchRequestPartial
      */
-    'default_member_permissions'?: number | null;
+    'default_member_permissions'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof ApplicationCommandPatchRequestPartial
      */
-    'dm_permission'?: boolean | null;
+    'dm_permission'?: boolean;
     /**
      * 
-     * @type {Set<number>}
+     * @type {Set<InteractionContextType>}
      * @memberof ApplicationCommandPatchRequestPartial
      */
-    'contexts'?: Set<number> | null;
+    'contexts'?: Set<InteractionContextType>;
     /**
      * 
-     * @type {Set<number>}
+     * @type {Set<ApplicationIntegrationType>}
      * @memberof ApplicationCommandPatchRequestPartial
      */
-    'integration_types'?: Set<number> | null;
+    'integration_types'?: Set<ApplicationIntegrationType>;
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandCreateRequestHandler}
      * @memberof ApplicationCommandPatchRequestPartial
      */
-    'handler'?: number;
+    'handler'?: ApplicationCommandCreateRequestHandler;
 }
 /**
  * 
@@ -1362,10 +1359,10 @@ export interface ApplicationCommandPermission {
     'id': string;
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandPermissionType}
      * @memberof ApplicationCommandPermission
      */
-    'type': number;
+    'type': ApplicationCommandPermissionType;
     /**
      * 
      * @type {boolean}
@@ -1373,6 +1370,12 @@ export interface ApplicationCommandPermission {
      */
     'permission': boolean;
 }
+/**
+ * @type ApplicationCommandPermissionType
+ * @export
+ */
+export type ApplicationCommandPermissionType = any;
+
 /**
  * 
  * @export
@@ -1399,10 +1402,10 @@ export interface ApplicationCommandResponse {
     'version': string;
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandType}
      * @memberof ApplicationCommandResponse
      */
-    'type': number;
+    'type': ApplicationCommandType;
     /**
      * 
      * @type {string}
@@ -1420,13 +1423,13 @@ export interface ApplicationCommandResponse {
      * @type {string}
      * @memberof ApplicationCommandResponse
      */
-    'default_member_permissions'?: string | null;
+    'default_member_permissions'?: string;
     /**
      * 
      * @type {string}
      * @memberof ApplicationCommandResponse
      */
-    'name_localized'?: string | null;
+    'name_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -1438,7 +1441,7 @@ export interface ApplicationCommandResponse {
      * @type {string}
      * @memberof ApplicationCommandResponse
      */
-    'description_localized'?: string | null;
+    'description_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -1456,31 +1459,31 @@ export interface ApplicationCommandResponse {
      * @type {boolean}
      * @memberof ApplicationCommandResponse
      */
-    'dm_permission'?: boolean | null;
+    'dm_permission'?: boolean;
     /**
      * 
-     * @type {Set<number>}
+     * @type {Set<InteractionContextType>}
      * @memberof ApplicationCommandResponse
      */
-    'contexts'?: Set<number> | null;
+    'contexts'?: Set<InteractionContextType>;
     /**
      * 
-     * @type {Set<number>}
+     * @type {Set<ApplicationIntegrationType>}
      * @memberof ApplicationCommandResponse
      */
-    'integration_types'?: Set<number> | null;
+    'integration_types'?: Set<ApplicationIntegrationType>;
     /**
      * 
      * @type {Array<ApplicationCommandResponseOptionsInner>}
      * @memberof ApplicationCommandResponse
      */
-    'options'?: Array<ApplicationCommandResponseOptionsInner> | null;
+    'options'?: Array<ApplicationCommandResponseOptionsInner>;
     /**
      * 
      * @type {boolean}
      * @memberof ApplicationCommandResponse
      */
-    'nsfw'?: boolean | null;
+    'nsfw'?: boolean;
 }
 /**
  * @type ApplicationCommandResponseOptionsInner
@@ -1496,10 +1499,10 @@ export type ApplicationCommandResponseOptionsInner = ApplicationCommandAttachmen
 export interface ApplicationCommandRoleOption {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandRoleOption
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -1529,7 +1532,7 @@ export interface ApplicationCommandRoleOption {
      * @type {boolean}
      * @memberof ApplicationCommandRoleOption
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
 }
 /**
  * 
@@ -1539,10 +1542,10 @@ export interface ApplicationCommandRoleOption {
 export interface ApplicationCommandRoleOptionResponse {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandRoleOptionResponse
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -1560,7 +1563,7 @@ export interface ApplicationCommandRoleOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandRoleOptionResponse
      */
-    'name_localized'?: string | null;
+    'name_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -1572,7 +1575,7 @@ export interface ApplicationCommandRoleOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandRoleOptionResponse
      */
-    'description_localized'?: string | null;
+    'description_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -1584,7 +1587,7 @@ export interface ApplicationCommandRoleOptionResponse {
      * @type {boolean}
      * @memberof ApplicationCommandRoleOptionResponse
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
 }
 /**
  * 
@@ -1594,10 +1597,10 @@ export interface ApplicationCommandRoleOptionResponse {
 export interface ApplicationCommandStringOption {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandStringOption
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -1627,31 +1630,31 @@ export interface ApplicationCommandStringOption {
      * @type {boolean}
      * @memberof ApplicationCommandStringOption
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof ApplicationCommandStringOption
      */
-    'autocomplete'?: boolean | null;
+    'autocomplete'?: boolean;
     /**
      * 
      * @type {number}
      * @memberof ApplicationCommandStringOption
      */
-    'min_length'?: number | null;
+    'min_length'?: number;
     /**
      * 
      * @type {number}
      * @memberof ApplicationCommandStringOption
      */
-    'max_length'?: number | null;
+    'max_length'?: number;
     /**
      * 
      * @type {Array<ApplicationCommandOptionStringChoice>}
      * @memberof ApplicationCommandStringOption
      */
-    'choices'?: Array<ApplicationCommandOptionStringChoice> | null;
+    'choices'?: Array<ApplicationCommandOptionStringChoice>;
 }
 /**
  * 
@@ -1661,10 +1664,10 @@ export interface ApplicationCommandStringOption {
 export interface ApplicationCommandStringOptionResponse {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandStringOptionResponse
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -1682,7 +1685,7 @@ export interface ApplicationCommandStringOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandStringOptionResponse
      */
-    'name_localized'?: string | null;
+    'name_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -1694,7 +1697,7 @@ export interface ApplicationCommandStringOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandStringOptionResponse
      */
-    'description_localized'?: string | null;
+    'description_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -1706,31 +1709,31 @@ export interface ApplicationCommandStringOptionResponse {
      * @type {boolean}
      * @memberof ApplicationCommandStringOptionResponse
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof ApplicationCommandStringOptionResponse
      */
-    'autocomplete'?: boolean | null;
+    'autocomplete'?: boolean;
     /**
      * 
      * @type {Array<ApplicationCommandOptionStringChoiceResponse>}
      * @memberof ApplicationCommandStringOptionResponse
      */
-    'choices'?: Array<ApplicationCommandOptionStringChoiceResponse> | null;
+    'choices'?: Array<ApplicationCommandOptionStringChoiceResponse>;
     /**
      * 
      * @type {number}
      * @memberof ApplicationCommandStringOptionResponse
      */
-    'min_length'?: number | null;
+    'min_length'?: number;
     /**
      * 
      * @type {number}
      * @memberof ApplicationCommandStringOptionResponse
      */
-    'max_length'?: number | null;
+    'max_length'?: number;
 }
 /**
  * 
@@ -1740,10 +1743,10 @@ export interface ApplicationCommandStringOptionResponse {
 export interface ApplicationCommandSubcommandGroupOption {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandSubcommandGroupOption
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -1773,13 +1776,13 @@ export interface ApplicationCommandSubcommandGroupOption {
      * @type {boolean}
      * @memberof ApplicationCommandSubcommandGroupOption
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
     /**
      * 
      * @type {Array<ApplicationCommandSubcommandOption>}
      * @memberof ApplicationCommandSubcommandGroupOption
      */
-    'options'?: Array<ApplicationCommandSubcommandOption> | null;
+    'options'?: Array<ApplicationCommandSubcommandOption>;
 }
 /**
  * 
@@ -1789,10 +1792,10 @@ export interface ApplicationCommandSubcommandGroupOption {
 export interface ApplicationCommandSubcommandGroupOptionResponse {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandSubcommandGroupOptionResponse
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -1810,7 +1813,7 @@ export interface ApplicationCommandSubcommandGroupOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandSubcommandGroupOptionResponse
      */
-    'name_localized'?: string | null;
+    'name_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -1822,7 +1825,7 @@ export interface ApplicationCommandSubcommandGroupOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandSubcommandGroupOptionResponse
      */
-    'description_localized'?: string | null;
+    'description_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -1834,13 +1837,13 @@ export interface ApplicationCommandSubcommandGroupOptionResponse {
      * @type {boolean}
      * @memberof ApplicationCommandSubcommandGroupOptionResponse
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
     /**
      * 
      * @type {Array<ApplicationCommandSubcommandOptionResponse>}
      * @memberof ApplicationCommandSubcommandGroupOptionResponse
      */
-    'options'?: Array<ApplicationCommandSubcommandOptionResponse> | null;
+    'options'?: Array<ApplicationCommandSubcommandOptionResponse>;
 }
 /**
  * 
@@ -1850,10 +1853,10 @@ export interface ApplicationCommandSubcommandGroupOptionResponse {
 export interface ApplicationCommandSubcommandOption {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandSubcommandOption
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -1883,13 +1886,13 @@ export interface ApplicationCommandSubcommandOption {
      * @type {boolean}
      * @memberof ApplicationCommandSubcommandOption
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
     /**
      * 
      * @type {Array<ApplicationCommandSubcommandOptionOptionsInner>}
      * @memberof ApplicationCommandSubcommandOption
      */
-    'options'?: Array<ApplicationCommandSubcommandOptionOptionsInner> | null;
+    'options'?: Array<ApplicationCommandSubcommandOptionOptionsInner>;
 }
 /**
  * @type ApplicationCommandSubcommandOptionOptionsInner
@@ -1905,10 +1908,10 @@ export type ApplicationCommandSubcommandOptionOptionsInner = ApplicationCommandA
 export interface ApplicationCommandSubcommandOptionResponse {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandSubcommandOptionResponse
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -1926,7 +1929,7 @@ export interface ApplicationCommandSubcommandOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandSubcommandOptionResponse
      */
-    'name_localized'?: string | null;
+    'name_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -1938,7 +1941,7 @@ export interface ApplicationCommandSubcommandOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandSubcommandOptionResponse
      */
-    'description_localized'?: string | null;
+    'description_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -1950,19 +1953,25 @@ export interface ApplicationCommandSubcommandOptionResponse {
      * @type {boolean}
      * @memberof ApplicationCommandSubcommandOptionResponse
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
     /**
      * 
      * @type {Array<ApplicationCommandSubcommandOptionResponseOptionsInner>}
      * @memberof ApplicationCommandSubcommandOptionResponse
      */
-    'options'?: Array<ApplicationCommandSubcommandOptionResponseOptionsInner> | null;
+    'options'?: Array<ApplicationCommandSubcommandOptionResponseOptionsInner>;
 }
 /**
  * @type ApplicationCommandSubcommandOptionResponseOptionsInner
  * @export
  */
 export type ApplicationCommandSubcommandOptionResponseOptionsInner = ApplicationCommandAttachmentOptionResponse | ApplicationCommandBooleanOptionResponse | ApplicationCommandChannelOptionResponse | ApplicationCommandIntegerOptionResponse | ApplicationCommandMentionableOptionResponse | ApplicationCommandNumberOptionResponse | ApplicationCommandRoleOptionResponse | ApplicationCommandStringOptionResponse | ApplicationCommandUserOptionResponse;
+
+/**
+ * @type ApplicationCommandType
+ * @export
+ */
+export type ApplicationCommandType = any;
 
 /**
  * 
@@ -1987,7 +1996,7 @@ export interface ApplicationCommandUpdateRequest {
      * @type {string}
      * @memberof ApplicationCommandUpdateRequest
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -1999,49 +2008,49 @@ export interface ApplicationCommandUpdateRequest {
      * @type {Array<ApplicationCommandCreateRequestOptionsInner>}
      * @memberof ApplicationCommandUpdateRequest
      */
-    'options'?: Array<ApplicationCommandCreateRequestOptionsInner> | null;
+    'options'?: Array<ApplicationCommandCreateRequestOptionsInner>;
     /**
      * 
      * @type {number}
      * @memberof ApplicationCommandUpdateRequest
      */
-    'default_member_permissions'?: number | null;
+    'default_member_permissions'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof ApplicationCommandUpdateRequest
      */
-    'dm_permission'?: boolean | null;
+    'dm_permission'?: boolean;
     /**
      * 
-     * @type {Set<number>}
+     * @type {Set<InteractionContextType>}
      * @memberof ApplicationCommandUpdateRequest
      */
-    'contexts'?: Set<number> | null;
+    'contexts'?: Set<InteractionContextType>;
     /**
      * 
-     * @type {Set<number>}
+     * @type {Set<ApplicationIntegrationType>}
      * @memberof ApplicationCommandUpdateRequest
      */
-    'integration_types'?: Set<number> | null;
+    'integration_types'?: Set<ApplicationIntegrationType>;
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandCreateRequestHandler}
      * @memberof ApplicationCommandUpdateRequest
      */
-    'handler'?: number;
+    'handler'?: ApplicationCommandCreateRequestHandler;
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandCreateRequestType}
      * @memberof ApplicationCommandUpdateRequest
      */
-    'type'?: number;
+    'type'?: ApplicationCommandCreateRequestType;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof ApplicationCommandUpdateRequest
      */
-    'id'?: string;
+    'id'?: GetEntitlementsSkuIdsParameterOneOfInner;
 }
 /**
  * 
@@ -2051,10 +2060,10 @@ export interface ApplicationCommandUpdateRequest {
 export interface ApplicationCommandUserOption {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandUserOption
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -2084,7 +2093,7 @@ export interface ApplicationCommandUserOption {
      * @type {boolean}
      * @memberof ApplicationCommandUserOption
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
 }
 /**
  * 
@@ -2094,10 +2103,10 @@ export interface ApplicationCommandUserOption {
 export interface ApplicationCommandUserOptionResponse {
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandOptionType}
      * @memberof ApplicationCommandUserOptionResponse
      */
-    'type': number;
+    'type': ApplicationCommandOptionType;
     /**
      * 
      * @type {string}
@@ -2115,7 +2124,7 @@ export interface ApplicationCommandUserOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandUserOptionResponse
      */
-    'name_localized'?: string | null;
+    'name_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -2127,7 +2136,7 @@ export interface ApplicationCommandUserOptionResponse {
      * @type {string}
      * @memberof ApplicationCommandUserOptionResponse
      */
-    'description_localized'?: string | null;
+    'description_localized'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -2139,8 +2148,14 @@ export interface ApplicationCommandUserOptionResponse {
      * @type {boolean}
      * @memberof ApplicationCommandUserOptionResponse
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
 }
+/**
+ * @type ApplicationExplicitContentFilterTypes
+ * @export
+ */
+export type ApplicationExplicitContentFilterTypes = any;
+
 /**
  * 
  * @export
@@ -2158,73 +2173,73 @@ export interface ApplicationFormPartial {
      * @type {string}
      * @memberof ApplicationFormPartial
      */
-    'icon'?: string | null;
+    'icon'?: string;
     /**
      * 
      * @type {string}
      * @memberof ApplicationFormPartial
      */
-    'cover_image'?: string | null;
+    'cover_image'?: string;
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof ApplicationFormPartial
+     */
+    'team_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
+    /**
+     * 
+     * @type {number}
+     * @memberof ApplicationFormPartial
+     */
+    'flags'?: number;
     /**
      * 
      * @type {string}
      * @memberof ApplicationFormPartial
      */
-    'team_id'?: string;
+    'interactions_endpoint_url'?: string;
+    /**
+     * 
+     * @type {ApplicationFormPartialExplicitContentFilter}
+     * @memberof ApplicationFormPartial
+     */
+    'explicit_content_filter'?: ApplicationFormPartialExplicitContentFilter;
     /**
      * 
      * @type {number}
      * @memberof ApplicationFormPartial
      */
-    'flags'?: number | null;
+    'max_participants'?: number;
     /**
      * 
-     * @type {string}
+     * @type {ApplicationFormPartialType}
      * @memberof ApplicationFormPartial
      */
-    'interactions_endpoint_url'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ApplicationFormPartial
-     */
-    'explicit_content_filter'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ApplicationFormPartial
-     */
-    'max_participants'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ApplicationFormPartial
-     */
-    'type'?: number | null;
+    'type'?: ApplicationFormPartialType;
     /**
      * 
      * @type {Set<string>}
      * @memberof ApplicationFormPartial
      */
-    'tags'?: Set<string> | null;
+    'tags'?: Set<string>;
     /**
      * 
      * @type {string}
      * @memberof ApplicationFormPartial
      */
-    'custom_install_url'?: string | null;
+    'custom_install_url'?: string;
     /**
      * 
-     * @type {ApplicationOAuth2InstallParams}
+     * @type {ApplicationFormPartialInstallParams}
      * @memberof ApplicationFormPartial
      */
-    'install_params'?: ApplicationOAuth2InstallParams | null;
+    'install_params'?: ApplicationFormPartialInstallParams;
     /**
      * 
      * @type {string}
      * @memberof ApplicationFormPartial
      */
-    'role_connections_verification_url'?: string | null;
+    'role_connections_verification_url'?: string;
     /**
      * 
      * @type {{ [key: string]: ApplicationFormPartialIntegrationTypesConfigValue; }}
@@ -2252,10 +2267,34 @@ export interface ApplicationFormPartialDescription {
     'localizations'?: { [key: string]: string; };
 }
 /**
+ * @type ApplicationFormPartialExplicitContentFilter
+ * @export
+ */
+export type ApplicationFormPartialExplicitContentFilter = ApplicationExplicitContentFilterTypes | Null;
+
+/**
+ * @type ApplicationFormPartialInstallParams
+ * @export
+ */
+export type ApplicationFormPartialInstallParams = ApplicationOAuth2InstallParams | Null;
+
+/**
  * @type ApplicationFormPartialIntegrationTypesConfigValue
  * @export
  */
-export type ApplicationFormPartialIntegrationTypesConfigValue = ApplicationIntegrationTypeConfiguration;
+export type ApplicationFormPartialIntegrationTypesConfigValue = ApplicationIntegrationTypeConfiguration | Null;
+
+/**
+ * @type ApplicationFormPartialType
+ * @export
+ */
+export type ApplicationFormPartialType = ApplicationTypes | Null;
+
+/**
+ * @type ApplicationIdentityProviderAuthType
+ * @export
+ */
+export type ApplicationIdentityProviderAuthType = any;
 
 /**
  * 
@@ -2277,41 +2316,47 @@ export interface ApplicationIncomingWebhookResponse {
     'name': string;
     /**
      * 
-     * @type {number}
+     * @type {WebhookTypes}
      * @memberof ApplicationIncomingWebhookResponse
      */
-    'type': number;
+    'type': WebhookTypes;
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof ApplicationIncomingWebhookResponse
+     */
+    'application_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof ApplicationIncomingWebhookResponse
      */
-    'application_id'?: string;
+    'avatar'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof ApplicationIncomingWebhookResponse
      */
-    'avatar'?: string | null;
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof ApplicationIncomingWebhookResponse
      */
-    'channel_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ApplicationIncomingWebhookResponse
-     */
-    'guild_id'?: string;
+    'guild_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {UserResponse}
      * @memberof ApplicationIncomingWebhookResponse
      */
-    'user'?: UserResponse | null;
+    'user'?: UserResponse;
 }
+/**
+ * @type ApplicationIntegrationType
+ * @export
+ */
+export type ApplicationIntegrationType = any;
+
 /**
  * 
  * @export
@@ -2320,10 +2365,10 @@ export interface ApplicationIncomingWebhookResponse {
 export interface ApplicationIntegrationTypeConfiguration {
     /**
      * 
-     * @type {ApplicationOAuth2InstallParams}
+     * @type {ApplicationFormPartialInstallParams}
      * @memberof ApplicationIntegrationTypeConfiguration
      */
-    'oauth2_install_params'?: ApplicationOAuth2InstallParams | null;
+    'oauth2_install_params'?: ApplicationFormPartialInstallParams;
 }
 /**
  * 
@@ -2336,7 +2381,7 @@ export interface ApplicationIntegrationTypeConfigurationResponse {
      * @type {ApplicationOAuth2InstallParamsResponse}
      * @memberof ApplicationIntegrationTypeConfigurationResponse
      */
-    'oauth2_install_params'?: ApplicationOAuth2InstallParamsResponse | null;
+    'oauth2_install_params'?: ApplicationOAuth2InstallParamsResponse;
 }
 /**
  * 
@@ -2346,16 +2391,16 @@ export interface ApplicationIntegrationTypeConfigurationResponse {
 export interface ApplicationOAuth2InstallParams {
     /**
      * 
-     * @type {Set<string>}
+     * @type {Set<OAuth2Scopes>}
      * @memberof ApplicationOAuth2InstallParams
      */
-    'scopes'?: Set<string> | null;
+    'scopes'?: Set<OAuth2Scopes>;
     /**
      * 
      * @type {number}
      * @memberof ApplicationOAuth2InstallParams
      */
-    'permissions'?: number | null;
+    'permissions'?: number;
 }
 /**
  * 
@@ -2365,10 +2410,10 @@ export interface ApplicationOAuth2InstallParams {
 export interface ApplicationOAuth2InstallParamsResponse {
     /**
      * 
-     * @type {Set<string>}
+     * @type {Set<OAuth2Scopes>}
      * @memberof ApplicationOAuth2InstallParamsResponse
      */
-    'scopes': Set<string>;
+    'scopes': Set<OAuth2Scopes>;
     /**
      * 
      * @type {string}
@@ -2417,19 +2462,19 @@ export interface ApplicationResponse {
      * @type {string}
      * @memberof ApplicationResponse
      */
-    'icon'?: string | null;
+    'icon'?: string;
     /**
      * 
-     * @type {number}
+     * @type {ApplicationFormPartialType}
      * @memberof ApplicationResponse
      */
-    'type'?: number | null;
+    'type'?: ApplicationFormPartialType;
     /**
      * 
      * @type {string}
      * @memberof ApplicationResponse
      */
-    'cover_image'?: string | null;
+    'cover_image'?: string;
     /**
      * 
      * @type {string}
@@ -2441,13 +2486,13 @@ export interface ApplicationResponse {
      * @type {UserResponse}
      * @memberof ApplicationResponse
      */
-    'bot'?: UserResponse | null;
+    'bot'?: UserResponse;
     /**
      * 
      * @type {string}
      * @memberof ApplicationResponse
      */
-    'slug'?: string | null;
+    'slug'?: string;
     /**
      * 
      * @type {string}
@@ -2456,46 +2501,46 @@ export interface ApplicationResponse {
     'guild_id'?: string;
     /**
      * 
-     * @type {Array<string | null>}
+     * @type {Array<string>}
      * @memberof ApplicationResponse
      */
-    'rpc_origins'?: Array<string | null> | null;
+    'rpc_origins'?: Array<string>;
     /**
      * 
      * @type {boolean}
      * @memberof ApplicationResponse
      */
-    'bot_public'?: boolean | null;
+    'bot_public'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof ApplicationResponse
      */
-    'bot_require_code_grant'?: boolean | null;
+    'bot_require_code_grant'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof ApplicationResponse
      */
-    'terms_of_service_url'?: string | null;
+    'terms_of_service_url'?: string;
     /**
      * 
      * @type {string}
      * @memberof ApplicationResponse
      */
-    'privacy_policy_url'?: string | null;
+    'privacy_policy_url'?: string;
     /**
      * 
      * @type {string}
      * @memberof ApplicationResponse
      */
-    'custom_install_url'?: string | null;
+    'custom_install_url'?: string;
     /**
      * 
      * @type {ApplicationOAuth2InstallParamsResponse}
      * @memberof ApplicationResponse
      */
-    'install_params'?: ApplicationOAuth2InstallParamsResponse | null;
+    'install_params'?: ApplicationOAuth2InstallParamsResponse;
     /**
      * 
      * @type {{ [key: string]: ApplicationIntegrationTypeConfigurationResponse; }}
@@ -2507,13 +2552,13 @@ export interface ApplicationResponse {
      * @type {number}
      * @memberof ApplicationResponse
      */
-    'max_participants'?: number | null;
+    'max_participants'?: number;
     /**
      * 
      * @type {Set<string>}
      * @memberof ApplicationResponse
      */
-    'tags'?: Set<string> | null;
+    'tags'?: Set<string>;
 }
 /**
  * 
@@ -2523,10 +2568,10 @@ export interface ApplicationResponse {
 export interface ApplicationRoleConnectionsMetadataItemRequest {
     /**
      * 
-     * @type {number}
+     * @type {MetadataItemTypes}
      * @memberof ApplicationRoleConnectionsMetadataItemRequest
      */
-    'type': number;
+    'type': MetadataItemTypes;
     /**
      * 
      * @type {string}
@@ -2547,16 +2592,16 @@ export interface ApplicationRoleConnectionsMetadataItemRequest {
     'description': string;
     /**
      * 
-     * @type {{ [key: string]: string | null; }}
+     * @type {{ [key: string]: string; }}
      * @memberof ApplicationRoleConnectionsMetadataItemRequest
      */
-    'name_localizations'?: { [key: string]: string | null; };
+    'name_localizations'?: { [key: string]: string; };
     /**
      * 
-     * @type {{ [key: string]: string | null; }}
+     * @type {{ [key: string]: string; }}
      * @memberof ApplicationRoleConnectionsMetadataItemRequest
      */
-    'description_localizations'?: { [key: string]: string | null; };
+    'description_localizations'?: { [key: string]: string; };
 }
 /**
  * 
@@ -2566,10 +2611,10 @@ export interface ApplicationRoleConnectionsMetadataItemRequest {
 export interface ApplicationRoleConnectionsMetadataItemResponse {
     /**
      * 
-     * @type {number}
+     * @type {MetadataItemTypes}
      * @memberof ApplicationRoleConnectionsMetadataItemResponse
      */
-    'type': number;
+    'type': MetadataItemTypes;
     /**
      * 
      * @type {string}
@@ -2602,6 +2647,12 @@ export interface ApplicationRoleConnectionsMetadataItemResponse {
     'description_localizations'?: { [key: string]: string; };
 }
 /**
+ * @type ApplicationTypes
+ * @export
+ */
+export type ApplicationTypes = any;
+
+/**
  * 
  * @export
  * @interface ApplicationUserRoleConnectionResponse
@@ -2612,13 +2663,13 @@ export interface ApplicationUserRoleConnectionResponse {
      * @type {string}
      * @memberof ApplicationUserRoleConnectionResponse
      */
-    'platform_name'?: string | null;
+    'platform_name'?: string;
     /**
      * 
      * @type {string}
      * @memberof ApplicationUserRoleConnectionResponse
      */
-    'platform_username'?: string | null;
+    'platform_username'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -2667,68 +2718,74 @@ export interface AttachmentResponse {
      * @type {number}
      * @memberof AttachmentResponse
      */
-    'width'?: number | null;
+    'width'?: number;
     /**
      * 
      * @type {number}
      * @memberof AttachmentResponse
      */
-    'height'?: number | null;
+    'height'?: number;
     /**
      * 
      * @type {number}
      * @memberof AttachmentResponse
      */
-    'duration_secs'?: number | null;
+    'duration_secs'?: number;
     /**
      * 
      * @type {string}
      * @memberof AttachmentResponse
      */
-    'waveform'?: string | null;
+    'waveform'?: string;
     /**
      * 
      * @type {string}
      * @memberof AttachmentResponse
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof AttachmentResponse
      */
-    'content_type'?: string | null;
+    'content_type'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof AttachmentResponse
      */
-    'ephemeral'?: boolean | null;
+    'ephemeral'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof AttachmentResponse
      */
-    'title'?: string | null;
+    'title'?: string;
     /**
      * 
      * @type {ApplicationResponse}
      * @memberof AttachmentResponse
      */
-    'application'?: ApplicationResponse | null;
+    'application'?: ApplicationResponse;
     /**
      * 
      * @type {string}
      * @memberof AttachmentResponse
      */
-    'clip_created_at'?: string | null;
+    'clip_created_at'?: string;
     /**
      * 
      * @type {Array<UserResponse>}
      * @memberof AttachmentResponse
      */
-    'clip_participants'?: Array<UserResponse> | null;
+    'clip_participants'?: Array<UserResponse>;
 }
+/**
+ * @type AuditLogActionTypes
+ * @export
+ */
+export type AuditLogActionTypes = any;
+
 /**
  * 
  * @export
@@ -2743,28 +2800,28 @@ export interface AuditLogEntryResponse {
     'id': string;
     /**
      * 
-     * @type {number}
+     * @type {AuditLogActionTypes}
      * @memberof AuditLogEntryResponse
      */
-    'action_type': number | null;
+    'action_type': AuditLogActionTypes;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof AuditLogEntryResponse
      */
-    'user_id'?: string;
+    'user_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof AuditLogEntryResponse
      */
-    'target_id'?: string;
+    'target_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {Array<AuditLogObjectChangeResponse>}
      * @memberof AuditLogEntryResponse
      */
-    'changes'?: Array<AuditLogObjectChangeResponse> | null;
+    'changes'?: Array<AuditLogObjectChangeResponse>;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -2776,7 +2833,7 @@ export interface AuditLogEntryResponse {
      * @type {string}
      * @memberof AuditLogEntryResponse
      */
-    'reason'?: string | null;
+    'reason'?: string;
 }
 /**
  * 
@@ -2789,7 +2846,7 @@ export interface AuditLogObjectChangeResponse {
      * @type {string}
      * @memberof AuditLogObjectChangeResponse
      */
-    'key'?: string | null;
+    'key'?: string;
     /**
      * 
      * @type {any}
@@ -2804,6 +2861,36 @@ export interface AuditLogObjectChangeResponse {
     'old_value'?: any;
 }
 /**
+ * @type AutomodActionType
+ * @export
+ */
+export type AutomodActionType = any;
+
+/**
+ * @type AutomodEventType
+ * @export
+ */
+export type AutomodEventType = any;
+
+/**
+ * @type AutomodKeywordPresetType
+ * @export
+ */
+export type AutomodKeywordPresetType = any;
+
+/**
+ * @type AutomodTriggerType
+ * @export
+ */
+export type AutomodTriggerType = any;
+
+/**
+ * @type AvailableLocalesEnum
+ * @export
+ */
+export type AvailableLocalesEnum = any;
+
+/**
  * 
  * @export
  * @interface BanUserFromGuildRequest
@@ -2814,13 +2901,13 @@ export interface BanUserFromGuildRequest {
      * @type {number}
      * @memberof BanUserFromGuildRequest
      */
-    'delete_message_seconds'?: number | null;
+    'delete_message_seconds'?: number;
     /**
      * 
      * @type {number}
      * @memberof BanUserFromGuildRequest
      */
-    'delete_message_days'?: number | null;
+    'delete_message_days'?: number;
 }
 /**
  * 
@@ -2833,61 +2920,79 @@ export interface BaseCreateMessageCreateRequest {
      * @type {string}
      * @memberof BaseCreateMessageCreateRequest
      */
-    'content'?: string | null;
+    'content'?: string;
     /**
      * 
      * @type {Array<RichEmbed>}
      * @memberof BaseCreateMessageCreateRequest
      */
-    'embeds'?: Array<RichEmbed> | null;
+    'embeds'?: Array<RichEmbed>;
     /**
      * 
-     * @type {MessageAllowedMentionsRequest}
+     * @type {BaseCreateMessageCreateRequestAllowedMentions}
      * @memberof BaseCreateMessageCreateRequest
      */
-    'allowed_mentions'?: MessageAllowedMentionsRequest | null;
+    'allowed_mentions'?: BaseCreateMessageCreateRequestAllowedMentions;
     /**
      * 
      * @type {Array<string>}
      * @memberof BaseCreateMessageCreateRequest
      */
-    'sticker_ids'?: Array<string> | null;
+    'sticker_ids'?: Array<string>;
     /**
      * 
      * @type {Array<BaseCreateMessageCreateRequestComponentsInner>}
      * @memberof BaseCreateMessageCreateRequest
      */
-    'components'?: Array<BaseCreateMessageCreateRequestComponentsInner> | null;
+    'components'?: Array<BaseCreateMessageCreateRequestComponentsInner>;
     /**
      * 
      * @type {number}
      * @memberof BaseCreateMessageCreateRequest
      */
-    'flags'?: number | null;
+    'flags'?: number;
     /**
      * 
      * @type {Array<MessageAttachmentRequest>}
      * @memberof BaseCreateMessageCreateRequest
      */
-    'attachments'?: Array<MessageAttachmentRequest> | null;
+    'attachments'?: Array<MessageAttachmentRequest>;
     /**
      * 
-     * @type {PollCreateRequest}
+     * @type {BaseCreateMessageCreateRequestPoll}
      * @memberof BaseCreateMessageCreateRequest
      */
-    'poll'?: PollCreateRequest | null;
+    'poll'?: BaseCreateMessageCreateRequestPoll;
     /**
      * 
-     * @type {object}
+     * @type {BaseCreateMessageCreateRequestSharedClientTheme}
      * @memberof BaseCreateMessageCreateRequest
      */
-    'confetti_potion'?: object;
+    'shared_client_theme'?: BaseCreateMessageCreateRequestSharedClientTheme;
 }
+/**
+ * @type BaseCreateMessageCreateRequestAllowedMentions
+ * @export
+ */
+export type BaseCreateMessageCreateRequestAllowedMentions = MessageAllowedMentionsRequest | Null;
+
 /**
  * @type BaseCreateMessageCreateRequestComponentsInner
  * @export
  */
 export type BaseCreateMessageCreateRequestComponentsInner = ActionRowComponentForMessageRequest | ContainerComponentForMessageRequest | FileComponentForMessageRequest | MediaGalleryComponentForMessageRequest | SectionComponentForMessageRequest | SeparatorComponentForMessageRequest | TextDisplayComponentForMessageRequest;
+
+/**
+ * @type BaseCreateMessageCreateRequestPoll
+ * @export
+ */
+export type BaseCreateMessageCreateRequestPoll = Null | PollCreateRequest;
+
+/**
+ * @type BaseCreateMessageCreateRequestSharedClientTheme
+ * @export
+ */
+export type BaseCreateMessageCreateRequestSharedClientTheme = CustomClientThemeShareRequest | Null;
 
 /**
  * 
@@ -2918,19 +3023,19 @@ export interface BasicApplicationResponse {
      * @type {string}
      * @memberof BasicApplicationResponse
      */
-    'icon'?: string | null;
+    'icon'?: string;
     /**
      * 
-     * @type {number}
+     * @type {ApplicationFormPartialType}
      * @memberof BasicApplicationResponse
      */
-    'type'?: number | null;
+    'type'?: ApplicationFormPartialType;
     /**
      * 
      * @type {string}
      * @memberof BasicApplicationResponse
      */
-    'cover_image'?: string | null;
+    'cover_image'?: string;
     /**
      * 
      * @type {string}
@@ -2942,8 +3047,93 @@ export interface BasicApplicationResponse {
      * @type {UserResponse}
      * @memberof BasicApplicationResponse
      */
-    'bot'?: UserResponse | null;
+    'bot'?: UserResponse;
 }
+/**
+ * 
+ * @export
+ * @interface BasicGuildMemberResponse
+ */
+export interface BasicGuildMemberResponse {
+    /**
+     * 
+     * @type {number}
+     * @memberof BasicGuildMemberResponse
+     */
+    'flags': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof BasicGuildMemberResponse
+     */
+    'joined_at': string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof BasicGuildMemberResponse
+     */
+    'pending': boolean;
+    /**
+     * 
+     * @type {Set<string>}
+     * @memberof BasicGuildMemberResponse
+     */
+    'roles': Set<string>;
+    /**
+     * 
+     * @type {string}
+     * @memberof BasicGuildMemberResponse
+     */
+    'avatar'?: string;
+    /**
+     * 
+     * @type {BasicGuildMemberResponseAvatarDecorationData}
+     * @memberof BasicGuildMemberResponse
+     */
+    'avatar_decoration_data'?: BasicGuildMemberResponseAvatarDecorationData;
+    /**
+     * 
+     * @type {string}
+     * @memberof BasicGuildMemberResponse
+     */
+    'banner'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BasicGuildMemberResponse
+     */
+    'communication_disabled_until'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BasicGuildMemberResponse
+     */
+    'nick'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BasicGuildMemberResponse
+     */
+    'premium_since'?: string;
+    /**
+     * 
+     * @type {BasicGuildMemberResponseCollectibles}
+     * @memberof BasicGuildMemberResponse
+     */
+    'collectibles'?: BasicGuildMemberResponseCollectibles;
+}
+/**
+ * @type BasicGuildMemberResponseAvatarDecorationData
+ * @export
+ */
+export type BasicGuildMemberResponseAvatarDecorationData = Null | UserAvatarDecorationResponse;
+
+/**
+ * @type BasicGuildMemberResponseCollectibles
+ * @export
+ */
+export type BasicGuildMemberResponseCollectibles = Null | UserCollectiblesResponse;
+
 /**
  * 
  * @export
@@ -2952,10 +3142,10 @@ export interface BasicApplicationResponse {
 export interface BasicMessageResponse {
     /**
      * 
-     * @type {number}
+     * @type {MessageType}
      * @memberof BasicMessageResponse
      */
-    'type': number;
+    'type': MessageType;
     /**
      * 
      * @type {string}
@@ -3045,31 +3235,25 @@ export interface BasicMessageResponse {
      * @type {string}
      * @memberof BasicMessageResponse
      */
-    'edited_timestamp'?: string | null;
-    /**
-     * 
-     * @type {ResolvedObjectsResponse}
-     * @memberof BasicMessageResponse
-     */
-    'resolved'?: ResolvedObjectsResponse | null;
+    'edited_timestamp'?: string;
     /**
      * 
      * @type {Array<GetSticker200Response>}
      * @memberof BasicMessageResponse
      */
-    'stickers'?: Array<GetSticker200Response> | null;
+    'stickers'?: Array<GetSticker200Response>;
     /**
      * 
      * @type {Array<MessageStickerItemResponse>}
      * @memberof BasicMessageResponse
      */
-    'sticker_items'?: Array<MessageStickerItemResponse> | null;
+    'sticker_items'?: Array<MessageStickerItemResponse>;
     /**
      * 
      * @type {MessageCallResponse}
      * @memberof BasicMessageResponse
      */
-    'call'?: MessageCallResponse | null;
+    'call'?: MessageCallResponse;
     /**
      * 
      * @type {object}
@@ -3081,7 +3265,7 @@ export interface BasicMessageResponse {
      * @type {BasicApplicationResponse}
      * @memberof BasicMessageResponse
      */
-    'application'?: BasicApplicationResponse | null;
+    'application'?: BasicApplicationResponse;
     /**
      * 
      * @type {string}
@@ -3093,13 +3277,13 @@ export interface BasicMessageResponse {
      * @type {MessageInteractionResponse}
      * @memberof BasicMessageResponse
      */
-    'interaction'?: MessageInteractionResponse | null;
+    'interaction'?: MessageInteractionResponse;
     /**
      * 
      * @type {BasicMessageResponseNonce}
      * @memberof BasicMessageResponse
      */
-    'nonce'?: BasicMessageResponseNonce | null;
+    'nonce'?: BasicMessageResponseNonce;
     /**
      * 
      * @type {string}
@@ -3111,55 +3295,67 @@ export interface BasicMessageResponse {
      * @type {MessageReferenceResponse}
      * @memberof BasicMessageResponse
      */
-    'message_reference'?: MessageReferenceResponse | null;
+    'message_reference'?: MessageReferenceResponse;
     /**
      * 
      * @type {ThreadResponse}
      * @memberof BasicMessageResponse
      */
-    'thread'?: ThreadResponse | null;
+    'thread'?: ThreadResponse;
     /**
      * 
-     * @type {Array<MessageMentionChannelResponse | null>}
+     * @type {Array<BasicMessageResponseMentionChannelsInner>}
      * @memberof BasicMessageResponse
      */
-    'mention_channels'?: Array<MessageMentionChannelResponse | null> | null;
+    'mention_channels'?: Array<BasicMessageResponseMentionChannelsInner>;
     /**
      * 
      * @type {MessageRoleSubscriptionDataResponse}
      * @memberof BasicMessageResponse
      */
-    'role_subscription_data'?: MessageRoleSubscriptionDataResponse | null;
+    'role_subscription_data'?: MessageRoleSubscriptionDataResponse;
     /**
      * 
      * @type {PurchaseNotificationResponse}
      * @memberof BasicMessageResponse
      */
-    'purchase_notification'?: PurchaseNotificationResponse | null;
+    'purchase_notification'?: PurchaseNotificationResponse;
     /**
      * 
      * @type {number}
      * @memberof BasicMessageResponse
      */
-    'position'?: number | null;
+    'position'?: number;
+    /**
+     * 
+     * @type {ResolvedObjectsResponse}
+     * @memberof BasicMessageResponse
+     */
+    'resolved'?: ResolvedObjectsResponse;
     /**
      * 
      * @type {PollResponse}
      * @memberof BasicMessageResponse
      */
-    'poll'?: PollResponse | null;
+    'poll'?: PollResponse;
+    /**
+     * 
+     * @type {BasicMessageResponseSharedClientTheme}
+     * @memberof BasicMessageResponse
+     */
+    'shared_client_theme'?: BasicMessageResponseSharedClientTheme;
     /**
      * 
      * @type {BasicMessageResponseInteractionMetadata}
      * @memberof BasicMessageResponse
      */
-    'interaction_metadata'?: BasicMessageResponseInteractionMetadata | null;
+    'interaction_metadata'?: BasicMessageResponseInteractionMetadata;
     /**
      * 
      * @type {Array<MessageSnapshotResponse>}
      * @memberof BasicMessageResponse
      */
-    'message_snapshots'?: Array<MessageSnapshotResponse> | null;
+    'message_snapshots'?: Array<MessageSnapshotResponse>;
 }
 /**
  * @type BasicMessageResponseComponentsInner
@@ -3174,10 +3370,22 @@ export type BasicMessageResponseComponentsInner = ActionRowComponentResponse | C
 export type BasicMessageResponseInteractionMetadata = ApplicationCommandInteractionMetadataResponse | MessageComponentInteractionMetadataResponse | ModalSubmitInteractionMetadataResponse;
 
 /**
+ * @type BasicMessageResponseMentionChannelsInner
+ * @export
+ */
+export type BasicMessageResponseMentionChannelsInner = MessageMentionChannelResponse | Null;
+
+/**
  * @type BasicMessageResponseNonce
  * @export
  */
-export type BasicMessageResponseNonce = number | string;
+export type BasicMessageResponseNonce = Null | number | string;
+
+/**
+ * @type BasicMessageResponseSharedClientTheme
+ * @export
+ */
+export type BasicMessageResponseSharedClientTheme = CustomClientThemeResponse | Null;
 
 /**
  * 
@@ -3187,30 +3395,23 @@ export type BasicMessageResponseNonce = number | string;
 export interface BlockMessageAction {
     /**
      * 
-     * @type {number}
+     * @type {AutomodActionType}
      * @memberof BlockMessageAction
      */
-    'type': number;
+    'type': AutomodActionType;
     /**
      * 
      * @type {BlockMessageActionMetadata}
      * @memberof BlockMessageAction
      */
-    'metadata'?: BlockMessageActionMetadata | null;
+    'metadata'?: BlockMessageActionMetadata;
 }
 /**
- * 
+ * @type BlockMessageActionMetadata
  * @export
- * @interface BlockMessageActionMetadata
  */
-export interface BlockMessageActionMetadata {
-    /**
-     * 
-     * @type {string}
-     * @memberof BlockMessageActionMetadata
-     */
-    'custom_message'?: string | null;
-}
+export type BlockMessageActionMetadata = BlockMessageActionMetadata | Null;
+
 /**
  * 
  * @export
@@ -3222,7 +3423,7 @@ export interface BlockMessageActionMetadataResponse {
      * @type {string}
      * @memberof BlockMessageActionMetadataResponse
      */
-    'custom_message'?: string | null;
+    'custom_message'?: string;
 }
 /**
  * 
@@ -3232,10 +3433,10 @@ export interface BlockMessageActionMetadataResponse {
 export interface BlockMessageActionResponse {
     /**
      * 
-     * @type {number}
+     * @type {AutomodActionType}
      * @memberof BlockMessageActionResponse
      */
-    'type': number;
+    'type': AutomodActionType;
     /**
      * 
      * @type {BlockMessageActionMetadataResponse}
@@ -3260,32 +3461,107 @@ export interface BotAccountPatchRequest {
      * @type {string}
      * @memberof BotAccountPatchRequest
      */
-    'avatar'?: string | null;
+    'avatar'?: string;
     /**
      * 
      * @type {string}
      * @memberof BotAccountPatchRequest
      */
-    'banner'?: string | null;
+    'banner'?: string;
 }
 /**
  * 
  * @export
- * @interface BulkBanUsersFromGuildRequest
+ * @interface BotAddGuildMemberRequest
  */
-export interface BulkBanUsersFromGuildRequest {
+export interface BotAddGuildMemberRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof BotAddGuildMemberRequest
+     */
+    'access_token': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotAddGuildMemberRequest
+     */
+    'nick'?: string;
     /**
      * 
      * @type {Set<string>}
-     * @memberof BulkBanUsersFromGuildRequest
+     * @memberof BotAddGuildMemberRequest
+     */
+    'roles'?: Set<string>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof BotAddGuildMemberRequest
+     */
+    'mute'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof BotAddGuildMemberRequest
+     */
+    'deaf'?: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof BotAddGuildMemberRequest
+     */
+    'flags'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface BotPartnerSdkTokenRequest
+ */
+export interface BotPartnerSdkTokenRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof BotPartnerSdkTokenRequest
+     */
+    'external_user_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotPartnerSdkTokenRequest
+     */
+    'preferred_global_name'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface BotPartnerSdkUnmergeProvisionalAccountRequest
+ */
+export interface BotPartnerSdkUnmergeProvisionalAccountRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof BotPartnerSdkUnmergeProvisionalAccountRequest
+     */
+    'external_user_id': string;
+}
+/**
+ * 
+ * @export
+ * @interface BulkBanUsersRequest
+ */
+export interface BulkBanUsersRequest {
+    /**
+     * 
+     * @type {Set<string>}
+     * @memberof BulkBanUsersRequest
      */
     'user_ids': Set<string>;
     /**
      * 
      * @type {number}
-     * @memberof BulkBanUsersFromGuildRequest
+     * @memberof BulkBanUsersRequest
      */
-    'delete_message_seconds'?: number | null;
+    'delete_message_seconds'?: number;
 }
 /**
  * 
@@ -3339,24 +3615,17 @@ export interface BulkLobbyMemberRequest {
     'metadata'?: { [key: string]: string; };
     /**
      * 
-     * @type {number}
+     * @type {CreateOrJoinLobbyRequestFlags}
      * @memberof BulkLobbyMemberRequest
      */
-    'flags'?: BulkLobbyMemberRequestFlagsEnum | null;
+    'flags'?: CreateOrJoinLobbyRequestFlags;
     /**
      * 
      * @type {boolean}
      * @memberof BulkLobbyMemberRequest
      */
-    'remove_member'?: boolean | null;
+    'remove_member'?: boolean;
 }
-
-export const BulkLobbyMemberRequestFlagsEnum = {
-    NUMBER_1: 1
-} as const;
-
-export type BulkLobbyMemberRequestFlagsEnum = typeof BulkLobbyMemberRequestFlagsEnum[keyof typeof BulkLobbyMemberRequestFlagsEnum];
-
 /**
  * 
  * @export
@@ -3365,47 +3634,28 @@ export type BulkLobbyMemberRequestFlagsEnum = typeof BulkLobbyMemberRequestFlags
 export interface BulkUpdateGuildChannelsRequestInner {
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof BulkUpdateGuildChannelsRequestInner
      */
-    'id'?: string;
+    'id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {number}
      * @memberof BulkUpdateGuildChannelsRequestInner
      */
-    'position'?: number | null;
+    'position'?: number;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof BulkUpdateGuildChannelsRequestInner
      */
-    'parent_id'?: string;
+    'parent_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {boolean}
      * @memberof BulkUpdateGuildChannelsRequestInner
      */
-    'lock_permissions'?: boolean | null;
-}
-/**
- * 
- * @export
- * @interface BulkUpdateGuildRolesRequestInner
- */
-export interface BulkUpdateGuildRolesRequestInner {
-    /**
-     * 
-     * @type {string}
-     * @memberof BulkUpdateGuildRolesRequestInner
-     */
-    'id'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof BulkUpdateGuildRolesRequestInner
-     */
-    'position'?: number | null;
+    'lock_permissions'?: boolean;
 }
 /**
  * 
@@ -3415,53 +3665,65 @@ export interface BulkUpdateGuildRolesRequestInner {
 export interface ButtonComponentForMessageRequest {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof ButtonComponentForMessageRequest
      */
-    'type': number;
+    'type': MessageComponentTypes;
+    /**
+     * 
+     * @type {ButtonStyleTypes}
+     * @memberof ButtonComponentForMessageRequest
+     */
+    'style': ButtonStyleTypes;
     /**
      * 
      * @type {number}
      * @memberof ButtonComponentForMessageRequest
      */
-    'style': number | null;
+    'id'?: number;
     /**
      * 
      * @type {string}
      * @memberof ButtonComponentForMessageRequest
      */
-    'custom_id'?: string | null;
+    'custom_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof ButtonComponentForMessageRequest
      */
-    'label'?: string | null;
+    'label'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof ButtonComponentForMessageRequest
      */
-    'disabled'?: boolean | null;
+    'disabled'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof ButtonComponentForMessageRequest
      */
-    'url'?: string | null;
+    'url'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof ButtonComponentForMessageRequest
      */
-    'sku_id'?: string;
+    'sku_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {ComponentEmojiForMessageRequest}
+     * @type {ButtonComponentForMessageRequestEmoji}
      * @memberof ButtonComponentForMessageRequest
      */
-    'emoji'?: ComponentEmojiForMessageRequest | null;
+    'emoji'?: ButtonComponentForMessageRequestEmoji;
 }
+/**
+ * @type ButtonComponentForMessageRequestEmoji
+ * @export
+ */
+export type ButtonComponentForMessageRequestEmoji = ComponentEmojiForRequest | Null;
+
 /**
  * 
  * @export
@@ -3470,10 +3732,10 @@ export interface ButtonComponentForMessageRequest {
 export interface ButtonComponentResponse {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof ButtonComponentResponse
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {number}
@@ -3482,40 +3744,40 @@ export interface ButtonComponentResponse {
     'id': number;
     /**
      * 
-     * @type {number}
+     * @type {ButtonStyleTypes}
      * @memberof ButtonComponentResponse
      */
-    'style': number | null;
+    'style': ButtonStyleTypes;
     /**
      * 
      * @type {string}
      * @memberof ButtonComponentResponse
      */
-    'custom_id'?: string | null;
+    'custom_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof ButtonComponentResponse
      */
-    'label'?: string | null;
+    'label'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof ButtonComponentResponse
      */
-    'disabled'?: boolean | null;
+    'disabled'?: boolean;
     /**
      * 
      * @type {ComponentEmojiResponse}
      * @memberof ButtonComponentResponse
      */
-    'emoji'?: ComponentEmojiResponse | null;
+    'emoji'?: ComponentEmojiResponse;
     /**
      * 
      * @type {string}
      * @memberof ButtonComponentResponse
      */
-    'url'?: string | null;
+    'url'?: string;
     /**
      * 
      * @type {string}
@@ -3523,6 +3785,12 @@ export interface ButtonComponentResponse {
      */
     'sku_id'?: string;
 }
+/**
+ * @type ButtonStyleTypes
+ * @export
+ */
+export type ButtonStyleTypes = any;
+
 /**
  * 
  * @export
@@ -3562,52 +3830,52 @@ export interface ChannelFollowerWebhookResponse {
     'name': string;
     /**
      * 
-     * @type {number}
+     * @type {WebhookTypes}
      * @memberof ChannelFollowerWebhookResponse
      */
-    'type': number;
+    'type': WebhookTypes;
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof ChannelFollowerWebhookResponse
+     */
+    'application_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof ChannelFollowerWebhookResponse
      */
-    'application_id'?: string;
+    'avatar'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof ChannelFollowerWebhookResponse
      */
-    'avatar'?: string | null;
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof ChannelFollowerWebhookResponse
      */
-    'channel_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ChannelFollowerWebhookResponse
-     */
-    'guild_id'?: string;
+    'guild_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {UserResponse}
      * @memberof ChannelFollowerWebhookResponse
      */
-    'user'?: UserResponse | null;
+    'user'?: UserResponse;
     /**
      * 
      * @type {WebhookSourceGuildResponse}
      * @memberof ChannelFollowerWebhookResponse
      */
-    'source_guild'?: WebhookSourceGuildResponse | null;
+    'source_guild'?: WebhookSourceGuildResponse;
     /**
      * 
      * @type {WebhookSourceChannelResponse}
      * @memberof ChannelFollowerWebhookResponse
      */
-    'source_channel'?: WebhookSourceChannelResponse | null;
+    'source_channel'?: WebhookSourceChannelResponse;
 }
 /**
  * 
@@ -3623,22 +3891,22 @@ export interface ChannelPermissionOverwriteRequest {
     'id': string;
     /**
      * 
-     * @type {number}
+     * @type {SetChannelPermissionOverwriteRequestType}
      * @memberof ChannelPermissionOverwriteRequest
      */
-    'type'?: number | null;
+    'type'?: SetChannelPermissionOverwriteRequestType;
     /**
      * 
      * @type {number}
      * @memberof ChannelPermissionOverwriteRequest
      */
-    'allow'?: number | null;
+    'allow'?: number;
     /**
      * 
      * @type {number}
      * @memberof ChannelPermissionOverwriteRequest
      */
-    'deny'?: number | null;
+    'deny'?: number;
 }
 /**
  * 
@@ -3654,10 +3922,10 @@ export interface ChannelPermissionOverwriteResponse {
     'id': string;
     /**
      * 
-     * @type {number}
+     * @type {ChannelPermissionOverwrites}
      * @memberof ChannelPermissionOverwriteResponse
      */
-    'type': number | null;
+    'type': ChannelPermissionOverwrites;
     /**
      * 
      * @type {string}
@@ -3672,6 +3940,12 @@ export interface ChannelPermissionOverwriteResponse {
     'deny': string;
 }
 /**
+ * @type ChannelPermissionOverwrites
+ * @export
+ */
+export type ChannelPermissionOverwrites = any;
+
+/**
  * 
  * @export
  * @interface ChannelSelectComponentForMessageRequest
@@ -3679,10 +3953,10 @@ export interface ChannelPermissionOverwriteResponse {
 export interface ChannelSelectComponentForMessageRequest {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof ChannelSelectComponentForMessageRequest
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {string}
@@ -3691,40 +3965,119 @@ export interface ChannelSelectComponentForMessageRequest {
     'custom_id': string;
     /**
      * 
+     * @type {number}
+     * @memberof ChannelSelectComponentForMessageRequest
+     */
+    'id'?: number;
+    /**
+     * 
      * @type {string}
      * @memberof ChannelSelectComponentForMessageRequest
      */
-    'placeholder'?: string | null;
+    'placeholder'?: string;
     /**
      * 
      * @type {number}
      * @memberof ChannelSelectComponentForMessageRequest
      */
-    'min_values'?: number | null;
+    'min_values'?: number;
     /**
      * 
      * @type {number}
      * @memberof ChannelSelectComponentForMessageRequest
      */
-    'max_values'?: number | null;
+    'max_values'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof ChannelSelectComponentForMessageRequest
      */
-    'disabled'?: boolean | null;
+    'disabled'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ChannelSelectComponentForMessageRequest
+     */
+    'required'?: boolean;
     /**
      * 
      * @type {Array<ChannelSelectDefaultValue>}
      * @memberof ChannelSelectComponentForMessageRequest
      */
-    'default_values'?: Array<ChannelSelectDefaultValue> | null;
+    'default_values'?: Array<ChannelSelectDefaultValue>;
     /**
      * 
-     * @type {Set<number>}
+     * @type {Set<ChannelTypes>}
      * @memberof ChannelSelectComponentForMessageRequest
      */
-    'channel_types'?: Set<number> | null;
+    'channel_types'?: Set<ChannelTypes>;
+}
+/**
+ * 
+ * @export
+ * @interface ChannelSelectComponentForModalRequest
+ */
+export interface ChannelSelectComponentForModalRequest {
+    /**
+     * 
+     * @type {MessageComponentTypes}
+     * @memberof ChannelSelectComponentForModalRequest
+     */
+    'type': MessageComponentTypes;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChannelSelectComponentForModalRequest
+     */
+    'custom_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof ChannelSelectComponentForModalRequest
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChannelSelectComponentForModalRequest
+     */
+    'placeholder'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof ChannelSelectComponentForModalRequest
+     */
+    'min_values'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ChannelSelectComponentForModalRequest
+     */
+    'max_values'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ChannelSelectComponentForModalRequest
+     */
+    'disabled'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ChannelSelectComponentForModalRequest
+     */
+    'required'?: boolean;
+    /**
+     * 
+     * @type {Array<ChannelSelectDefaultValue>}
+     * @memberof ChannelSelectComponentForModalRequest
+     */
+    'default_values'?: Array<ChannelSelectDefaultValue>;
+    /**
+     * 
+     * @type {Set<ChannelTypes>}
+     * @memberof ChannelSelectComponentForModalRequest
+     */
+    'channel_types'?: Set<ChannelTypes>;
 }
 /**
  * 
@@ -3734,10 +4087,10 @@ export interface ChannelSelectComponentForMessageRequest {
 export interface ChannelSelectComponentResponse {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof ChannelSelectComponentResponse
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {number}
@@ -3755,37 +4108,37 @@ export interface ChannelSelectComponentResponse {
      * @type {string}
      * @memberof ChannelSelectComponentResponse
      */
-    'placeholder'?: string | null;
+    'placeholder'?: string;
     /**
      * 
      * @type {number}
      * @memberof ChannelSelectComponentResponse
      */
-    'min_values'?: number | null;
+    'min_values'?: number;
     /**
      * 
      * @type {number}
      * @memberof ChannelSelectComponentResponse
      */
-    'max_values'?: number | null;
+    'max_values'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof ChannelSelectComponentResponse
      */
-    'disabled'?: boolean | null;
+    'disabled'?: boolean;
     /**
      * 
-     * @type {Set<number>}
+     * @type {Set<ChannelTypes>}
      * @memberof ChannelSelectComponentResponse
      */
-    'channel_types'?: Set<number> | null;
+    'channel_types'?: Set<ChannelTypes>;
     /**
      * 
      * @type {Array<ChannelSelectDefaultValueResponse>}
      * @memberof ChannelSelectComponentResponse
      */
-    'default_values'?: Array<ChannelSelectDefaultValueResponse> | null;
+    'default_values'?: Array<ChannelSelectDefaultValueResponse>;
 }
 /**
  * 
@@ -3795,10 +4148,10 @@ export interface ChannelSelectComponentResponse {
 export interface ChannelSelectDefaultValue {
     /**
      * 
-     * @type {string}
+     * @type {SnowflakeSelectDefaultValueTypes}
      * @memberof ChannelSelectDefaultValue
      */
-    'type': string | null;
+    'type': SnowflakeSelectDefaultValueTypes;
     /**
      * 
      * @type {string}
@@ -3814,10 +4167,10 @@ export interface ChannelSelectDefaultValue {
 export interface ChannelSelectDefaultValueResponse {
     /**
      * 
-     * @type {string}
+     * @type {SnowflakeSelectDefaultValueTypes}
      * @memberof ChannelSelectDefaultValueResponse
      */
-    'type': string | null;
+    'type': SnowflakeSelectDefaultValueTypes;
     /**
      * 
      * @type {string}
@@ -3825,6 +4178,12 @@ export interface ChannelSelectDefaultValueResponse {
      */
     'id': string;
 }
+/**
+ * @type ChannelTypes
+ * @export
+ */
+export type ChannelTypes = any;
+
 /**
  * 
  * @export
@@ -3839,10 +4198,10 @@ export interface CommandPermissionResponse {
     'id': string;
     /**
      * 
-     * @type {number}
+     * @type {ApplicationCommandPermissionType}
      * @memberof CommandPermissionResponse
      */
-    'type': number;
+    'type': ApplicationCommandPermissionType;
     /**
      * 
      * @type {boolean}
@@ -3884,21 +4243,21 @@ export interface CommandPermissionsResponse {
 /**
  * 
  * @export
- * @interface ComponentEmojiForMessageRequest
+ * @interface ComponentEmojiForRequest
  */
-export interface ComponentEmojiForMessageRequest {
+export interface ComponentEmojiForRequest {
     /**
      * 
      * @type {string}
-     * @memberof ComponentEmojiForMessageRequest
+     * @memberof ComponentEmojiForRequest
      */
     'name': string;
     /**
      * 
-     * @type {string}
-     * @memberof ComponentEmojiForMessageRequest
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof ComponentEmojiForRequest
      */
-    'id'?: string;
+    'id'?: GetEntitlementsSkuIdsParameterOneOfInner;
 }
 /**
  * 
@@ -3923,7 +4282,7 @@ export interface ComponentEmojiResponse {
      * @type {boolean}
      * @memberof ComponentEmojiResponse
      */
-    'animated'?: boolean | null;
+    'animated'?: boolean;
 }
 /**
  * 
@@ -3948,7 +4307,7 @@ export interface ConnectedAccountGuildResponse {
      * @type {string}
      * @memberof ConnectedAccountGuildResponse
      */
-    'icon'?: string | null;
+    'icon'?: string;
 }
 /**
  * 
@@ -3964,10 +4323,10 @@ export interface ConnectedAccountIntegrationResponse {
     'id': string;
     /**
      * 
-     * @type {string}
+     * @type {IntegrationTypes}
      * @memberof ConnectedAccountIntegrationResponse
      */
-    'type': string | null;
+    'type': IntegrationTypes;
     /**
      * 
      * @type {AccountResponse}
@@ -3982,6 +4341,12 @@ export interface ConnectedAccountIntegrationResponse {
     'guild': ConnectedAccountGuildResponse;
 }
 /**
+ * @type ConnectedAccountProviders
+ * @export
+ */
+export type ConnectedAccountProviders = any;
+
+/**
  * 
  * @export
  * @interface ConnectedAccountResponse
@@ -3995,10 +4360,10 @@ export interface ConnectedAccountResponse {
     'id': string;
     /**
      * 
-     * @type {string}
+     * @type {ConnectedAccountProviders}
      * @memberof ConnectedAccountResponse
      */
-    'type': string | null;
+    'type': ConnectedAccountProviders;
     /**
      * 
      * @type {boolean}
@@ -4025,29 +4390,35 @@ export interface ConnectedAccountResponse {
     'verified': boolean;
     /**
      * 
-     * @type {number}
+     * @type {ConnectedAccountVisibility}
      * @memberof ConnectedAccountResponse
      */
-    'visibility': number | null;
+    'visibility': ConnectedAccountVisibility;
     /**
      * 
      * @type {string}
      * @memberof ConnectedAccountResponse
      */
-    'name'?: string | null;
+    'name'?: string;
     /**
      * 
      * @type {Array<ConnectedAccountIntegrationResponse>}
      * @memberof ConnectedAccountResponse
      */
-    'integrations'?: Array<ConnectedAccountIntegrationResponse> | null;
+    'integrations'?: Array<ConnectedAccountIntegrationResponse>;
     /**
      * 
      * @type {boolean}
      * @memberof ConnectedAccountResponse
      */
-    'revoked'?: boolean | null;
+    'revoked'?: boolean;
 }
+/**
+ * @type ConnectedAccountVisibility
+ * @export
+ */
+export type ConnectedAccountVisibility = any;
+
 /**
  * 
  * @export
@@ -4056,10 +4427,10 @@ export interface ConnectedAccountResponse {
 export interface ContainerComponentForMessageRequest {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof ContainerComponentForMessageRequest
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {Array<ContainerComponentForMessageRequestComponentsInner>}
@@ -4071,13 +4442,19 @@ export interface ContainerComponentForMessageRequest {
      * @type {number}
      * @memberof ContainerComponentForMessageRequest
      */
-    'accent_color'?: number | null;
+    'id'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ContainerComponentForMessageRequest
+     */
+    'accent_color'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof ContainerComponentForMessageRequest
      */
-    'spoiler'?: boolean | null;
+    'spoiler'?: boolean;
 }
 /**
  * @type ContainerComponentForMessageRequestComponentsInner
@@ -4093,10 +4470,10 @@ export type ContainerComponentForMessageRequestComponentsInner = ActionRowCompon
 export interface ContainerComponentResponse {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof ContainerComponentResponse
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {number}
@@ -4120,7 +4497,7 @@ export interface ContainerComponentResponse {
      * @type {number}
      * @memberof ContainerComponentResponse
      */
-    'accent_color'?: number | null;
+    'accent_color'?: number;
 }
 /**
  * @type ContainerComponentResponseComponentsInner
@@ -4160,6 +4537,12 @@ export type CreateAutoModerationRule200Response = DefaultKeywordRuleResponse | K
 export type CreateAutoModerationRuleRequest = DefaultKeywordListUpsertRequest | KeywordUpsertRequest | MLSpamUpsertRequest | MentionSpamUpsertRequest;
 
 /**
+ * @type CreateChannelInvite200Response
+ * @export
+ */
+export type CreateChannelInvite200Response = FriendInviteResponse | GroupDMInviteResponse | GuildInviteResponse;
+
+/**
  * 
  * @export
  * @interface CreateChannelInviteRequest
@@ -4191,22 +4574,22 @@ export interface CreateChannelInviteRequest {
     'unique'?: boolean;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof CreateChannelInviteRequest
      */
-    'target_user_id'?: string;
+    'target_user_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof CreateChannelInviteRequest
      */
-    'target_application_id'?: string;
+    'target_application_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {number}
+     * @type {CreateGuildInviteRequestTargetType}
      * @memberof CreateChannelInviteRequest
      */
-    'target_type'?: number | null;
+    'target_type'?: CreateGuildInviteRequestTargetType;
 }
 /**
  * 
@@ -4253,23 +4636,29 @@ export interface CreateForumThreadRequest {
     'message': BaseCreateMessageCreateRequest;
     /**
      * 
-     * @type {number}
+     * @type {CreateForumThreadRequestAutoArchiveDuration}
      * @memberof CreateForumThreadRequest
      */
-    'auto_archive_duration'?: number;
+    'auto_archive_duration'?: CreateForumThreadRequestAutoArchiveDuration;
     /**
      * 
      * @type {number}
      * @memberof CreateForumThreadRequest
      */
-    'rate_limit_per_user'?: number | null;
+    'rate_limit_per_user'?: number;
     /**
      * 
      * @type {Array<string>}
      * @memberof CreateForumThreadRequest
      */
-    'applied_tags'?: Array<string> | null;
+    'applied_tags'?: Array<string>;
 }
+/**
+ * @type CreateForumThreadRequestAutoArchiveDuration
+ * @export
+ */
+export type CreateForumThreadRequestAutoArchiveDuration = Null | ThreadAutoArchiveDuration;
+
 /**
  * 
  * @export
@@ -4281,7 +4670,7 @@ export interface CreateGroupDMInviteRequest {
      * @type {number}
      * @memberof CreateGroupDMInviteRequest
      */
-    'max_age'?: number | null;
+    'max_age'?: number;
 }
 /**
  * 
@@ -4297,113 +4686,155 @@ export interface CreateGuildChannelRequest {
     'name': string;
     /**
      * 
-     * @type {number}
+     * @type {CreateGuildChannelRequestType}
      * @memberof CreateGuildChannelRequest
      */
-    'type'?: number | null;
+    'type'?: CreateGuildChannelRequestType;
     /**
      * 
      * @type {number}
      * @memberof CreateGuildChannelRequest
      */
-    'position'?: number | null;
+    'position'?: number;
     /**
      * 
      * @type {string}
      * @memberof CreateGuildChannelRequest
      */
-    'topic'?: string | null;
+    'topic'?: string;
     /**
      * 
      * @type {number}
      * @memberof CreateGuildChannelRequest
      */
-    'bitrate'?: number | null;
+    'bitrate'?: number;
     /**
      * 
      * @type {number}
      * @memberof CreateGuildChannelRequest
      */
-    'user_limit'?: number | null;
+    'user_limit'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof CreateGuildChannelRequest
      */
-    'nsfw'?: boolean | null;
+    'nsfw'?: boolean;
     /**
      * 
      * @type {number}
      * @memberof CreateGuildChannelRequest
      */
-    'rate_limit_per_user'?: number | null;
+    'rate_limit_per_user'?: number;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof CreateGuildChannelRequest
      */
-    'parent_id'?: string;
+    'parent_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {Array<ChannelPermissionOverwriteRequest>}
      * @memberof CreateGuildChannelRequest
      */
-    'permission_overwrites'?: Array<ChannelPermissionOverwriteRequest> | null;
+    'permission_overwrites'?: Array<ChannelPermissionOverwriteRequest>;
     /**
      * 
      * @type {string}
      * @memberof CreateGuildChannelRequest
      */
-    'rtc_region'?: string | null;
+    'rtc_region'?: string;
+    /**
+     * 
+     * @type {CreateGuildChannelRequestVideoQualityMode}
+     * @memberof CreateGuildChannelRequest
+     */
+    'video_quality_mode'?: CreateGuildChannelRequestVideoQualityMode;
+    /**
+     * 
+     * @type {CreateForumThreadRequestAutoArchiveDuration}
+     * @memberof CreateGuildChannelRequest
+     */
+    'default_auto_archive_duration'?: CreateForumThreadRequestAutoArchiveDuration;
+    /**
+     * 
+     * @type {CreateGuildChannelRequestDefaultReactionEmoji}
+     * @memberof CreateGuildChannelRequest
+     */
+    'default_reaction_emoji'?: CreateGuildChannelRequestDefaultReactionEmoji;
     /**
      * 
      * @type {number}
      * @memberof CreateGuildChannelRequest
      */
-    'video_quality_mode'?: number;
+    'default_thread_rate_limit_per_user'?: number;
     /**
      * 
-     * @type {number}
+     * @type {CreateGuildChannelRequestDefaultSortOrder}
      * @memberof CreateGuildChannelRequest
      */
-    'default_auto_archive_duration'?: number;
+    'default_sort_order'?: CreateGuildChannelRequestDefaultSortOrder;
     /**
      * 
-     * @type {UpdateDefaultReactionEmojiRequest}
+     * @type {CreateGuildChannelRequestDefaultForumLayout}
      * @memberof CreateGuildChannelRequest
      */
-    'default_reaction_emoji'?: UpdateDefaultReactionEmojiRequest | null;
+    'default_forum_layout'?: CreateGuildChannelRequestDefaultForumLayout;
     /**
      * 
-     * @type {number}
+     * @type {CreateGuildChannelRequestDefaultTagSetting}
      * @memberof CreateGuildChannelRequest
      */
-    'default_thread_rate_limit_per_user'?: number | null;
+    'default_tag_setting'?: CreateGuildChannelRequestDefaultTagSetting;
     /**
      * 
-     * @type {number}
+     * @type {Array<CreateGuildChannelRequestAvailableTagsInner>}
      * @memberof CreateGuildChannelRequest
      */
-    'default_sort_order'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildChannelRequest
-     */
-    'default_forum_layout'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildChannelRequest
-     */
-    'default_tag_setting'?: string;
-    /**
-     * 
-     * @type {Array<CreateOrUpdateThreadTagRequest | null>}
-     * @memberof CreateGuildChannelRequest
-     */
-    'available_tags'?: Array<CreateOrUpdateThreadTagRequest | null> | null;
+    'available_tags'?: Array<CreateGuildChannelRequestAvailableTagsInner>;
 }
+/**
+ * @type CreateGuildChannelRequestAvailableTagsInner
+ * @export
+ */
+export type CreateGuildChannelRequestAvailableTagsInner = CreateOrUpdateThreadTagRequest | Null;
+
+/**
+ * @type CreateGuildChannelRequestDefaultForumLayout
+ * @export
+ */
+export type CreateGuildChannelRequestDefaultForumLayout = ForumLayout | Null;
+
+/**
+ * @type CreateGuildChannelRequestDefaultReactionEmoji
+ * @export
+ */
+export type CreateGuildChannelRequestDefaultReactionEmoji = Null | UpdateDefaultReactionEmojiRequest;
+
+/**
+ * @type CreateGuildChannelRequestDefaultSortOrder
+ * @export
+ */
+export type CreateGuildChannelRequestDefaultSortOrder = Null | ThreadSortOrder;
+
+/**
+ * @type CreateGuildChannelRequestDefaultTagSetting
+ * @export
+ */
+export type CreateGuildChannelRequestDefaultTagSetting = Null | ThreadSearchTagSetting;
+
+/**
+ * @type CreateGuildChannelRequestType
+ * @export
+ */
+export type CreateGuildChannelRequestType = ChannelTypes | Null;
+
+/**
+ * @type CreateGuildChannelRequestVideoQualityMode
+ * @export
+ */
+export type CreateGuildChannelRequestVideoQualityMode = Null | VideoQualityModes;
+
 /**
  * 
  * @export
@@ -4424,29 +4855,10 @@ export interface CreateGuildEmojiRequest {
     'image': string;
     /**
      * 
-     * @type {Set<string | null>}
+     * @type {Set<GetEntitlementsSkuIdsParameterOneOfInner>}
      * @memberof CreateGuildEmojiRequest
      */
-    'roles'?: Set<string | null> | null;
-}
-/**
- * 
- * @export
- * @interface CreateGuildFromTemplateRequest
- */
-export interface CreateGuildFromTemplateRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildFromTemplateRequest
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildFromTemplateRequest
-     */
-    'icon'?: string | null;
+    'roles'?: Set<GetEntitlementsSkuIdsParameterOneOfInner>;
 }
 /**
  * 
@@ -4459,269 +4871,50 @@ export interface CreateGuildInviteRequest {
      * @type {number}
      * @memberof CreateGuildInviteRequest
      */
-    'max_age'?: number | null;
+    'max_age'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof CreateGuildInviteRequest
      */
-    'temporary'?: boolean | null;
+    'temporary'?: boolean;
     /**
      * 
      * @type {number}
      * @memberof CreateGuildInviteRequest
      */
-    'max_uses'?: number | null;
+    'max_uses'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof CreateGuildInviteRequest
      */
-    'unique'?: boolean | null;
+    'unique'?: boolean;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof CreateGuildInviteRequest
      */
-    'target_user_id'?: string;
+    'target_user_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof CreateGuildInviteRequest
      */
-    'target_application_id'?: string;
+    'target_application_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {number}
+     * @type {CreateGuildInviteRequestTargetType}
      * @memberof CreateGuildInviteRequest
      */
-    'target_type'?: number | null;
+    'target_type'?: CreateGuildInviteRequestTargetType;
 }
 /**
- * 
+ * @type CreateGuildInviteRequestTargetType
  * @export
- * @interface CreateGuildRequestChannelItem
  */
-export interface CreateGuildRequestChannelItem {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'name': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'type'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'position'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'topic'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'bitrate'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'user_limit'?: number | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'nsfw'?: boolean | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'rate_limit_per_user'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'parent_id'?: string;
-    /**
-     * 
-     * @type {Array<ChannelPermissionOverwriteRequest>}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'permission_overwrites'?: Array<ChannelPermissionOverwriteRequest> | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'rtc_region'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'video_quality_mode'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'default_auto_archive_duration'?: number;
-    /**
-     * 
-     * @type {UpdateDefaultReactionEmojiRequest}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'default_reaction_emoji'?: UpdateDefaultReactionEmojiRequest | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'default_thread_rate_limit_per_user'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'default_sort_order'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'default_forum_layout'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'default_tag_setting'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'id'?: string;
-    /**
-     * 
-     * @type {Array<CreateOrUpdateThreadTagRequest>}
-     * @memberof CreateGuildRequestChannelItem
-     */
-    'available_tags'?: Array<CreateOrUpdateThreadTagRequest> | null;
-}
-/**
- * 
- * @export
- * @interface CreateGuildRequestRoleItem
- */
-export interface CreateGuildRequestRoleItem {
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestRoleItem
-     */
-    'id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRequestRoleItem
-     */
-    'name'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestRoleItem
-     */
-    'permissions'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRequestRoleItem
-     */
-    'color'?: number | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateGuildRequestRoleItem
-     */
-    'hoist'?: boolean | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateGuildRequestRoleItem
-     */
-    'mentionable'?: boolean | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRequestRoleItem
-     */
-    'unicode_emoji'?: string | null;
-}
-/**
- * 
- * @export
- * @interface CreateGuildRoleRequest
- */
-export interface CreateGuildRoleRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRoleRequest
-     */
-    'name'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRoleRequest
-     */
-    'permissions'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGuildRoleRequest
-     */
-    'color'?: number | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateGuildRoleRequest
-     */
-    'hoist'?: boolean | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateGuildRoleRequest
-     */
-    'mentionable'?: boolean | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRoleRequest
-     */
-    'icon'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGuildRoleRequest
-     */
-    'unicode_emoji'?: string | null;
-}
+export type CreateGuildInviteRequestTargetType = InviteTargetTypes | Null;
+
 /**
  * @type CreateGuildScheduledEventRequest
  * @export
@@ -4745,7 +4938,7 @@ export interface CreateGuildTemplateRequest {
      * @type {string}
      * @memberof CreateGuildTemplateRequest
      */
-    'description'?: string | null;
+    'description'?: string;
 }
 /**
  * 
@@ -4755,16 +4948,16 @@ export interface CreateGuildTemplateRequest {
 export interface CreateInteractionResponseRequest {
     /**
      * 
-     * @type {number}
+     * @type {InteractionCallbackTypes}
      * @memberof CreateInteractionResponseRequest
      */
-    'type': number | null;
+    'type': InteractionCallbackTypes;
     /**
      * 
-     * @type {IncomingWebhookUpdateForInteractionCallbackRequestPartial}
+     * @type {UpdateMessageInteractionCallbackRequestData}
      * @memberof CreateInteractionResponseRequest
      */
-    'data': IncomingWebhookUpdateForInteractionCallbackRequestPartial;
+    'data': UpdateMessageInteractionCallbackRequestData;
 }
 /**
  * 
@@ -4777,19 +4970,31 @@ export interface CreateLobbyRequest {
      * @type {number}
      * @memberof CreateLobbyRequest
      */
-    'idle_timeout_seconds'?: number | null;
+    'idle_timeout_seconds'?: number;
     /**
      * 
      * @type {Array<LobbyMemberRequest>}
      * @memberof CreateLobbyRequest
      */
-    'members'?: Array<LobbyMemberRequest> | null;
+    'members'?: Array<LobbyMemberRequest>;
     /**
      * 
      * @type {{ [key: string]: string; }}
      * @memberof CreateLobbyRequest
      */
     'metadata'?: { [key: string]: string; };
+    /**
+     * 
+     * @type {CreateOrJoinLobbyRequestFlags}
+     * @memberof CreateLobbyRequest
+     */
+    'flags'?: CreateOrJoinLobbyRequestFlags;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateLobbyRequest
+     */
+    'override_event_webhooks_url'?: string;
 }
 /**
  * 
@@ -4799,17 +5004,23 @@ export interface CreateLobbyRequest {
 export interface CreateMessageInteractionCallbackRequest {
     /**
      * 
-     * @type {number}
+     * @type {InteractionCallbackTypes}
      * @memberof CreateMessageInteractionCallbackRequest
      */
-    'type': number | null;
+    'type': InteractionCallbackTypes;
     /**
      * 
-     * @type {IncomingWebhookInteractionRequest}
+     * @type {CreateMessageInteractionCallbackRequestData}
      * @memberof CreateMessageInteractionCallbackRequest
      */
-    'data'?: IncomingWebhookInteractionRequest | null;
+    'data'?: CreateMessageInteractionCallbackRequestData;
 }
+/**
+ * @type CreateMessageInteractionCallbackRequestData
+ * @export
+ */
+export type CreateMessageInteractionCallbackRequestData = IncomingWebhookInteractionRequest | Null;
+
 /**
  * 
  * @export
@@ -4818,10 +5029,10 @@ export interface CreateMessageInteractionCallbackRequest {
 export interface CreateMessageInteractionCallbackResponse {
     /**
      * 
-     * @type {number}
+     * @type {InteractionCallbackTypes}
      * @memberof CreateMessageInteractionCallbackResponse
      */
-    'type': number | null;
+    'type': InteractionCallbackTypes;
     /**
      * 
      * @type {MessageResponse}
@@ -4846,7 +5057,7 @@ export interface CreateOrJoinLobbyRequest {
      * @type {number}
      * @memberof CreateOrJoinLobbyRequest
      */
-    'idle_timeout_seconds'?: number | null;
+    'idle_timeout_seconds'?: number;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -4859,7 +5070,19 @@ export interface CreateOrJoinLobbyRequest {
      * @memberof CreateOrJoinLobbyRequest
      */
     'member_metadata'?: { [key: string]: string; };
+    /**
+     * 
+     * @type {CreateOrJoinLobbyRequestFlags}
+     * @memberof CreateOrJoinLobbyRequest
+     */
+    'flags'?: CreateOrJoinLobbyRequestFlags;
 }
+/**
+ * @type CreateOrJoinLobbyRequestFlags
+ * @export
+ */
+export type CreateOrJoinLobbyRequestFlags = Null | number;
+
 /**
  * 
  * @export
@@ -4874,22 +5097,22 @@ export interface CreateOrUpdateThreadTagRequest {
     'name': string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof CreateOrUpdateThreadTagRequest
      */
-    'emoji_id'?: string;
+    'emoji_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof CreateOrUpdateThreadTagRequest
      */
-    'emoji_name'?: string | null;
+    'emoji_name'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof CreateOrUpdateThreadTagRequest
      */
-    'moderated'?: boolean | null;
+    'moderated'?: boolean;
 }
 /**
  * 
@@ -4899,23 +5122,84 @@ export interface CreateOrUpdateThreadTagRequest {
 export interface CreatePrivateChannelRequest {
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof CreatePrivateChannelRequest
      */
-    'recipient_id'?: string;
+    'recipient_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {Set<string>}
      * @memberof CreatePrivateChannelRequest
      */
-    'access_tokens'?: Set<string> | null;
+    'access_tokens'?: Set<string>;
     /**
      * 
-     * @type {{ [key: string]: string | null; }}
+     * @type {{ [key: string]: string; }}
      * @memberof CreatePrivateChannelRequest
      */
-    'nicks'?: { [key: string]: string | null; };
+    'nicks'?: { [key: string]: string; };
 }
+/**
+ * 
+ * @export
+ * @interface CreateRoleRequest
+ */
+export interface CreateRoleRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateRoleRequest
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateRoleRequest
+     */
+    'permissions'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateRoleRequest
+     */
+    'color'?: number;
+    /**
+     * 
+     * @type {CreateRoleRequestColors}
+     * @memberof CreateRoleRequest
+     */
+    'colors'?: CreateRoleRequestColors;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateRoleRequest
+     */
+    'hoist'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateRoleRequest
+     */
+    'mentionable'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateRoleRequest
+     */
+    'icon'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateRoleRequest
+     */
+    'unicode_emoji'?: string;
+}
+/**
+ * @type CreateRoleRequestColors
+ * @export
+ */
+export type CreateRoleRequestColors = Null | RoleColors;
+
 /**
  * 
  * @export
@@ -4936,23 +5220,29 @@ export interface CreateStageInstanceRequest {
     'channel_id': string;
     /**
      * 
-     * @type {number}
+     * @type {CreateStageInstanceRequestPrivacyLevel}
      * @memberof CreateStageInstanceRequest
      */
-    'privacy_level'?: number;
+    'privacy_level'?: CreateStageInstanceRequestPrivacyLevel;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof CreateStageInstanceRequest
      */
-    'guild_scheduled_event_id'?: string;
+    'guild_scheduled_event_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {boolean}
      * @memberof CreateStageInstanceRequest
      */
-    'send_start_notification'?: boolean | null;
+    'send_start_notification'?: boolean;
 }
+/**
+ * @type CreateStageInstanceRequestPrivacyLevel
+ * @export
+ */
+export type CreateStageInstanceRequestPrivacyLevel = Null | StageInstancesPrivacyLevels;
+
 /**
  * 
  * @export
@@ -4967,16 +5257,16 @@ export interface CreateTextThreadWithMessageRequest {
     'name': string;
     /**
      * 
-     * @type {number}
+     * @type {CreateForumThreadRequestAutoArchiveDuration}
      * @memberof CreateTextThreadWithMessageRequest
      */
-    'auto_archive_duration'?: number;
+    'auto_archive_duration'?: CreateForumThreadRequestAutoArchiveDuration;
     /**
      * 
      * @type {number}
      * @memberof CreateTextThreadWithMessageRequest
      */
-    'rate_limit_per_user'?: number | null;
+    'rate_limit_per_user'?: number;
 }
 /**
  * 
@@ -4992,29 +5282,35 @@ export interface CreateTextThreadWithoutMessageRequest {
     'name': string;
     /**
      * 
-     * @type {number}
+     * @type {CreateForumThreadRequestAutoArchiveDuration}
      * @memberof CreateTextThreadWithoutMessageRequest
      */
-    'auto_archive_duration'?: number;
+    'auto_archive_duration'?: CreateForumThreadRequestAutoArchiveDuration;
     /**
      * 
      * @type {number}
      * @memberof CreateTextThreadWithoutMessageRequest
      */
-    'rate_limit_per_user'?: number | null;
+    'rate_limit_per_user'?: number;
     /**
      * 
-     * @type {number}
+     * @type {CreateTextThreadWithoutMessageRequestType}
      * @memberof CreateTextThreadWithoutMessageRequest
      */
-    'type'?: number | null;
+    'type'?: CreateTextThreadWithoutMessageRequestType;
     /**
      * 
      * @type {boolean}
      * @memberof CreateTextThreadWithoutMessageRequest
      */
-    'invitable'?: boolean | null;
+    'invitable'?: boolean;
 }
+/**
+ * @type CreateTextThreadWithoutMessageRequestType
+ * @export
+ */
+export type CreateTextThreadWithoutMessageRequestType = ChannelTypes | Null;
+
 /**
  * 
  * @export
@@ -5035,10 +5331,10 @@ export interface CreateThreadRequest {
     'message': BaseCreateMessageCreateRequest;
     /**
      * 
-     * @type {number}
+     * @type {CreateForumThreadRequestAutoArchiveDuration}
      * @memberof CreateThreadRequest
      */
-    'auto_archive_duration'?: number;
+    'auto_archive_duration'?: CreateForumThreadRequestAutoArchiveDuration;
     /**
      * 
      * @type {number}
@@ -5053,10 +5349,10 @@ export interface CreateThreadRequest {
     'applied_tags'?: Array<string>;
     /**
      * 
-     * @type {number}
+     * @type {CreateTextThreadWithoutMessageRequestType}
      * @memberof CreateThreadRequest
      */
-    'type'?: number;
+    'type'?: CreateTextThreadWithoutMessageRequestType;
     /**
      * 
      * @type {boolean}
@@ -5081,7 +5377,7 @@ export interface CreateWebhookRequest {
      * @type {string}
      * @memberof CreateWebhookRequest
      */
-    'avatar'?: string | null;
+    'avatar'?: string;
 }
 /**
  * 
@@ -5097,10 +5393,10 @@ export interface CreatedThreadResponse {
     'id': string;
     /**
      * 
-     * @type {number}
+     * @type {ChannelTypes}
      * @memberof CreatedThreadResponse
      */
-    'type': number;
+    'type': ChannelTypes;
     /**
      * 
      * @type {number}
@@ -5127,6 +5423,12 @@ export interface CreatedThreadResponse {
     'owner_id': string;
     /**
      * 
+     * @type {ThreadMetadataResponse}
+     * @memberof CreatedThreadResponse
+     */
+    'thread_metadata': ThreadMetadataResponse;
+    /**
+     * 
      * @type {number}
      * @memberof CreatedThreadResponse
      */
@@ -5145,77 +5447,139 @@ export interface CreatedThreadResponse {
     'total_message_sent': number;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof CreatedThreadResponse
      */
-    'last_message_id'?: string;
+    'last_message_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof CreatedThreadResponse
      */
-    'last_pin_timestamp'?: string | null;
+    'last_pin_timestamp'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof CreatedThreadResponse
      */
-    'parent_id'?: string;
+    'parent_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {number}
      * @memberof CreatedThreadResponse
      */
-    'rate_limit_per_user'?: number | null;
+    'rate_limit_per_user'?: number;
     /**
      * 
      * @type {number}
      * @memberof CreatedThreadResponse
      */
-    'bitrate'?: number | null;
+    'bitrate'?: number;
     /**
      * 
      * @type {number}
      * @memberof CreatedThreadResponse
      */
-    'user_limit'?: number | null;
+    'user_limit'?: number;
     /**
      * 
      * @type {string}
      * @memberof CreatedThreadResponse
      */
-    'rtc_region'?: string | null;
+    'rtc_region'?: string;
     /**
      * 
-     * @type {number}
+     * @type {VideoQualityModes}
      * @memberof CreatedThreadResponse
      */
-    'video_quality_mode'?: number;
+    'video_quality_mode'?: VideoQualityModes;
     /**
      * 
      * @type {string}
      * @memberof CreatedThreadResponse
      */
-    'permissions'?: string | null;
-    /**
-     * 
-     * @type {ThreadMetadataResponse}
-     * @memberof CreatedThreadResponse
-     */
-    'thread_metadata'?: ThreadMetadataResponse | null;
+    'permissions'?: string;
     /**
      * 
      * @type {Array<string>}
      * @memberof CreatedThreadResponse
      */
-    'applied_tags'?: Array<string> | null;
+    'applied_tags'?: Array<string>;
     /**
      * 
      * @type {ThreadMemberResponse}
      * @memberof CreatedThreadResponse
      */
-    'member'?: ThreadMemberResponse | null;
+    'member'?: ThreadMemberResponse;
 }
+/**
+ * 
+ * @export
+ * @interface CustomClientThemeResponse
+ */
+export interface CustomClientThemeResponse {
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof CustomClientThemeResponse
+     */
+    'colors': Array<string>;
+    /**
+     * 
+     * @type {number}
+     * @memberof CustomClientThemeResponse
+     */
+    'gradient_angle': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CustomClientThemeResponse
+     */
+    'base_mix': number;
+    /**
+     * 
+     * @type {MessageShareCustomUserThemeBaseTheme}
+     * @memberof CustomClientThemeResponse
+     */
+    'base_theme': MessageShareCustomUserThemeBaseTheme;
+}
+/**
+ * 
+ * @export
+ * @interface CustomClientThemeShareRequest
+ */
+export interface CustomClientThemeShareRequest {
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof CustomClientThemeShareRequest
+     */
+    'colors': Array<string>;
+    /**
+     * 
+     * @type {number}
+     * @memberof CustomClientThemeShareRequest
+     */
+    'gradient_angle': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CustomClientThemeShareRequest
+     */
+    'base_mix': number;
+    /**
+     * 
+     * @type {CustomClientThemeShareRequestBaseTheme}
+     * @memberof CustomClientThemeShareRequest
+     */
+    'base_theme'?: CustomClientThemeShareRequestBaseTheme;
+}
+/**
+ * @type CustomClientThemeShareRequestBaseTheme
+ * @export
+ */
+export type CustomClientThemeShareRequestBaseTheme = MessageShareCustomUserThemeBaseTheme | Null;
+
 /**
  * 
  * @export
@@ -5227,13 +5591,13 @@ export interface DefaultKeywordListTriggerMetadata {
      * @type {Array<string>}
      * @memberof DefaultKeywordListTriggerMetadata
      */
-    'allow_list'?: Array<string> | null;
+    'allow_list'?: Array<string>;
     /**
      * 
-     * @type {Set<number>}
+     * @type {Set<AutomodKeywordPresetType>}
      * @memberof DefaultKeywordListTriggerMetadata
      */
-    'presets'?: Set<number> | null;
+    'presets'?: Set<AutomodKeywordPresetType>;
 }
 /**
  * 
@@ -5249,10 +5613,10 @@ export interface DefaultKeywordListTriggerMetadataResponse {
     'allow_list': Array<string>;
     /**
      * 
-     * @type {Set<number>}
+     * @type {Set<AutomodKeywordPresetType>}
      * @memberof DefaultKeywordListTriggerMetadataResponse
      */
-    'presets': Set<number>;
+    'presets': Set<AutomodKeywordPresetType>;
 }
 /**
  * 
@@ -5268,16 +5632,16 @@ export interface DefaultKeywordListUpsertRequest {
     'name': string;
     /**
      * 
-     * @type {number}
+     * @type {AutomodEventType}
      * @memberof DefaultKeywordListUpsertRequest
      */
-    'event_type': number;
+    'event_type': AutomodEventType;
     /**
      * 
-     * @type {number}
+     * @type {AutomodTriggerType}
      * @memberof DefaultKeywordListUpsertRequest
      */
-    'trigger_type': number;
+    'trigger_type': AutomodTriggerType;
     /**
      * 
      * @type {DefaultKeywordListTriggerMetadata}
@@ -5289,25 +5653,25 @@ export interface DefaultKeywordListUpsertRequest {
      * @type {Array<DefaultKeywordListUpsertRequestActionsInner>}
      * @memberof DefaultKeywordListUpsertRequest
      */
-    'actions'?: Array<DefaultKeywordListUpsertRequestActionsInner> | null;
+    'actions'?: Array<DefaultKeywordListUpsertRequestActionsInner>;
     /**
      * 
      * @type {boolean}
      * @memberof DefaultKeywordListUpsertRequest
      */
-    'enabled'?: boolean | null;
+    'enabled'?: boolean;
     /**
      * 
      * @type {Set<string>}
      * @memberof DefaultKeywordListUpsertRequest
      */
-    'exempt_roles'?: Set<string> | null;
+    'exempt_roles'?: Set<string>;
     /**
      * 
      * @type {Set<string>}
      * @memberof DefaultKeywordListUpsertRequest
      */
-    'exempt_channels'?: Set<string> | null;
+    'exempt_channels'?: Set<string>;
 }
 /**
  * @type DefaultKeywordListUpsertRequestActionsInner
@@ -5329,40 +5693,40 @@ export interface DefaultKeywordListUpsertRequestPartial {
     'name'?: string;
     /**
      * 
-     * @type {number}
+     * @type {AutomodEventType}
      * @memberof DefaultKeywordListUpsertRequestPartial
      */
-    'event_type'?: number;
+    'event_type'?: AutomodEventType;
     /**
      * 
      * @type {Array<DefaultKeywordListUpsertRequestActionsInner>}
      * @memberof DefaultKeywordListUpsertRequestPartial
      */
-    'actions'?: Array<DefaultKeywordListUpsertRequestActionsInner> | null;
+    'actions'?: Array<DefaultKeywordListUpsertRequestActionsInner>;
     /**
      * 
      * @type {boolean}
      * @memberof DefaultKeywordListUpsertRequestPartial
      */
-    'enabled'?: boolean | null;
+    'enabled'?: boolean;
     /**
      * 
      * @type {Set<string>}
      * @memberof DefaultKeywordListUpsertRequestPartial
      */
-    'exempt_roles'?: Set<string> | null;
+    'exempt_roles'?: Set<string>;
     /**
      * 
      * @type {Set<string>}
      * @memberof DefaultKeywordListUpsertRequestPartial
      */
-    'exempt_channels'?: Set<string> | null;
+    'exempt_channels'?: Set<string>;
     /**
      * 
-     * @type {number}
+     * @type {AutomodTriggerType}
      * @memberof DefaultKeywordListUpsertRequestPartial
      */
-    'trigger_type'?: number;
+    'trigger_type'?: AutomodTriggerType;
     /**
      * 
      * @type {DefaultKeywordListTriggerMetadata}
@@ -5402,10 +5766,10 @@ export interface DefaultKeywordRuleResponse {
     'name': string;
     /**
      * 
-     * @type {number}
+     * @type {AutomodEventType}
      * @memberof DefaultKeywordRuleResponse
      */
-    'event_type': number;
+    'event_type': AutomodEventType;
     /**
      * 
      * @type {Array<DefaultKeywordRuleResponseActionsInner>}
@@ -5414,34 +5778,34 @@ export interface DefaultKeywordRuleResponse {
     'actions': Array<DefaultKeywordRuleResponseActionsInner>;
     /**
      * 
-     * @type {number}
+     * @type {AutomodTriggerType}
      * @memberof DefaultKeywordRuleResponse
      */
-    'trigger_type': number;
+    'trigger_type': AutomodTriggerType;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof DefaultKeywordRuleResponse
+     */
+    'enabled': boolean;
+    /**
+     * 
+     * @type {Set<string>}
+     * @memberof DefaultKeywordRuleResponse
+     */
+    'exempt_roles': Set<string>;
+    /**
+     * 
+     * @type {Set<string>}
+     * @memberof DefaultKeywordRuleResponse
+     */
+    'exempt_channels': Set<string>;
     /**
      * 
      * @type {DefaultKeywordListTriggerMetadataResponse}
      * @memberof DefaultKeywordRuleResponse
      */
     'trigger_metadata': DefaultKeywordListTriggerMetadataResponse;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof DefaultKeywordRuleResponse
-     */
-    'enabled'?: boolean | null;
-    /**
-     * 
-     * @type {Set<string>}
-     * @memberof DefaultKeywordRuleResponse
-     */
-    'exempt_roles'?: Set<string> | null;
-    /**
-     * 
-     * @type {Set<string>}
-     * @memberof DefaultKeywordRuleResponse
-     */
-    'exempt_channels'?: Set<string> | null;
 }
 /**
  * @type DefaultKeywordRuleResponseActionsInner
@@ -5457,16 +5821,16 @@ export type DefaultKeywordRuleResponseActionsInner = BlockMessageActionResponse 
 export interface DefaultReactionEmojiResponse {
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof DefaultReactionEmojiResponse
      */
-    'emoji_id'?: string;
+    'emoji_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof DefaultReactionEmojiResponse
      */
-    'emoji_name'?: string | null;
+    'emoji_name'?: string;
 }
 /**
  * 
@@ -5476,10 +5840,22 @@ export interface DefaultReactionEmojiResponse {
 export interface DiscordIntegrationResponse {
     /**
      * 
-     * @type {string}
+     * @type {IntegrationTypes}
      * @memberof DiscordIntegrationResponse
      */
-    'type': string | null;
+    'type': IntegrationTypes;
+    /**
+     * 
+     * @type {AccountResponse}
+     * @memberof DiscordIntegrationResponse
+     */
+    'account': AccountResponse;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof DiscordIntegrationResponse
+     */
+    'enabled': boolean;
     /**
      * 
      * @type {string}
@@ -5494,34 +5870,22 @@ export interface DiscordIntegrationResponse {
     'application': IntegrationApplicationResponse;
     /**
      * 
-     * @type {Set<string>}
+     * @type {Set<OAuth2Scopes>}
      * @memberof DiscordIntegrationResponse
      */
-    'scopes': Set<string>;
+    'scopes': Set<OAuth2Scopes>;
     /**
      * 
      * @type {string}
      * @memberof DiscordIntegrationResponse
      */
-    'name'?: string | null;
-    /**
-     * 
-     * @type {AccountResponse}
-     * @memberof DiscordIntegrationResponse
-     */
-    'account'?: AccountResponse | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof DiscordIntegrationResponse
-     */
-    'enabled'?: boolean | null;
+    'name'?: string;
     /**
      * 
      * @type {UserResponse}
      * @memberof DiscordIntegrationResponse
      */
-    'user'?: UserResponse | null;
+    'user'?: UserResponse;
 }
 /**
  * 
@@ -5531,10 +5895,10 @@ export interface DiscordIntegrationResponse {
 export interface EditLobbyChannelLinkRequest {
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof EditLobbyChannelLinkRequest
      */
-    'channel_id'?: string;
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
 }
 /**
  * 
@@ -5562,22 +5926,28 @@ export interface EmbeddedActivityInstance {
     'launch_id': string;
     /**
      * 
+     * @type {EmbeddedActivityInstanceLocation}
+     * @memberof EmbeddedActivityInstance
+     */
+    'location': EmbeddedActivityInstanceLocation;
+    /**
+     * 
      * @type {Array<string>}
      * @memberof EmbeddedActivityInstance
      */
     'users': Array<string>;
-    /**
-     * 
-     * @type {EmbeddedActivityInstanceLocation}
-     * @memberof EmbeddedActivityInstance
-     */
-    'location'?: EmbeddedActivityInstanceLocation | null;
 }
 /**
  * @type EmbeddedActivityInstanceLocation
  * @export
  */
 export type EmbeddedActivityInstanceLocation = GuildChannelLocation | PrivateChannelLocation;
+
+/**
+ * @type EmbeddedActivityLocationKind
+ * @export
+ */
+export type EmbeddedActivityLocationKind = any;
 
 /**
  * 
@@ -5632,7 +6002,7 @@ export interface EmojiResponse {
      * @type {UserResponse}
      * @memberof EmojiResponse
      */
-    'user'?: UserResponse | null;
+    'user'?: UserResponse;
 }
 /**
  * 
@@ -5672,47 +6042,77 @@ export interface EntitlementResponse {
     'deleted': boolean;
     /**
      * 
-     * @type {number}
+     * @type {EntitlementTypes}
      * @memberof EntitlementResponse
      */
-    'type': number | null;
+    'type': EntitlementTypes;
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof EntitlementResponse
+     */
+    'guild_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof EntitlementResponse
      */
-    'guild_id'?: string;
+    'starts_at'?: string;
     /**
      * 
      * @type {string}
      * @memberof EntitlementResponse
      */
-    'starts_at'?: string | null;
+    'ends_at'?: string;
     /**
      * 
      * @type {string}
      * @memberof EntitlementResponse
      */
-    'ends_at'?: string | null;
+    'fulfilled_at'?: string;
     /**
      * 
-     * @type {string}
+     * @type {EntitlementResponseFulfillmentStatus}
      * @memberof EntitlementResponse
      */
-    'fulfilled_at'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof EntitlementResponse
-     */
-    'fulfillment_status'?: number | null;
+    'fulfillment_status'?: EntitlementResponseFulfillmentStatus;
     /**
      * 
      * @type {boolean}
      * @memberof EntitlementResponse
      */
-    'consumed'?: boolean | null;
+    'consumed'?: boolean;
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof EntitlementResponse
+     */
+    'gifter_user_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof EntitlementResponse
+     */
+    'parent_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
 }
+/**
+ * @type EntitlementResponseFulfillmentStatus
+ * @export
+ */
+export type EntitlementResponseFulfillmentStatus = EntitlementTenantFulfillmentStatusResponse | Null;
+
+/**
+ * @type EntitlementTenantFulfillmentStatusResponse
+ * @export
+ */
+export type EntitlementTenantFulfillmentStatusResponse = any;
+
+/**
+ * @type EntitlementTypes
+ * @export
+ */
+export type EntitlementTypes = any;
+
 /**
  * 
  * @export
@@ -5790,10 +6190,10 @@ export interface ExecuteWebhookRequest {
     'embeds'?: Array<RichEmbed>;
     /**
      * 
-     * @type {MessageAllowedMentionsRequest}
+     * @type {BaseCreateMessageCreateRequestAllowedMentions}
      * @memberof ExecuteWebhookRequest
      */
-    'allowed_mentions'?: MessageAllowedMentionsRequest;
+    'allowed_mentions'?: BaseCreateMessageCreateRequestAllowedMentions;
     /**
      * 
      * @type {Array<BaseCreateMessageCreateRequestComponentsInner>}
@@ -5808,10 +6208,10 @@ export interface ExecuteWebhookRequest {
     'attachments'?: Array<MessageAttachmentRequest>;
     /**
      * 
-     * @type {PollCreateRequest}
+     * @type {BaseCreateMessageCreateRequestPoll}
      * @memberof ExecuteWebhookRequest
      */
-    'poll'?: PollCreateRequest;
+    'poll'?: BaseCreateMessageCreateRequestPoll;
     /**
      * 
      * @type {boolean}
@@ -5857,10 +6257,22 @@ export interface ExecuteWebhookRequest {
 export interface ExternalConnectionIntegrationResponse {
     /**
      * 
-     * @type {string}
+     * @type {IntegrationTypes}
      * @memberof ExternalConnectionIntegrationResponse
      */
-    'type': string | null;
+    'type': IntegrationTypes;
+    /**
+     * 
+     * @type {AccountResponse}
+     * @memberof ExternalConnectionIntegrationResponse
+     */
+    'account': AccountResponse;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ExternalConnectionIntegrationResponse
+     */
+    'enabled': boolean;
     /**
      * 
      * @type {string}
@@ -5878,67 +6290,55 @@ export interface ExternalConnectionIntegrationResponse {
      * @type {string}
      * @memberof ExternalConnectionIntegrationResponse
      */
-    'name'?: string | null;
-    /**
-     * 
-     * @type {AccountResponse}
-     * @memberof ExternalConnectionIntegrationResponse
-     */
-    'account'?: AccountResponse | null;
+    'name'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof ExternalConnectionIntegrationResponse
      */
-    'enabled'?: boolean | null;
+    'revoked'?: boolean;
     /**
      * 
-     * @type {boolean}
+     * @type {IntegrationExpireBehaviorTypes}
      * @memberof ExternalConnectionIntegrationResponse
      */
-    'revoked'?: boolean | null;
+    'expire_behavior'?: IntegrationExpireBehaviorTypes;
     /**
      * 
-     * @type {number}
+     * @type {IntegrationExpireGracePeriodTypes}
      * @memberof ExternalConnectionIntegrationResponse
      */
-    'expire_behavior'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ExternalConnectionIntegrationResponse
-     */
-    'expire_grace_period'?: number;
+    'expire_grace_period'?: IntegrationExpireGracePeriodTypes;
     /**
      * 
      * @type {number}
      * @memberof ExternalConnectionIntegrationResponse
      */
-    'subscriber_count'?: number | null;
+    'subscriber_count'?: number;
     /**
      * 
      * @type {string}
      * @memberof ExternalConnectionIntegrationResponse
      */
-    'synced_at'?: string | null;
+    'synced_at'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof ExternalConnectionIntegrationResponse
      */
-    'role_id'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ExternalConnectionIntegrationResponse
-     */
-    'syncing'?: boolean | null;
+    'role_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {boolean}
      * @memberof ExternalConnectionIntegrationResponse
      */
-    'enable_emoticons'?: boolean | null;
+    'syncing'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ExternalConnectionIntegrationResponse
+     */
+    'enable_emoticons'?: boolean;
 }
 /**
  * 
@@ -5960,16 +6360,16 @@ export interface ExternalScheduledEventCreateRequest {
     'scheduled_start_time': string;
     /**
      * 
-     * @type {any}
+     * @type {GuildScheduledEventPrivacyLevels}
      * @memberof ExternalScheduledEventCreateRequest
      */
-    'privacy_level': any;
+    'privacy_level': GuildScheduledEventPrivacyLevels;
     /**
      * 
-     * @type {number}
+     * @type {GuildScheduledEventEntityTypes}
      * @memberof ExternalScheduledEventCreateRequest
      */
-    'entity_type': number | null;
+    'entity_type': GuildScheduledEventEntityTypes;
     /**
      * 
      * @type {EntityMetadataExternal}
@@ -5981,25 +6381,25 @@ export interface ExternalScheduledEventCreateRequest {
      * @type {string}
      * @memberof ExternalScheduledEventCreateRequest
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof ExternalScheduledEventCreateRequest
      */
-    'image'?: string | null;
+    'image'?: string;
     /**
      * 
      * @type {string}
      * @memberof ExternalScheduledEventCreateRequest
      */
-    'scheduled_end_time'?: string | null;
+    'scheduled_end_time'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof ExternalScheduledEventCreateRequest
      */
-    'channel_id'?: string;
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
 }
 /**
  * 
@@ -6009,10 +6409,10 @@ export interface ExternalScheduledEventCreateRequest {
 export interface ExternalScheduledEventPatchRequestPartial {
     /**
      * 
-     * @type {number}
+     * @type {ExternalScheduledEventPatchRequestPartialStatus}
      * @memberof ExternalScheduledEventPatchRequestPartial
      */
-    'status'?: number | null;
+    'status'?: ExternalScheduledEventPatchRequestPartialStatus;
     /**
      * 
      * @type {string}
@@ -6024,13 +6424,13 @@ export interface ExternalScheduledEventPatchRequestPartial {
      * @type {string}
      * @memberof ExternalScheduledEventPatchRequestPartial
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof ExternalScheduledEventPatchRequestPartial
      */
-    'image'?: string | null;
+    'image'?: string;
     /**
      * 
      * @type {string}
@@ -6042,25 +6442,25 @@ export interface ExternalScheduledEventPatchRequestPartial {
      * @type {string}
      * @memberof ExternalScheduledEventPatchRequestPartial
      */
-    'scheduled_end_time'?: string | null;
+    'scheduled_end_time'?: string;
     /**
      * 
-     * @type {number}
+     * @type {ExternalScheduledEventPatchRequestPartialEntityType}
      * @memberof ExternalScheduledEventPatchRequestPartial
      */
-    'entity_type'?: number | null;
+    'entity_type'?: ExternalScheduledEventPatchRequestPartialEntityType;
     /**
      * 
-     * @type {any}
+     * @type {GuildScheduledEventPrivacyLevels}
      * @memberof ExternalScheduledEventPatchRequestPartial
      */
-    'privacy_level'?: any;
+    'privacy_level'?: GuildScheduledEventPrivacyLevels;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof ExternalScheduledEventPatchRequestPartial
      */
-    'channel_id'?: string;
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {EntityMetadataExternal}
@@ -6068,6 +6468,18 @@ export interface ExternalScheduledEventPatchRequestPartial {
      */
     'entity_metadata'?: EntityMetadataExternal;
 }
+/**
+ * @type ExternalScheduledEventPatchRequestPartialEntityType
+ * @export
+ */
+export type ExternalScheduledEventPatchRequestPartialEntityType = GuildScheduledEventEntityTypes | Null;
+
+/**
+ * @type ExternalScheduledEventPatchRequestPartialStatus
+ * @export
+ */
+export type ExternalScheduledEventPatchRequestPartialStatus = GuildScheduledEventStatuses | Null;
+
 /**
  * 
  * @export
@@ -6100,22 +6512,22 @@ export interface ExternalScheduledEventResponse {
     'scheduled_start_time': string;
     /**
      * 
-     * @type {number}
+     * @type {GuildScheduledEventStatuses}
      * @memberof ExternalScheduledEventResponse
      */
-    'status': number | null;
+    'status': GuildScheduledEventStatuses;
     /**
      * 
-     * @type {number}
+     * @type {GuildScheduledEventEntityTypes}
      * @memberof ExternalScheduledEventResponse
      */
-    'entity_type': number | null;
+    'entity_type': GuildScheduledEventEntityTypes;
     /**
      * 
-     * @type {any}
+     * @type {GuildScheduledEventPrivacyLevels}
      * @memberof ExternalScheduledEventResponse
      */
-    'privacy_level': any;
+    'privacy_level': GuildScheduledEventPrivacyLevels;
     /**
      * 
      * @type {EntityMetadataExternalResponse}
@@ -6127,56 +6539,62 @@ export interface ExternalScheduledEventResponse {
      * @type {string}
      * @memberof ExternalScheduledEventResponse
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof ExternalScheduledEventResponse
      */
-    'channel_id'?: string;
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof ExternalScheduledEventResponse
      */
-    'creator_id'?: string;
+    'creator_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {UserResponse}
      * @memberof ExternalScheduledEventResponse
      */
-    'creator'?: UserResponse | null;
+    'creator'?: UserResponse;
     /**
      * 
      * @type {string}
      * @memberof ExternalScheduledEventResponse
      */
-    'image'?: string | null;
+    'image'?: string;
     /**
      * 
      * @type {string}
      * @memberof ExternalScheduledEventResponse
      */
-    'scheduled_end_time'?: string | null;
+    'scheduled_end_time'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof ExternalScheduledEventResponse
      */
-    'entity_id'?: string;
+    'entity_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {number}
      * @memberof ExternalScheduledEventResponse
      */
-    'user_count'?: number | null;
+    'user_count'?: number;
     /**
      * 
-     * @type {ScheduledEventUserResponse}
+     * @type {ExternalScheduledEventResponseUserRsvp}
      * @memberof ExternalScheduledEventResponse
      */
-    'user_rsvp'?: ScheduledEventUserResponse | null;
+    'user_rsvp'?: ExternalScheduledEventResponseUserRsvp;
 }
+/**
+ * @type ExternalScheduledEventResponseUserRsvp
+ * @export
+ */
+export type ExternalScheduledEventResponseUserRsvp = Null | ScheduledEventUserResponse;
+
 /**
  * 
  * @export
@@ -6185,10 +6603,10 @@ export interface ExternalScheduledEventResponse {
 export interface FileComponentForMessageRequest {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof FileComponentForMessageRequest
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {UnfurledMediaRequestWithAttachmentReferenceRequired}
@@ -6197,10 +6615,16 @@ export interface FileComponentForMessageRequest {
     'file': UnfurledMediaRequestWithAttachmentReferenceRequired;
     /**
      * 
+     * @type {number}
+     * @memberof FileComponentForMessageRequest
+     */
+    'id'?: number;
+    /**
+     * 
      * @type {boolean}
      * @memberof FileComponentForMessageRequest
      */
-    'spoiler'?: boolean | null;
+    'spoiler'?: boolean;
 }
 /**
  * 
@@ -6210,10 +6634,10 @@ export interface FileComponentForMessageRequest {
 export interface FileComponentResponse {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof FileComponentResponse
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {number}
@@ -6237,13 +6661,56 @@ export interface FileComponentResponse {
      * @type {string}
      * @memberof FileComponentResponse
      */
-    'name'?: string | null;
+    'name'?: string;
     /**
      * 
      * @type {number}
      * @memberof FileComponentResponse
      */
-    'size'?: number | null;
+    'size'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface FileUploadComponentForModalRequest
+ */
+export interface FileUploadComponentForModalRequest {
+    /**
+     * 
+     * @type {MessageComponentTypes}
+     * @memberof FileUploadComponentForModalRequest
+     */
+    'type': MessageComponentTypes;
+    /**
+     * 
+     * @type {string}
+     * @memberof FileUploadComponentForModalRequest
+     */
+    'custom_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof FileUploadComponentForModalRequest
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof FileUploadComponentForModalRequest
+     */
+    'min_values'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof FileUploadComponentForModalRequest
+     */
+    'max_values'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof FileUploadComponentForModalRequest
+     */
+    'required'?: boolean;
 }
 /**
  * 
@@ -6253,10 +6720,10 @@ export interface FileComponentResponse {
 export interface FlagToChannelAction {
     /**
      * 
-     * @type {number}
+     * @type {AutomodActionType}
      * @memberof FlagToChannelAction
      */
-    'type': number;
+    'type': AutomodActionType;
     /**
      * 
      * @type {FlagToChannelActionMetadata}
@@ -6298,10 +6765,10 @@ export interface FlagToChannelActionMetadataResponse {
 export interface FlagToChannelActionResponse {
     /**
      * 
-     * @type {number}
+     * @type {AutomodActionType}
      * @memberof FlagToChannelActionResponse
      */
-    'type': number;
+    'type': AutomodActionType;
     /**
      * 
      * @type {FlagToChannelActionMetadataResponse}
@@ -6322,6 +6789,12 @@ export interface FollowChannelRequest {
      */
     'webhook_channel_id': string;
 }
+/**
+ * @type ForumLayout
+ * @export
+ */
+export type ForumLayout = any;
+
 /**
  * 
  * @export
@@ -6348,16 +6821,16 @@ export interface ForumTagResponse {
     'moderated': boolean;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof ForumTagResponse
      */
-    'emoji_id'?: string;
+    'emoji_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof ForumTagResponse
      */
-    'emoji_name'?: string | null;
+    'emoji_name'?: string;
 }
 /**
  * 
@@ -6367,77 +6840,83 @@ export interface ForumTagResponse {
 export interface FriendInviteResponse {
     /**
      * 
+     * @type {InviteTypes}
+     * @memberof FriendInviteResponse
+     */
+    'type': InviteTypes;
+    /**
+     * 
      * @type {string}
      * @memberof FriendInviteResponse
      */
     'code': string;
     /**
      * 
-     * @type {number}
-     * @memberof FriendInviteResponse
-     */
-    'type'?: number | null;
-    /**
-     * 
      * @type {UserResponse}
      * @memberof FriendInviteResponse
      */
-    'inviter'?: UserResponse | null;
+    'inviter'?: UserResponse;
     /**
      * 
      * @type {number}
      * @memberof FriendInviteResponse
      */
-    'max_age'?: number | null;
+    'max_age'?: number;
     /**
      * 
      * @type {string}
      * @memberof FriendInviteResponse
      */
-    'created_at'?: string | null;
+    'created_at'?: string;
     /**
      * 
      * @type {string}
      * @memberof FriendInviteResponse
      */
-    'expires_at'?: string | null;
+    'expires_at'?: string;
     /**
      * 
      * @type {number}
      * @memberof FriendInviteResponse
      */
-    'friends_count'?: number | null;
+    'friends_count'?: number;
     /**
      * 
-     * @type {InviteChannelResponse}
+     * @type {FriendInviteResponseChannel}
      * @memberof FriendInviteResponse
      */
-    'channel'?: InviteChannelResponse | null;
+    'channel'?: FriendInviteResponseChannel;
     /**
      * 
      * @type {boolean}
      * @memberof FriendInviteResponse
      */
-    'is_contact'?: boolean | null;
+    'is_contact'?: boolean;
     /**
      * 
      * @type {number}
      * @memberof FriendInviteResponse
      */
-    'uses'?: number | null;
+    'uses'?: number;
     /**
      * 
      * @type {number}
      * @memberof FriendInviteResponse
      */
-    'max_uses'?: number | null;
+    'max_uses'?: number;
     /**
      * 
      * @type {number}
      * @memberof FriendInviteResponse
      */
-    'flags'?: number | null;
+    'flags'?: number;
 }
+/**
+ * @type FriendInviteResponseChannel
+ * @export
+ */
+export type FriendInviteResponseChannel = InviteChannelResponse | Null;
+
 /**
  * 
  * @export
@@ -6514,10 +6993,22 @@ export interface GatewayResponse {
 export type GetChannel200Response = GuildChannelResponse | PrivateChannelResponse | PrivateGroupChannelResponse | ThreadResponse;
 
 /**
+ * @type GetEntitlements200ResponseInner
+ * @export
+ */
+export type GetEntitlements200ResponseInner = EntitlementResponse | Null;
+
+/**
  * @type GetEntitlementsSkuIdsParameter
  * @export
  */
-export type GetEntitlementsSkuIdsParameter = Set<string | null> | string;
+export type GetEntitlementsSkuIdsParameter = Set<GetEntitlementsSkuIdsParameterOneOfInner> | string;
+
+/**
+ * @type GetEntitlementsSkuIdsParameterOneOfInner
+ * @export
+ */
+export type GetEntitlementsSkuIdsParameterOneOfInner = Null | string;
 
 /**
  * @type GetSticker200Response
@@ -6542,7 +7033,7 @@ export interface GithubAuthor {
      * @type {string}
      * @memberof GithubAuthor
      */
-    'username'?: string | null;
+    'username'?: string;
 }
 /**
  * 
@@ -6599,45 +7090,32 @@ export interface GithubCheckRun {
      * @type {string}
      * @memberof GithubCheckRun
      */
-    'conclusion'?: string | null;
+    'conclusion'?: string;
     /**
      * 
      * @type {string}
      * @memberof GithubCheckRun
      */
-    'details_url'?: string | null;
+    'details_url'?: string;
     /**
      * 
      * @type {GithubCheckRunOutput}
      * @memberof GithubCheckRun
      */
-    'output'?: GithubCheckRunOutput | null;
+    'output'?: GithubCheckRunOutput;
     /**
      * 
      * @type {Array<GithubCheckPullRequest>}
      * @memberof GithubCheckRun
      */
-    'pull_requests'?: Array<GithubCheckPullRequest> | null;
+    'pull_requests'?: Array<GithubCheckPullRequest>;
 }
 /**
- * 
+ * @type GithubCheckRunOutput
  * @export
- * @interface GithubCheckRunOutput
  */
-export interface GithubCheckRunOutput {
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubCheckRunOutput
-     */
-    'title'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubCheckRunOutput
-     */
-    'summary'?: string | null;
-}
+export type GithubCheckRunOutput = GithubCheckRunOutput | Null;
+
 /**
  * 
  * @export
@@ -6661,19 +7139,19 @@ export interface GithubCheckSuite {
      * @type {string}
      * @memberof GithubCheckSuite
      */
-    'conclusion'?: string | null;
+    'conclusion'?: string;
     /**
      * 
      * @type {string}
      * @memberof GithubCheckSuite
      */
-    'head_branch'?: string | null;
+    'head_branch'?: string;
     /**
      * 
      * @type {Array<GithubCheckPullRequest>}
      * @memberof GithubCheckSuite
      */
-    'pull_requests'?: Array<GithubCheckPullRequest> | null;
+    'pull_requests'?: Array<GithubCheckPullRequest>;
 }
 /**
  * 
@@ -6710,7 +7188,7 @@ export interface GithubComment {
      * @type {string}
      * @memberof GithubComment
      */
-    'commit_id'?: string | null;
+    'commit_id'?: string;
 }
 /**
  * 
@@ -6778,13 +7256,13 @@ export interface GithubDiscussion {
      * @type {string}
      * @memberof GithubDiscussion
      */
-    'answer_html_url'?: string | null;
+    'answer_html_url'?: string;
     /**
      * 
      * @type {string}
      * @memberof GithubDiscussion
      */
-    'body'?: string | null;
+    'body'?: string;
 }
 /**
  * 
@@ -6827,7 +7305,7 @@ export interface GithubIssue {
      * @type {string}
      * @memberof GithubIssue
      */
-    'body'?: string | null;
+    'body'?: string;
     /**
      * 
      * @type {any}
@@ -6926,7 +7404,7 @@ export interface GithubReview {
      * @type {string}
      * @memberof GithubReview
      */
-    'body'?: string | null;
+    'body'?: string;
 }
 /**
  * 
@@ -6976,116 +7454,176 @@ export interface GithubWebhook {
      * @type {string}
      * @memberof GithubWebhook
      */
-    'action'?: string | null;
+    'action'?: string;
     /**
      * 
      * @type {string}
      * @memberof GithubWebhook
      */
-    'ref'?: string | null;
+    'ref'?: string;
     /**
      * 
      * @type {string}
      * @memberof GithubWebhook
      */
-    'ref_type'?: string | null;
+    'ref_type'?: string;
     /**
      * 
-     * @type {GithubComment}
+     * @type {GithubWebhookComment}
      * @memberof GithubWebhook
      */
-    'comment'?: GithubComment | null;
+    'comment'?: GithubWebhookComment;
     /**
      * 
-     * @type {GithubIssue}
+     * @type {GithubWebhookIssue}
      * @memberof GithubWebhook
      */
-    'issue'?: GithubIssue | null;
+    'issue'?: GithubWebhookIssue;
     /**
      * 
-     * @type {GithubIssue}
+     * @type {GithubWebhookIssue}
      * @memberof GithubWebhook
      */
-    'pull_request'?: GithubIssue | null;
+    'pull_request'?: GithubWebhookIssue;
     /**
      * 
-     * @type {GithubRepository}
+     * @type {GithubWebhookRepository}
      * @memberof GithubWebhook
      */
-    'repository'?: GithubRepository | null;
+    'repository'?: GithubWebhookRepository;
     /**
      * 
-     * @type {GithubRepository}
+     * @type {GithubWebhookRepository}
      * @memberof GithubWebhook
      */
-    'forkee'?: GithubRepository | null;
+    'forkee'?: GithubWebhookRepository;
     /**
      * 
-     * @type {GithubUser}
+     * @type {GithubWebhookMember}
      * @memberof GithubWebhook
      */
-    'member'?: GithubUser | null;
+    'member'?: GithubWebhookMember;
     /**
      * 
-     * @type {GithubRelease}
+     * @type {GithubWebhookRelease}
      * @memberof GithubWebhook
      */
-    'release'?: GithubRelease | null;
+    'release'?: GithubWebhookRelease;
     /**
      * 
-     * @type {GithubCommit}
+     * @type {GithubWebhookHeadCommit}
      * @memberof GithubWebhook
      */
-    'head_commit'?: GithubCommit | null;
+    'head_commit'?: GithubWebhookHeadCommit;
     /**
      * 
      * @type {Array<GithubCommit>}
      * @memberof GithubWebhook
      */
-    'commits'?: Array<GithubCommit> | null;
+    'commits'?: Array<GithubCommit>;
     /**
      * 
      * @type {boolean}
      * @memberof GithubWebhook
      */
-    'forced'?: boolean | null;
+    'forced'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof GithubWebhook
      */
-    'compare'?: string | null;
+    'compare'?: string;
     /**
      * 
-     * @type {GithubReview}
+     * @type {GithubWebhookReview}
      * @memberof GithubWebhook
      */
-    'review'?: GithubReview | null;
+    'review'?: GithubWebhookReview;
     /**
      * 
-     * @type {GithubCheckRun}
+     * @type {GithubWebhookCheckRun}
      * @memberof GithubWebhook
      */
-    'check_run'?: GithubCheckRun | null;
+    'check_run'?: GithubWebhookCheckRun;
     /**
      * 
-     * @type {GithubCheckSuite}
+     * @type {GithubWebhookCheckSuite}
      * @memberof GithubWebhook
      */
-    'check_suite'?: GithubCheckSuite | null;
+    'check_suite'?: GithubWebhookCheckSuite;
     /**
      * 
-     * @type {GithubDiscussion}
+     * @type {GithubWebhookDiscussion}
      * @memberof GithubWebhook
      */
-    'discussion'?: GithubDiscussion | null;
+    'discussion'?: GithubWebhookDiscussion;
     /**
      * 
-     * @type {GithubComment}
+     * @type {GithubWebhookComment}
      * @memberof GithubWebhook
      */
-    'answer'?: GithubComment | null;
+    'answer'?: GithubWebhookComment;
 }
+/**
+ * @type GithubWebhookCheckRun
+ * @export
+ */
+export type GithubWebhookCheckRun = GithubCheckRun | Null;
+
+/**
+ * @type GithubWebhookCheckSuite
+ * @export
+ */
+export type GithubWebhookCheckSuite = GithubCheckSuite | Null;
+
+/**
+ * @type GithubWebhookComment
+ * @export
+ */
+export type GithubWebhookComment = GithubComment | Null;
+
+/**
+ * @type GithubWebhookDiscussion
+ * @export
+ */
+export type GithubWebhookDiscussion = GithubDiscussion | Null;
+
+/**
+ * @type GithubWebhookHeadCommit
+ * @export
+ */
+export type GithubWebhookHeadCommit = GithubCommit | Null;
+
+/**
+ * @type GithubWebhookIssue
+ * @export
+ */
+export type GithubWebhookIssue = GithubIssue | Null;
+
+/**
+ * @type GithubWebhookMember
+ * @export
+ */
+export type GithubWebhookMember = GithubUser | Null;
+
+/**
+ * @type GithubWebhookRelease
+ * @export
+ */
+export type GithubWebhookRelease = GithubRelease | Null;
+
+/**
+ * @type GithubWebhookRepository
+ * @export
+ */
+export type GithubWebhookRepository = GithubRepository | Null;
+
+/**
+ * @type GithubWebhookReview
+ * @export
+ */
+export type GithubWebhookReview = GithubReview | Null;
+
 /**
  * 
  * @export
@@ -7094,52 +7632,52 @@ export interface GithubWebhook {
 export interface GroupDMInviteResponse {
     /**
      * 
+     * @type {InviteTypes}
+     * @memberof GroupDMInviteResponse
+     */
+    'type': InviteTypes;
+    /**
+     * 
      * @type {string}
      * @memberof GroupDMInviteResponse
      */
     'code': string;
     /**
      * 
-     * @type {number}
+     * @type {InviteChannelResponse}
      * @memberof GroupDMInviteResponse
      */
-    'type'?: number | null;
+    'channel': InviteChannelResponse;
     /**
      * 
      * @type {UserResponse}
      * @memberof GroupDMInviteResponse
      */
-    'inviter'?: UserResponse | null;
+    'inviter'?: UserResponse;
     /**
      * 
      * @type {number}
      * @memberof GroupDMInviteResponse
      */
-    'max_age'?: number | null;
+    'max_age'?: number;
     /**
      * 
      * @type {string}
      * @memberof GroupDMInviteResponse
      */
-    'created_at'?: string | null;
+    'created_at'?: string;
     /**
      * 
      * @type {string}
      * @memberof GroupDMInviteResponse
      */
-    'expires_at'?: string | null;
-    /**
-     * 
-     * @type {InviteChannelResponse}
-     * @memberof GroupDMInviteResponse
-     */
-    'channel'?: InviteChannelResponse | null;
+    'expires_at'?: string;
     /**
      * 
      * @type {number}
      * @memberof GroupDMInviteResponse
      */
-    'approximate_member_count'?: number | null;
+    'approximate_member_count'?: number;
 }
 /**
  * 
@@ -7219,7 +7757,7 @@ export interface GuildBanResponse {
      * @type {string}
      * @memberof GuildBanResponse
      */
-    'reason'?: string | null;
+    'reason'?: string;
 }
 /**
  * 
@@ -7235,10 +7773,10 @@ export interface GuildChannelLocation {
     'id': string;
     /**
      * 
-     * @type {string}
+     * @type {EmbeddedActivityLocationKind}
      * @memberof GuildChannelLocation
      */
-    'kind': string;
+    'kind': EmbeddedActivityLocationKind;
     /**
      * 
      * @type {string}
@@ -7266,10 +7804,10 @@ export interface GuildChannelResponse {
     'id': string;
     /**
      * 
-     * @type {number}
+     * @type {ChannelTypes}
      * @memberof GuildChannelResponse
      */
-    'type': number;
+    'type': ChannelTypes;
     /**
      * 
      * @type {number}
@@ -7296,124 +7834,124 @@ export interface GuildChannelResponse {
     'position': number;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildChannelResponse
      */
-    'last_message_id'?: string;
+    'last_message_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof GuildChannelResponse
      */
-    'last_pin_timestamp'?: string | null;
+    'last_pin_timestamp'?: string;
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof GuildChannelResponse
+     */
+    'parent_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
+    /**
+     * 
+     * @type {number}
+     * @memberof GuildChannelResponse
+     */
+    'rate_limit_per_user'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GuildChannelResponse
+     */
+    'bitrate'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GuildChannelResponse
+     */
+    'user_limit'?: number;
     /**
      * 
      * @type {string}
      * @memberof GuildChannelResponse
      */
-    'parent_id'?: string;
+    'rtc_region'?: string;
     /**
      * 
-     * @type {number}
+     * @type {VideoQualityModes}
      * @memberof GuildChannelResponse
      */
-    'rate_limit_per_user'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildChannelResponse
-     */
-    'bitrate'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildChannelResponse
-     */
-    'user_limit'?: number | null;
+    'video_quality_mode'?: VideoQualityModes;
     /**
      * 
      * @type {string}
      * @memberof GuildChannelResponse
      */
-    'rtc_region'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildChannelResponse
-     */
-    'video_quality_mode'?: number;
+    'permissions'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildChannelResponse
      */
-    'permissions'?: string | null;
+    'topic'?: string;
     /**
      * 
-     * @type {string}
+     * @type {ThreadAutoArchiveDuration}
      * @memberof GuildChannelResponse
      */
-    'topic'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildChannelResponse
-     */
-    'default_auto_archive_duration'?: number;
+    'default_auto_archive_duration'?: ThreadAutoArchiveDuration;
     /**
      * 
      * @type {number}
      * @memberof GuildChannelResponse
      */
-    'default_thread_rate_limit_per_user'?: number | null;
+    'default_thread_rate_limit_per_user'?: number;
     /**
      * 
      * @type {Array<ChannelPermissionOverwriteResponse>}
      * @memberof GuildChannelResponse
      */
-    'permission_overwrites'?: Array<ChannelPermissionOverwriteResponse> | null;
+    'permission_overwrites'?: Array<ChannelPermissionOverwriteResponse>;
     /**
      * 
      * @type {boolean}
      * @memberof GuildChannelResponse
      */
-    'nsfw'?: boolean | null;
+    'nsfw'?: boolean;
     /**
      * 
      * @type {Array<ForumTagResponse>}
      * @memberof GuildChannelResponse
      */
-    'available_tags'?: Array<ForumTagResponse> | null;
+    'available_tags'?: Array<ForumTagResponse>;
     /**
      * 
-     * @type {DefaultReactionEmojiResponse}
+     * @type {GuildChannelResponseDefaultReactionEmoji}
      * @memberof GuildChannelResponse
      */
-    'default_reaction_emoji'?: DefaultReactionEmojiResponse | null;
+    'default_reaction_emoji'?: GuildChannelResponseDefaultReactionEmoji;
     /**
      * 
-     * @type {number}
+     * @type {CreateGuildChannelRequestDefaultSortOrder}
      * @memberof GuildChannelResponse
      */
-    'default_sort_order'?: number;
+    'default_sort_order'?: CreateGuildChannelRequestDefaultSortOrder;
     /**
      * 
-     * @type {number}
+     * @type {CreateGuildChannelRequestDefaultForumLayout}
      * @memberof GuildChannelResponse
      */
-    'default_forum_layout'?: number;
+    'default_forum_layout'?: CreateGuildChannelRequestDefaultForumLayout;
+    /**
+     * 
+     * @type {CreateGuildChannelRequestDefaultTagSetting}
+     * @memberof GuildChannelResponse
+     */
+    'default_tag_setting'?: CreateGuildChannelRequestDefaultTagSetting;
     /**
      * 
      * @type {string}
      * @memberof GuildChannelResponse
      */
-    'default_tag_setting'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildChannelResponse
-     */
-    'hd_streaming_until'?: string | null;
+    'hd_streaming_until'?: string;
     /**
      * 
      * @type {string}
@@ -7422,96 +7960,23 @@ export interface GuildChannelResponse {
     'hd_streaming_buyer_id'?: string;
 }
 /**
- * 
+ * @type GuildChannelResponseDefaultReactionEmoji
  * @export
- * @interface GuildCreateRequest
  */
-export interface GuildCreateRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildCreateRequest
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildCreateRequest
-     */
-    'description'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildCreateRequest
-     */
-    'region'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildCreateRequest
-     */
-    'icon'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildCreateRequest
-     */
-    'verification_level'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildCreateRequest
-     */
-    'default_message_notifications'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildCreateRequest
-     */
-    'explicit_content_filter'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildCreateRequest
-     */
-    'preferred_locale'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildCreateRequest
-     */
-    'afk_timeout'?: number | null;
-    /**
-     * 
-     * @type {Array<CreateGuildRequestRoleItem>}
-     * @memberof GuildCreateRequest
-     */
-    'roles'?: Array<CreateGuildRequestRoleItem> | null;
-    /**
-     * 
-     * @type {Array<CreateGuildRequestChannelItem>}
-     * @memberof GuildCreateRequest
-     */
-    'channels'?: Array<CreateGuildRequestChannelItem> | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildCreateRequest
-     */
-    'afk_channel_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildCreateRequest
-     */
-    'system_channel_id'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildCreateRequest
-     */
-    'system_channel_flags'?: number | null;
-}
+export type GuildChannelResponseDefaultReactionEmoji = DefaultReactionEmojiResponse | Null;
+
+/**
+ * @type GuildExplicitContentFilterTypes
+ * @export
+ */
+export type GuildExplicitContentFilterTypes = any;
+
+/**
+ * @type GuildFeatures
+ * @export
+ */
+export type GuildFeatures = any;
+
 /**
  * 
  * @export
@@ -7532,23 +7997,35 @@ export interface GuildHomeSettingsResponse {
     'enabled': boolean;
     /**
      * 
+     * @type {Array<GuildHomeSettingsResponseNewMemberActionsInner>}
+     * @memberof GuildHomeSettingsResponse
+     */
+    'new_member_actions': Array<GuildHomeSettingsResponseNewMemberActionsInner>;
+    /**
+     * 
+     * @type {Array<GuildHomeSettingsResponseResourceChannelsInner>}
+     * @memberof GuildHomeSettingsResponse
+     */
+    'resource_channels': Array<GuildHomeSettingsResponseResourceChannelsInner>;
+    /**
+     * 
      * @type {WelcomeMessageResponse}
      * @memberof GuildHomeSettingsResponse
      */
-    'welcome_message'?: WelcomeMessageResponse | null;
-    /**
-     * 
-     * @type {Array<NewMemberActionResponse | null>}
-     * @memberof GuildHomeSettingsResponse
-     */
-    'new_member_actions'?: Array<NewMemberActionResponse | null> | null;
-    /**
-     * 
-     * @type {Array<ResourceChannelResponse | null>}
-     * @memberof GuildHomeSettingsResponse
-     */
-    'resource_channels'?: Array<ResourceChannelResponse | null> | null;
+    'welcome_message'?: WelcomeMessageResponse;
 }
+/**
+ * @type GuildHomeSettingsResponseNewMemberActionsInner
+ * @export
+ */
+export type GuildHomeSettingsResponseNewMemberActionsInner = NewMemberActionResponse | Null;
+
+/**
+ * @type GuildHomeSettingsResponseResourceChannelsInner
+ * @export
+ */
+export type GuildHomeSettingsResponseResourceChannelsInner = Null | ResourceChannelResponse;
+
 /**
  * 
  * @export
@@ -7569,52 +8046,52 @@ export interface GuildIncomingWebhookResponse {
     'name': string;
     /**
      * 
-     * @type {number}
+     * @type {WebhookTypes}
      * @memberof GuildIncomingWebhookResponse
      */
-    'type': number;
+    'type': WebhookTypes;
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof GuildIncomingWebhookResponse
+     */
+    'application_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof GuildIncomingWebhookResponse
      */
-    'application_id'?: string;
+    'avatar'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildIncomingWebhookResponse
      */
-    'avatar'?: string | null;
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildIncomingWebhookResponse
      */
-    'channel_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildIncomingWebhookResponse
-     */
-    'guild_id'?: string;
+    'guild_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {UserResponse}
      * @memberof GuildIncomingWebhookResponse
      */
-    'user'?: UserResponse | null;
+    'user'?: UserResponse;
     /**
      * 
      * @type {string}
      * @memberof GuildIncomingWebhookResponse
      */
-    'token'?: string | null;
+    'token'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildIncomingWebhookResponse
      */
-    'url'?: string | null;
+    'url'?: string;
 }
 /**
  * 
@@ -7624,144 +8101,143 @@ export interface GuildIncomingWebhookResponse {
 export interface GuildInviteResponse {
     /**
      * 
+     * @type {InviteTypes}
+     * @memberof GuildInviteResponse
+     */
+    'type': InviteTypes;
+    /**
+     * 
      * @type {string}
      * @memberof GuildInviteResponse
      */
     'code': string;
     /**
      * 
-     * @type {number}
-     * @memberof GuildInviteResponse
-     */
-    'type'?: number | null;
-    /**
-     * 
-     * @type {UserResponse}
-     * @memberof GuildInviteResponse
-     */
-    'inviter'?: UserResponse | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildInviteResponse
-     */
-    'max_age'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildInviteResponse
-     */
-    'created_at'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildInviteResponse
-     */
-    'expires_at'?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GuildInviteResponse
-     */
-    'is_contact'?: boolean | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildInviteResponse
-     */
-    'flags'?: number | null;
-    /**
-     * 
      * @type {InviteGuildResponse}
      * @memberof GuildInviteResponse
      */
-    'guild'?: InviteGuildResponse | null;
+    'guild': InviteGuildResponse;
     /**
      * 
      * @type {string}
      * @memberof GuildInviteResponse
      */
-    'guild_id'?: string;
+    'guild_id': string;
     /**
      * 
      * @type {InviteChannelResponse}
      * @memberof GuildInviteResponse
      */
-    'channel'?: InviteChannelResponse | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildInviteResponse
-     */
-    'target_type'?: number | null;
+    'channel': InviteChannelResponse;
     /**
      * 
      * @type {UserResponse}
      * @memberof GuildInviteResponse
      */
-    'target_user'?: UserResponse | null;
+    'inviter'?: UserResponse;
+    /**
+     * 
+     * @type {number}
+     * @memberof GuildInviteResponse
+     */
+    'max_age'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GuildInviteResponse
+     */
+    'created_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GuildInviteResponse
+     */
+    'expires_at'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GuildInviteResponse
+     */
+    'is_contact'?: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof GuildInviteResponse
+     */
+    'flags'?: number;
+    /**
+     * 
+     * @type {InviteTargetTypes}
+     * @memberof GuildInviteResponse
+     */
+    'target_type'?: InviteTargetTypes;
+    /**
+     * 
+     * @type {UserResponse}
+     * @memberof GuildInviteResponse
+     */
+    'target_user'?: UserResponse;
     /**
      * 
      * @type {InviteApplicationResponse}
      * @memberof GuildInviteResponse
      */
-    'target_application'?: InviteApplicationResponse | null;
+    'target_application'?: InviteApplicationResponse;
     /**
      * 
      * @type {ScheduledEventResponse}
      * @memberof GuildInviteResponse
      */
-    'guild_scheduled_event'?: ScheduledEventResponse | null;
+    'guild_scheduled_event'?: ScheduledEventResponse;
     /**
      * 
      * @type {number}
      * @memberof GuildInviteResponse
      */
-    'uses'?: number | null;
+    'uses'?: number;
     /**
      * 
      * @type {number}
      * @memberof GuildInviteResponse
      */
-    'max_uses'?: number | null;
+    'max_uses'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof GuildInviteResponse
      */
-    'temporary'?: boolean | null;
+    'temporary'?: boolean;
     /**
      * 
      * @type {number}
      * @memberof GuildInviteResponse
      */
-    'approximate_member_count'?: number | null;
+    'approximate_member_count'?: number;
     /**
      * 
      * @type {number}
      * @memberof GuildInviteResponse
      */
-    'approximate_presence_count'?: number | null;
+    'approximate_presence_count'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof GuildInviteResponse
      */
-    'is_nickname_changeable'?: boolean | null;
+    'is_nickname_changeable'?: boolean;
+    /**
+     * 
+     * @type {Array<GuildRoleResponse>}
+     * @memberof GuildInviteResponse
+     */
+    'roles'?: Array<GuildRoleResponse>;
 }
 /**
- * 
+ * @type GuildMFALevel
  * @export
- * @interface GuildMFALevelResponse
  */
-export interface GuildMFALevelResponse {
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildMFALevelResponse
-     */
-    'level': number;
-}
+export type GuildMFALevel = any;
+
 /**
  * 
  * @export
@@ -7815,38 +8291,56 @@ export interface GuildMemberResponse {
      * @type {string}
      * @memberof GuildMemberResponse
      */
-    'avatar'?: string | null;
+    'avatar'?: string;
     /**
      * 
-     * @type {UserAvatarDecorationResponse}
+     * @type {BasicGuildMemberResponseAvatarDecorationData}
      * @memberof GuildMemberResponse
      */
-    'avatar_decoration_data'?: UserAvatarDecorationResponse | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildMemberResponse
-     */
-    'banner'?: string | null;
+    'avatar_decoration_data'?: BasicGuildMemberResponseAvatarDecorationData;
     /**
      * 
      * @type {string}
      * @memberof GuildMemberResponse
      */
-    'communication_disabled_until'?: string | null;
+    'banner'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildMemberResponse
      */
-    'nick'?: string | null;
+    'communication_disabled_until'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildMemberResponse
      */
-    'premium_since'?: string | null;
+    'nick'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GuildMemberResponse
+     */
+    'premium_since'?: string;
+    /**
+     * 
+     * @type {BasicGuildMemberResponseCollectibles}
+     * @memberof GuildMemberResponse
+     */
+    'collectibles'?: BasicGuildMemberResponseCollectibles;
 }
+/**
+ * @type GuildNSFWContentLevel
+ * @export
+ */
+export type GuildNSFWContentLevel = any;
+
+/**
+ * @type GuildOnboardingMode
+ * @export
+ */
+export type GuildOnboardingMode = any;
+
 /**
  * 
  * @export
@@ -7895,128 +8389,152 @@ export interface GuildPatchRequestPartial {
      * @type {string}
      * @memberof GuildPatchRequestPartial
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildPatchRequestPartial
      */
-    'region'?: string | null;
+    'region'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildPatchRequestPartial
      */
-    'icon'?: string | null;
+    'icon'?: string;
+    /**
+     * 
+     * @type {GuildPatchRequestPartialVerificationLevel}
+     * @memberof GuildPatchRequestPartial
+     */
+    'verification_level'?: GuildPatchRequestPartialVerificationLevel;
+    /**
+     * 
+     * @type {GuildPatchRequestPartialDefaultMessageNotifications}
+     * @memberof GuildPatchRequestPartial
+     */
+    'default_message_notifications'?: GuildPatchRequestPartialDefaultMessageNotifications;
+    /**
+     * 
+     * @type {GuildPatchRequestPartialExplicitContentFilter}
+     * @memberof GuildPatchRequestPartial
+     */
+    'explicit_content_filter'?: GuildPatchRequestPartialExplicitContentFilter;
+    /**
+     * 
+     * @type {GuildPatchRequestPartialPreferredLocale}
+     * @memberof GuildPatchRequestPartial
+     */
+    'preferred_locale'?: GuildPatchRequestPartialPreferredLocale;
+    /**
+     * 
+     * @type {GuildPatchRequestPartialAfkTimeout}
+     * @memberof GuildPatchRequestPartial
+     */
+    'afk_timeout'?: GuildPatchRequestPartialAfkTimeout;
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof GuildPatchRequestPartial
+     */
+    'afk_channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof GuildPatchRequestPartial
+     */
+    'system_channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
+    /**
+     * 
+     * @type {string}
+     * @memberof GuildPatchRequestPartial
+     */
+    'splash'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GuildPatchRequestPartial
+     */
+    'banner'?: string;
     /**
      * 
      * @type {number}
      * @memberof GuildPatchRequestPartial
      */
-    'verification_level'?: number;
+    'system_channel_flags'?: number;
     /**
      * 
-     * @type {number}
+     * @type {Set<string>}
      * @memberof GuildPatchRequestPartial
      */
-    'default_message_notifications'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildPatchRequestPartial
-     */
-    'explicit_content_filter'?: number;
+    'features'?: Set<string>;
     /**
      * 
      * @type {string}
      * @memberof GuildPatchRequestPartial
      */
-    'preferred_locale'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildPatchRequestPartial
-     */
-    'afk_timeout'?: number | null;
+    'discovery_splash'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildPatchRequestPartial
      */
-    'afk_channel_id'?: string;
+    'home_header'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildPatchRequestPartial
      */
-    'system_channel_id'?: string;
+    'rules_channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildPatchRequestPartial
      */
-    'owner_id'?: string;
+    'safety_alerts_channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildPatchRequestPartial
      */
-    'splash'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildPatchRequestPartial
-     */
-    'banner'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildPatchRequestPartial
-     */
-    'system_channel_flags'?: number | null;
-    /**
-     * 
-     * @type {Set<string | null>}
-     * @memberof GuildPatchRequestPartial
-     */
-    'features'?: Set<string | null> | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildPatchRequestPartial
-     */
-    'discovery_splash'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildPatchRequestPartial
-     */
-    'home_header'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildPatchRequestPartial
-     */
-    'rules_channel_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildPatchRequestPartial
-     */
-    'safety_alerts_channel_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildPatchRequestPartial
-     */
-    'public_updates_channel_id'?: string;
+    'public_updates_channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {boolean}
      * @memberof GuildPatchRequestPartial
      */
-    'premium_progress_bar_enabled'?: boolean | null;
+    'premium_progress_bar_enabled'?: boolean;
 }
+/**
+ * @type GuildPatchRequestPartialAfkTimeout
+ * @export
+ */
+export type GuildPatchRequestPartialAfkTimeout = AfkTimeouts | Null;
+
+/**
+ * @type GuildPatchRequestPartialDefaultMessageNotifications
+ * @export
+ */
+export type GuildPatchRequestPartialDefaultMessageNotifications = Null | UserNotificationSettings;
+
+/**
+ * @type GuildPatchRequestPartialExplicitContentFilter
+ * @export
+ */
+export type GuildPatchRequestPartialExplicitContentFilter = GuildExplicitContentFilterTypes | Null;
+
+/**
+ * @type GuildPatchRequestPartialPreferredLocale
+ * @export
+ */
+export type GuildPatchRequestPartialPreferredLocale = AvailableLocalesEnum | Null;
+
+/**
+ * @type GuildPatchRequestPartialVerificationLevel
+ * @export
+ */
+export type GuildPatchRequestPartialVerificationLevel = Null | VerificationLevels;
+
 /**
  * 
  * @export
@@ -8037,10 +8555,10 @@ export interface GuildPreviewResponse {
     'name': string;
     /**
      * 
-     * @type {Set<string>}
+     * @type {Set<GuildFeatures>}
      * @memberof GuildPreviewResponse
      */
-    'features': Set<string>;
+    'features': Set<GuildFeatures>;
     /**
      * 
      * @type {number}
@@ -8070,31 +8588,31 @@ export interface GuildPreviewResponse {
      * @type {string}
      * @memberof GuildPreviewResponse
      */
-    'icon'?: string | null;
+    'icon'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildPreviewResponse
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildPreviewResponse
      */
-    'home_header'?: string | null;
+    'home_header'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildPreviewResponse
      */
-    'splash'?: string | null;
+    'splash'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildPreviewResponse
      */
-    'discovery_splash'?: string | null;
+    'discovery_splash'?: string;
 }
 /**
  * 
@@ -8126,7 +8644,7 @@ export interface GuildPruneResponse {
      * @type {number}
      * @memberof GuildPruneResponse
      */
-    'pruned'?: number | null;
+    'pruned'?: number;
 }
 /**
  * 
@@ -8148,10 +8666,10 @@ export interface GuildResponse {
     'name': string;
     /**
      * 
-     * @type {Set<string>}
+     * @type {Set<GuildFeatures>}
      * @memberof GuildResponse
      */
-    'features': Set<string>;
+    'features': Set<GuildFeatures>;
     /**
      * 
      * @type {string}
@@ -8166,10 +8684,10 @@ export interface GuildResponse {
     'region': string;
     /**
      * 
-     * @type {number}
+     * @type {AfkTimeouts}
      * @memberof GuildResponse
      */
-    'afk_timeout': number | null;
+    'afk_timeout': AfkTimeouts;
     /**
      * 
      * @type {number}
@@ -8184,10 +8702,10 @@ export interface GuildResponse {
     'widget_enabled': boolean;
     /**
      * 
-     * @type {number}
+     * @type {VerificationLevels}
      * @memberof GuildResponse
      */
-    'verification_level': number;
+    'verification_level': VerificationLevels;
     /**
      * 
      * @type {Array<GuildRoleResponse>}
@@ -8196,28 +8714,46 @@ export interface GuildResponse {
     'roles': Array<GuildRoleResponse>;
     /**
      * 
-     * @type {number}
+     * @type {UserNotificationSettings}
      * @memberof GuildResponse
      */
-    'default_message_notifications': number;
+    'default_message_notifications': UserNotificationSettings;
+    /**
+     * 
+     * @type {GuildMFALevel}
+     * @memberof GuildResponse
+     */
+    'mfa_level': GuildMFALevel;
+    /**
+     * 
+     * @type {GuildExplicitContentFilterTypes}
+     * @memberof GuildResponse
+     */
+    'explicit_content_filter': GuildExplicitContentFilterTypes;
     /**
      * 
      * @type {number}
      * @memberof GuildResponse
      */
-    'mfa_level': number;
+    'max_members': number;
     /**
      * 
      * @type {number}
      * @memberof GuildResponse
      */
-    'explicit_content_filter': number;
+    'max_stage_video_channel_users': number;
     /**
      * 
      * @type {number}
      * @memberof GuildResponse
      */
-    'premium_tier': number;
+    'max_video_channel_users': number;
+    /**
+     * 
+     * @type {PremiumGuildTiers}
+     * @memberof GuildResponse
+     */
+    'premium_tier': PremiumGuildTiers;
     /**
      * 
      * @type {number}
@@ -8226,10 +8762,10 @@ export interface GuildResponse {
     'premium_subscription_count': number;
     /**
      * 
-     * @type {string}
+     * @type {AvailableLocalesEnum}
      * @memberof GuildResponse
      */
-    'preferred_locale': string;
+    'preferred_locale': AvailableLocalesEnum;
     /**
      * 
      * @type {boolean}
@@ -8244,10 +8780,10 @@ export interface GuildResponse {
     'nsfw': boolean;
     /**
      * 
-     * @type {number}
+     * @type {GuildNSFWContentLevel}
      * @memberof GuildResponse
      */
-    'nsfw_level': number | null;
+    'nsfw_level': GuildNSFWContentLevel;
     /**
      * 
      * @type {Array<EmojiResponse>}
@@ -8265,109 +8801,91 @@ export interface GuildResponse {
      * @type {string}
      * @memberof GuildResponse
      */
-    'icon'?: string | null;
+    'icon'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildResponse
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildResponse
      */
-    'home_header'?: string | null;
+    'home_header'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildResponse
      */
-    'splash'?: string | null;
+    'splash'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildResponse
      */
-    'discovery_splash'?: string | null;
+    'discovery_splash'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildResponse
      */
-    'banner'?: string | null;
+    'banner'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildResponse
      */
-    'application_id'?: string;
+    'application_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildResponse
      */
-    'afk_channel_id'?: string;
+    'afk_channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildResponse
      */
-    'system_channel_id'?: string;
+    'system_channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildResponse
      */
-    'widget_channel_id'?: string;
+    'widget_channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {number}
      * @memberof GuildResponse
      */
-    'max_presences'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildResponse
-     */
-    'max_members'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildResponse
-     */
-    'max_stage_video_channel_users'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildResponse
-     */
-    'max_video_channel_users'?: number | null;
+    'max_presences'?: number;
     /**
      * 
      * @type {string}
      * @memberof GuildResponse
      */
-    'vanity_url_code'?: string | null;
+    'vanity_url_code'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildResponse
      */
-    'rules_channel_id'?: string;
+    'rules_channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildResponse
      */
-    'safety_alerts_channel_id'?: string;
+    'safety_alerts_channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildResponse
      */
-    'public_updates_channel_id'?: string;
+    'public_updates_channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
 }
 /**
  * 
@@ -8380,19 +8898,19 @@ export interface GuildRoleColorsResponse {
      * @type {number}
      * @memberof GuildRoleColorsResponse
      */
-    'primary_color'?: number | null;
+    'primary_color': number;
     /**
      * 
      * @type {number}
      * @memberof GuildRoleColorsResponse
      */
-    'secondary_color'?: number | null;
+    'secondary_color'?: number;
     /**
      * 
      * @type {number}
      * @memberof GuildRoleColorsResponse
      */
-    'tertiary_color'?: number | null;
+    'tertiary_color'?: number;
 }
 /**
  * 
@@ -8432,6 +8950,12 @@ export interface GuildRoleResponse {
     'color': number;
     /**
      * 
+     * @type {GuildRoleColorsResponse}
+     * @memberof GuildRoleResponse
+     */
+    'colors': GuildRoleColorsResponse;
+    /**
+     * 
      * @type {boolean}
      * @memberof GuildRoleResponse
      */
@@ -8459,31 +8983,25 @@ export interface GuildRoleResponse {
      * @type {string}
      * @memberof GuildRoleResponse
      */
-    'description'?: string | null;
-    /**
-     * 
-     * @type {GuildRoleColorsResponse}
-     * @memberof GuildRoleResponse
-     */
-    'colors'?: GuildRoleColorsResponse | null;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildRoleResponse
      */
-    'icon'?: string | null;
+    'icon'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildRoleResponse
      */
-    'unicode_emoji'?: string | null;
+    'unicode_emoji'?: string;
     /**
      * 
      * @type {GuildRoleTagsResponse}
      * @memberof GuildRoleResponse
      */
-    'tags'?: GuildRoleTagsResponse | null;
+    'tags'?: GuildRoleTagsResponse;
 }
 /**
  * 
@@ -8493,10 +9011,10 @@ export interface GuildRoleResponse {
 export interface GuildRoleTagsResponse {
     /**
      * 
-     * @type {any}
+     * @type {Null}
      * @memberof GuildRoleTagsResponse
      */
-    'premium_subscriber'?: any | null;
+    'premium_subscriber'?: Null;
     /**
      * 
      * @type {string}
@@ -8517,17 +9035,35 @@ export interface GuildRoleTagsResponse {
     'subscription_listing_id'?: string;
     /**
      * 
-     * @type {any}
+     * @type {Null}
      * @memberof GuildRoleTagsResponse
      */
-    'available_for_purchase'?: any | null;
+    'available_for_purchase'?: Null;
     /**
      * 
-     * @type {any}
+     * @type {Null}
      * @memberof GuildRoleTagsResponse
      */
-    'guild_connections'?: any | null;
+    'guild_connections'?: Null;
 }
+/**
+ * @type GuildScheduledEventEntityTypes
+ * @export
+ */
+export type GuildScheduledEventEntityTypes = any;
+
+/**
+ * @type GuildScheduledEventPrivacyLevels
+ * @export
+ */
+export type GuildScheduledEventPrivacyLevels = any;
+
+/**
+ * @type GuildScheduledEventStatuses
+ * @export
+ */
+export type GuildScheduledEventStatuses = any;
+
 /**
  * 
  * @export
@@ -8554,10 +9090,10 @@ export interface GuildStickerResponse {
     'tags': string;
     /**
      * 
-     * @type {number}
+     * @type {StickerTypes}
      * @memberof GuildStickerResponse
      */
-    'type': number;
+    'type': StickerTypes;
     /**
      * 
      * @type {boolean}
@@ -8572,23 +9108,29 @@ export interface GuildStickerResponse {
     'guild_id': string;
     /**
      * 
-     * @type {number}
+     * @type {GuildStickerResponseFormatType}
      * @memberof GuildStickerResponse
      */
-    'format_type'?: number | null;
+    'format_type'?: GuildStickerResponseFormatType;
     /**
      * 
      * @type {string}
      * @memberof GuildStickerResponse
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {UserResponse}
      * @memberof GuildStickerResponse
      */
-    'user'?: UserResponse | null;
+    'user'?: UserResponse;
 }
+/**
+ * @type GuildStickerResponseFormatType
+ * @export
+ */
+export type GuildStickerResponseFormatType = Null | StickerFormatTypes;
+
 /**
  * 
  * @export
@@ -8597,10 +9139,22 @@ export interface GuildStickerResponse {
 export interface GuildSubscriptionIntegrationResponse {
     /**
      * 
-     * @type {string}
+     * @type {IntegrationTypes}
      * @memberof GuildSubscriptionIntegrationResponse
      */
-    'type': string | null;
+    'type': IntegrationTypes;
+    /**
+     * 
+     * @type {AccountResponse}
+     * @memberof GuildSubscriptionIntegrationResponse
+     */
+    'account': AccountResponse;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GuildSubscriptionIntegrationResponse
+     */
+    'enabled': boolean;
     /**
      * 
      * @type {string}
@@ -8612,19 +9166,7 @@ export interface GuildSubscriptionIntegrationResponse {
      * @type {string}
      * @memberof GuildSubscriptionIntegrationResponse
      */
-    'name'?: string | null;
-    /**
-     * 
-     * @type {AccountResponse}
-     * @memberof GuildSubscriptionIntegrationResponse
-     */
-    'account'?: AccountResponse | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GuildSubscriptionIntegrationResponse
-     */
-    'enabled'?: boolean | null;
+    'name'?: string;
 }
 /**
  * 
@@ -8634,10 +9176,10 @@ export interface GuildSubscriptionIntegrationResponse {
 export interface GuildTemplateChannelResponse {
     /**
      * 
-     * @type {number}
+     * @type {ChannelTypes}
      * @memberof GuildTemplateChannelResponse
      */
-    'type': number;
+    'type': ChannelTypes;
     /**
      * 
      * @type {number}
@@ -8664,10 +9206,10 @@ export interface GuildTemplateChannelResponse {
     'rate_limit_per_user': number;
     /**
      * 
-     * @type {Array<ChannelPermissionOverwriteResponse | null>}
+     * @type {Array<GuildTemplateChannelResponsePermissionOverwritesInner>}
      * @memberof GuildTemplateChannelResponse
      */
-    'permission_overwrites': Array<ChannelPermissionOverwriteResponse | null>;
+    'permission_overwrites': Array<GuildTemplateChannelResponsePermissionOverwritesInner>;
     /**
      * 
      * @type {string}
@@ -8679,86 +9221,98 @@ export interface GuildTemplateChannelResponse {
      * @type {number}
      * @memberof GuildTemplateChannelResponse
      */
-    'id'?: number | null;
+    'id'?: number;
     /**
      * 
      * @type {string}
      * @memberof GuildTemplateChannelResponse
      */
-    'name'?: string | null;
+    'name'?: string;
     /**
      * 
      * @type {number}
      * @memberof GuildTemplateChannelResponse
      */
-    'position'?: number | null;
+    'position'?: number;
     /**
      * 
      * @type {string}
      * @memberof GuildTemplateChannelResponse
      */
-    'topic'?: string | null;
+    'topic'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildTemplateChannelResponse
      */
-    'parent_id'?: string;
+    'parent_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {number}
+     * @type {CreateForumThreadRequestAutoArchiveDuration}
      * @memberof GuildTemplateChannelResponse
      */
-    'default_auto_archive_duration'?: number;
+    'default_auto_archive_duration'?: CreateForumThreadRequestAutoArchiveDuration;
     /**
      * 
      * @type {Array<GuildTemplateChannelTags>}
      * @memberof GuildTemplateChannelResponse
      */
-    'available_tags'?: Array<GuildTemplateChannelTags> | null;
+    'available_tags'?: Array<GuildTemplateChannelTags>;
     /**
      * 
-     * @type {DefaultReactionEmojiResponse}
+     * @type {GuildChannelResponseDefaultReactionEmoji}
      * @memberof GuildTemplateChannelResponse
      */
-    'default_reaction_emoji'?: DefaultReactionEmojiResponse | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildTemplateChannelResponse
-     */
-    'default_thread_rate_limit_per_user'?: number | null;
+    'default_reaction_emoji'?: GuildChannelResponseDefaultReactionEmoji;
     /**
      * 
      * @type {number}
      * @memberof GuildTemplateChannelResponse
      */
-    'default_sort_order'?: number;
+    'default_thread_rate_limit_per_user'?: number;
+    /**
+     * 
+     * @type {CreateGuildChannelRequestDefaultSortOrder}
+     * @memberof GuildTemplateChannelResponse
+     */
+    'default_sort_order'?: CreateGuildChannelRequestDefaultSortOrder;
+    /**
+     * 
+     * @type {CreateGuildChannelRequestDefaultForumLayout}
+     * @memberof GuildTemplateChannelResponse
+     */
+    'default_forum_layout'?: CreateGuildChannelRequestDefaultForumLayout;
+    /**
+     * 
+     * @type {CreateGuildChannelRequestDefaultTagSetting}
+     * @memberof GuildTemplateChannelResponse
+     */
+    'default_tag_setting'?: CreateGuildChannelRequestDefaultTagSetting;
+    /**
+     * 
+     * @type {GuildTemplateChannelResponseIconEmoji}
+     * @memberof GuildTemplateChannelResponse
+     */
+    'icon_emoji'?: GuildTemplateChannelResponseIconEmoji;
     /**
      * 
      * @type {number}
      * @memberof GuildTemplateChannelResponse
      */
-    'default_forum_layout'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuildTemplateChannelResponse
-     */
-    'default_tag_setting'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof GuildTemplateChannelResponse
-     */
-    'icon_emoji'?: object;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildTemplateChannelResponse
-     */
-    'theme_color'?: number | null;
+    'theme_color'?: number;
 }
+/**
+ * @type GuildTemplateChannelResponseIconEmoji
+ * @export
+ */
+export type GuildTemplateChannelResponseIconEmoji = Null | object;
+
+/**
+ * @type GuildTemplateChannelResponsePermissionOverwritesInner
+ * @export
+ */
+export type GuildTemplateChannelResponsePermissionOverwritesInner = ChannelPermissionOverwriteResponse | Null;
+
 /**
  * 
  * @export
@@ -8773,22 +9327,28 @@ export interface GuildTemplateChannelTags {
     'name': string;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof GuildTemplateChannelTags
      */
-    'emoji_id'?: string;
+    'id'?: number;
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof GuildTemplateChannelTags
+     */
+    'emoji_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof GuildTemplateChannelTags
      */
-    'emoji_name'?: string | null;
+    'emoji_name'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof GuildTemplateChannelTags
      */
-    'moderated'?: boolean | null;
+    'moderated'?: boolean;
 }
 /**
  * 
@@ -8849,19 +9409,50 @@ export interface GuildTemplateResponse {
      * @type {string}
      * @memberof GuildTemplateResponse
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
-     * @type {UserResponse}
+     * @type {GuildTemplateResponseCreator}
      * @memberof GuildTemplateResponse
      */
-    'creator'?: UserResponse | null;
+    'creator'?: GuildTemplateResponseCreator;
     /**
      * 
      * @type {boolean}
      * @memberof GuildTemplateResponse
      */
-    'is_dirty'?: boolean | null;
+    'is_dirty'?: boolean;
+}
+/**
+ * @type GuildTemplateResponseCreator
+ * @export
+ */
+export type GuildTemplateResponseCreator = Null | UserResponse;
+
+/**
+ * 
+ * @export
+ * @interface GuildTemplateRoleColorsResponse
+ */
+export interface GuildTemplateRoleColorsResponse {
+    /**
+     * 
+     * @type {number}
+     * @memberof GuildTemplateRoleColorsResponse
+     */
+    'primary_color': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GuildTemplateRoleColorsResponse
+     */
+    'secondary_color'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GuildTemplateRoleColorsResponse
+     */
+    'tertiary_color'?: number;
 }
 /**
  * 
@@ -8907,17 +9498,29 @@ export interface GuildTemplateRoleResponse {
     'mentionable': boolean;
     /**
      * 
-     * @type {string}
+     * @type {GuildTemplateRoleResponseColors}
      * @memberof GuildTemplateRoleResponse
      */
-    'icon'?: string | null;
+    'colors'?: GuildTemplateRoleResponseColors;
     /**
      * 
      * @type {string}
      * @memberof GuildTemplateRoleResponse
      */
-    'unicode_emoji'?: string | null;
+    'icon'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GuildTemplateRoleResponse
+     */
+    'unicode_emoji'?: string;
 }
+/**
+ * @type GuildTemplateRoleResponseColors
+ * @export
+ */
+export type GuildTemplateRoleResponseColors = GuildTemplateRoleColorsResponse | Null;
+
 /**
  * 
  * @export
@@ -8932,34 +9535,34 @@ export interface GuildTemplateSnapshotResponse {
     'name': string;
     /**
      * 
-     * @type {number}
+     * @type {VerificationLevels}
      * @memberof GuildTemplateSnapshotResponse
      */
-    'verification_level': number;
+    'verification_level': VerificationLevels;
     /**
      * 
-     * @type {number}
+     * @type {UserNotificationSettings}
      * @memberof GuildTemplateSnapshotResponse
      */
-    'default_message_notifications': number;
+    'default_message_notifications': UserNotificationSettings;
     /**
      * 
-     * @type {number}
+     * @type {GuildExplicitContentFilterTypes}
      * @memberof GuildTemplateSnapshotResponse
      */
-    'explicit_content_filter': number;
+    'explicit_content_filter': GuildExplicitContentFilterTypes;
     /**
      * 
-     * @type {string}
+     * @type {AvailableLocalesEnum}
      * @memberof GuildTemplateSnapshotResponse
      */
-    'preferred_locale': string;
+    'preferred_locale': AvailableLocalesEnum;
     /**
      * 
-     * @type {number}
+     * @type {AfkTimeouts}
      * @memberof GuildTemplateSnapshotResponse
      */
-    'afk_timeout': number | null;
+    'afk_timeout': AfkTimeouts;
     /**
      * 
      * @type {number}
@@ -8983,25 +9586,25 @@ export interface GuildTemplateSnapshotResponse {
      * @type {string}
      * @memberof GuildTemplateSnapshotResponse
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildTemplateSnapshotResponse
      */
-    'region'?: string | null;
+    'region'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildTemplateSnapshotResponse
      */
-    'afk_channel_id'?: string;
+    'afk_channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildTemplateSnapshotResponse
      */
-    'system_channel_id'?: string;
+    'system_channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
 }
 /**
  * 
@@ -9023,16 +9626,16 @@ export interface GuildWelcomeChannel {
     'description': string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildWelcomeChannel
      */
-    'emoji_id'?: string;
+    'emoji_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof GuildWelcomeChannel
      */
-    'emoji_name'?: string | null;
+    'emoji_name'?: string;
 }
 /**
  * 
@@ -9054,16 +9657,16 @@ export interface GuildWelcomeScreenChannelResponse {
     'description': string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildWelcomeScreenChannelResponse
      */
-    'emoji_id'?: string;
+    'emoji_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof GuildWelcomeScreenChannelResponse
      */
-    'emoji_name'?: string | null;
+    'emoji_name'?: string;
 }
 /**
  * 
@@ -9082,7 +9685,7 @@ export interface GuildWelcomeScreenResponse {
      * @type {string}
      * @memberof GuildWelcomeScreenResponse
      */
-    'description'?: string | null;
+    'description'?: string;
 }
 /**
  * 
@@ -9104,10 +9707,10 @@ export interface GuildWithCountsResponse {
     'name': string;
     /**
      * 
-     * @type {Set<string>}
+     * @type {Set<GuildFeatures>}
      * @memberof GuildWithCountsResponse
      */
-    'features': Set<string>;
+    'features': Set<GuildFeatures>;
     /**
      * 
      * @type {string}
@@ -9122,10 +9725,10 @@ export interface GuildWithCountsResponse {
     'region': string;
     /**
      * 
-     * @type {number}
+     * @type {AfkTimeouts}
      * @memberof GuildWithCountsResponse
      */
-    'afk_timeout': number | null;
+    'afk_timeout': AfkTimeouts;
     /**
      * 
      * @type {number}
@@ -9140,10 +9743,10 @@ export interface GuildWithCountsResponse {
     'widget_enabled': boolean;
     /**
      * 
-     * @type {number}
+     * @type {VerificationLevels}
      * @memberof GuildWithCountsResponse
      */
-    'verification_level': number;
+    'verification_level': VerificationLevels;
     /**
      * 
      * @type {Array<GuildRoleResponse>}
@@ -9152,28 +9755,46 @@ export interface GuildWithCountsResponse {
     'roles': Array<GuildRoleResponse>;
     /**
      * 
-     * @type {number}
+     * @type {UserNotificationSettings}
      * @memberof GuildWithCountsResponse
      */
-    'default_message_notifications': number;
+    'default_message_notifications': UserNotificationSettings;
+    /**
+     * 
+     * @type {GuildMFALevel}
+     * @memberof GuildWithCountsResponse
+     */
+    'mfa_level': GuildMFALevel;
+    /**
+     * 
+     * @type {GuildExplicitContentFilterTypes}
+     * @memberof GuildWithCountsResponse
+     */
+    'explicit_content_filter': GuildExplicitContentFilterTypes;
     /**
      * 
      * @type {number}
      * @memberof GuildWithCountsResponse
      */
-    'mfa_level': number;
+    'max_members': number;
     /**
      * 
      * @type {number}
      * @memberof GuildWithCountsResponse
      */
-    'explicit_content_filter': number;
+    'max_stage_video_channel_users': number;
     /**
      * 
      * @type {number}
      * @memberof GuildWithCountsResponse
      */
-    'premium_tier': number;
+    'max_video_channel_users': number;
+    /**
+     * 
+     * @type {PremiumGuildTiers}
+     * @memberof GuildWithCountsResponse
+     */
+    'premium_tier': PremiumGuildTiers;
     /**
      * 
      * @type {number}
@@ -9182,10 +9803,10 @@ export interface GuildWithCountsResponse {
     'premium_subscription_count': number;
     /**
      * 
-     * @type {string}
+     * @type {AvailableLocalesEnum}
      * @memberof GuildWithCountsResponse
      */
-    'preferred_locale': string;
+    'preferred_locale': AvailableLocalesEnum;
     /**
      * 
      * @type {boolean}
@@ -9200,10 +9821,10 @@ export interface GuildWithCountsResponse {
     'nsfw': boolean;
     /**
      * 
-     * @type {number}
+     * @type {GuildNSFWContentLevel}
      * @memberof GuildWithCountsResponse
      */
-    'nsfw_level': number | null;
+    'nsfw_level': GuildNSFWContentLevel;
     /**
      * 
      * @type {Array<EmojiResponse>}
@@ -9221,121 +9842,103 @@ export interface GuildWithCountsResponse {
      * @type {string}
      * @memberof GuildWithCountsResponse
      */
-    'icon'?: string | null;
+    'icon'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildWithCountsResponse
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildWithCountsResponse
      */
-    'home_header'?: string | null;
+    'home_header'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildWithCountsResponse
      */
-    'splash'?: string | null;
+    'splash'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildWithCountsResponse
      */
-    'discovery_splash'?: string | null;
+    'discovery_splash'?: string;
     /**
      * 
      * @type {string}
      * @memberof GuildWithCountsResponse
      */
-    'banner'?: string | null;
+    'banner'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildWithCountsResponse
      */
-    'application_id'?: string;
+    'application_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildWithCountsResponse
      */
-    'afk_channel_id'?: string;
+    'afk_channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildWithCountsResponse
      */
-    'system_channel_id'?: string;
+    'system_channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildWithCountsResponse
      */
-    'widget_channel_id'?: string;
+    'widget_channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {number}
      * @memberof GuildWithCountsResponse
      */
-    'max_presences'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildWithCountsResponse
-     */
-    'max_members'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildWithCountsResponse
-     */
-    'max_stage_video_channel_users'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildWithCountsResponse
-     */
-    'max_video_channel_users'?: number | null;
+    'max_presences'?: number;
     /**
      * 
      * @type {string}
      * @memberof GuildWithCountsResponse
      */
-    'vanity_url_code'?: string | null;
+    'vanity_url_code'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildWithCountsResponse
      */
-    'rules_channel_id'?: string;
+    'rules_channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildWithCountsResponse
      */
-    'safety_alerts_channel_id'?: string;
+    'safety_alerts_channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof GuildWithCountsResponse
      */
-    'public_updates_channel_id'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuildWithCountsResponse
-     */
-    'approximate_member_count'?: number | null;
+    'public_updates_channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {number}
      * @memberof GuildWithCountsResponse
      */
-    'approximate_presence_count'?: number | null;
+    'approximate_member_count'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GuildWithCountsResponse
+     */
+    'approximate_presence_count'?: number;
 }
 /**
  * 
@@ -9348,49 +9951,49 @@ export interface IncomingWebhookInteractionRequest {
      * @type {string}
      * @memberof IncomingWebhookInteractionRequest
      */
-    'content'?: string | null;
+    'content'?: string;
     /**
      * 
      * @type {Array<RichEmbed>}
      * @memberof IncomingWebhookInteractionRequest
      */
-    'embeds'?: Array<RichEmbed> | null;
+    'embeds'?: Array<RichEmbed>;
     /**
      * 
-     * @type {MessageAllowedMentionsRequest}
+     * @type {BaseCreateMessageCreateRequestAllowedMentions}
      * @memberof IncomingWebhookInteractionRequest
      */
-    'allowed_mentions'?: MessageAllowedMentionsRequest | null;
+    'allowed_mentions'?: BaseCreateMessageCreateRequestAllowedMentions;
     /**
      * 
      * @type {Array<BaseCreateMessageCreateRequestComponentsInner>}
      * @memberof IncomingWebhookInteractionRequest
      */
-    'components'?: Array<BaseCreateMessageCreateRequestComponentsInner> | null;
+    'components'?: Array<BaseCreateMessageCreateRequestComponentsInner>;
     /**
      * 
      * @type {Array<MessageAttachmentRequest>}
      * @memberof IncomingWebhookInteractionRequest
      */
-    'attachments'?: Array<MessageAttachmentRequest> | null;
+    'attachments'?: Array<MessageAttachmentRequest>;
     /**
      * 
-     * @type {PollCreateRequest}
+     * @type {BaseCreateMessageCreateRequestPoll}
      * @memberof IncomingWebhookInteractionRequest
      */
-    'poll'?: PollCreateRequest | null;
+    'poll'?: BaseCreateMessageCreateRequestPoll;
     /**
      * 
      * @type {boolean}
      * @memberof IncomingWebhookInteractionRequest
      */
-    'tts'?: boolean | null;
+    'tts'?: boolean;
     /**
      * 
      * @type {number}
      * @memberof IncomingWebhookInteractionRequest
      */
-    'flags'?: number | null;
+    'flags'?: number;
 }
 /**
  * 
@@ -9403,73 +10006,73 @@ export interface IncomingWebhookRequestPartial {
      * @type {string}
      * @memberof IncomingWebhookRequestPartial
      */
-    'content'?: string | null;
+    'content'?: string;
     /**
      * 
      * @type {Array<RichEmbed>}
      * @memberof IncomingWebhookRequestPartial
      */
-    'embeds'?: Array<RichEmbed> | null;
+    'embeds'?: Array<RichEmbed>;
     /**
      * 
-     * @type {MessageAllowedMentionsRequest}
+     * @type {BaseCreateMessageCreateRequestAllowedMentions}
      * @memberof IncomingWebhookRequestPartial
      */
-    'allowed_mentions'?: MessageAllowedMentionsRequest | null;
+    'allowed_mentions'?: BaseCreateMessageCreateRequestAllowedMentions;
     /**
      * 
      * @type {Array<BaseCreateMessageCreateRequestComponentsInner>}
      * @memberof IncomingWebhookRequestPartial
      */
-    'components'?: Array<BaseCreateMessageCreateRequestComponentsInner> | null;
+    'components'?: Array<BaseCreateMessageCreateRequestComponentsInner>;
     /**
      * 
      * @type {Array<MessageAttachmentRequest>}
      * @memberof IncomingWebhookRequestPartial
      */
-    'attachments'?: Array<MessageAttachmentRequest> | null;
+    'attachments'?: Array<MessageAttachmentRequest>;
     /**
      * 
-     * @type {PollCreateRequest}
+     * @type {BaseCreateMessageCreateRequestPoll}
      * @memberof IncomingWebhookRequestPartial
      */
-    'poll'?: PollCreateRequest | null;
+    'poll'?: BaseCreateMessageCreateRequestPoll;
     /**
      * 
      * @type {boolean}
      * @memberof IncomingWebhookRequestPartial
      */
-    'tts'?: boolean | null;
+    'tts'?: boolean;
     /**
      * 
      * @type {number}
      * @memberof IncomingWebhookRequestPartial
      */
-    'flags'?: number | null;
+    'flags'?: number;
     /**
      * 
      * @type {string}
      * @memberof IncomingWebhookRequestPartial
      */
-    'username'?: string | null;
+    'username'?: string;
     /**
      * 
      * @type {string}
      * @memberof IncomingWebhookRequestPartial
      */
-    'avatar_url'?: string | null;
+    'avatar_url'?: string;
     /**
      * 
      * @type {string}
      * @memberof IncomingWebhookRequestPartial
      */
-    'thread_name'?: string | null;
+    'thread_name'?: string;
     /**
      * 
      * @type {Array<string>}
      * @memberof IncomingWebhookRequestPartial
      */
-    'applied_tags'?: Array<string> | null;
+    'applied_tags'?: Array<string>;
 }
 /**
  * 
@@ -9482,37 +10085,37 @@ export interface IncomingWebhookUpdateForInteractionCallbackRequestPartial {
      * @type {string}
      * @memberof IncomingWebhookUpdateForInteractionCallbackRequestPartial
      */
-    'content'?: string | null;
+    'content'?: string;
     /**
      * 
      * @type {Array<RichEmbed>}
      * @memberof IncomingWebhookUpdateForInteractionCallbackRequestPartial
      */
-    'embeds'?: Array<RichEmbed> | null;
+    'embeds'?: Array<RichEmbed>;
     /**
      * 
-     * @type {MessageAllowedMentionsRequest}
+     * @type {BaseCreateMessageCreateRequestAllowedMentions}
      * @memberof IncomingWebhookUpdateForInteractionCallbackRequestPartial
      */
-    'allowed_mentions'?: MessageAllowedMentionsRequest | null;
+    'allowed_mentions'?: BaseCreateMessageCreateRequestAllowedMentions;
     /**
      * 
      * @type {Array<BaseCreateMessageCreateRequestComponentsInner>}
      * @memberof IncomingWebhookUpdateForInteractionCallbackRequestPartial
      */
-    'components'?: Array<BaseCreateMessageCreateRequestComponentsInner> | null;
+    'components'?: Array<BaseCreateMessageCreateRequestComponentsInner>;
     /**
      * 
      * @type {Array<MessageAttachmentRequest>}
      * @memberof IncomingWebhookUpdateForInteractionCallbackRequestPartial
      */
-    'attachments'?: Array<MessageAttachmentRequest> | null;
+    'attachments'?: Array<MessageAttachmentRequest>;
     /**
      * 
      * @type {number}
      * @memberof IncomingWebhookUpdateForInteractionCallbackRequestPartial
      */
-    'flags'?: number | null;
+    'flags'?: number;
 }
 /**
  * 
@@ -9525,43 +10128,43 @@ export interface IncomingWebhookUpdateRequestPartial {
      * @type {string}
      * @memberof IncomingWebhookUpdateRequestPartial
      */
-    'content'?: string | null;
+    'content'?: string;
     /**
      * 
      * @type {Array<RichEmbed>}
      * @memberof IncomingWebhookUpdateRequestPartial
      */
-    'embeds'?: Array<RichEmbed> | null;
+    'embeds'?: Array<RichEmbed>;
     /**
      * 
-     * @type {MessageAllowedMentionsRequest}
+     * @type {BaseCreateMessageCreateRequestAllowedMentions}
      * @memberof IncomingWebhookUpdateRequestPartial
      */
-    'allowed_mentions'?: MessageAllowedMentionsRequest | null;
+    'allowed_mentions'?: BaseCreateMessageCreateRequestAllowedMentions;
     /**
      * 
      * @type {Array<BaseCreateMessageCreateRequestComponentsInner>}
      * @memberof IncomingWebhookUpdateRequestPartial
      */
-    'components'?: Array<BaseCreateMessageCreateRequestComponentsInner> | null;
+    'components'?: Array<BaseCreateMessageCreateRequestComponentsInner>;
     /**
      * 
      * @type {Array<MessageAttachmentRequest>}
      * @memberof IncomingWebhookUpdateRequestPartial
      */
-    'attachments'?: Array<MessageAttachmentRequest> | null;
+    'attachments'?: Array<MessageAttachmentRequest>;
     /**
      * 
-     * @type {PollCreateRequest}
+     * @type {BaseCreateMessageCreateRequestPoll}
      * @memberof IncomingWebhookUpdateRequestPartial
      */
-    'poll'?: PollCreateRequest | null;
+    'poll'?: BaseCreateMessageCreateRequestPoll;
     /**
      * 
      * @type {number}
      * @memberof IncomingWebhookUpdateRequestPartial
      */
-    'flags'?: number | null;
+    'flags'?: number;
 }
 /**
  * 
@@ -9605,19 +10208,19 @@ export interface IntegrationApplicationResponse {
      * @type {string}
      * @memberof IntegrationApplicationResponse
      */
-    'icon'?: string | null;
+    'icon'?: string;
     /**
      * 
-     * @type {number}
+     * @type {ApplicationFormPartialType}
      * @memberof IntegrationApplicationResponse
      */
-    'type'?: number | null;
+    'type'?: ApplicationFormPartialType;
     /**
      * 
      * @type {string}
      * @memberof IntegrationApplicationResponse
      */
-    'cover_image'?: string | null;
+    'cover_image'?: string;
     /**
      * 
      * @type {string}
@@ -9629,8 +10232,26 @@ export interface IntegrationApplicationResponse {
      * @type {UserResponse}
      * @memberof IntegrationApplicationResponse
      */
-    'bot'?: UserResponse | null;
+    'bot'?: UserResponse;
 }
+/**
+ * @type IntegrationExpireBehaviorTypes
+ * @export
+ */
+export type IntegrationExpireBehaviorTypes = any;
+
+/**
+ * @type IntegrationExpireGracePeriodTypes
+ * @export
+ */
+export type IntegrationExpireGracePeriodTypes = any;
+
+/**
+ * @type IntegrationTypes
+ * @export
+ */
+export type IntegrationTypes = any;
+
 /**
  * 
  * @export
@@ -9639,11 +10260,17 @@ export interface IntegrationApplicationResponse {
 export interface InteractionApplicationCommandAutocompleteCallbackIntegerData {
     /**
      * 
-     * @type {Array<ApplicationCommandOptionIntegerChoice | null>}
+     * @type {Array<InteractionApplicationCommandAutocompleteCallbackIntegerDataChoicesInner>}
      * @memberof InteractionApplicationCommandAutocompleteCallbackIntegerData
      */
-    'choices'?: Array<ApplicationCommandOptionIntegerChoice | null> | null;
+    'choices'?: Array<InteractionApplicationCommandAutocompleteCallbackIntegerDataChoicesInner>;
 }
+/**
+ * @type InteractionApplicationCommandAutocompleteCallbackIntegerDataChoicesInner
+ * @export
+ */
+export type InteractionApplicationCommandAutocompleteCallbackIntegerDataChoicesInner = ApplicationCommandOptionIntegerChoice | Null;
+
 /**
  * 
  * @export
@@ -9652,11 +10279,17 @@ export interface InteractionApplicationCommandAutocompleteCallbackIntegerData {
 export interface InteractionApplicationCommandAutocompleteCallbackNumberData {
     /**
      * 
-     * @type {Array<ApplicationCommandOptionNumberChoice | null>}
+     * @type {Array<InteractionApplicationCommandAutocompleteCallbackNumberDataChoicesInner>}
      * @memberof InteractionApplicationCommandAutocompleteCallbackNumberData
      */
-    'choices'?: Array<ApplicationCommandOptionNumberChoice | null> | null;
+    'choices'?: Array<InteractionApplicationCommandAutocompleteCallbackNumberDataChoicesInner>;
 }
+/**
+ * @type InteractionApplicationCommandAutocompleteCallbackNumberDataChoicesInner
+ * @export
+ */
+export type InteractionApplicationCommandAutocompleteCallbackNumberDataChoicesInner = ApplicationCommandOptionNumberChoice | Null;
+
 /**
  * 
  * @export
@@ -9665,11 +10298,17 @@ export interface InteractionApplicationCommandAutocompleteCallbackNumberData {
 export interface InteractionApplicationCommandAutocompleteCallbackStringData {
     /**
      * 
-     * @type {Array<ApplicationCommandOptionStringChoice | null>}
+     * @type {Array<InteractionApplicationCommandAutocompleteCallbackStringDataChoicesInner>}
      * @memberof InteractionApplicationCommandAutocompleteCallbackStringData
      */
-    'choices'?: Array<ApplicationCommandOptionStringChoice | null> | null;
+    'choices'?: Array<InteractionApplicationCommandAutocompleteCallbackStringDataChoicesInner>;
 }
+/**
+ * @type InteractionApplicationCommandAutocompleteCallbackStringDataChoicesInner
+ * @export
+ */
+export type InteractionApplicationCommandAutocompleteCallbackStringDataChoicesInner = ApplicationCommandOptionStringChoice | Null;
+
 /**
  * 
  * @export
@@ -9687,13 +10326,25 @@ export interface InteractionCallbackResponse {
      * @type {InteractionCallbackResponseResource}
      * @memberof InteractionCallbackResponse
      */
-    'resource'?: InteractionCallbackResponseResource | null;
+    'resource'?: InteractionCallbackResponseResource;
 }
 /**
  * @type InteractionCallbackResponseResource
  * @export
  */
 export type InteractionCallbackResponseResource = CreateMessageInteractionCallbackResponse | LaunchActivityInteractionCallbackResponse | UpdateMessageInteractionCallbackResponse;
+
+/**
+ * @type InteractionCallbackTypes
+ * @export
+ */
+export type InteractionCallbackTypes = any;
+
+/**
+ * @type InteractionContextType
+ * @export
+ */
+export type InteractionContextType = any;
 
 /**
  * 
@@ -9709,10 +10360,10 @@ export interface InteractionResponse {
     'id': string;
     /**
      * 
-     * @type {number}
+     * @type {InteractionTypes}
      * @memberof InteractionResponse
      */
-    'type': number;
+    'type': InteractionTypes;
     /**
      * 
      * @type {string}
@@ -9724,13 +10375,13 @@ export interface InteractionResponse {
      * @type {boolean}
      * @memberof InteractionResponse
      */
-    'response_message_loading'?: boolean | null;
+    'response_message_loading'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof InteractionResponse
      */
-    'response_message_ephemeral'?: boolean | null;
+    'response_message_ephemeral'?: boolean;
     /**
      * 
      * @type {string}
@@ -9744,6 +10395,12 @@ export interface InteractionResponse {
      */
     'guild_id'?: string;
 }
+/**
+ * @type InteractionTypes
+ * @export
+ */
+export type InteractionTypes = any;
+
 /**
  * 
  * @export
@@ -9785,19 +10442,19 @@ export interface InviteApplicationResponse {
      * @type {string}
      * @memberof InviteApplicationResponse
      */
-    'icon'?: string | null;
+    'icon'?: string;
     /**
      * 
-     * @type {number}
+     * @type {ApplicationFormPartialType}
      * @memberof InviteApplicationResponse
      */
-    'type'?: number | null;
+    'type'?: ApplicationFormPartialType;
     /**
      * 
      * @type {string}
      * @memberof InviteApplicationResponse
      */
-    'cover_image'?: string | null;
+    'cover_image'?: string;
     /**
      * 
      * @type {string}
@@ -9809,13 +10466,13 @@ export interface InviteApplicationResponse {
      * @type {UserResponse}
      * @memberof InviteApplicationResponse
      */
-    'bot'?: UserResponse | null;
+    'bot'?: UserResponse;
     /**
      * 
      * @type {string}
      * @memberof InviteApplicationResponse
      */
-    'slug'?: string | null;
+    'slug'?: string;
     /**
      * 
      * @type {string}
@@ -9824,46 +10481,46 @@ export interface InviteApplicationResponse {
     'guild_id'?: string;
     /**
      * 
-     * @type {Array<string | null>}
+     * @type {Array<string>}
      * @memberof InviteApplicationResponse
      */
-    'rpc_origins'?: Array<string | null> | null;
+    'rpc_origins'?: Array<string>;
     /**
      * 
      * @type {boolean}
      * @memberof InviteApplicationResponse
      */
-    'bot_public'?: boolean | null;
+    'bot_public'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof InviteApplicationResponse
      */
-    'bot_require_code_grant'?: boolean | null;
+    'bot_require_code_grant'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof InviteApplicationResponse
      */
-    'terms_of_service_url'?: string | null;
+    'terms_of_service_url'?: string;
     /**
      * 
      * @type {string}
      * @memberof InviteApplicationResponse
      */
-    'privacy_policy_url'?: string | null;
+    'privacy_policy_url'?: string;
     /**
      * 
      * @type {string}
      * @memberof InviteApplicationResponse
      */
-    'custom_install_url'?: string | null;
+    'custom_install_url'?: string;
     /**
      * 
      * @type {ApplicationOAuth2InstallParamsResponse}
      * @memberof InviteApplicationResponse
      */
-    'install_params'?: ApplicationOAuth2InstallParamsResponse | null;
+    'install_params'?: ApplicationOAuth2InstallParamsResponse;
     /**
      * 
      * @type {{ [key: string]: ApplicationIntegrationTypeConfigurationResponse; }}
@@ -9875,13 +10532,13 @@ export interface InviteApplicationResponse {
      * @type {number}
      * @memberof InviteApplicationResponse
      */
-    'max_participants'?: number | null;
+    'max_participants'?: number;
     /**
      * 
      * @type {Set<string>}
      * @memberof InviteApplicationResponse
      */
-    'tags'?: Set<string> | null;
+    'tags'?: Set<string>;
 }
 /**
  * 
@@ -9910,28 +10567,28 @@ export interface InviteChannelResponse {
     'id': string;
     /**
      * 
-     * @type {number}
+     * @type {ChannelTypes}
      * @memberof InviteChannelResponse
      */
-    'type': number;
+    'type': ChannelTypes;
     /**
      * 
      * @type {string}
      * @memberof InviteChannelResponse
      */
-    'name'?: string | null;
+    'name'?: string;
     /**
      * 
      * @type {string}
      * @memberof InviteChannelResponse
      */
-    'icon'?: string | null;
+    'icon'?: string;
     /**
      * 
      * @type {Array<InviteChannelRecipientResponse>}
      * @memberof InviteChannelResponse
      */
-    'recipients'?: Array<InviteChannelRecipientResponse> | null;
+    'recipients'?: Array<InviteChannelRecipientResponse>;
 }
 /**
  * 
@@ -9953,65 +10610,83 @@ export interface InviteGuildResponse {
     'name': string;
     /**
      * 
-     * @type {Set<string>}
+     * @type {Set<GuildFeatures>}
      * @memberof InviteGuildResponse
      */
-    'features': Set<string>;
-    /**
-     * 
-     * @type {string}
-     * @memberof InviteGuildResponse
-     */
-    'splash'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof InviteGuildResponse
-     */
-    'banner'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof InviteGuildResponse
-     */
-    'description'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof InviteGuildResponse
-     */
-    'icon'?: string | null;
+    'features': Set<GuildFeatures>;
     /**
      * 
      * @type {number}
      * @memberof InviteGuildResponse
      */
-    'verification_level'?: number;
+    'premium_subscription_count': number;
     /**
      * 
      * @type {string}
      * @memberof InviteGuildResponse
      */
-    'vanity_url_code'?: string | null;
+    'splash'?: string;
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof InviteGuildResponse
      */
-    'nsfw_level'?: number | null;
+    'banner'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InviteGuildResponse
+     */
+    'description'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InviteGuildResponse
+     */
+    'icon'?: string;
+    /**
+     * 
+     * @type {GuildPatchRequestPartialVerificationLevel}
+     * @memberof InviteGuildResponse
+     */
+    'verification_level'?: GuildPatchRequestPartialVerificationLevel;
+    /**
+     * 
+     * @type {string}
+     * @memberof InviteGuildResponse
+     */
+    'vanity_url_code'?: string;
+    /**
+     * 
+     * @type {InviteGuildResponseNsfwLevel}
+     * @memberof InviteGuildResponse
+     */
+    'nsfw_level'?: InviteGuildResponseNsfwLevel;
     /**
      * 
      * @type {boolean}
      * @memberof InviteGuildResponse
      */
-    'nsfw'?: boolean | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof InviteGuildResponse
-     */
-    'premium_subscription_count'?: number | null;
+    'nsfw'?: boolean;
 }
+/**
+ * @type InviteGuildResponseNsfwLevel
+ * @export
+ */
+export type InviteGuildResponseNsfwLevel = GuildNSFWContentLevel | Null;
+
+/**
+ * @type InviteTargetTypes
+ * @export
+ */
+export type InviteTargetTypes = any;
+
+/**
+ * @type InviteTypes
+ * @export
+ */
+export type InviteTypes = any;
+
 /**
  * 
  * @export
@@ -10044,10 +10719,10 @@ export interface KeywordRuleResponse {
     'name': string;
     /**
      * 
-     * @type {number}
+     * @type {AutomodEventType}
      * @memberof KeywordRuleResponse
      */
-    'event_type': number;
+    'event_type': AutomodEventType;
     /**
      * 
      * @type {Array<DefaultKeywordRuleResponseActionsInner>}
@@ -10056,34 +10731,34 @@ export interface KeywordRuleResponse {
     'actions': Array<DefaultKeywordRuleResponseActionsInner>;
     /**
      * 
-     * @type {number}
+     * @type {AutomodTriggerType}
      * @memberof KeywordRuleResponse
      */
-    'trigger_type': number;
+    'trigger_type': AutomodTriggerType;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof KeywordRuleResponse
+     */
+    'enabled': boolean;
+    /**
+     * 
+     * @type {Set<string>}
+     * @memberof KeywordRuleResponse
+     */
+    'exempt_roles': Set<string>;
+    /**
+     * 
+     * @type {Set<string>}
+     * @memberof KeywordRuleResponse
+     */
+    'exempt_channels': Set<string>;
     /**
      * 
      * @type {KeywordTriggerMetadataResponse}
      * @memberof KeywordRuleResponse
      */
     'trigger_metadata': KeywordTriggerMetadataResponse;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof KeywordRuleResponse
-     */
-    'enabled'?: boolean | null;
-    /**
-     * 
-     * @type {Set<string>}
-     * @memberof KeywordRuleResponse
-     */
-    'exempt_roles'?: Set<string> | null;
-    /**
-     * 
-     * @type {Set<string>}
-     * @memberof KeywordRuleResponse
-     */
-    'exempt_channels'?: Set<string> | null;
 }
 /**
  * 
@@ -10096,19 +10771,19 @@ export interface KeywordTriggerMetadata {
      * @type {Array<string>}
      * @memberof KeywordTriggerMetadata
      */
-    'keyword_filter'?: Array<string> | null;
+    'keyword_filter'?: Array<string>;
     /**
      * 
      * @type {Array<string>}
      * @memberof KeywordTriggerMetadata
      */
-    'regex_patterns'?: Array<string> | null;
+    'regex_patterns'?: Array<string>;
     /**
      * 
      * @type {Array<string>}
      * @memberof KeywordTriggerMetadata
      */
-    'allow_list'?: Array<string> | null;
+    'allow_list'?: Array<string>;
 }
 /**
  * 
@@ -10149,46 +10824,46 @@ export interface KeywordUpsertRequest {
     'name': string;
     /**
      * 
-     * @type {number}
+     * @type {AutomodEventType}
      * @memberof KeywordUpsertRequest
      */
-    'event_type': number;
+    'event_type': AutomodEventType;
     /**
      * 
-     * @type {number}
+     * @type {AutomodTriggerType}
      * @memberof KeywordUpsertRequest
      */
-    'trigger_type': number;
+    'trigger_type': AutomodTriggerType;
     /**
      * 
      * @type {Array<DefaultKeywordListUpsertRequestActionsInner>}
      * @memberof KeywordUpsertRequest
      */
-    'actions'?: Array<DefaultKeywordListUpsertRequestActionsInner> | null;
+    'actions'?: Array<DefaultKeywordListUpsertRequestActionsInner>;
     /**
      * 
      * @type {boolean}
      * @memberof KeywordUpsertRequest
      */
-    'enabled'?: boolean | null;
+    'enabled'?: boolean;
     /**
      * 
      * @type {Set<string>}
      * @memberof KeywordUpsertRequest
      */
-    'exempt_roles'?: Set<string> | null;
+    'exempt_roles'?: Set<string>;
     /**
      * 
      * @type {Set<string>}
      * @memberof KeywordUpsertRequest
      */
-    'exempt_channels'?: Set<string> | null;
+    'exempt_channels'?: Set<string>;
     /**
      * 
-     * @type {KeywordTriggerMetadata}
+     * @type {KeywordUpsertRequestTriggerMetadata}
      * @memberof KeywordUpsertRequest
      */
-    'trigger_metadata'?: KeywordTriggerMetadata | null;
+    'trigger_metadata'?: KeywordUpsertRequestTriggerMetadata;
 }
 /**
  * 
@@ -10204,47 +10879,96 @@ export interface KeywordUpsertRequestPartial {
     'name'?: string;
     /**
      * 
-     * @type {number}
+     * @type {AutomodEventType}
      * @memberof KeywordUpsertRequestPartial
      */
-    'event_type'?: number;
+    'event_type'?: AutomodEventType;
     /**
      * 
      * @type {Array<DefaultKeywordListUpsertRequestActionsInner>}
      * @memberof KeywordUpsertRequestPartial
      */
-    'actions'?: Array<DefaultKeywordListUpsertRequestActionsInner> | null;
+    'actions'?: Array<DefaultKeywordListUpsertRequestActionsInner>;
     /**
      * 
      * @type {boolean}
      * @memberof KeywordUpsertRequestPartial
      */
-    'enabled'?: boolean | null;
+    'enabled'?: boolean;
     /**
      * 
      * @type {Set<string>}
      * @memberof KeywordUpsertRequestPartial
      */
-    'exempt_roles'?: Set<string> | null;
+    'exempt_roles'?: Set<string>;
     /**
      * 
      * @type {Set<string>}
      * @memberof KeywordUpsertRequestPartial
      */
-    'exempt_channels'?: Set<string> | null;
+    'exempt_channels'?: Set<string>;
+    /**
+     * 
+     * @type {AutomodTriggerType}
+     * @memberof KeywordUpsertRequestPartial
+     */
+    'trigger_type'?: AutomodTriggerType;
+    /**
+     * 
+     * @type {KeywordUpsertRequestTriggerMetadata}
+     * @memberof KeywordUpsertRequestPartial
+     */
+    'trigger_metadata'?: KeywordUpsertRequestTriggerMetadata;
+}
+/**
+ * @type KeywordUpsertRequestTriggerMetadata
+ * @export
+ */
+export type KeywordUpsertRequestTriggerMetadata = KeywordTriggerMetadata | Null;
+
+/**
+ * 
+ * @export
+ * @interface LabelComponentForModalRequest
+ */
+export interface LabelComponentForModalRequest {
+    /**
+     * 
+     * @type {MessageComponentTypes}
+     * @memberof LabelComponentForModalRequest
+     */
+    'type': MessageComponentTypes;
+    /**
+     * 
+     * @type {string}
+     * @memberof LabelComponentForModalRequest
+     */
+    'label': string;
+    /**
+     * 
+     * @type {LabelComponentForModalRequestComponent}
+     * @memberof LabelComponentForModalRequest
+     */
+    'component': LabelComponentForModalRequestComponent;
     /**
      * 
      * @type {number}
-     * @memberof KeywordUpsertRequestPartial
+     * @memberof LabelComponentForModalRequest
      */
-    'trigger_type'?: number;
+    'id'?: number;
     /**
      * 
-     * @type {KeywordTriggerMetadata}
-     * @memberof KeywordUpsertRequestPartial
+     * @type {string}
+     * @memberof LabelComponentForModalRequest
      */
-    'trigger_metadata'?: KeywordTriggerMetadata | null;
+    'description'?: string;
 }
+/**
+ * @type LabelComponentForModalRequestComponent
+ * @export
+ */
+export type LabelComponentForModalRequestComponent = ChannelSelectComponentForModalRequest | FileUploadComponentForModalRequest | MentionableSelectComponentForModalRequest | RoleSelectComponentForModalRequest | StringSelectComponentForModalRequest | TextInputComponentForModalRequest | UserSelectComponentForModalRequest;
+
 /**
  * 
  * @export
@@ -10253,10 +10977,10 @@ export interface KeywordUpsertRequestPartial {
 export interface LaunchActivityInteractionCallbackRequest {
     /**
      * 
-     * @type {number}
+     * @type {InteractionCallbackTypes}
      * @memberof LaunchActivityInteractionCallbackRequest
      */
-    'type': number | null;
+    'type': InteractionCallbackTypes;
 }
 /**
  * 
@@ -10266,10 +10990,10 @@ export interface LaunchActivityInteractionCallbackRequest {
 export interface LaunchActivityInteractionCallbackResponse {
     /**
      * 
-     * @type {number}
+     * @type {InteractionCallbackTypes}
      * @memberof LaunchActivityInteractionCallbackResponse
      */
-    'type': number | null;
+    'type': InteractionCallbackTypes;
 }
 /**
  * 
@@ -10288,147 +11012,14 @@ export interface ListApplicationEmojisResponse {
  * @type ListAutoModerationRules200ResponseInner
  * @export
  */
-export type ListAutoModerationRules200ResponseInner = DefaultKeywordRuleResponse | KeywordRuleResponse | MLSpamRuleResponse | MentionSpamRuleResponse | SpamLinkRuleResponse;
+export type ListAutoModerationRules200ResponseInner = DefaultKeywordRuleResponse | KeywordRuleResponse | MLSpamRuleResponse | MentionSpamRuleResponse | Null | SpamLinkRuleResponse;
 
 /**
- * 
+ * @type ListChannelInvites200ResponseInner
  * @export
- * @interface ListChannelInvites200ResponseInner
  */
-export interface ListChannelInvites200ResponseInner {
-    /**
-     * 
-     * @type {string}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'code': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'type'?: number | null;
-    /**
-     * 
-     * @type {UserResponse}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'inviter'?: UserResponse;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'max_age'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'created_at'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'expires_at'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'friends_count'?: number;
-    /**
-     * 
-     * @type {InviteChannelResponse}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'channel'?: InviteChannelResponse;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'is_contact'?: boolean;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'uses'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'max_uses'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'flags'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'approximate_member_count'?: number;
-    /**
-     * 
-     * @type {InviteGuildResponse}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'guild'?: InviteGuildResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'guild_id'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'target_type'?: number;
-    /**
-     * 
-     * @type {UserResponse}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'target_user'?: UserResponse;
-    /**
-     * 
-     * @type {InviteApplicationResponse}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'target_application'?: InviteApplicationResponse;
-    /**
-     * 
-     * @type {ScheduledEventResponse}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'guild_scheduled_event'?: ScheduledEventResponse;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'temporary'?: boolean;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'approximate_presence_count'?: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ListChannelInvites200ResponseInner
-     */
-    'is_nickname_changeable'?: boolean;
-}
+export type ListChannelInvites200ResponseInner = FriendInviteResponse | GroupDMInviteResponse | GuildInviteResponse | Null;
+
 /**
  * @type ListChannelWebhooks200ResponseInner
  * @export
@@ -10463,6 +11054,19 @@ export interface ListGuildSoundboardSoundsResponse {
 /**
  * 
  * @export
+ * @interface LobbyGuildInviteResponse
+ */
+export interface LobbyGuildInviteResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof LobbyGuildInviteResponse
+     */
+    'code': string;
+}
+/**
+ * 
+ * @export
  * @interface LobbyMemberRequest
  */
 export interface LobbyMemberRequest {
@@ -10480,18 +11084,11 @@ export interface LobbyMemberRequest {
     'metadata'?: { [key: string]: string; };
     /**
      * 
-     * @type {number}
+     * @type {CreateOrJoinLobbyRequestFlags}
      * @memberof LobbyMemberRequest
      */
-    'flags'?: LobbyMemberRequestFlagsEnum | null;
+    'flags'?: CreateOrJoinLobbyRequestFlags;
 }
-
-export const LobbyMemberRequestFlagsEnum = {
-    NUMBER_1: 1
-} as const;
-
-export type LobbyMemberRequestFlagsEnum = typeof LobbyMemberRequestFlagsEnum[keyof typeof LobbyMemberRequestFlagsEnum];
-
 /**
  * 
  * @export
@@ -10531,10 +11128,10 @@ export interface LobbyMessageResponse {
     'id': string;
     /**
      * 
-     * @type {number}
+     * @type {MessageType}
      * @memberof LobbyMessageResponse
      */
-    'type': number;
+    'type': MessageType;
     /**
      * 
      * @type {string}
@@ -10598,22 +11195,34 @@ export interface LobbyResponse {
     'application_id': string;
     /**
      * 
+     * @type {Array<LobbyMemberResponse>}
+     * @memberof LobbyResponse
+     */
+    'members': Array<LobbyMemberResponse>;
+    /**
+     * 
+     * @type {number}
+     * @memberof LobbyResponse
+     */
+    'flags': number;
+    /**
+     * 
      * @type {{ [key: string]: string; }}
      * @memberof LobbyResponse
      */
     'metadata'?: { [key: string]: string; };
     /**
      * 
-     * @type {Array<LobbyMemberResponse>}
-     * @memberof LobbyResponse
-     */
-    'members'?: Array<LobbyMemberResponse> | null;
-    /**
-     * 
      * @type {GuildChannelResponse}
      * @memberof LobbyResponse
      */
-    'linked_channel'?: GuildChannelResponse | null;
+    'linked_channel'?: GuildChannelResponse;
+    /**
+     * 
+     * @type {string}
+     * @memberof LobbyResponse
+     */
+    'override_event_webhooks_url'?: string;
 }
 /**
  * 
@@ -10647,10 +11256,10 @@ export interface MLSpamRuleResponse {
     'name': string;
     /**
      * 
-     * @type {number}
+     * @type {AutomodEventType}
      * @memberof MLSpamRuleResponse
      */
-    'event_type': number;
+    'event_type': AutomodEventType;
     /**
      * 
      * @type {Array<DefaultKeywordRuleResponseActionsInner>}
@@ -10659,34 +11268,34 @@ export interface MLSpamRuleResponse {
     'actions': Array<DefaultKeywordRuleResponseActionsInner>;
     /**
      * 
-     * @type {number}
+     * @type {AutomodTriggerType}
      * @memberof MLSpamRuleResponse
      */
-    'trigger_type': number;
+    'trigger_type': AutomodTriggerType;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof MLSpamRuleResponse
+     */
+    'enabled': boolean;
+    /**
+     * 
+     * @type {Set<string>}
+     * @memberof MLSpamRuleResponse
+     */
+    'exempt_roles': Set<string>;
+    /**
+     * 
+     * @type {Set<string>}
+     * @memberof MLSpamRuleResponse
+     */
+    'exempt_channels': Set<string>;
     /**
      * 
      * @type {object}
      * @memberof MLSpamRuleResponse
      */
     'trigger_metadata': object;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof MLSpamRuleResponse
-     */
-    'enabled'?: boolean | null;
-    /**
-     * 
-     * @type {Set<string>}
-     * @memberof MLSpamRuleResponse
-     */
-    'exempt_roles'?: Set<string> | null;
-    /**
-     * 
-     * @type {Set<string>}
-     * @memberof MLSpamRuleResponse
-     */
-    'exempt_channels'?: Set<string> | null;
 }
 /**
  * 
@@ -10702,46 +11311,46 @@ export interface MLSpamUpsertRequest {
     'name': string;
     /**
      * 
-     * @type {number}
+     * @type {AutomodEventType}
      * @memberof MLSpamUpsertRequest
      */
-    'event_type': number;
+    'event_type': AutomodEventType;
     /**
      * 
-     * @type {number}
+     * @type {AutomodTriggerType}
      * @memberof MLSpamUpsertRequest
      */
-    'trigger_type': number;
+    'trigger_type': AutomodTriggerType;
     /**
      * 
      * @type {Array<DefaultKeywordListUpsertRequestActionsInner>}
      * @memberof MLSpamUpsertRequest
      */
-    'actions'?: Array<DefaultKeywordListUpsertRequestActionsInner> | null;
+    'actions'?: Array<DefaultKeywordListUpsertRequestActionsInner>;
     /**
      * 
      * @type {boolean}
      * @memberof MLSpamUpsertRequest
      */
-    'enabled'?: boolean | null;
+    'enabled'?: boolean;
     /**
      * 
      * @type {Set<string>}
      * @memberof MLSpamUpsertRequest
      */
-    'exempt_roles'?: Set<string> | null;
+    'exempt_roles'?: Set<string>;
     /**
      * 
      * @type {Set<string>}
      * @memberof MLSpamUpsertRequest
      */
-    'exempt_channels'?: Set<string> | null;
+    'exempt_channels'?: Set<string>;
     /**
      * 
-     * @type {object}
+     * @type {MLSpamUpsertRequestTriggerMetadata}
      * @memberof MLSpamUpsertRequest
      */
-    'trigger_metadata'?: object;
+    'trigger_metadata'?: MLSpamUpsertRequestTriggerMetadata;
 }
 /**
  * 
@@ -10757,47 +11366,53 @@ export interface MLSpamUpsertRequestPartial {
     'name'?: string;
     /**
      * 
-     * @type {number}
+     * @type {AutomodEventType}
      * @memberof MLSpamUpsertRequestPartial
      */
-    'event_type'?: number;
+    'event_type'?: AutomodEventType;
     /**
      * 
      * @type {Array<DefaultKeywordListUpsertRequestActionsInner>}
      * @memberof MLSpamUpsertRequestPartial
      */
-    'actions'?: Array<DefaultKeywordListUpsertRequestActionsInner> | null;
+    'actions'?: Array<DefaultKeywordListUpsertRequestActionsInner>;
     /**
      * 
      * @type {boolean}
      * @memberof MLSpamUpsertRequestPartial
      */
-    'enabled'?: boolean | null;
+    'enabled'?: boolean;
     /**
      * 
      * @type {Set<string>}
      * @memberof MLSpamUpsertRequestPartial
      */
-    'exempt_roles'?: Set<string> | null;
+    'exempt_roles'?: Set<string>;
     /**
      * 
      * @type {Set<string>}
      * @memberof MLSpamUpsertRequestPartial
      */
-    'exempt_channels'?: Set<string> | null;
+    'exempt_channels'?: Set<string>;
     /**
      * 
-     * @type {number}
+     * @type {AutomodTriggerType}
      * @memberof MLSpamUpsertRequestPartial
      */
-    'trigger_type'?: number;
+    'trigger_type'?: AutomodTriggerType;
     /**
      * 
-     * @type {object}
+     * @type {MLSpamUpsertRequestTriggerMetadata}
      * @memberof MLSpamUpsertRequestPartial
      */
-    'trigger_metadata'?: object;
+    'trigger_metadata'?: MLSpamUpsertRequestTriggerMetadata;
 }
+/**
+ * @type MLSpamUpsertRequestTriggerMetadata
+ * @export
+ */
+export type MLSpamUpsertRequestTriggerMetadata = Null | object;
+
 /**
  * 
  * @export
@@ -10806,16 +11421,22 @@ export interface MLSpamUpsertRequestPartial {
 export interface MediaGalleryComponentForMessageRequest {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof MediaGalleryComponentForMessageRequest
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {Array<MediaGalleryItemRequest>}
      * @memberof MediaGalleryComponentForMessageRequest
      */
     'items': Array<MediaGalleryItemRequest>;
+    /**
+     * 
+     * @type {number}
+     * @memberof MediaGalleryComponentForMessageRequest
+     */
+    'id'?: number;
 }
 /**
  * 
@@ -10825,10 +11446,10 @@ export interface MediaGalleryComponentForMessageRequest {
 export interface MediaGalleryComponentResponse {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof MediaGalleryComponentResponse
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {number}
@@ -10859,13 +11480,13 @@ export interface MediaGalleryItemRequest {
      * @type {string}
      * @memberof MediaGalleryItemRequest
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof MediaGalleryItemRequest
      */
-    'spoiler'?: boolean | null;
+    'spoiler'?: boolean;
 }
 /**
  * 
@@ -10890,7 +11511,7 @@ export interface MediaGalleryItemResponse {
      * @type {string}
      * @memberof MediaGalleryItemResponse
      */
-    'description'?: string | null;
+    'description'?: string;
 }
 /**
  * 
@@ -10924,10 +11545,10 @@ export interface MentionSpamRuleResponse {
     'name': string;
     /**
      * 
-     * @type {number}
+     * @type {AutomodEventType}
      * @memberof MentionSpamRuleResponse
      */
-    'event_type': number;
+    'event_type': AutomodEventType;
     /**
      * 
      * @type {Array<DefaultKeywordRuleResponseActionsInner>}
@@ -10936,34 +11557,34 @@ export interface MentionSpamRuleResponse {
     'actions': Array<DefaultKeywordRuleResponseActionsInner>;
     /**
      * 
-     * @type {number}
+     * @type {AutomodTriggerType}
      * @memberof MentionSpamRuleResponse
      */
-    'trigger_type': number;
+    'trigger_type': AutomodTriggerType;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof MentionSpamRuleResponse
+     */
+    'enabled': boolean;
+    /**
+     * 
+     * @type {Set<string>}
+     * @memberof MentionSpamRuleResponse
+     */
+    'exempt_roles': Set<string>;
+    /**
+     * 
+     * @type {Set<string>}
+     * @memberof MentionSpamRuleResponse
+     */
+    'exempt_channels': Set<string>;
     /**
      * 
      * @type {MentionSpamTriggerMetadataResponse}
      * @memberof MentionSpamRuleResponse
      */
     'trigger_metadata': MentionSpamTriggerMetadataResponse;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof MentionSpamRuleResponse
-     */
-    'enabled'?: boolean | null;
-    /**
-     * 
-     * @type {Set<string>}
-     * @memberof MentionSpamRuleResponse
-     */
-    'exempt_roles'?: Set<string> | null;
-    /**
-     * 
-     * @type {Set<string>}
-     * @memberof MentionSpamRuleResponse
-     */
-    'exempt_channels'?: Set<string> | null;
 }
 /**
  * 
@@ -10976,13 +11597,13 @@ export interface MentionSpamTriggerMetadata {
      * @type {number}
      * @memberof MentionSpamTriggerMetadata
      */
-    'mention_total_limit': number;
+    'mention_total_limit'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof MentionSpamTriggerMetadata
      */
-    'mention_raid_protection_enabled'?: boolean | null;
+    'mention_raid_protection_enabled'?: boolean;
 }
 /**
  * 
@@ -11001,7 +11622,7 @@ export interface MentionSpamTriggerMetadataResponse {
      * @type {boolean}
      * @memberof MentionSpamTriggerMetadataResponse
      */
-    'mention_raid_protection_enabled'?: boolean | null;
+    'mention_raid_protection_enabled': boolean;
 }
 /**
  * 
@@ -11017,46 +11638,46 @@ export interface MentionSpamUpsertRequest {
     'name': string;
     /**
      * 
-     * @type {number}
+     * @type {AutomodEventType}
      * @memberof MentionSpamUpsertRequest
      */
-    'event_type': number;
+    'event_type': AutomodEventType;
     /**
      * 
-     * @type {number}
+     * @type {AutomodTriggerType}
      * @memberof MentionSpamUpsertRequest
      */
-    'trigger_type': number;
+    'trigger_type': AutomodTriggerType;
     /**
      * 
      * @type {Array<DefaultKeywordListUpsertRequestActionsInner>}
      * @memberof MentionSpamUpsertRequest
      */
-    'actions'?: Array<DefaultKeywordListUpsertRequestActionsInner> | null;
+    'actions'?: Array<DefaultKeywordListUpsertRequestActionsInner>;
     /**
      * 
      * @type {boolean}
      * @memberof MentionSpamUpsertRequest
      */
-    'enabled'?: boolean | null;
+    'enabled'?: boolean;
     /**
      * 
      * @type {Set<string>}
      * @memberof MentionSpamUpsertRequest
      */
-    'exempt_roles'?: Set<string> | null;
+    'exempt_roles'?: Set<string>;
     /**
      * 
      * @type {Set<string>}
      * @memberof MentionSpamUpsertRequest
      */
-    'exempt_channels'?: Set<string> | null;
+    'exempt_channels'?: Set<string>;
     /**
      * 
-     * @type {MentionSpamTriggerMetadata}
+     * @type {MentionSpamUpsertRequestTriggerMetadata}
      * @memberof MentionSpamUpsertRequest
      */
-    'trigger_metadata'?: MentionSpamTriggerMetadata | null;
+    'trigger_metadata'?: MentionSpamUpsertRequestTriggerMetadata;
 }
 /**
  * 
@@ -11072,47 +11693,53 @@ export interface MentionSpamUpsertRequestPartial {
     'name'?: string;
     /**
      * 
-     * @type {number}
+     * @type {AutomodEventType}
      * @memberof MentionSpamUpsertRequestPartial
      */
-    'event_type'?: number;
+    'event_type'?: AutomodEventType;
     /**
      * 
      * @type {Array<DefaultKeywordListUpsertRequestActionsInner>}
      * @memberof MentionSpamUpsertRequestPartial
      */
-    'actions'?: Array<DefaultKeywordListUpsertRequestActionsInner> | null;
+    'actions'?: Array<DefaultKeywordListUpsertRequestActionsInner>;
     /**
      * 
      * @type {boolean}
      * @memberof MentionSpamUpsertRequestPartial
      */
-    'enabled'?: boolean | null;
+    'enabled'?: boolean;
     /**
      * 
      * @type {Set<string>}
      * @memberof MentionSpamUpsertRequestPartial
      */
-    'exempt_roles'?: Set<string> | null;
+    'exempt_roles'?: Set<string>;
     /**
      * 
      * @type {Set<string>}
      * @memberof MentionSpamUpsertRequestPartial
      */
-    'exempt_channels'?: Set<string> | null;
+    'exempt_channels'?: Set<string>;
     /**
      * 
-     * @type {number}
+     * @type {AutomodTriggerType}
      * @memberof MentionSpamUpsertRequestPartial
      */
-    'trigger_type'?: number;
+    'trigger_type'?: AutomodTriggerType;
     /**
      * 
-     * @type {MentionSpamTriggerMetadata}
+     * @type {MentionSpamUpsertRequestTriggerMetadata}
      * @memberof MentionSpamUpsertRequestPartial
      */
-    'trigger_metadata'?: MentionSpamTriggerMetadata | null;
+    'trigger_metadata'?: MentionSpamUpsertRequestTriggerMetadata;
 }
+/**
+ * @type MentionSpamUpsertRequestTriggerMetadata
+ * @export
+ */
+export type MentionSpamUpsertRequestTriggerMetadata = MentionSpamTriggerMetadata | Null;
+
 /**
  * 
  * @export
@@ -11121,10 +11748,10 @@ export interface MentionSpamUpsertRequestPartial {
 export interface MentionableSelectComponentForMessageRequest {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof MentionableSelectComponentForMessageRequest
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {string}
@@ -11133,34 +11760,46 @@ export interface MentionableSelectComponentForMessageRequest {
     'custom_id': string;
     /**
      * 
+     * @type {number}
+     * @memberof MentionableSelectComponentForMessageRequest
+     */
+    'id'?: number;
+    /**
+     * 
      * @type {string}
      * @memberof MentionableSelectComponentForMessageRequest
      */
-    'placeholder'?: string | null;
+    'placeholder'?: string;
     /**
      * 
      * @type {number}
      * @memberof MentionableSelectComponentForMessageRequest
      */
-    'min_values'?: number | null;
+    'min_values'?: number;
     /**
      * 
      * @type {number}
      * @memberof MentionableSelectComponentForMessageRequest
      */
-    'max_values'?: number | null;
+    'max_values'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof MentionableSelectComponentForMessageRequest
      */
-    'disabled'?: boolean | null;
+    'disabled'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof MentionableSelectComponentForMessageRequest
+     */
+    'required'?: boolean;
     /**
      * 
      * @type {Array<MentionableSelectComponentForMessageRequestDefaultValuesInner>}
      * @memberof MentionableSelectComponentForMessageRequest
      */
-    'default_values'?: Array<MentionableSelectComponentForMessageRequestDefaultValuesInner> | null;
+    'default_values'?: Array<MentionableSelectComponentForMessageRequestDefaultValuesInner>;
 }
 /**
  * @type MentionableSelectComponentForMessageRequestDefaultValuesInner
@@ -11171,15 +11810,76 @@ export type MentionableSelectComponentForMessageRequestDefaultValuesInner = Role
 /**
  * 
  * @export
+ * @interface MentionableSelectComponentForModalRequest
+ */
+export interface MentionableSelectComponentForModalRequest {
+    /**
+     * 
+     * @type {MessageComponentTypes}
+     * @memberof MentionableSelectComponentForModalRequest
+     */
+    'type': MessageComponentTypes;
+    /**
+     * 
+     * @type {string}
+     * @memberof MentionableSelectComponentForModalRequest
+     */
+    'custom_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof MentionableSelectComponentForModalRequest
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof MentionableSelectComponentForModalRequest
+     */
+    'placeholder'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof MentionableSelectComponentForModalRequest
+     */
+    'min_values'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof MentionableSelectComponentForModalRequest
+     */
+    'max_values'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof MentionableSelectComponentForModalRequest
+     */
+    'disabled'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof MentionableSelectComponentForModalRequest
+     */
+    'required'?: boolean;
+    /**
+     * 
+     * @type {Array<MentionableSelectComponentForMessageRequestDefaultValuesInner>}
+     * @memberof MentionableSelectComponentForModalRequest
+     */
+    'default_values'?: Array<MentionableSelectComponentForMessageRequestDefaultValuesInner>;
+}
+/**
+ * 
+ * @export
  * @interface MentionableSelectComponentResponse
  */
 export interface MentionableSelectComponentResponse {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof MentionableSelectComponentResponse
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {number}
@@ -11197,31 +11897,31 @@ export interface MentionableSelectComponentResponse {
      * @type {string}
      * @memberof MentionableSelectComponentResponse
      */
-    'placeholder'?: string | null;
+    'placeholder'?: string;
     /**
      * 
      * @type {number}
      * @memberof MentionableSelectComponentResponse
      */
-    'min_values'?: number | null;
+    'min_values'?: number;
     /**
      * 
      * @type {number}
      * @memberof MentionableSelectComponentResponse
      */
-    'max_values'?: number | null;
+    'max_values'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof MentionableSelectComponentResponse
      */
-    'disabled'?: boolean | null;
+    'disabled'?: boolean;
     /**
      * 
      * @type {Array<MentionableSelectComponentResponseDefaultValuesInner>}
      * @memberof MentionableSelectComponentResponse
      */
-    'default_values'?: Array<MentionableSelectComponentResponseDefaultValuesInner> | null;
+    'default_values'?: Array<MentionableSelectComponentResponseDefaultValuesInner>;
 }
 /**
  * @type MentionableSelectComponentResponseDefaultValuesInner
@@ -11237,29 +11937,35 @@ export type MentionableSelectComponentResponseDefaultValuesInner = RoleSelectDef
 export interface MessageAllowedMentionsRequest {
     /**
      * 
-     * @type {Set<string | null>}
+     * @type {Set<MessageAllowedMentionsRequestParseInner>}
      * @memberof MessageAllowedMentionsRequest
      */
-    'parse'?: Set<string | null> | null;
+    'parse'?: Set<MessageAllowedMentionsRequestParseInner>;
     /**
      * 
-     * @type {Set<string | null>}
+     * @type {Set<GetEntitlementsSkuIdsParameterOneOfInner>}
      * @memberof MessageAllowedMentionsRequest
      */
-    'users'?: Set<string | null> | null;
+    'users'?: Set<GetEntitlementsSkuIdsParameterOneOfInner>;
     /**
      * 
-     * @type {Set<string | null>}
+     * @type {Set<GetEntitlementsSkuIdsParameterOneOfInner>}
      * @memberof MessageAllowedMentionsRequest
      */
-    'roles'?: Set<string | null> | null;
+    'roles'?: Set<GetEntitlementsSkuIdsParameterOneOfInner>;
     /**
      * 
      * @type {boolean}
      * @memberof MessageAllowedMentionsRequest
      */
-    'replied_user'?: boolean | null;
+    'replied_user'?: boolean;
 }
+/**
+ * @type MessageAllowedMentionsRequestParseInner
+ * @export
+ */
+export type MessageAllowedMentionsRequestParseInner = AllowedMentionTypes | Null;
+
 /**
  * 
  * @export
@@ -11277,37 +11983,37 @@ export interface MessageAttachmentRequest {
      * @type {string}
      * @memberof MessageAttachmentRequest
      */
-    'filename'?: string | null;
+    'filename'?: string;
     /**
      * 
      * @type {string}
      * @memberof MessageAttachmentRequest
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {number}
      * @memberof MessageAttachmentRequest
      */
-    'duration_secs'?: number | null;
+    'duration_secs'?: number;
     /**
      * 
      * @type {string}
      * @memberof MessageAttachmentRequest
      */
-    'waveform'?: string | null;
+    'waveform'?: string;
     /**
      * 
      * @type {string}
      * @memberof MessageAttachmentRequest
      */
-    'title'?: string | null;
+    'title'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof MessageAttachmentRequest
      */
-    'is_remix'?: boolean | null;
+    'is_remix'?: boolean;
 }
 /**
  * 
@@ -11350,67 +12056,67 @@ export interface MessageAttachmentResponse {
      * @type {number}
      * @memberof MessageAttachmentResponse
      */
-    'width'?: number | null;
+    'width'?: number;
     /**
      * 
      * @type {number}
      * @memberof MessageAttachmentResponse
      */
-    'height'?: number | null;
+    'height'?: number;
     /**
      * 
      * @type {number}
      * @memberof MessageAttachmentResponse
      */
-    'duration_secs'?: number | null;
+    'duration_secs'?: number;
     /**
      * 
      * @type {string}
      * @memberof MessageAttachmentResponse
      */
-    'waveform'?: string | null;
+    'waveform'?: string;
     /**
      * 
      * @type {string}
      * @memberof MessageAttachmentResponse
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof MessageAttachmentResponse
      */
-    'content_type'?: string | null;
+    'content_type'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof MessageAttachmentResponse
      */
-    'ephemeral'?: boolean | null;
+    'ephemeral'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof MessageAttachmentResponse
      */
-    'title'?: string | null;
+    'title'?: string;
     /**
      * 
      * @type {ApplicationResponse}
      * @memberof MessageAttachmentResponse
      */
-    'application'?: ApplicationResponse | null;
+    'application'?: ApplicationResponse;
     /**
      * 
      * @type {string}
      * @memberof MessageAttachmentResponse
      */
-    'clip_created_at'?: string | null;
+    'clip_created_at'?: string;
     /**
      * 
      * @type {Array<UserResponse>}
      * @memberof MessageAttachmentResponse
      */
-    'clip_participants'?: Array<UserResponse> | null;
+    'clip_participants'?: Array<UserResponse>;
 }
 /**
  * 
@@ -11429,7 +12135,7 @@ export interface MessageCallResponse {
      * @type {string}
      * @memberof MessageCallResponse
      */
-    'ended_timestamp'?: string | null;
+    'ended_timestamp'?: string;
 }
 /**
  * 
@@ -11445,10 +12151,10 @@ export interface MessageComponentInteractionMetadataResponse {
     'id': string;
     /**
      * 
-     * @type {number}
+     * @type {InteractionTypes}
      * @memberof MessageComponentInteractionMetadataResponse
      */
-    'type': number;
+    'type': InteractionTypes;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -11466,7 +12172,7 @@ export interface MessageComponentInteractionMetadataResponse {
      * @type {UserResponse}
      * @memberof MessageComponentInteractionMetadataResponse
      */
-    'user'?: UserResponse | null;
+    'user'?: UserResponse;
     /**
      * 
      * @type {string}
@@ -11474,6 +12180,18 @@ export interface MessageComponentInteractionMetadataResponse {
      */
     'original_response_message_id'?: string;
 }
+/**
+ * @type MessageComponentSeparatorSpacingSize
+ * @export
+ */
+export type MessageComponentSeparatorSpacingSize = any;
+
+/**
+ * @type MessageComponentTypes
+ * @export
+ */
+export type MessageComponentTypes = any;
+
 /**
  * 
  * @export
@@ -11485,80 +12203,86 @@ export interface MessageCreateRequest {
      * @type {string}
      * @memberof MessageCreateRequest
      */
-    'content'?: string | null;
+    'content'?: string;
     /**
      * 
      * @type {Array<RichEmbed>}
      * @memberof MessageCreateRequest
      */
-    'embeds'?: Array<RichEmbed> | null;
+    'embeds'?: Array<RichEmbed>;
     /**
      * 
-     * @type {MessageAllowedMentionsRequest}
+     * @type {BaseCreateMessageCreateRequestAllowedMentions}
      * @memberof MessageCreateRequest
      */
-    'allowed_mentions'?: MessageAllowedMentionsRequest | null;
+    'allowed_mentions'?: BaseCreateMessageCreateRequestAllowedMentions;
     /**
      * 
      * @type {Array<string>}
      * @memberof MessageCreateRequest
      */
-    'sticker_ids'?: Array<string> | null;
+    'sticker_ids'?: Array<string>;
     /**
      * 
      * @type {Array<BaseCreateMessageCreateRequestComponentsInner>}
      * @memberof MessageCreateRequest
      */
-    'components'?: Array<BaseCreateMessageCreateRequestComponentsInner> | null;
+    'components'?: Array<BaseCreateMessageCreateRequestComponentsInner>;
     /**
      * 
      * @type {number}
      * @memberof MessageCreateRequest
      */
-    'flags'?: number | null;
+    'flags'?: number;
     /**
      * 
      * @type {Array<MessageAttachmentRequest>}
      * @memberof MessageCreateRequest
      */
-    'attachments'?: Array<MessageAttachmentRequest> | null;
+    'attachments'?: Array<MessageAttachmentRequest>;
     /**
      * 
-     * @type {PollCreateRequest}
+     * @type {BaseCreateMessageCreateRequestPoll}
      * @memberof MessageCreateRequest
      */
-    'poll'?: PollCreateRequest | null;
+    'poll'?: BaseCreateMessageCreateRequestPoll;
     /**
      * 
-     * @type {object}
+     * @type {BaseCreateMessageCreateRequestSharedClientTheme}
      * @memberof MessageCreateRequest
      */
-    'confetti_potion'?: object;
+    'shared_client_theme'?: BaseCreateMessageCreateRequestSharedClientTheme;
     /**
      * 
-     * @type {MessageReferenceRequest}
+     * @type {MessageCreateRequestMessageReference}
      * @memberof MessageCreateRequest
      */
-    'message_reference'?: MessageReferenceRequest | null;
+    'message_reference'?: MessageCreateRequestMessageReference;
     /**
      * 
      * @type {BasicMessageResponseNonce}
      * @memberof MessageCreateRequest
      */
-    'nonce'?: BasicMessageResponseNonce | null;
+    'nonce'?: BasicMessageResponseNonce;
     /**
      * 
      * @type {boolean}
      * @memberof MessageCreateRequest
      */
-    'enforce_nonce'?: boolean | null;
+    'enforce_nonce'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof MessageCreateRequest
      */
-    'tts'?: boolean | null;
+    'tts'?: boolean;
 }
+/**
+ * @type MessageCreateRequestMessageReference
+ * @export
+ */
+export type MessageCreateRequestMessageReference = MessageReferenceRequest | Null;
+
 /**
  * 
  * @export
@@ -11570,43 +12294,43 @@ export interface MessageEditRequestPartial {
      * @type {string}
      * @memberof MessageEditRequestPartial
      */
-    'content'?: string | null;
+    'content'?: string;
     /**
      * 
      * @type {Array<RichEmbed>}
      * @memberof MessageEditRequestPartial
      */
-    'embeds'?: Array<RichEmbed> | null;
+    'embeds'?: Array<RichEmbed>;
     /**
      * 
      * @type {number}
      * @memberof MessageEditRequestPartial
      */
-    'flags'?: number | null;
+    'flags'?: number;
     /**
      * 
-     * @type {MessageAllowedMentionsRequest}
+     * @type {BaseCreateMessageCreateRequestAllowedMentions}
      * @memberof MessageEditRequestPartial
      */
-    'allowed_mentions'?: MessageAllowedMentionsRequest | null;
+    'allowed_mentions'?: BaseCreateMessageCreateRequestAllowedMentions;
     /**
      * 
      * @type {Array<string>}
      * @memberof MessageEditRequestPartial
      */
-    'sticker_ids'?: Array<string> | null;
+    'sticker_ids'?: Array<string>;
     /**
      * 
      * @type {Array<BaseCreateMessageCreateRequestComponentsInner>}
      * @memberof MessageEditRequestPartial
      */
-    'components'?: Array<BaseCreateMessageCreateRequestComponentsInner> | null;
+    'components'?: Array<BaseCreateMessageCreateRequestComponentsInner>;
     /**
      * 
      * @type {Array<MessageAttachmentRequest>}
      * @memberof MessageEditRequestPartial
      */
-    'attachments'?: Array<MessageAttachmentRequest> | null;
+    'attachments'?: Array<MessageAttachmentRequest>;
 }
 /**
  * 
@@ -11625,19 +12349,19 @@ export interface MessageEmbedAuthorResponse {
      * @type {string}
      * @memberof MessageEmbedAuthorResponse
      */
-    'url'?: string | null;
+    'url'?: string;
     /**
      * 
      * @type {string}
      * @memberof MessageEmbedAuthorResponse
      */
-    'icon_url'?: string | null;
+    'icon_url'?: string;
     /**
      * 
      * @type {string}
      * @memberof MessageEmbedAuthorResponse
      */
-    'proxy_icon_url'?: string | null;
+    'proxy_icon_url'?: string;
 }
 /**
  * 
@@ -11681,13 +12405,13 @@ export interface MessageEmbedFooterResponse {
      * @type {string}
      * @memberof MessageEmbedFooterResponse
      */
-    'icon_url'?: string | null;
+    'icon_url'?: string;
     /**
      * 
      * @type {string}
      * @memberof MessageEmbedFooterResponse
      */
-    'proxy_icon_url'?: string | null;
+    'proxy_icon_url'?: string;
 }
 /**
  * 
@@ -11700,13 +12424,13 @@ export interface MessageEmbedImageResponse {
      * @type {string}
      * @memberof MessageEmbedImageResponse
      */
-    'url'?: string | null;
+    'url'?: string;
     /**
      * 
      * @type {string}
      * @memberof MessageEmbedImageResponse
      */
-    'proxy_url'?: string | null;
+    'proxy_url'?: string;
     /**
      * 
      * @type {number}
@@ -11724,13 +12448,13 @@ export interface MessageEmbedImageResponse {
      * @type {string}
      * @memberof MessageEmbedImageResponse
      */
-    'content_type'?: string | null;
+    'content_type'?: string;
     /**
      * 
      * @type {string}
      * @memberof MessageEmbedImageResponse
      */
-    'placeholder'?: string | null;
+    'placeholder'?: string;
     /**
      * 
      * @type {number}
@@ -11742,7 +12466,7 @@ export interface MessageEmbedImageResponse {
      * @type {string}
      * @memberof MessageEmbedImageResponse
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {number}
@@ -11767,7 +12491,7 @@ export interface MessageEmbedProviderResponse {
      * @type {string}
      * @memberof MessageEmbedProviderResponse
      */
-    'url'?: string | null;
+    'url'?: string;
 }
 /**
  * 
@@ -11786,73 +12510,73 @@ export interface MessageEmbedResponse {
      * @type {string}
      * @memberof MessageEmbedResponse
      */
-    'url'?: string | null;
+    'url'?: string;
     /**
      * 
      * @type {string}
      * @memberof MessageEmbedResponse
      */
-    'title'?: string | null;
+    'title'?: string;
     /**
      * 
      * @type {string}
      * @memberof MessageEmbedResponse
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {number}
      * @memberof MessageEmbedResponse
      */
-    'color'?: number | null;
+    'color'?: number;
     /**
      * 
      * @type {string}
      * @memberof MessageEmbedResponse
      */
-    'timestamp'?: string | null;
+    'timestamp'?: string;
     /**
      * 
      * @type {Array<MessageEmbedFieldResponse>}
      * @memberof MessageEmbedResponse
      */
-    'fields'?: Array<MessageEmbedFieldResponse> | null;
+    'fields'?: Array<MessageEmbedFieldResponse>;
     /**
      * 
      * @type {MessageEmbedAuthorResponse}
      * @memberof MessageEmbedResponse
      */
-    'author'?: MessageEmbedAuthorResponse | null;
+    'author'?: MessageEmbedAuthorResponse;
     /**
      * 
      * @type {MessageEmbedProviderResponse}
      * @memberof MessageEmbedResponse
      */
-    'provider'?: MessageEmbedProviderResponse | null;
+    'provider'?: MessageEmbedProviderResponse;
     /**
      * 
      * @type {MessageEmbedImageResponse}
      * @memberof MessageEmbedResponse
      */
-    'image'?: MessageEmbedImageResponse | null;
+    'image'?: MessageEmbedImageResponse;
     /**
      * 
      * @type {MessageEmbedImageResponse}
      * @memberof MessageEmbedResponse
      */
-    'thumbnail'?: MessageEmbedImageResponse | null;
+    'thumbnail'?: MessageEmbedImageResponse;
     /**
      * 
      * @type {MessageEmbedVideoResponse}
      * @memberof MessageEmbedResponse
      */
-    'video'?: MessageEmbedVideoResponse | null;
+    'video'?: MessageEmbedVideoResponse;
     /**
      * 
      * @type {MessageEmbedFooterResponse}
      * @memberof MessageEmbedResponse
      */
-    'footer'?: MessageEmbedFooterResponse | null;
+    'footer'?: MessageEmbedFooterResponse;
 }
 /**
  * 
@@ -11865,13 +12589,13 @@ export interface MessageEmbedVideoResponse {
      * @type {string}
      * @memberof MessageEmbedVideoResponse
      */
-    'url'?: string | null;
+    'url'?: string;
     /**
      * 
      * @type {string}
      * @memberof MessageEmbedVideoResponse
      */
-    'proxy_url'?: string | null;
+    'proxy_url'?: string;
     /**
      * 
      * @type {number}
@@ -11889,13 +12613,13 @@ export interface MessageEmbedVideoResponse {
      * @type {string}
      * @memberof MessageEmbedVideoResponse
      */
-    'content_type'?: string | null;
+    'content_type'?: string;
     /**
      * 
      * @type {string}
      * @memberof MessageEmbedVideoResponse
      */
-    'placeholder'?: string | null;
+    'placeholder'?: string;
     /**
      * 
      * @type {number}
@@ -11907,7 +12631,7 @@ export interface MessageEmbedVideoResponse {
      * @type {string}
      * @memberof MessageEmbedVideoResponse
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {number}
@@ -11929,10 +12653,10 @@ export interface MessageInteractionResponse {
     'id': string;
     /**
      * 
-     * @type {number}
+     * @type {InteractionTypes}
      * @memberof MessageInteractionResponse
      */
-    'type': number;
+    'type': InteractionTypes;
     /**
      * 
      * @type {string}
@@ -11944,13 +12668,13 @@ export interface MessageInteractionResponse {
      * @type {UserResponse}
      * @memberof MessageInteractionResponse
      */
-    'user'?: UserResponse | null;
+    'user'?: UserResponse;
     /**
      * 
      * @type {string}
      * @memberof MessageInteractionResponse
      */
-    'name_localized'?: string | null;
+    'name_localized'?: string;
 }
 /**
  * 
@@ -11972,10 +12696,10 @@ export interface MessageMentionChannelResponse {
     'name': string;
     /**
      * 
-     * @type {number}
+     * @type {ChannelTypes}
      * @memberof MessageMentionChannelResponse
      */
-    'type': number;
+    'type': ChannelTypes;
     /**
      * 
      * @type {string}
@@ -12010,22 +12734,22 @@ export interface MessageReactionCountDetailsResponse {
 export interface MessageReactionEmojiResponse {
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof MessageReactionEmojiResponse
      */
-    'id'?: string;
+    'id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof MessageReactionEmojiResponse
      */
-    'name'?: string | null;
+    'name'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof MessageReactionEmojiResponse
      */
-    'animated'?: boolean | null;
+    'animated'?: boolean;
 }
 /**
  * 
@@ -12084,29 +12808,35 @@ export interface MessageReferenceRequest {
     'message_id': string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof MessageReferenceRequest
      */
-    'guild_id'?: string;
+    'guild_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof MessageReferenceRequest
      */
-    'channel_id'?: string;
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {boolean}
      * @memberof MessageReferenceRequest
      */
-    'fail_if_not_exists'?: boolean | null;
+    'fail_if_not_exists'?: boolean;
     /**
      * 
-     * @type {any}
+     * @type {MessageReferenceRequestType}
      * @memberof MessageReferenceRequest
      */
-    'type'?: any;
+    'type'?: MessageReferenceRequestType;
 }
+/**
+ * @type MessageReferenceRequestType
+ * @export
+ */
+export type MessageReferenceRequestType = MessageReferenceType | Null;
+
 /**
  * 
  * @export
@@ -12115,16 +12845,16 @@ export interface MessageReferenceRequest {
 export interface MessageReferenceResponse {
     /**
      * 
+     * @type {MessageReferenceType}
+     * @memberof MessageReferenceResponse
+     */
+    'type': MessageReferenceType;
+    /**
+     * 
      * @type {string}
      * @memberof MessageReferenceResponse
      */
     'channel_id': string;
-    /**
-     * 
-     * @type {any}
-     * @memberof MessageReferenceResponse
-     */
-    'type'?: any;
     /**
      * 
      * @type {string}
@@ -12139,6 +12869,12 @@ export interface MessageReferenceResponse {
     'guild_id'?: string;
 }
 /**
+ * @type MessageReferenceType
+ * @export
+ */
+export type MessageReferenceType = any;
+
+/**
  * 
  * @export
  * @interface MessageResponse
@@ -12146,10 +12882,10 @@ export interface MessageReferenceResponse {
 export interface MessageResponse {
     /**
      * 
-     * @type {number}
+     * @type {MessageType}
      * @memberof MessageResponse
      */
-    'type': number;
+    'type': MessageType;
     /**
      * 
      * @type {string}
@@ -12239,31 +12975,25 @@ export interface MessageResponse {
      * @type {string}
      * @memberof MessageResponse
      */
-    'edited_timestamp'?: string | null;
-    /**
-     * 
-     * @type {ResolvedObjectsResponse}
-     * @memberof MessageResponse
-     */
-    'resolved'?: ResolvedObjectsResponse | null;
+    'edited_timestamp'?: string;
     /**
      * 
      * @type {Array<GetSticker200Response>}
      * @memberof MessageResponse
      */
-    'stickers'?: Array<GetSticker200Response> | null;
+    'stickers'?: Array<GetSticker200Response>;
     /**
      * 
      * @type {Array<MessageStickerItemResponse>}
      * @memberof MessageResponse
      */
-    'sticker_items'?: Array<MessageStickerItemResponse> | null;
+    'sticker_items'?: Array<MessageStickerItemResponse>;
     /**
      * 
      * @type {MessageCallResponse}
      * @memberof MessageResponse
      */
-    'call'?: MessageCallResponse | null;
+    'call'?: MessageCallResponse;
     /**
      * 
      * @type {object}
@@ -12275,7 +13005,7 @@ export interface MessageResponse {
      * @type {BasicApplicationResponse}
      * @memberof MessageResponse
      */
-    'application'?: BasicApplicationResponse | null;
+    'application'?: BasicApplicationResponse;
     /**
      * 
      * @type {string}
@@ -12287,13 +13017,13 @@ export interface MessageResponse {
      * @type {MessageInteractionResponse}
      * @memberof MessageResponse
      */
-    'interaction'?: MessageInteractionResponse | null;
+    'interaction'?: MessageInteractionResponse;
     /**
      * 
      * @type {BasicMessageResponseNonce}
      * @memberof MessageResponse
      */
-    'nonce'?: BasicMessageResponseNonce | null;
+    'nonce'?: BasicMessageResponseNonce;
     /**
      * 
      * @type {string}
@@ -12305,68 +13035,86 @@ export interface MessageResponse {
      * @type {MessageReferenceResponse}
      * @memberof MessageResponse
      */
-    'message_reference'?: MessageReferenceResponse | null;
+    'message_reference'?: MessageReferenceResponse;
     /**
      * 
      * @type {ThreadResponse}
      * @memberof MessageResponse
      */
-    'thread'?: ThreadResponse | null;
+    'thread'?: ThreadResponse;
     /**
      * 
-     * @type {Array<MessageMentionChannelResponse | null>}
+     * @type {Array<BasicMessageResponseMentionChannelsInner>}
      * @memberof MessageResponse
      */
-    'mention_channels'?: Array<MessageMentionChannelResponse | null> | null;
+    'mention_channels'?: Array<BasicMessageResponseMentionChannelsInner>;
     /**
      * 
      * @type {MessageRoleSubscriptionDataResponse}
      * @memberof MessageResponse
      */
-    'role_subscription_data'?: MessageRoleSubscriptionDataResponse | null;
+    'role_subscription_data'?: MessageRoleSubscriptionDataResponse;
     /**
      * 
      * @type {PurchaseNotificationResponse}
      * @memberof MessageResponse
      */
-    'purchase_notification'?: PurchaseNotificationResponse | null;
+    'purchase_notification'?: PurchaseNotificationResponse;
     /**
      * 
      * @type {number}
      * @memberof MessageResponse
      */
-    'position'?: number | null;
+    'position'?: number;
+    /**
+     * 
+     * @type {ResolvedObjectsResponse}
+     * @memberof MessageResponse
+     */
+    'resolved'?: ResolvedObjectsResponse;
     /**
      * 
      * @type {PollResponse}
      * @memberof MessageResponse
      */
-    'poll'?: PollResponse | null;
+    'poll'?: PollResponse;
+    /**
+     * 
+     * @type {BasicMessageResponseSharedClientTheme}
+     * @memberof MessageResponse
+     */
+    'shared_client_theme'?: BasicMessageResponseSharedClientTheme;
     /**
      * 
      * @type {BasicMessageResponseInteractionMetadata}
      * @memberof MessageResponse
      */
-    'interaction_metadata'?: BasicMessageResponseInteractionMetadata | null;
+    'interaction_metadata'?: BasicMessageResponseInteractionMetadata;
     /**
      * 
      * @type {Array<MessageSnapshotResponse>}
      * @memberof MessageResponse
      */
-    'message_snapshots'?: Array<MessageSnapshotResponse> | null;
+    'message_snapshots'?: Array<MessageSnapshotResponse>;
     /**
      * 
      * @type {Array<MessageReactionResponse>}
      * @memberof MessageResponse
      */
-    'reactions'?: Array<MessageReactionResponse> | null;
+    'reactions'?: Array<MessageReactionResponse>;
     /**
      * 
-     * @type {BasicMessageResponse}
+     * @type {MessageResponseReferencedMessage}
      * @memberof MessageResponse
      */
-    'referenced_message'?: BasicMessageResponse | null;
+    'referenced_message'?: MessageResponseReferencedMessage;
 }
+/**
+ * @type MessageResponseReferencedMessage
+ * @export
+ */
+export type MessageResponseReferencedMessage = BasicMessageResponse | Null;
+
 /**
  * 
  * @export
@@ -12399,6 +13147,12 @@ export interface MessageRoleSubscriptionDataResponse {
     'is_renewal': boolean;
 }
 /**
+ * @type MessageShareCustomUserThemeBaseTheme
+ * @export
+ */
+export type MessageShareCustomUserThemeBaseTheme = any;
+
+/**
  * 
  * @export
  * @interface MessageSnapshotResponse
@@ -12409,7 +13163,7 @@ export interface MessageSnapshotResponse {
      * @type {MinimalContentMessageResponse}
      * @memberof MessageSnapshotResponse
      */
-    'message'?: MinimalContentMessageResponse | null;
+    'message': MinimalContentMessageResponse;
 }
 /**
  * 
@@ -12431,11 +13185,23 @@ export interface MessageStickerItemResponse {
     'name': string;
     /**
      * 
-     * @type {number}
+     * @type {StickerFormatTypes}
      * @memberof MessageStickerItemResponse
      */
-    'format_type': number | null;
+    'format_type': StickerFormatTypes;
 }
+/**
+ * @type MessageType
+ * @export
+ */
+export type MessageType = any;
+
+/**
+ * @type MetadataItemTypes
+ * @export
+ */
+export type MetadataItemTypes = any;
+
 /**
  * 
  * @export
@@ -12444,10 +13210,10 @@ export interface MessageStickerItemResponse {
 export interface MinimalContentMessageResponse {
     /**
      * 
-     * @type {number}
+     * @type {MessageType}
      * @memberof MinimalContentMessageResponse
      */
-    'type': number;
+    'type': MessageType;
     /**
      * 
      * @type {string}
@@ -12501,25 +13267,19 @@ export interface MinimalContentMessageResponse {
      * @type {string}
      * @memberof MinimalContentMessageResponse
      */
-    'edited_timestamp'?: string | null;
-    /**
-     * 
-     * @type {ResolvedObjectsResponse}
-     * @memberof MinimalContentMessageResponse
-     */
-    'resolved'?: ResolvedObjectsResponse | null;
+    'edited_timestamp'?: string;
     /**
      * 
      * @type {Array<GetSticker200Response>}
      * @memberof MinimalContentMessageResponse
      */
-    'stickers'?: Array<GetSticker200Response> | null;
+    'stickers'?: Array<GetSticker200Response>;
     /**
      * 
      * @type {Array<MessageStickerItemResponse>}
      * @memberof MinimalContentMessageResponse
      */
-    'sticker_items'?: Array<MessageStickerItemResponse> | null;
+    'sticker_items'?: Array<MessageStickerItemResponse>;
 }
 /**
  * 
@@ -12529,10 +13289,10 @@ export interface MinimalContentMessageResponse {
 export interface ModalInteractionCallbackRequest {
     /**
      * 
-     * @type {number}
+     * @type {InteractionCallbackTypes}
      * @memberof ModalInteractionCallbackRequest
      */
-    'type': number | null;
+    'type': InteractionCallbackTypes;
     /**
      * 
      * @type {ModalInteractionCallbackRequestData}
@@ -12560,11 +13320,17 @@ export interface ModalInteractionCallbackRequestData {
     'title': string;
     /**
      * 
-     * @type {Array<ActionRowComponentForModalRequest>}
+     * @type {Array<ModalInteractionCallbackRequestDataComponentsInner>}
      * @memberof ModalInteractionCallbackRequestData
      */
-    'components': Array<ActionRowComponentForModalRequest>;
+    'components': Array<ModalInteractionCallbackRequestDataComponentsInner>;
 }
+/**
+ * @type ModalInteractionCallbackRequestDataComponentsInner
+ * @export
+ */
+export type ModalInteractionCallbackRequestDataComponentsInner = ActionRowComponentForModalRequest | LabelComponentForModalRequest | TextDisplayComponentForModalRequest;
+
 /**
  * 
  * @export
@@ -12579,10 +13345,10 @@ export interface ModalSubmitInteractionMetadataResponse {
     'id': string;
     /**
      * 
-     * @type {number}
+     * @type {InteractionTypes}
      * @memberof ModalSubmitInteractionMetadataResponse
      */
-    'type': number;
+    'type': InteractionTypes;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -12600,7 +13366,7 @@ export interface ModalSubmitInteractionMetadataResponse {
      * @type {UserResponse}
      * @memberof ModalSubmitInteractionMetadataResponse
      */
-    'user'?: UserResponse | null;
+    'user'?: UserResponse;
     /**
      * 
      * @type {string}
@@ -12665,34 +13431,34 @@ export interface MyGuildResponse {
     'permissions': string;
     /**
      * 
-     * @type {Set<string>}
+     * @type {Set<GuildFeatures>}
      * @memberof MyGuildResponse
      */
-    'features': Set<string>;
+    'features': Set<GuildFeatures>;
     /**
      * 
      * @type {string}
      * @memberof MyGuildResponse
      */
-    'icon'?: string | null;
+    'icon'?: string;
     /**
      * 
      * @type {string}
      * @memberof MyGuildResponse
      */
-    'banner'?: string | null;
+    'banner'?: string;
     /**
      * 
      * @type {number}
      * @memberof MyGuildResponse
      */
-    'approximate_member_count'?: number | null;
+    'approximate_member_count'?: number;
     /**
      * 
      * @type {number}
      * @memberof MyGuildResponse
      */
-    'approximate_presence_count'?: number | null;
+    'approximate_presence_count'?: number;
 }
 /**
  * 
@@ -12708,10 +13474,10 @@ export interface NewMemberActionResponse {
     'channel_id': string;
     /**
      * 
-     * @type {number}
+     * @type {NewMemberActionType}
      * @memberof NewMemberActionResponse
      */
-    'action_type': number | null;
+    'action_type': NewMemberActionType;
     /**
      * 
      * @type {string}
@@ -12729,14 +13495,20 @@ export interface NewMemberActionResponse {
      * @type {SettingsEmojiResponse}
      * @memberof NewMemberActionResponse
      */
-    'emoji'?: SettingsEmojiResponse | null;
+    'emoji'?: SettingsEmojiResponse;
     /**
      * 
      * @type {string}
      * @memberof NewMemberActionResponse
      */
-    'icon'?: string | null;
+    'icon'?: string;
 }
+/**
+ * @type NewMemberActionType
+ * @export
+ */
+export type NewMemberActionType = any;
+
 /**
  * 
  * @export
@@ -12757,16 +13529,16 @@ export interface OAuth2GetAuthorizationResponse {
     'expires': string;
     /**
      * 
-     * @type {Set<string>}
+     * @type {Set<OAuth2Scopes>}
      * @memberof OAuth2GetAuthorizationResponse
      */
-    'scopes': Set<string>;
+    'scopes': Set<OAuth2Scopes>;
     /**
      * 
      * @type {UserResponse}
      * @memberof OAuth2GetAuthorizationResponse
      */
-    'user'?: UserResponse | null;
+    'user'?: UserResponse;
 }
 /**
  * 
@@ -12798,37 +13570,37 @@ export interface OAuth2GetOpenIDConnectUserInfoResponse {
      * @type {string}
      * @memberof OAuth2GetOpenIDConnectUserInfoResponse
      */
-    'email'?: string | null;
+    'email'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof OAuth2GetOpenIDConnectUserInfoResponse
      */
-    'email_verified'?: boolean | null;
+    'email_verified'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof OAuth2GetOpenIDConnectUserInfoResponse
      */
-    'preferred_username'?: string | null;
+    'preferred_username'?: string;
     /**
      * 
      * @type {string}
      * @memberof OAuth2GetOpenIDConnectUserInfoResponse
      */
-    'nickname'?: string | null;
+    'nickname'?: string;
     /**
      * 
      * @type {string}
      * @memberof OAuth2GetOpenIDConnectUserInfoResponse
      */
-    'picture'?: string | null;
+    'picture'?: string;
     /**
      * 
      * @type {string}
      * @memberof OAuth2GetOpenIDConnectUserInfoResponse
      */
-    'locale'?: string | null;
+    'locale'?: string;
 }
 /**
  * 
@@ -12874,6 +13646,12 @@ export interface OAuth2Key {
     'alg': string;
 }
 /**
+ * @type OAuth2Scopes
+ * @export
+ */
+export type OAuth2Scopes = any;
+
+/**
  * 
  * @export
  * @interface OnboardingPromptOptionRequest
@@ -12887,46 +13665,46 @@ export interface OnboardingPromptOptionRequest {
     'title': string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof OnboardingPromptOptionRequest
      */
-    'id'?: string;
+    'id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof OnboardingPromptOptionRequest
      */
-    'description'?: string | null;
+    'description'?: string;
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof OnboardingPromptOptionRequest
+     */
+    'emoji_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof OnboardingPromptOptionRequest
      */
-    'emoji_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof OnboardingPromptOptionRequest
-     */
-    'emoji_name'?: string | null;
+    'emoji_name'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof OnboardingPromptOptionRequest
      */
-    'emoji_animated'?: boolean | null;
+    'emoji_animated'?: boolean;
     /**
      * 
      * @type {Set<string>}
      * @memberof OnboardingPromptOptionRequest
      */
-    'role_ids'?: Set<string> | null;
+    'role_ids'?: Set<string>;
     /**
      * 
      * @type {Set<string>}
      * @memberof OnboardingPromptOptionRequest
      */
-    'channel_ids'?: Set<string> | null;
+    'channel_ids'?: Set<string>;
 }
 /**
  * 
@@ -13015,11 +13793,17 @@ export interface OnboardingPromptResponse {
     'in_onboarding': boolean;
     /**
      * 
-     * @type {number}
+     * @type {OnboardingPromptType}
      * @memberof OnboardingPromptResponse
      */
-    'type': number;
+    'type': OnboardingPromptType;
 }
+/**
+ * @type OnboardingPromptType
+ * @export
+ */
+export type OnboardingPromptType = any;
+
 /**
  * 
  * @export
@@ -13034,10 +13818,16 @@ export interface PartialDiscordIntegrationResponse {
     'id': string;
     /**
      * 
-     * @type {string}
+     * @type {IntegrationTypes}
      * @memberof PartialDiscordIntegrationResponse
      */
-    'type': string | null;
+    'type': IntegrationTypes;
+    /**
+     * 
+     * @type {AccountResponse}
+     * @memberof PartialDiscordIntegrationResponse
+     */
+    'account': AccountResponse;
     /**
      * 
      * @type {string}
@@ -13049,13 +13839,7 @@ export interface PartialDiscordIntegrationResponse {
      * @type {string}
      * @memberof PartialDiscordIntegrationResponse
      */
-    'name'?: string | null;
-    /**
-     * 
-     * @type {AccountResponse}
-     * @memberof PartialDiscordIntegrationResponse
-     */
-    'account'?: AccountResponse | null;
+    'name'?: string;
 }
 /**
  * 
@@ -13071,22 +13855,22 @@ export interface PartialExternalConnectionIntegrationResponse {
     'id': string;
     /**
      * 
-     * @type {string}
+     * @type {IntegrationTypes}
      * @memberof PartialExternalConnectionIntegrationResponse
      */
-    'type': string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof PartialExternalConnectionIntegrationResponse
-     */
-    'name'?: string | null;
+    'type': IntegrationTypes;
     /**
      * 
      * @type {AccountResponse}
      * @memberof PartialExternalConnectionIntegrationResponse
      */
-    'account'?: AccountResponse | null;
+    'account': AccountResponse;
+    /**
+     * 
+     * @type {string}
+     * @memberof PartialExternalConnectionIntegrationResponse
+     */
+    'name'?: string;
 }
 /**
  * 
@@ -13102,22 +13886,22 @@ export interface PartialGuildSubscriptionIntegrationResponse {
     'id': string;
     /**
      * 
-     * @type {string}
+     * @type {IntegrationTypes}
      * @memberof PartialGuildSubscriptionIntegrationResponse
      */
-    'type': string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof PartialGuildSubscriptionIntegrationResponse
-     */
-    'name'?: string | null;
+    'type': IntegrationTypes;
     /**
      * 
      * @type {AccountResponse}
      * @memberof PartialGuildSubscriptionIntegrationResponse
      */
-    'account'?: AccountResponse | null;
+    'account': AccountResponse;
+    /**
+     * 
+     * @type {string}
+     * @memberof PartialGuildSubscriptionIntegrationResponse
+     */
+    'name'?: string;
 }
 /**
  * 
@@ -13139,16 +13923,16 @@ export interface PartnerSdkUnmergeProvisionalAccountRequest {
     'external_auth_token': string;
     /**
      * 
-     * @type {string}
+     * @type {ApplicationIdentityProviderAuthType}
      * @memberof PartnerSdkUnmergeProvisionalAccountRequest
      */
-    'external_auth_type': string | null;
+    'external_auth_type': ApplicationIdentityProviderAuthType;
     /**
      * 
      * @type {string}
      * @memberof PartnerSdkUnmergeProvisionalAccountRequest
      */
-    'client_secret'?: string | null;
+    'client_secret'?: string;
 }
 /**
  * 
@@ -13177,16 +13961,16 @@ export interface PinnedMessageResponse {
 export interface PinnedMessagesResponse {
     /**
      * 
+     * @type {Array<PinnedMessageResponse>}
+     * @memberof PinnedMessagesResponse
+     */
+    'items': Array<PinnedMessageResponse>;
+    /**
+     * 
      * @type {boolean}
      * @memberof PinnedMessagesResponse
      */
     'has_more': boolean;
-    /**
-     * 
-     * @type {Array<PinnedMessageResponse>}
-     * @memberof PinnedMessagesResponse
-     */
-    'items'?: Array<PinnedMessageResponse> | null;
 }
 /**
  * 
@@ -13212,7 +13996,7 @@ export interface PollAnswerDetailsResponse {
      * @type {Array<UserResponse>}
      * @memberof PollAnswerDetailsResponse
      */
-    'users'?: Array<UserResponse> | null;
+    'users': Array<UserResponse>;
 }
 /**
  * 
@@ -13256,20 +14040,26 @@ export interface PollCreateRequest {
      * @type {boolean}
      * @memberof PollCreateRequest
      */
-    'allow_multiselect'?: boolean | null;
+    'allow_multiselect'?: boolean;
+    /**
+     * 
+     * @type {PollCreateRequestLayoutType}
+     * @memberof PollCreateRequest
+     */
+    'layout_type'?: PollCreateRequestLayoutType;
     /**
      * 
      * @type {number}
      * @memberof PollCreateRequest
      */
-    'layout_type'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PollCreateRequest
-     */
-    'duration'?: number | null;
+    'duration'?: number;
 }
+/**
+ * @type PollCreateRequestLayoutType
+ * @export
+ */
+export type PollCreateRequestLayoutType = Null | number;
+
 /**
  * 
  * @export
@@ -13278,22 +14068,22 @@ export interface PollCreateRequest {
 export interface PollEmoji {
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof PollEmoji
      */
-    'id'?: string;
+    'id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof PollEmoji
      */
-    'name'?: string | null;
+    'name'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof PollEmoji
      */
-    'animated'?: boolean | null;
+    'animated'?: boolean;
 }
 /**
  * 
@@ -13303,22 +14093,22 @@ export interface PollEmoji {
 export interface PollEmojiCreateRequest {
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof PollEmojiCreateRequest
      */
-    'id'?: string;
+    'id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof PollEmojiCreateRequest
      */
-    'name'?: string | null;
+    'name'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof PollEmojiCreateRequest
      */
-    'animated'?: boolean | null;
+    'animated'?: boolean;
 }
 /**
  * 
@@ -13331,13 +14121,13 @@ export interface PollMedia {
      * @type {string}
      * @memberof PollMedia
      */
-    'text'?: string | null;
+    'text'?: string;
     /**
      * 
-     * @type {PollEmoji}
+     * @type {PollMediaEmoji}
      * @memberof PollMedia
      */
-    'emoji'?: PollEmoji | null;
+    'emoji'?: PollMediaEmoji;
 }
 /**
  * 
@@ -13350,14 +14140,26 @@ export interface PollMediaCreateRequest {
      * @type {string}
      * @memberof PollMediaCreateRequest
      */
-    'text'?: string | null;
+    'text'?: string;
     /**
      * 
-     * @type {PollEmojiCreateRequest}
+     * @type {PollMediaCreateRequestEmoji}
      * @memberof PollMediaCreateRequest
      */
-    'emoji'?: PollEmojiCreateRequest | null;
+    'emoji'?: PollMediaCreateRequestEmoji;
 }
+/**
+ * @type PollMediaCreateRequestEmoji
+ * @export
+ */
+export type PollMediaCreateRequestEmoji = Null | PollEmojiCreateRequest;
+
+/**
+ * @type PollMediaEmoji
+ * @export
+ */
+export type PollMediaEmoji = Null | PollEmoji;
+
 /**
  * 
  * @export
@@ -13369,13 +14171,13 @@ export interface PollMediaResponse {
      * @type {string}
      * @memberof PollMediaResponse
      */
-    'text'?: string | null;
+    'text'?: string;
     /**
      * 
      * @type {MessageReactionEmojiResponse}
      * @memberof PollMediaResponse
      */
-    'emoji'?: MessageReactionEmojiResponse | null;
+    'emoji'?: MessageReactionEmojiResponse;
 }
 /**
  * 
@@ -13443,7 +14245,7 @@ export interface PollResultsEntryResponse {
      * @type {boolean}
      * @memberof PollResultsEntryResponse
      */
-    'me_voted'?: boolean | null;
+    'me_voted': boolean;
 }
 /**
  * 
@@ -13453,16 +14255,16 @@ export interface PollResultsEntryResponse {
 export interface PollResultsResponse {
     /**
      * 
+     * @type {Array<PollResultsEntryResponse>}
+     * @memberof PollResultsResponse
+     */
+    'answer_counts': Array<PollResultsEntryResponse>;
+    /**
+     * 
      * @type {boolean}
      * @memberof PollResultsResponse
      */
     'is_finalized': boolean;
-    /**
-     * 
-     * @type {Array<PollResultsEntryResponse>}
-     * @memberof PollResultsResponse
-     */
-    'answer_counts'?: Array<PollResultsEntryResponse> | null;
 }
 /**
  * 
@@ -13472,11 +14274,23 @@ export interface PollResultsResponse {
 export interface PongInteractionCallbackRequest {
     /**
      * 
-     * @type {number}
+     * @type {InteractionCallbackTypes}
      * @memberof PongInteractionCallbackRequest
      */
-    'type': number | null;
+    'type': InteractionCallbackTypes;
 }
+/**
+ * @type PremiumGuildTiers
+ * @export
+ */
+export type PremiumGuildTiers = any;
+
+/**
+ * @type PremiumTypes
+ * @export
+ */
+export type PremiumTypes = any;
+
 /**
  * 
  * @export
@@ -13515,10 +14329,10 @@ export interface PrivateApplicationResponse {
     'flags': number;
     /**
      * 
-     * @type {Array<string | null>}
+     * @type {Array<string>}
      * @memberof PrivateApplicationResponse
      */
-    'redirect_uris': Array<string | null>;
+    'redirect_uris': Array<string>;
     /**
      * 
      * @type {UserResponse}
@@ -13539,28 +14353,28 @@ export interface PrivateApplicationResponse {
     'approximate_user_authorization_count': number;
     /**
      * 
-     * @type {number}
+     * @type {ApplicationExplicitContentFilterTypes}
      * @memberof PrivateApplicationResponse
      */
-    'explicit_content_filter': number;
+    'explicit_content_filter': ApplicationExplicitContentFilterTypes;
     /**
      * 
      * @type {string}
      * @memberof PrivateApplicationResponse
      */
-    'icon'?: string | null;
+    'icon'?: string;
     /**
      * 
-     * @type {number}
+     * @type {ApplicationFormPartialType}
      * @memberof PrivateApplicationResponse
      */
-    'type'?: number | null;
+    'type'?: ApplicationFormPartialType;
     /**
      * 
      * @type {string}
      * @memberof PrivateApplicationResponse
      */
-    'cover_image'?: string | null;
+    'cover_image'?: string;
     /**
      * 
      * @type {string}
@@ -13572,13 +14386,13 @@ export interface PrivateApplicationResponse {
      * @type {UserResponse}
      * @memberof PrivateApplicationResponse
      */
-    'bot'?: UserResponse | null;
+    'bot'?: UserResponse;
     /**
      * 
      * @type {string}
      * @memberof PrivateApplicationResponse
      */
-    'slug'?: string | null;
+    'slug'?: string;
     /**
      * 
      * @type {string}
@@ -13587,46 +14401,46 @@ export interface PrivateApplicationResponse {
     'guild_id'?: string;
     /**
      * 
-     * @type {Array<string | null>}
+     * @type {Array<string>}
      * @memberof PrivateApplicationResponse
      */
-    'rpc_origins'?: Array<string | null> | null;
+    'rpc_origins'?: Array<string>;
     /**
      * 
      * @type {boolean}
      * @memberof PrivateApplicationResponse
      */
-    'bot_public'?: boolean | null;
+    'bot_public'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof PrivateApplicationResponse
      */
-    'bot_require_code_grant'?: boolean | null;
+    'bot_require_code_grant'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof PrivateApplicationResponse
      */
-    'terms_of_service_url'?: string | null;
+    'terms_of_service_url'?: string;
     /**
      * 
      * @type {string}
      * @memberof PrivateApplicationResponse
      */
-    'privacy_policy_url'?: string | null;
+    'privacy_policy_url'?: string;
     /**
      * 
      * @type {string}
      * @memberof PrivateApplicationResponse
      */
-    'custom_install_url'?: string | null;
+    'custom_install_url'?: string;
     /**
      * 
      * @type {ApplicationOAuth2InstallParamsResponse}
      * @memberof PrivateApplicationResponse
      */
-    'install_params'?: ApplicationOAuth2InstallParamsResponse | null;
+    'install_params'?: ApplicationOAuth2InstallParamsResponse;
     /**
      * 
      * @type {{ [key: string]: ApplicationIntegrationTypeConfigurationResponse; }}
@@ -13638,38 +14452,44 @@ export interface PrivateApplicationResponse {
      * @type {number}
      * @memberof PrivateApplicationResponse
      */
-    'max_participants'?: number | null;
+    'max_participants'?: number;
     /**
      * 
      * @type {Set<string>}
      * @memberof PrivateApplicationResponse
      */
-    'tags'?: Set<string> | null;
+    'tags'?: Set<string>;
     /**
      * 
      * @type {string}
      * @memberof PrivateApplicationResponse
      */
-    'interactions_endpoint_url'?: string | null;
+    'interactions_endpoint_url'?: string;
     /**
      * 
      * @type {string}
      * @memberof PrivateApplicationResponse
      */
-    'role_connections_verification_url'?: string | null;
+    'role_connections_verification_url'?: string;
     /**
      * 
      * @type {number}
      * @memberof PrivateApplicationResponse
      */
-    'approximate_guild_count'?: number | null;
+    'approximate_guild_count'?: number;
     /**
      * 
-     * @type {TeamResponse}
+     * @type {PrivateApplicationResponseTeam}
      * @memberof PrivateApplicationResponse
      */
-    'team'?: TeamResponse | null;
+    'team'?: PrivateApplicationResponseTeam;
 }
+/**
+ * @type PrivateApplicationResponseTeam
+ * @export
+ */
+export type PrivateApplicationResponseTeam = Null | TeamResponse;
+
 /**
  * 
  * @export
@@ -13684,10 +14504,10 @@ export interface PrivateChannelLocation {
     'id': string;
     /**
      * 
-     * @type {string}
+     * @type {EmbeddedActivityLocationKind}
      * @memberof PrivateChannelLocation
      */
-    'kind': string;
+    'kind': EmbeddedActivityLocationKind;
     /**
      * 
      * @type {string}
@@ -13709,10 +14529,10 @@ export interface PrivateChannelResponse {
     'id': string;
     /**
      * 
-     * @type {number}
+     * @type {ChannelTypes}
      * @memberof PrivateChannelResponse
      */
-    'type': number;
+    'type': ChannelTypes;
     /**
      * 
      * @type {number}
@@ -13727,16 +14547,16 @@ export interface PrivateChannelResponse {
     'recipients': Array<UserResponse>;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof PrivateChannelResponse
      */
-    'last_message_id'?: string;
+    'last_message_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof PrivateChannelResponse
      */
-    'last_pin_timestamp'?: string | null;
+    'last_pin_timestamp'?: string;
 }
 /**
  * 
@@ -13752,10 +14572,10 @@ export interface PrivateGroupChannelResponse {
     'id': string;
     /**
      * 
-     * @type {number}
+     * @type {ChannelTypes}
      * @memberof PrivateGroupChannelResponse
      */
-    'type': number;
+    'type': ChannelTypes;
     /**
      * 
      * @type {number}
@@ -13773,37 +14593,37 @@ export interface PrivateGroupChannelResponse {
      * @type {string}
      * @memberof PrivateGroupChannelResponse
      */
-    'last_message_id'?: string;
+    'owner_id': string;
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof PrivateGroupChannelResponse
+     */
+    'last_message_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof PrivateGroupChannelResponse
      */
-    'last_pin_timestamp'?: string | null;
+    'last_pin_timestamp'?: string;
     /**
      * 
      * @type {string}
      * @memberof PrivateGroupChannelResponse
      */
-    'name'?: string | null;
+    'name'?: string;
     /**
      * 
      * @type {string}
      * @memberof PrivateGroupChannelResponse
      */
-    'icon'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof PrivateGroupChannelResponse
-     */
-    'owner_id'?: string;
+    'icon'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof PrivateGroupChannelResponse
      */
-    'managed'?: boolean | null;
+    'managed'?: boolean;
     /**
      * 
      * @type {string}
@@ -13864,37 +14684,49 @@ export interface PrivateGuildMemberResponse {
      * @type {string}
      * @memberof PrivateGuildMemberResponse
      */
-    'avatar'?: string | null;
+    'avatar'?: string;
     /**
      * 
-     * @type {UserAvatarDecorationResponse}
+     * @type {BasicGuildMemberResponseAvatarDecorationData}
      * @memberof PrivateGuildMemberResponse
      */
-    'avatar_decoration_data'?: UserAvatarDecorationResponse | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof PrivateGuildMemberResponse
-     */
-    'banner'?: string | null;
+    'avatar_decoration_data'?: BasicGuildMemberResponseAvatarDecorationData;
     /**
      * 
      * @type {string}
      * @memberof PrivateGuildMemberResponse
      */
-    'communication_disabled_until'?: string | null;
+    'banner'?: string;
     /**
      * 
      * @type {string}
      * @memberof PrivateGuildMemberResponse
      */
-    'nick'?: string | null;
+    'communication_disabled_until'?: string;
     /**
      * 
      * @type {string}
      * @memberof PrivateGuildMemberResponse
      */
-    'premium_since'?: string | null;
+    'nick'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PrivateGuildMemberResponse
+     */
+    'premium_since'?: string;
+    /**
+     * 
+     * @type {BasicGuildMemberResponseCollectibles}
+     * @memberof PrivateGuildMemberResponse
+     */
+    'collectibles'?: BasicGuildMemberResponseCollectibles;
+    /**
+     * 
+     * @type {string}
+     * @memberof PrivateGuildMemberResponse
+     */
+    'permissions'?: string;
 }
 /**
  * 
@@ -13937,19 +14769,19 @@ export interface ProvisionalTokenResponse {
      * @type {string}
      * @memberof ProvisionalTokenResponse
      */
-    'refresh_token'?: string | null;
+    'refresh_token'?: string;
     /**
      * 
      * @type {Array<string>}
      * @memberof ProvisionalTokenResponse
      */
-    'scopes'?: Array<string> | null;
+    'scopes'?: Array<string>;
     /**
      * 
      * @type {number}
      * @memberof ProvisionalTokenResponse
      */
-    'expires_at_s'?: number | null;
+    'expires_at_s'?: number;
 }
 /**
  * 
@@ -13962,25 +14794,25 @@ export interface PruneGuildRequest {
      * @type {number}
      * @memberof PruneGuildRequest
      */
-    'days'?: number | null;
+    'days'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof PruneGuildRequest
      */
-    'compute_prune_count'?: boolean | null;
+    'compute_prune_count'?: boolean;
     /**
      * 
      * @type {PruneGuildRequestIncludeRoles}
      * @memberof PruneGuildRequest
      */
-    'include_roles'?: PruneGuildRequestIncludeRoles | null;
+    'include_roles'?: PruneGuildRequestIncludeRoles;
 }
 /**
  * @type PruneGuildRequestIncludeRoles
  * @export
  */
-export type PruneGuildRequestIncludeRoles = Set<string | null> | string;
+export type PruneGuildRequestIncludeRoles = Null | Set<string> | string;
 
 /**
  * 
@@ -13990,17 +14822,23 @@ export type PruneGuildRequestIncludeRoles = Set<string | null> | string;
 export interface PurchaseNotificationResponse {
     /**
      * 
-     * @type {number}
+     * @type {PurchaseType}
      * @memberof PurchaseNotificationResponse
      */
-    'type': number | null;
+    'type': PurchaseType;
     /**
      * 
      * @type {GuildProductPurchaseResponse}
      * @memberof PurchaseNotificationResponse
      */
-    'guild_product_purchase'?: GuildProductPurchaseResponse | null;
+    'guild_product_purchase'?: GuildProductPurchaseResponse;
 }
+/**
+ * @type PurchaseType
+ * @export
+ */
+export type PurchaseType = any;
+
 /**
  * 
  * @export
@@ -14009,17 +14847,23 @@ export interface PurchaseNotificationResponse {
 export interface QuarantineUserAction {
     /**
      * 
-     * @type {number}
+     * @type {AutomodActionType}
      * @memberof QuarantineUserAction
      */
-    'type': number;
+    'type': AutomodActionType;
     /**
      * 
-     * @type {object}
+     * @type {QuarantineUserActionMetadata}
      * @memberof QuarantineUserAction
      */
-    'metadata'?: object;
+    'metadata'?: QuarantineUserActionMetadata;
 }
+/**
+ * @type QuarantineUserActionMetadata
+ * @export
+ */
+export type QuarantineUserActionMetadata = Null | object;
+
 /**
  * 
  * @export
@@ -14028,10 +14872,10 @@ export interface QuarantineUserAction {
 export interface QuarantineUserActionResponse {
     /**
      * 
-     * @type {number}
+     * @type {AutomodActionType}
      * @memberof QuarantineUserActionResponse
      */
-    'type': number;
+    'type': AutomodActionType;
     /**
      * 
      * @type {object}
@@ -14039,6 +14883,43 @@ export interface QuarantineUserActionResponse {
      */
     'metadata': object;
 }
+/**
+ * Ratelimit error object returned by the Discord API
+ * @export
+ * @interface RatelimitedResponse
+ */
+export interface RatelimitedResponse {
+    /**
+     * Discord internal error code. See error code reference
+     * @type {number}
+     * @memberof RatelimitedResponse
+     */
+    'code': number;
+    /**
+     * Human-readable error message
+     * @type {string}
+     * @memberof RatelimitedResponse
+     */
+    'message': string;
+    /**
+     * The number of seconds to wait before retrying your request
+     * @type {number}
+     * @memberof RatelimitedResponse
+     */
+    'retry_after': number;
+    /**
+     * Whether you are being ratelimited by the global ratelimit or a per-endpoint ratelimit
+     * @type {boolean}
+     * @memberof RatelimitedResponse
+     */
+    'global': boolean;
+}
+/**
+ * @type ReactionTypes
+ * @export
+ */
+export type ReactionTypes = any;
+
 /**
  * 
  * @export
@@ -14050,25 +14931,25 @@ export interface ResolvedObjectsResponse {
      * @type {{ [key: string]: UserResponse; }}
      * @memberof ResolvedObjectsResponse
      */
-    'users': { [key: string]: UserResponse; };
+    'users'?: { [key: string]: UserResponse; };
     /**
      * 
-     * @type {{ [key: string]: GuildMemberResponse; }}
+     * @type {{ [key: string]: BasicGuildMemberResponse; }}
      * @memberof ResolvedObjectsResponse
      */
-    'members': { [key: string]: GuildMemberResponse; };
+    'members'?: { [key: string]: BasicGuildMemberResponse; };
     /**
      * 
      * @type {{ [key: string]: GetChannel200Response; }}
      * @memberof ResolvedObjectsResponse
      */
-    'channels': { [key: string]: GetChannel200Response; };
+    'channels'?: { [key: string]: GetChannel200Response; };
     /**
      * 
      * @type {{ [key: string]: GuildRoleResponse; }}
      * @memberof ResolvedObjectsResponse
      */
-    'roles': { [key: string]: GuildRoleResponse; };
+    'roles'?: { [key: string]: GuildRoleResponse; };
 }
 /**
  * 
@@ -14099,13 +14980,13 @@ export interface ResourceChannelResponse {
      * @type {SettingsEmojiResponse}
      * @memberof ResourceChannelResponse
      */
-    'emoji'?: SettingsEmojiResponse | null;
+    'emoji'?: SettingsEmojiResponse;
     /**
      * 
      * @type {string}
      * @memberof ResourceChannelResponse
      */
-    'icon'?: string | null;
+    'icon'?: string;
 }
 /**
  * 
@@ -14118,105 +14999,86 @@ export interface RichEmbed {
      * @type {string}
      * @memberof RichEmbed
      */
-    'type'?: string | null;
+    'type'?: string;
     /**
      * 
      * @type {string}
      * @memberof RichEmbed
      */
-    'url'?: string | null;
+    'url'?: string;
     /**
      * 
      * @type {string}
      * @memberof RichEmbed
      */
-    'title'?: string | null;
+    'title'?: string;
     /**
      * 
      * @type {number}
      * @memberof RichEmbed
      */
-    'color'?: number | null;
+    'color'?: number;
     /**
      * 
      * @type {string}
      * @memberof RichEmbed
      */
-    'timestamp'?: string | null;
+    'timestamp'?: string;
     /**
      * 
      * @type {string}
      * @memberof RichEmbed
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {RichEmbedAuthor}
      * @memberof RichEmbed
      */
-    'author'?: RichEmbedAuthor | null;
+    'author'?: RichEmbedAuthor;
     /**
      * 
      * @type {RichEmbedImage}
      * @memberof RichEmbed
      */
-    'image'?: RichEmbedImage | null;
+    'image'?: RichEmbedImage;
     /**
      * 
      * @type {RichEmbedThumbnail}
      * @memberof RichEmbed
      */
-    'thumbnail'?: RichEmbedThumbnail | null;
+    'thumbnail'?: RichEmbedThumbnail;
     /**
      * 
      * @type {RichEmbedFooter}
      * @memberof RichEmbed
      */
-    'footer'?: RichEmbedFooter | null;
+    'footer'?: RichEmbedFooter;
     /**
      * 
      * @type {Array<RichEmbedField>}
      * @memberof RichEmbed
      */
-    'fields'?: Array<RichEmbedField> | null;
+    'fields'?: Array<RichEmbedField>;
     /**
      * 
      * @type {RichEmbedProvider}
      * @memberof RichEmbed
      */
-    'provider'?: RichEmbedProvider | null;
+    'provider'?: RichEmbedProvider;
     /**
      * 
      * @type {RichEmbedVideo}
      * @memberof RichEmbed
      */
-    'video'?: RichEmbedVideo | null;
+    'video'?: RichEmbedVideo;
 }
 /**
- * 
+ * @type RichEmbedAuthor
  * @export
- * @interface RichEmbedAuthor
  */
-export interface RichEmbedAuthor {
-    /**
-     * 
-     * @type {string}
-     * @memberof RichEmbedAuthor
-     */
-    'name'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RichEmbedAuthor
-     */
-    'url'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RichEmbedAuthor
-     */
-    'icon_url'?: string | null;
-}
+export type RichEmbedAuthor = Null | RichEmbedAuthor;
+
 /**
  * 
  * @export
@@ -14240,192 +15102,62 @@ export interface RichEmbedField {
      * @type {boolean}
      * @memberof RichEmbedField
      */
-    'inline'?: boolean | null;
+    'inline'?: boolean;
 }
+/**
+ * @type RichEmbedFooter
+ * @export
+ */
+export type RichEmbedFooter = Null | RichEmbedFooter;
+
+/**
+ * @type RichEmbedImage
+ * @export
+ */
+export type RichEmbedImage = Null | RichEmbedImage;
+
+/**
+ * @type RichEmbedProvider
+ * @export
+ */
+export type RichEmbedProvider = Null | RichEmbedProvider;
+
+/**
+ * @type RichEmbedThumbnail
+ * @export
+ */
+export type RichEmbedThumbnail = Null | RichEmbedThumbnail;
+
+/**
+ * @type RichEmbedVideo
+ * @export
+ */
+export type RichEmbedVideo = Null | RichEmbedVideo;
+
 /**
  * 
  * @export
- * @interface RichEmbedFooter
+ * @interface RoleColors
  */
-export interface RichEmbedFooter {
-    /**
-     * 
-     * @type {string}
-     * @memberof RichEmbedFooter
-     */
-    'text'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RichEmbedFooter
-     */
-    'icon_url'?: string | null;
-}
-/**
- * 
- * @export
- * @interface RichEmbedImage
- */
-export interface RichEmbedImage {
-    /**
-     * 
-     * @type {string}
-     * @memberof RichEmbedImage
-     */
-    'url'?: string | null;
+export interface RoleColors {
     /**
      * 
      * @type {number}
-     * @memberof RichEmbedImage
+     * @memberof RoleColors
      */
-    'width'?: number | null;
+    'primary_color'?: number;
     /**
      * 
      * @type {number}
-     * @memberof RichEmbedImage
+     * @memberof RoleColors
      */
-    'height'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RichEmbedImage
-     */
-    'placeholder'?: string | null;
+    'secondary_color'?: number;
     /**
      * 
      * @type {number}
-     * @memberof RichEmbedImage
+     * @memberof RoleColors
      */
-    'placeholder_version'?: number | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RichEmbedImage
-     */
-    'is_animated'?: boolean | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RichEmbedImage
-     */
-    'description'?: string | null;
-}
-/**
- * 
- * @export
- * @interface RichEmbedProvider
- */
-export interface RichEmbedProvider {
-    /**
-     * 
-     * @type {string}
-     * @memberof RichEmbedProvider
-     */
-    'name'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RichEmbedProvider
-     */
-    'url'?: string | null;
-}
-/**
- * 
- * @export
- * @interface RichEmbedThumbnail
- */
-export interface RichEmbedThumbnail {
-    /**
-     * 
-     * @type {string}
-     * @memberof RichEmbedThumbnail
-     */
-    'url'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RichEmbedThumbnail
-     */
-    'width'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RichEmbedThumbnail
-     */
-    'height'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RichEmbedThumbnail
-     */
-    'placeholder'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RichEmbedThumbnail
-     */
-    'placeholder_version'?: number | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RichEmbedThumbnail
-     */
-    'is_animated'?: boolean | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RichEmbedThumbnail
-     */
-    'description'?: string | null;
-}
-/**
- * 
- * @export
- * @interface RichEmbedVideo
- */
-export interface RichEmbedVideo {
-    /**
-     * 
-     * @type {string}
-     * @memberof RichEmbedVideo
-     */
-    'url'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RichEmbedVideo
-     */
-    'width'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RichEmbedVideo
-     */
-    'height'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RichEmbedVideo
-     */
-    'placeholder'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RichEmbedVideo
-     */
-    'placeholder_version'?: number | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RichEmbedVideo
-     */
-    'is_animated'?: boolean | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RichEmbedVideo
-     */
-    'description'?: string | null;
+    'tertiary_color'?: number;
 }
 /**
  * 
@@ -14435,10 +15167,10 @@ export interface RichEmbedVideo {
 export interface RoleSelectComponentForMessageRequest {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof RoleSelectComponentForMessageRequest
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {string}
@@ -14447,34 +15179,107 @@ export interface RoleSelectComponentForMessageRequest {
     'custom_id': string;
     /**
      * 
+     * @type {number}
+     * @memberof RoleSelectComponentForMessageRequest
+     */
+    'id'?: number;
+    /**
+     * 
      * @type {string}
      * @memberof RoleSelectComponentForMessageRequest
      */
-    'placeholder'?: string | null;
+    'placeholder'?: string;
     /**
      * 
      * @type {number}
      * @memberof RoleSelectComponentForMessageRequest
      */
-    'min_values'?: number | null;
+    'min_values'?: number;
     /**
      * 
      * @type {number}
      * @memberof RoleSelectComponentForMessageRequest
      */
-    'max_values'?: number | null;
+    'max_values'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof RoleSelectComponentForMessageRequest
      */
-    'disabled'?: boolean | null;
+    'disabled'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof RoleSelectComponentForMessageRequest
+     */
+    'required'?: boolean;
     /**
      * 
      * @type {Array<RoleSelectDefaultValue>}
      * @memberof RoleSelectComponentForMessageRequest
      */
-    'default_values'?: Array<RoleSelectDefaultValue> | null;
+    'default_values'?: Array<RoleSelectDefaultValue>;
+}
+/**
+ * 
+ * @export
+ * @interface RoleSelectComponentForModalRequest
+ */
+export interface RoleSelectComponentForModalRequest {
+    /**
+     * 
+     * @type {MessageComponentTypes}
+     * @memberof RoleSelectComponentForModalRequest
+     */
+    'type': MessageComponentTypes;
+    /**
+     * 
+     * @type {string}
+     * @memberof RoleSelectComponentForModalRequest
+     */
+    'custom_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof RoleSelectComponentForModalRequest
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof RoleSelectComponentForModalRequest
+     */
+    'placeholder'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof RoleSelectComponentForModalRequest
+     */
+    'min_values'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof RoleSelectComponentForModalRequest
+     */
+    'max_values'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof RoleSelectComponentForModalRequest
+     */
+    'disabled'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof RoleSelectComponentForModalRequest
+     */
+    'required'?: boolean;
+    /**
+     * 
+     * @type {Array<RoleSelectDefaultValue>}
+     * @memberof RoleSelectComponentForModalRequest
+     */
+    'default_values'?: Array<RoleSelectDefaultValue>;
 }
 /**
  * 
@@ -14484,10 +15289,10 @@ export interface RoleSelectComponentForMessageRequest {
 export interface RoleSelectComponentResponse {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof RoleSelectComponentResponse
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {number}
@@ -14505,31 +15310,31 @@ export interface RoleSelectComponentResponse {
      * @type {string}
      * @memberof RoleSelectComponentResponse
      */
-    'placeholder'?: string | null;
+    'placeholder'?: string;
     /**
      * 
      * @type {number}
      * @memberof RoleSelectComponentResponse
      */
-    'min_values'?: number | null;
+    'min_values'?: number;
     /**
      * 
      * @type {number}
      * @memberof RoleSelectComponentResponse
      */
-    'max_values'?: number | null;
+    'max_values'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof RoleSelectComponentResponse
      */
-    'disabled'?: boolean | null;
+    'disabled'?: boolean;
     /**
      * 
      * @type {Array<RoleSelectDefaultValueResponse>}
      * @memberof RoleSelectComponentResponse
      */
-    'default_values'?: Array<RoleSelectDefaultValueResponse> | null;
+    'default_values'?: Array<RoleSelectDefaultValueResponse>;
 }
 /**
  * 
@@ -14539,10 +15344,10 @@ export interface RoleSelectComponentResponse {
 export interface RoleSelectDefaultValue {
     /**
      * 
-     * @type {string}
+     * @type {SnowflakeSelectDefaultValueTypes}
      * @memberof RoleSelectDefaultValue
      */
-    'type': string | null;
+    'type': SnowflakeSelectDefaultValueTypes;
     /**
      * 
      * @type {string}
@@ -14558,10 +15363,10 @@ export interface RoleSelectDefaultValue {
 export interface RoleSelectDefaultValueResponse {
     /**
      * 
-     * @type {string}
+     * @type {SnowflakeSelectDefaultValueTypes}
      * @memberof RoleSelectDefaultValueResponse
      */
-    'type': string | null;
+    'type': SnowflakeSelectDefaultValueTypes;
     /**
      * 
      * @type {string}
@@ -14580,79 +15385,79 @@ export interface SDKMessageRequest {
      * @type {string}
      * @memberof SDKMessageRequest
      */
-    'content'?: string | null;
+    'content'?: string;
     /**
      * 
      * @type {Array<RichEmbed>}
      * @memberof SDKMessageRequest
      */
-    'embeds'?: Array<RichEmbed> | null;
+    'embeds'?: Array<RichEmbed>;
     /**
      * 
-     * @type {MessageAllowedMentionsRequest}
+     * @type {BaseCreateMessageCreateRequestAllowedMentions}
      * @memberof SDKMessageRequest
      */
-    'allowed_mentions'?: MessageAllowedMentionsRequest | null;
+    'allowed_mentions'?: BaseCreateMessageCreateRequestAllowedMentions;
     /**
      * 
      * @type {Array<string>}
      * @memberof SDKMessageRequest
      */
-    'sticker_ids'?: Array<string> | null;
+    'sticker_ids'?: Array<string>;
     /**
      * 
      * @type {Array<BaseCreateMessageCreateRequestComponentsInner>}
      * @memberof SDKMessageRequest
      */
-    'components'?: Array<BaseCreateMessageCreateRequestComponentsInner> | null;
+    'components'?: Array<BaseCreateMessageCreateRequestComponentsInner>;
     /**
      * 
      * @type {number}
      * @memberof SDKMessageRequest
      */
-    'flags'?: number | null;
+    'flags'?: number;
     /**
      * 
      * @type {Array<MessageAttachmentRequest>}
      * @memberof SDKMessageRequest
      */
-    'attachments'?: Array<MessageAttachmentRequest> | null;
+    'attachments'?: Array<MessageAttachmentRequest>;
     /**
      * 
-     * @type {PollCreateRequest}
+     * @type {BaseCreateMessageCreateRequestPoll}
      * @memberof SDKMessageRequest
      */
-    'poll'?: PollCreateRequest | null;
+    'poll'?: BaseCreateMessageCreateRequestPoll;
     /**
      * 
-     * @type {object}
+     * @type {BaseCreateMessageCreateRequestSharedClientTheme}
      * @memberof SDKMessageRequest
      */
-    'confetti_potion'?: object;
+    'shared_client_theme'?: BaseCreateMessageCreateRequestSharedClientTheme;
     /**
      * 
-     * @type {MessageReferenceRequest}
+     * @type {MessageCreateRequestMessageReference}
      * @memberof SDKMessageRequest
      */
-    'message_reference'?: MessageReferenceRequest | null;
+    'message_reference'?: MessageCreateRequestMessageReference;
     /**
      * 
      * @type {BasicMessageResponseNonce}
      * @memberof SDKMessageRequest
      */
-    'nonce'?: BasicMessageResponseNonce | null;
+    'nonce'?: BasicMessageResponseNonce;
     /**
      * 
      * @type {boolean}
      * @memberof SDKMessageRequest
      */
-    'enforce_nonce'?: boolean | null;
+    'enforce_nonce'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof SDKMessageRequest
      */
-    'tts'?: boolean | null;
+    'tts'?: boolean;
 }
 /**
  * 
@@ -14686,76 +15491,76 @@ export interface ScheduledEventResponse {
     'scheduled_start_time': string;
     /**
      * 
-     * @type {number}
+     * @type {GuildScheduledEventStatuses}
      * @memberof ScheduledEventResponse
      */
-    'status': number | null;
+    'status': GuildScheduledEventStatuses;
     /**
      * 
-     * @type {number}
+     * @type {GuildScheduledEventEntityTypes}
      * @memberof ScheduledEventResponse
      */
-    'entity_type': number | null;
+    'entity_type': GuildScheduledEventEntityTypes;
     /**
      * 
-     * @type {any}
+     * @type {GuildScheduledEventPrivacyLevels}
      * @memberof ScheduledEventResponse
      */
-    'privacy_level': any;
-    /**
-     * 
-     * @type {string}
-     * @memberof ScheduledEventResponse
-     */
-    'description'?: string | null;
+    'privacy_level': GuildScheduledEventPrivacyLevels;
     /**
      * 
      * @type {string}
      * @memberof ScheduledEventResponse
      */
-    'channel_id'?: string;
+    'description'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof ScheduledEventResponse
      */
-    'creator_id'?: string;
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof ScheduledEventResponse
+     */
+    'creator_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {UserResponse}
      * @memberof ScheduledEventResponse
      */
-    'creator'?: UserResponse | null;
+    'creator'?: UserResponse;
     /**
      * 
      * @type {string}
      * @memberof ScheduledEventResponse
      */
-    'image'?: string | null;
+    'image'?: string;
     /**
      * 
      * @type {string}
      * @memberof ScheduledEventResponse
      */
-    'scheduled_end_time'?: string | null;
+    'scheduled_end_time'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof ScheduledEventResponse
      */
-    'entity_id'?: string;
+    'entity_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {number}
      * @memberof ScheduledEventResponse
      */
-    'user_count'?: number | null;
+    'user_count'?: number;
     /**
      * 
-     * @type {ScheduledEventUserResponse}
+     * @type {ExternalScheduledEventResponseUserRsvp}
      * @memberof ScheduledEventResponse
      */
-    'user_rsvp'?: ScheduledEventUserResponse | null;
+    'user_rsvp'?: ExternalScheduledEventResponseUserRsvp;
 }
 /**
  * 
@@ -14780,13 +15585,13 @@ export interface ScheduledEventUserResponse {
      * @type {UserResponse}
      * @memberof ScheduledEventUserResponse
      */
-    'user'?: UserResponse | null;
+    'user'?: UserResponse;
     /**
      * 
      * @type {GuildMemberResponse}
      * @memberof ScheduledEventUserResponse
      */
-    'member'?: GuildMemberResponse | null;
+    'member'?: GuildMemberResponse;
 }
 /**
  * 
@@ -14796,10 +15601,10 @@ export interface ScheduledEventUserResponse {
 export interface SectionComponentForMessageRequest {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof SectionComponentForMessageRequest
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {Array<TextDisplayComponentForMessageRequest>}
@@ -14812,6 +15617,12 @@ export interface SectionComponentForMessageRequest {
      * @memberof SectionComponentForMessageRequest
      */
     'accessory': SectionComponentForMessageRequestAccessory;
+    /**
+     * 
+     * @type {number}
+     * @memberof SectionComponentForMessageRequest
+     */
+    'id'?: number;
 }
 /**
  * @type SectionComponentForMessageRequestAccessory
@@ -14827,10 +15638,10 @@ export type SectionComponentForMessageRequestAccessory = ButtonComponentForMessa
 export interface SectionComponentResponse {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof SectionComponentResponse
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {number}
@@ -14864,23 +15675,35 @@ export type SectionComponentResponseAccessory = ButtonComponentResponse | Thumbn
 export interface SeparatorComponentForMessageRequest {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof SeparatorComponentForMessageRequest
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {number}
      * @memberof SeparatorComponentForMessageRequest
      */
-    'spacing'?: number;
+    'id'?: number;
+    /**
+     * 
+     * @type {SeparatorComponentForMessageRequestSpacing}
+     * @memberof SeparatorComponentForMessageRequest
+     */
+    'spacing'?: SeparatorComponentForMessageRequestSpacing;
     /**
      * 
      * @type {boolean}
      * @memberof SeparatorComponentForMessageRequest
      */
-    'divider'?: boolean | null;
+    'divider'?: boolean;
 }
+/**
+ * @type SeparatorComponentForMessageRequestSpacing
+ * @export
+ */
+export type SeparatorComponentForMessageRequestSpacing = MessageComponentSeparatorSpacingSize | Null;
+
 /**
  * 
  * @export
@@ -14889,10 +15712,10 @@ export interface SeparatorComponentForMessageRequest {
 export interface SeparatorComponentResponse {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof SeparatorComponentResponse
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {number}
@@ -14901,10 +15724,10 @@ export interface SeparatorComponentResponse {
     'id': number;
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentSeparatorSpacingSize}
      * @memberof SeparatorComponentResponse
      */
-    'spacing': number;
+    'spacing': MessageComponentSeparatorSpacingSize;
     /**
      * 
      * @type {boolean}
@@ -14920,23 +15743,29 @@ export interface SeparatorComponentResponse {
 export interface SetChannelPermissionOverwriteRequest {
     /**
      * 
-     * @type {number}
+     * @type {SetChannelPermissionOverwriteRequestType}
      * @memberof SetChannelPermissionOverwriteRequest
      */
-    'type'?: number | null;
+    'type'?: SetChannelPermissionOverwriteRequestType;
     /**
      * 
      * @type {number}
      * @memberof SetChannelPermissionOverwriteRequest
      */
-    'allow'?: number | null;
+    'allow'?: number;
     /**
      * 
      * @type {number}
      * @memberof SetChannelPermissionOverwriteRequest
      */
-    'deny'?: number | null;
+    'deny'?: number;
 }
+/**
+ * @type SetChannelPermissionOverwriteRequestType
+ * @export
+ */
+export type SetChannelPermissionOverwriteRequestType = ChannelPermissionOverwrites | Null;
+
 /**
  * 
  * @export
@@ -14948,20 +15777,7 @@ export interface SetGuildApplicationCommandPermissionsRequest {
      * @type {Array<ApplicationCommandPermission>}
      * @memberof SetGuildApplicationCommandPermissionsRequest
      */
-    'permissions'?: Array<ApplicationCommandPermission> | null;
-}
-/**
- * 
- * @export
- * @interface SetGuildMfaLevelRequest
- */
-export interface SetGuildMfaLevelRequest {
-    /**
-     * 
-     * @type {number}
-     * @memberof SetGuildMfaLevelRequest
-     */
-    'level': number;
+    'permissions'?: Array<ApplicationCommandPermission>;
 }
 /**
  * 
@@ -14971,22 +15787,22 @@ export interface SetGuildMfaLevelRequest {
 export interface SettingsEmojiResponse {
     /**
      * 
-     * @type {string}
-     * @memberof SettingsEmojiResponse
-     */
-    'id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SettingsEmojiResponse
-     */
-    'name'?: string | null;
-    /**
-     * 
      * @type {boolean}
      * @memberof SettingsEmojiResponse
      */
-    'animated'?: boolean | null;
+    'animated': boolean;
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof SettingsEmojiResponse
+     */
+    'id'?: GetEntitlementsSkuIdsParameterOneOfInner;
+    /**
+     * 
+     * @type {string}
+     * @memberof SettingsEmojiResponse
+     */
+    'name'?: string;
 }
 /**
  * 
@@ -14999,26 +15815,38 @@ export interface SlackWebhook {
      * @type {string}
      * @memberof SlackWebhook
      */
-    'text'?: string | null;
+    'text'?: string;
     /**
      * 
      * @type {string}
      * @memberof SlackWebhook
      */
-    'username'?: string | null;
+    'username'?: string;
     /**
      * 
      * @type {string}
      * @memberof SlackWebhook
      */
-    'icon_url'?: string | null;
+    'icon_url'?: string;
     /**
      * 
      * @type {Array<WebhookSlackEmbed>}
      * @memberof SlackWebhook
      */
-    'attachments'?: Array<WebhookSlackEmbed> | null;
+    'attachments'?: Array<WebhookSlackEmbed>;
 }
+/**
+ * @type SnowflakeSelectDefaultValueTypes
+ * @export
+ */
+export type SnowflakeSelectDefaultValueTypes = any;
+
+/**
+ * @type SortingOrder
+ * @export
+ */
+export type SortingOrder = any;
+
 /**
  * 
  * @export
@@ -15042,19 +15870,19 @@ export interface SoundboardCreateRequest {
      * @type {number}
      * @memberof SoundboardCreateRequest
      */
-    'volume'?: number | null;
+    'volume'?: number;
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof SoundboardCreateRequest
+     */
+    'emoji_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof SoundboardCreateRequest
      */
-    'emoji_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SoundboardCreateRequest
-     */
-    'emoji_name'?: string | null;
+    'emoji_name'?: string;
 }
 /**
  * 
@@ -15073,19 +15901,19 @@ export interface SoundboardPatchRequestPartial {
      * @type {number}
      * @memberof SoundboardPatchRequestPartial
      */
-    'volume'?: number | null;
+    'volume'?: number;
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof SoundboardPatchRequestPartial
+     */
+    'emoji_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof SoundboardPatchRequestPartial
      */
-    'emoji_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SoundboardPatchRequestPartial
-     */
-    'emoji_name'?: string | null;
+    'emoji_name'?: string;
 }
 /**
  * 
@@ -15119,16 +15947,16 @@ export interface SoundboardSoundResponse {
     'available': boolean;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof SoundboardSoundResponse
      */
-    'emoji_id'?: string;
+    'emoji_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof SoundboardSoundResponse
      */
-    'emoji_name'?: string | null;
+    'emoji_name'?: string;
     /**
      * 
      * @type {string}
@@ -15140,7 +15968,7 @@ export interface SoundboardSoundResponse {
      * @type {UserResponse}
      * @memberof SoundboardSoundResponse
      */
-    'user'?: UserResponse | null;
+    'user'?: UserResponse;
 }
 /**
  * 
@@ -15156,10 +15984,10 @@ export interface SoundboardSoundSendRequest {
     'sound_id': string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof SoundboardSoundSendRequest
      */
-    'source_guild_id'?: string;
+    'source_guild_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
 }
 /**
  * 
@@ -15193,10 +16021,10 @@ export interface SpamLinkRuleResponse {
     'name': string;
     /**
      * 
-     * @type {number}
+     * @type {AutomodEventType}
      * @memberof SpamLinkRuleResponse
      */
-    'event_type': number;
+    'event_type': AutomodEventType;
     /**
      * 
      * @type {Array<DefaultKeywordRuleResponseActionsInner>}
@@ -15205,34 +16033,34 @@ export interface SpamLinkRuleResponse {
     'actions': Array<DefaultKeywordRuleResponseActionsInner>;
     /**
      * 
-     * @type {number}
+     * @type {AutomodTriggerType}
      * @memberof SpamLinkRuleResponse
      */
-    'trigger_type': number;
+    'trigger_type': AutomodTriggerType;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SpamLinkRuleResponse
+     */
+    'enabled': boolean;
+    /**
+     * 
+     * @type {Set<string>}
+     * @memberof SpamLinkRuleResponse
+     */
+    'exempt_roles': Set<string>;
+    /**
+     * 
+     * @type {Set<string>}
+     * @memberof SpamLinkRuleResponse
+     */
+    'exempt_channels': Set<string>;
     /**
      * 
      * @type {object}
      * @memberof SpamLinkRuleResponse
      */
     'trigger_metadata': object;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SpamLinkRuleResponse
-     */
-    'enabled'?: boolean | null;
-    /**
-     * 
-     * @type {Set<string>}
-     * @memberof SpamLinkRuleResponse
-     */
-    'exempt_roles'?: Set<string> | null;
-    /**
-     * 
-     * @type {Set<string>}
-     * @memberof SpamLinkRuleResponse
-     */
-    'exempt_channels'?: Set<string> | null;
 }
 /**
  * 
@@ -15260,10 +16088,10 @@ export interface StageInstanceResponse {
     'topic': string;
     /**
      * 
-     * @type {number}
+     * @type {StageInstancesPrivacyLevels}
      * @memberof StageInstanceResponse
      */
-    'privacy_level': number;
+    'privacy_level': StageInstancesPrivacyLevels;
     /**
      * 
      * @type {string}
@@ -15275,14 +16103,20 @@ export interface StageInstanceResponse {
      * @type {boolean}
      * @memberof StageInstanceResponse
      */
-    'discoverable_disabled'?: boolean | null;
+    'discoverable_disabled': boolean;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof StageInstanceResponse
      */
-    'guild_scheduled_event_id'?: string;
+    'guild_scheduled_event_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
 }
+/**
+ * @type StageInstancesPrivacyLevels
+ * @export
+ */
+export type StageInstancesPrivacyLevels = any;
+
 /**
  * 
  * @export
@@ -15303,47 +16137,53 @@ export interface StageScheduledEventCreateRequest {
     'scheduled_start_time': string;
     /**
      * 
-     * @type {any}
+     * @type {GuildScheduledEventPrivacyLevels}
      * @memberof StageScheduledEventCreateRequest
      */
-    'privacy_level': any;
+    'privacy_level': GuildScheduledEventPrivacyLevels;
     /**
      * 
-     * @type {number}
+     * @type {GuildScheduledEventEntityTypes}
      * @memberof StageScheduledEventCreateRequest
      */
-    'entity_type': number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof StageScheduledEventCreateRequest
-     */
-    'description'?: string | null;
+    'entity_type': GuildScheduledEventEntityTypes;
     /**
      * 
      * @type {string}
      * @memberof StageScheduledEventCreateRequest
      */
-    'image'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof StageScheduledEventCreateRequest
      */
-    'scheduled_end_time'?: string | null;
+    'image'?: string;
     /**
      * 
      * @type {string}
      * @memberof StageScheduledEventCreateRequest
      */
-    'channel_id'?: string;
+    'scheduled_end_time'?: string;
     /**
      * 
-     * @type {object}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof StageScheduledEventCreateRequest
      */
-    'entity_metadata'?: object;
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
+    /**
+     * 
+     * @type {StageScheduledEventCreateRequestEntityMetadata}
+     * @memberof StageScheduledEventCreateRequest
+     */
+    'entity_metadata'?: StageScheduledEventCreateRequestEntityMetadata;
 }
+/**
+ * @type StageScheduledEventCreateRequestEntityMetadata
+ * @export
+ */
+export type StageScheduledEventCreateRequestEntityMetadata = Null | object;
+
 /**
  * 
  * @export
@@ -15352,10 +16192,10 @@ export interface StageScheduledEventCreateRequest {
 export interface StageScheduledEventPatchRequestPartial {
     /**
      * 
-     * @type {number}
+     * @type {ExternalScheduledEventPatchRequestPartialStatus}
      * @memberof StageScheduledEventPatchRequestPartial
      */
-    'status'?: number | null;
+    'status'?: ExternalScheduledEventPatchRequestPartialStatus;
     /**
      * 
      * @type {string}
@@ -15367,13 +16207,13 @@ export interface StageScheduledEventPatchRequestPartial {
      * @type {string}
      * @memberof StageScheduledEventPatchRequestPartial
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof StageScheduledEventPatchRequestPartial
      */
-    'image'?: string | null;
+    'image'?: string;
     /**
      * 
      * @type {string}
@@ -15385,32 +16225,38 @@ export interface StageScheduledEventPatchRequestPartial {
      * @type {string}
      * @memberof StageScheduledEventPatchRequestPartial
      */
-    'scheduled_end_time'?: string | null;
+    'scheduled_end_time'?: string;
     /**
      * 
-     * @type {number}
+     * @type {StageScheduledEventPatchRequestPartialEntityType}
      * @memberof StageScheduledEventPatchRequestPartial
      */
-    'entity_type'?: number | null;
+    'entity_type'?: StageScheduledEventPatchRequestPartialEntityType;
     /**
      * 
-     * @type {any}
+     * @type {GuildScheduledEventPrivacyLevels}
      * @memberof StageScheduledEventPatchRequestPartial
      */
-    'privacy_level'?: any;
+    'privacy_level'?: GuildScheduledEventPrivacyLevels;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof StageScheduledEventPatchRequestPartial
      */
-    'channel_id'?: string;
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {object}
+     * @type {StageScheduledEventCreateRequestEntityMetadata}
      * @memberof StageScheduledEventPatchRequestPartial
      */
-    'entity_metadata'?: object;
+    'entity_metadata'?: StageScheduledEventCreateRequestEntityMetadata;
 }
+/**
+ * @type StageScheduledEventPatchRequestPartialEntityType
+ * @export
+ */
+export type StageScheduledEventPatchRequestPartialEntityType = GuildScheduledEventEntityTypes | Null;
+
 /**
  * 
  * @export
@@ -15443,83 +16289,89 @@ export interface StageScheduledEventResponse {
     'scheduled_start_time': string;
     /**
      * 
-     * @type {number}
+     * @type {GuildScheduledEventStatuses}
      * @memberof StageScheduledEventResponse
      */
-    'status': number | null;
+    'status': GuildScheduledEventStatuses;
     /**
      * 
-     * @type {number}
+     * @type {GuildScheduledEventEntityTypes}
      * @memberof StageScheduledEventResponse
      */
-    'entity_type': number | null;
+    'entity_type': GuildScheduledEventEntityTypes;
     /**
      * 
-     * @type {any}
+     * @type {GuildScheduledEventPrivacyLevels}
      * @memberof StageScheduledEventResponse
      */
-    'privacy_level': any;
-    /**
-     * 
-     * @type {string}
-     * @memberof StageScheduledEventResponse
-     */
-    'description'?: string | null;
+    'privacy_level': GuildScheduledEventPrivacyLevels;
     /**
      * 
      * @type {string}
      * @memberof StageScheduledEventResponse
      */
-    'channel_id'?: string;
+    'description'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof StageScheduledEventResponse
      */
-    'creator_id'?: string;
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof StageScheduledEventResponse
+     */
+    'creator_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {UserResponse}
      * @memberof StageScheduledEventResponse
      */
-    'creator'?: UserResponse | null;
+    'creator'?: UserResponse;
     /**
      * 
      * @type {string}
      * @memberof StageScheduledEventResponse
      */
-    'image'?: string | null;
+    'image'?: string;
     /**
      * 
      * @type {string}
      * @memberof StageScheduledEventResponse
      */
-    'scheduled_end_time'?: string | null;
+    'scheduled_end_time'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof StageScheduledEventResponse
      */
-    'entity_id'?: string;
+    'entity_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {number}
      * @memberof StageScheduledEventResponse
      */
-    'user_count'?: number | null;
+    'user_count'?: number;
     /**
      * 
-     * @type {ScheduledEventUserResponse}
+     * @type {ExternalScheduledEventResponseUserRsvp}
      * @memberof StageScheduledEventResponse
      */
-    'user_rsvp'?: ScheduledEventUserResponse | null;
+    'user_rsvp'?: ExternalScheduledEventResponseUserRsvp;
     /**
      * 
-     * @type {object}
+     * @type {StageScheduledEventResponseEntityMetadata}
      * @memberof StageScheduledEventResponse
      */
-    'entity_metadata'?: object;
+    'entity_metadata'?: StageScheduledEventResponseEntityMetadata;
 }
+/**
+ * @type StageScheduledEventResponseEntityMetadata
+ * @export
+ */
+export type StageScheduledEventResponseEntityMetadata = Null | object;
+
 /**
  * 
  * @export
@@ -15546,10 +16398,10 @@ export interface StandardStickerResponse {
     'tags': string;
     /**
      * 
-     * @type {number}
+     * @type {StickerTypes}
      * @memberof StandardStickerResponse
      */
-    'type': number;
+    'type': StickerTypes;
     /**
      * 
      * @type {string}
@@ -15564,17 +16416,23 @@ export interface StandardStickerResponse {
     'sort_value': number;
     /**
      * 
-     * @type {number}
+     * @type {GuildStickerResponseFormatType}
      * @memberof StandardStickerResponse
      */
-    'format_type'?: number | null;
+    'format_type'?: GuildStickerResponseFormatType;
     /**
      * 
      * @type {string}
      * @memberof StandardStickerResponse
      */
-    'description'?: string | null;
+    'description'?: string;
 }
+/**
+ * @type StickerFormatTypes
+ * @export
+ */
+export type StickerFormatTypes = any;
+
 /**
  * 
  * @export
@@ -15623,7 +16481,7 @@ export interface StickerPackResponse {
      * @type {string}
      * @memberof StickerPackResponse
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {string}
@@ -15638,6 +16496,12 @@ export interface StickerPackResponse {
     'banner_asset_id'?: string;
 }
 /**
+ * @type StickerTypes
+ * @export
+ */
+export type StickerTypes = any;
+
+/**
  * 
  * @export
  * @interface StringSelectComponentForMessageRequest
@@ -15645,10 +16509,10 @@ export interface StickerPackResponse {
 export interface StringSelectComponentForMessageRequest {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof StringSelectComponentForMessageRequest
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {string}
@@ -15657,34 +16521,107 @@ export interface StringSelectComponentForMessageRequest {
     'custom_id': string;
     /**
      * 
-     * @type {Array<StringSelectOptionForMessageRequest>}
+     * @type {Array<StringSelectOptionForRequest>}
      * @memberof StringSelectComponentForMessageRequest
      */
-    'options': Array<StringSelectOptionForMessageRequest>;
+    'options': Array<StringSelectOptionForRequest>;
+    /**
+     * 
+     * @type {number}
+     * @memberof StringSelectComponentForMessageRequest
+     */
+    'id'?: number;
     /**
      * 
      * @type {string}
      * @memberof StringSelectComponentForMessageRequest
      */
-    'placeholder'?: string | null;
+    'placeholder'?: string;
     /**
      * 
      * @type {number}
      * @memberof StringSelectComponentForMessageRequest
      */
-    'min_values'?: number | null;
+    'min_values'?: number;
     /**
      * 
      * @type {number}
      * @memberof StringSelectComponentForMessageRequest
      */
-    'max_values'?: number | null;
+    'max_values'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof StringSelectComponentForMessageRequest
      */
-    'disabled'?: boolean | null;
+    'disabled'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof StringSelectComponentForMessageRequest
+     */
+    'required'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface StringSelectComponentForModalRequest
+ */
+export interface StringSelectComponentForModalRequest {
+    /**
+     * 
+     * @type {MessageComponentTypes}
+     * @memberof StringSelectComponentForModalRequest
+     */
+    'type': MessageComponentTypes;
+    /**
+     * 
+     * @type {string}
+     * @memberof StringSelectComponentForModalRequest
+     */
+    'custom_id': string;
+    /**
+     * 
+     * @type {Array<StringSelectOptionForRequest>}
+     * @memberof StringSelectComponentForModalRequest
+     */
+    'options': Array<StringSelectOptionForRequest>;
+    /**
+     * 
+     * @type {number}
+     * @memberof StringSelectComponentForModalRequest
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof StringSelectComponentForModalRequest
+     */
+    'placeholder'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof StringSelectComponentForModalRequest
+     */
+    'min_values'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof StringSelectComponentForModalRequest
+     */
+    'max_values'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof StringSelectComponentForModalRequest
+     */
+    'disabled'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof StringSelectComponentForModalRequest
+     */
+    'required'?: boolean;
 }
 /**
  * 
@@ -15694,10 +16631,10 @@ export interface StringSelectComponentForMessageRequest {
 export interface StringSelectComponentResponse {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof StringSelectComponentResponse
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {number}
@@ -15721,62 +16658,62 @@ export interface StringSelectComponentResponse {
      * @type {string}
      * @memberof StringSelectComponentResponse
      */
-    'placeholder'?: string | null;
+    'placeholder'?: string;
     /**
      * 
      * @type {number}
      * @memberof StringSelectComponentResponse
      */
-    'min_values'?: number | null;
+    'min_values'?: number;
     /**
      * 
      * @type {number}
      * @memberof StringSelectComponentResponse
      */
-    'max_values'?: number | null;
+    'max_values'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof StringSelectComponentResponse
      */
-    'disabled'?: boolean | null;
+    'disabled'?: boolean;
 }
 /**
  * 
  * @export
- * @interface StringSelectOptionForMessageRequest
+ * @interface StringSelectOptionForRequest
  */
-export interface StringSelectOptionForMessageRequest {
+export interface StringSelectOptionForRequest {
     /**
      * 
      * @type {string}
-     * @memberof StringSelectOptionForMessageRequest
+     * @memberof StringSelectOptionForRequest
      */
     'label': string;
     /**
      * 
      * @type {string}
-     * @memberof StringSelectOptionForMessageRequest
+     * @memberof StringSelectOptionForRequest
      */
     'value': string;
     /**
      * 
      * @type {string}
-     * @memberof StringSelectOptionForMessageRequest
+     * @memberof StringSelectOptionForRequest
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {boolean}
-     * @memberof StringSelectOptionForMessageRequest
+     * @memberof StringSelectOptionForRequest
      */
-    'default'?: boolean | null;
+    'default'?: boolean;
     /**
      * 
-     * @type {ComponentEmojiForMessageRequest}
-     * @memberof StringSelectOptionForMessageRequest
+     * @type {ButtonComponentForMessageRequestEmoji}
+     * @memberof StringSelectOptionForRequest
      */
-    'emoji'?: ComponentEmojiForMessageRequest | null;
+    'emoji'?: ButtonComponentForMessageRequestEmoji;
 }
 /**
  * 
@@ -15801,20 +16738,69 @@ export interface StringSelectOptionResponse {
      * @type {string}
      * @memberof StringSelectOptionResponse
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {ComponentEmojiResponse}
      * @memberof StringSelectOptionResponse
      */
-    'emoji'?: ComponentEmojiResponse | null;
+    'emoji'?: ComponentEmojiResponse;
     /**
      * 
      * @type {boolean}
      * @memberof StringSelectOptionResponse
      */
-    'default'?: boolean | null;
+    'default'?: boolean;
 }
+/**
+ * 
+ * @export
+ * @interface TargetUsersJobStatusResponse
+ */
+export interface TargetUsersJobStatusResponse {
+    /**
+     * The status of the job processing the target users.
+     * @type {TargetUsersJobStatusTypes}
+     * @memberof TargetUsersJobStatusResponse
+     */
+    'status': TargetUsersJobStatusTypes;
+    /**
+     * 
+     * @type {number}
+     * @memberof TargetUsersJobStatusResponse
+     */
+    'total_users': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof TargetUsersJobStatusResponse
+     */
+    'processed_users': number;
+    /**
+     * The timestamp when the job was created.
+     * @type {string}
+     * @memberof TargetUsersJobStatusResponse
+     */
+    'created_at'?: string;
+    /**
+     * The timestamp when the job was successfully completed.
+     * @type {string}
+     * @memberof TargetUsersJobStatusResponse
+     */
+    'completed_at'?: string;
+    /**
+     * The error message if the job failed.
+     * @type {string}
+     * @memberof TargetUsersJobStatusResponse
+     */
+    'error_message'?: string;
+}
+/**
+ * @type TargetUsersJobStatusTypes
+ * @export
+ */
+export type TargetUsersJobStatusTypes = any;
+
 /**
  * 
  * @export
@@ -15835,11 +16821,17 @@ export interface TeamMemberResponse {
     'team_id': string;
     /**
      * 
-     * @type {number}
+     * @type {TeamMembershipStates}
      * @memberof TeamMemberResponse
      */
-    'membership_state': number;
+    'membership_state': TeamMembershipStates;
 }
+/**
+ * @type TeamMembershipStates
+ * @export
+ */
+export type TeamMembershipStates = any;
+
 /**
  * 
  * @export
@@ -15875,7 +16867,7 @@ export interface TeamResponse {
      * @type {string}
      * @memberof TeamResponse
      */
-    'icon'?: string | null;
+    'icon'?: string;
 }
 /**
  * 
@@ -15885,16 +16877,47 @@ export interface TeamResponse {
 export interface TextDisplayComponentForMessageRequest {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof TextDisplayComponentForMessageRequest
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {string}
      * @memberof TextDisplayComponentForMessageRequest
      */
     'content': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof TextDisplayComponentForMessageRequest
+     */
+    'id'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface TextDisplayComponentForModalRequest
+ */
+export interface TextDisplayComponentForModalRequest {
+    /**
+     * 
+     * @type {MessageComponentTypes}
+     * @memberof TextDisplayComponentForModalRequest
+     */
+    'type': MessageComponentTypes;
+    /**
+     * 
+     * @type {string}
+     * @memberof TextDisplayComponentForModalRequest
+     */
+    'content': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof TextDisplayComponentForModalRequest
+     */
+    'id'?: number;
 }
 /**
  * 
@@ -15904,10 +16927,10 @@ export interface TextDisplayComponentForMessageRequest {
 export interface TextDisplayComponentResponse {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof TextDisplayComponentResponse
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {number}
@@ -15929,10 +16952,10 @@ export interface TextDisplayComponentResponse {
 export interface TextInputComponentForModalRequest {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof TextInputComponentForModalRequest
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {string}
@@ -15941,46 +16964,52 @@ export interface TextInputComponentForModalRequest {
     'custom_id': string;
     /**
      * 
+     * @type {TextInputStyleTypes}
+     * @memberof TextInputComponentForModalRequest
+     */
+    'style': TextInputStyleTypes;
+    /**
+     * 
      * @type {number}
      * @memberof TextInputComponentForModalRequest
      */
-    'style': number;
+    'id'?: number;
     /**
      * 
      * @type {string}
      * @memberof TextInputComponentForModalRequest
      */
-    'label': string;
+    'label'?: string;
     /**
      * 
      * @type {string}
      * @memberof TextInputComponentForModalRequest
      */
-    'value'?: string | null;
+    'value'?: string;
     /**
      * 
      * @type {string}
      * @memberof TextInputComponentForModalRequest
      */
-    'placeholder'?: string | null;
+    'placeholder'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof TextInputComponentForModalRequest
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
     /**
      * 
      * @type {number}
      * @memberof TextInputComponentForModalRequest
      */
-    'min_length'?: number | null;
+    'min_length'?: number;
     /**
      * 
      * @type {number}
      * @memberof TextInputComponentForModalRequest
      */
-    'max_length'?: number | null;
+    'max_length'?: number;
 }
 /**
  * 
@@ -15990,10 +17019,10 @@ export interface TextInputComponentForModalRequest {
 export interface TextInputComponentResponse {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof TextInputComponentResponse
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {number}
@@ -16008,47 +17037,59 @@ export interface TextInputComponentResponse {
     'custom_id': string;
     /**
      * 
-     * @type {number}
+     * @type {TextInputStyleTypes}
      * @memberof TextInputComponentResponse
      */
-    'style': number;
+    'style': TextInputStyleTypes;
     /**
      * 
      * @type {string}
      * @memberof TextInputComponentResponse
      */
-    'label'?: string | null;
+    'label'?: string;
     /**
      * 
      * @type {string}
      * @memberof TextInputComponentResponse
      */
-    'value'?: string | null;
+    'value'?: string;
     /**
      * 
      * @type {string}
      * @memberof TextInputComponentResponse
      */
-    'placeholder'?: string | null;
+    'placeholder'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof TextInputComponentResponse
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
     /**
      * 
      * @type {number}
      * @memberof TextInputComponentResponse
      */
-    'min_length'?: number | null;
+    'min_length'?: number;
     /**
      * 
      * @type {number}
      * @memberof TextInputComponentResponse
      */
-    'max_length'?: number | null;
+    'max_length'?: number;
 }
+/**
+ * @type TextInputStyleTypes
+ * @export
+ */
+export type TextInputStyleTypes = any;
+
+/**
+ * @type ThreadAutoArchiveDuration
+ * @export
+ */
+export type ThreadAutoArchiveDuration = any;
+
 /**
  * 
  * @export
@@ -16084,7 +17125,7 @@ export interface ThreadMemberResponse {
      * @type {GuildMemberResponse}
      * @memberof ThreadMemberResponse
      */
-    'member'?: GuildMemberResponse | null;
+    'member'?: GuildMemberResponse;
 }
 /**
  * 
@@ -16100,10 +17141,10 @@ export interface ThreadMetadataResponse {
     'archived': boolean;
     /**
      * 
-     * @type {number}
+     * @type {ThreadAutoArchiveDuration}
      * @memberof ThreadMetadataResponse
      */
-    'auto_archive_duration': number;
+    'auto_archive_duration': ThreadAutoArchiveDuration;
     /**
      * 
      * @type {boolean}
@@ -16115,19 +17156,19 @@ export interface ThreadMetadataResponse {
      * @type {string}
      * @memberof ThreadMetadataResponse
      */
-    'archive_timestamp'?: string | null;
+    'archive_timestamp'?: string;
     /**
      * 
      * @type {string}
      * @memberof ThreadMetadataResponse
      */
-    'create_timestamp'?: string | null;
+    'create_timestamp'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof ThreadMetadataResponse
      */
-    'invitable'?: boolean | null;
+    'invitable'?: boolean;
 }
 /**
  * 
@@ -16143,10 +17184,10 @@ export interface ThreadResponse {
     'id': string;
     /**
      * 
-     * @type {number}
+     * @type {ChannelTypes}
      * @memberof ThreadResponse
      */
-    'type': number;
+    'type': ChannelTypes;
     /**
      * 
      * @type {number}
@@ -16173,6 +17214,12 @@ export interface ThreadResponse {
     'owner_id': string;
     /**
      * 
+     * @type {ThreadMetadataResponse}
+     * @memberof ThreadResponse
+     */
+    'thread_metadata': ThreadMetadataResponse;
+    /**
+     * 
      * @type {number}
      * @memberof ThreadResponse
      */
@@ -16191,76 +17238,70 @@ export interface ThreadResponse {
     'total_message_sent': number;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof ThreadResponse
      */
-    'last_message_id'?: string;
+    'last_message_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof ThreadResponse
      */
-    'last_pin_timestamp'?: string | null;
+    'last_pin_timestamp'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof ThreadResponse
      */
-    'parent_id'?: string;
+    'parent_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {number}
      * @memberof ThreadResponse
      */
-    'rate_limit_per_user'?: number | null;
+    'rate_limit_per_user'?: number;
     /**
      * 
      * @type {number}
      * @memberof ThreadResponse
      */
-    'bitrate'?: number | null;
+    'bitrate'?: number;
     /**
      * 
      * @type {number}
      * @memberof ThreadResponse
      */
-    'user_limit'?: number | null;
+    'user_limit'?: number;
     /**
      * 
      * @type {string}
      * @memberof ThreadResponse
      */
-    'rtc_region'?: string | null;
+    'rtc_region'?: string;
     /**
      * 
-     * @type {number}
+     * @type {VideoQualityModes}
      * @memberof ThreadResponse
      */
-    'video_quality_mode'?: number;
+    'video_quality_mode'?: VideoQualityModes;
     /**
      * 
      * @type {string}
      * @memberof ThreadResponse
      */
-    'permissions'?: string | null;
-    /**
-     * 
-     * @type {ThreadMetadataResponse}
-     * @memberof ThreadResponse
-     */
-    'thread_metadata'?: ThreadMetadataResponse | null;
+    'permissions'?: string;
     /**
      * 
      * @type {Array<string>}
      * @memberof ThreadResponse
      */
-    'applied_tags'?: Array<string> | null;
+    'applied_tags'?: Array<string>;
     /**
      * 
      * @type {ThreadMemberResponse}
      * @memberof ThreadResponse
      */
-    'member'?: ThreadMemberResponse | null;
+    'member'?: ThreadMemberResponse;
 }
 /**
  * 
@@ -16285,25 +17326,43 @@ export interface ThreadSearchResponse {
      * @type {boolean}
      * @memberof ThreadSearchResponse
      */
-    'has_more'?: boolean | null;
-    /**
-     * 
-     * @type {Array<MessageResponse>}
-     * @memberof ThreadSearchResponse
-     */
-    'first_messages'?: Array<MessageResponse> | null;
+    'has_more': boolean;
     /**
      * 
      * @type {number}
      * @memberof ThreadSearchResponse
      */
-    'total_results'?: number | null;
+    'total_results': number;
+    /**
+     * 
+     * @type {Array<MessageResponse>}
+     * @memberof ThreadSearchResponse
+     */
+    'first_messages'?: Array<MessageResponse>;
 }
 /**
  * @type ThreadSearchTagParameter
  * @export
  */
 export type ThreadSearchTagParameter = Set<string> | string;
+
+/**
+ * @type ThreadSearchTagSetting
+ * @export
+ */
+export type ThreadSearchTagSetting = any;
+
+/**
+ * @type ThreadSortOrder
+ * @export
+ */
+export type ThreadSortOrder = any;
+
+/**
+ * @type ThreadSortingMode
+ * @export
+ */
+export type ThreadSortingMode = any;
 
 /**
  * 
@@ -16328,13 +17387,13 @@ export interface ThreadsResponse {
      * @type {boolean}
      * @memberof ThreadsResponse
      */
-    'has_more'?: boolean | null;
+    'has_more': boolean;
     /**
      * 
      * @type {Array<MessageResponse>}
      * @memberof ThreadsResponse
      */
-    'first_messages'?: Array<MessageResponse> | null;
+    'first_messages'?: Array<MessageResponse>;
 }
 /**
  * 
@@ -16344,10 +17403,10 @@ export interface ThreadsResponse {
 export interface ThumbnailComponentForMessageRequest {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof ThumbnailComponentForMessageRequest
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {UnfurledMediaRequest}
@@ -16356,16 +17415,22 @@ export interface ThumbnailComponentForMessageRequest {
     'media': UnfurledMediaRequest;
     /**
      * 
+     * @type {number}
+     * @memberof ThumbnailComponentForMessageRequest
+     */
+    'id'?: number;
+    /**
+     * 
      * @type {string}
      * @memberof ThumbnailComponentForMessageRequest
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof ThumbnailComponentForMessageRequest
      */
-    'spoiler'?: boolean | null;
+    'spoiler'?: boolean;
 }
 /**
  * 
@@ -16375,10 +17440,10 @@ export interface ThumbnailComponentForMessageRequest {
 export interface ThumbnailComponentResponse {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof ThumbnailComponentResponse
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {number}
@@ -16402,7 +17467,7 @@ export interface ThumbnailComponentResponse {
      * @type {string}
      * @memberof ThumbnailComponentResponse
      */
-    'description'?: string | null;
+    'description'?: string;
 }
 /**
  * 
@@ -16459,19 +17524,19 @@ export interface UnfurledMediaResponse {
      * @type {number}
      * @memberof UnfurledMediaResponse
      */
-    'width'?: number | null;
+    'width'?: number;
     /**
      * 
      * @type {number}
      * @memberof UnfurledMediaResponse
      */
-    'height'?: number | null;
+    'height'?: number;
     /**
      * 
      * @type {string}
      * @memberof UnfurledMediaResponse
      */
-    'content_type'?: string | null;
+    'content_type'?: string;
     /**
      * 
      * @type {string}
@@ -16503,13 +17568,13 @@ export interface UpdateApplicationUserRoleConnectionRequest {
      * @type {string}
      * @memberof UpdateApplicationUserRoleConnectionRequest
      */
-    'platform_name'?: string | null;
+    'platform_name'?: string;
     /**
      * 
      * @type {string}
      * @memberof UpdateApplicationUserRoleConnectionRequest
      */
-    'platform_username'?: string | null;
+    'platform_username'?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
@@ -16531,10 +17596,10 @@ export interface UpdateAutoModerationRuleRequest {
     'name'?: string;
     /**
      * 
-     * @type {number}
+     * @type {AutomodEventType}
      * @memberof UpdateAutoModerationRuleRequest
      */
-    'event_type'?: number;
+    'event_type'?: AutomodEventType;
     /**
      * 
      * @type {Array<DefaultKeywordListUpsertRequestActionsInner>}
@@ -16561,16 +17626,16 @@ export interface UpdateAutoModerationRuleRequest {
     'exempt_channels'?: Set<string>;
     /**
      * 
-     * @type {number}
+     * @type {AutomodTriggerType}
      * @memberof UpdateAutoModerationRuleRequest
      */
-    'trigger_type'?: number;
+    'trigger_type'?: AutomodTriggerType;
     /**
      * 
-     * @type {MentionSpamTriggerMetadata}
+     * @type {MentionSpamUpsertRequestTriggerMetadata}
      * @memberof UpdateAutoModerationRuleRequest
      */
-    'trigger_metadata'?: MentionSpamTriggerMetadata;
+    'trigger_metadata'?: MentionSpamUpsertRequestTriggerMetadata;
 }
 /**
  * 
@@ -16592,10 +17657,10 @@ export interface UpdateChannelRequest {
     'icon'?: string;
     /**
      * 
-     * @type {number}
+     * @type {CreateGuildChannelRequestType}
      * @memberof UpdateChannelRequest
      */
-    'type'?: number;
+    'type'?: CreateGuildChannelRequestType;
     /**
      * 
      * @type {number}
@@ -16634,10 +17699,10 @@ export interface UpdateChannelRequest {
     'rate_limit_per_user'?: number;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof UpdateChannelRequest
      */
-    'parent_id'?: string;
+    'parent_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {Array<ChannelPermissionOverwriteRequest>}
@@ -16652,22 +17717,22 @@ export interface UpdateChannelRequest {
     'rtc_region'?: string;
     /**
      * 
-     * @type {number}
+     * @type {CreateGuildChannelRequestVideoQualityMode}
      * @memberof UpdateChannelRequest
      */
-    'video_quality_mode'?: number;
+    'video_quality_mode'?: CreateGuildChannelRequestVideoQualityMode;
     /**
      * 
-     * @type {number}
+     * @type {CreateForumThreadRequestAutoArchiveDuration}
      * @memberof UpdateChannelRequest
      */
-    'default_auto_archive_duration'?: number;
+    'default_auto_archive_duration'?: CreateForumThreadRequestAutoArchiveDuration;
     /**
      * 
-     * @type {UpdateDefaultReactionEmojiRequest}
+     * @type {CreateGuildChannelRequestDefaultReactionEmoji}
      * @memberof UpdateChannelRequest
      */
-    'default_reaction_emoji'?: UpdateDefaultReactionEmojiRequest;
+    'default_reaction_emoji'?: CreateGuildChannelRequestDefaultReactionEmoji;
     /**
      * 
      * @type {number}
@@ -16676,22 +17741,22 @@ export interface UpdateChannelRequest {
     'default_thread_rate_limit_per_user'?: number;
     /**
      * 
-     * @type {number}
+     * @type {CreateGuildChannelRequestDefaultSortOrder}
      * @memberof UpdateChannelRequest
      */
-    'default_sort_order'?: number;
+    'default_sort_order'?: CreateGuildChannelRequestDefaultSortOrder;
     /**
      * 
-     * @type {number}
+     * @type {CreateGuildChannelRequestDefaultForumLayout}
      * @memberof UpdateChannelRequest
      */
-    'default_forum_layout'?: number;
+    'default_forum_layout'?: CreateGuildChannelRequestDefaultForumLayout;
     /**
      * 
-     * @type {string}
+     * @type {CreateGuildChannelRequestDefaultTagSetting}
      * @memberof UpdateChannelRequest
      */
-    'default_tag_setting'?: string;
+    'default_tag_setting'?: CreateGuildChannelRequestDefaultTagSetting;
     /**
      * 
      * @type {number}
@@ -16724,10 +17789,10 @@ export interface UpdateChannelRequest {
     'invitable'?: boolean;
     /**
      * 
-     * @type {number}
+     * @type {CreateForumThreadRequestAutoArchiveDuration}
      * @memberof UpdateChannelRequest
      */
-    'auto_archive_duration'?: number;
+    'auto_archive_duration'?: CreateForumThreadRequestAutoArchiveDuration;
     /**
      * 
      * @type {Array<string>}
@@ -16746,7 +17811,7 @@ export interface UpdateDMRequestPartial {
      * @type {string}
      * @memberof UpdateDMRequestPartial
      */
-    'name'?: string | null;
+    'name'?: string;
 }
 /**
  * 
@@ -16756,16 +17821,16 @@ export interface UpdateDMRequestPartial {
 export interface UpdateDefaultReactionEmojiRequest {
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof UpdateDefaultReactionEmojiRequest
      */
-    'emoji_id'?: string;
+    'emoji_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof UpdateDefaultReactionEmojiRequest
      */
-    'emoji_name'?: string | null;
+    'emoji_name'?: string;
 }
 /**
  * 
@@ -16778,13 +17843,13 @@ export interface UpdateGroupDMRequestPartial {
      * @type {string}
      * @memberof UpdateGroupDMRequestPartial
      */
-    'name'?: string | null;
+    'name'?: string;
     /**
      * 
      * @type {string}
      * @memberof UpdateGroupDMRequestPartial
      */
-    'icon'?: string | null;
+    'icon'?: string;
 }
 /**
  * 
@@ -16794,10 +17859,10 @@ export interface UpdateGroupDMRequestPartial {
 export interface UpdateGuildChannelRequestPartial {
     /**
      * 
-     * @type {number}
+     * @type {CreateGuildChannelRequestType}
      * @memberof UpdateGuildChannelRequestPartial
      */
-    'type'?: number | null;
+    'type'?: CreateGuildChannelRequestType;
     /**
      * 
      * @type {string}
@@ -16809,109 +17874,109 @@ export interface UpdateGuildChannelRequestPartial {
      * @type {number}
      * @memberof UpdateGuildChannelRequestPartial
      */
-    'position'?: number | null;
+    'position'?: number;
     /**
      * 
      * @type {string}
      * @memberof UpdateGuildChannelRequestPartial
      */
-    'topic'?: string | null;
+    'topic'?: string;
     /**
      * 
      * @type {number}
      * @memberof UpdateGuildChannelRequestPartial
      */
-    'bitrate'?: number | null;
+    'bitrate'?: number;
     /**
      * 
      * @type {number}
      * @memberof UpdateGuildChannelRequestPartial
      */
-    'user_limit'?: number | null;
+    'user_limit'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof UpdateGuildChannelRequestPartial
      */
-    'nsfw'?: boolean | null;
+    'nsfw'?: boolean;
     /**
      * 
      * @type {number}
      * @memberof UpdateGuildChannelRequestPartial
      */
-    'rate_limit_per_user'?: number | null;
+    'rate_limit_per_user'?: number;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof UpdateGuildChannelRequestPartial
      */
-    'parent_id'?: string;
+    'parent_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {Array<ChannelPermissionOverwriteRequest>}
      * @memberof UpdateGuildChannelRequestPartial
      */
-    'permission_overwrites'?: Array<ChannelPermissionOverwriteRequest> | null;
+    'permission_overwrites'?: Array<ChannelPermissionOverwriteRequest>;
     /**
      * 
      * @type {string}
      * @memberof UpdateGuildChannelRequestPartial
      */
-    'rtc_region'?: string | null;
+    'rtc_region'?: string;
+    /**
+     * 
+     * @type {CreateGuildChannelRequestVideoQualityMode}
+     * @memberof UpdateGuildChannelRequestPartial
+     */
+    'video_quality_mode'?: CreateGuildChannelRequestVideoQualityMode;
+    /**
+     * 
+     * @type {CreateForumThreadRequestAutoArchiveDuration}
+     * @memberof UpdateGuildChannelRequestPartial
+     */
+    'default_auto_archive_duration'?: CreateForumThreadRequestAutoArchiveDuration;
+    /**
+     * 
+     * @type {CreateGuildChannelRequestDefaultReactionEmoji}
+     * @memberof UpdateGuildChannelRequestPartial
+     */
+    'default_reaction_emoji'?: CreateGuildChannelRequestDefaultReactionEmoji;
     /**
      * 
      * @type {number}
      * @memberof UpdateGuildChannelRequestPartial
      */
-    'video_quality_mode'?: number;
+    'default_thread_rate_limit_per_user'?: number;
+    /**
+     * 
+     * @type {CreateGuildChannelRequestDefaultSortOrder}
+     * @memberof UpdateGuildChannelRequestPartial
+     */
+    'default_sort_order'?: CreateGuildChannelRequestDefaultSortOrder;
+    /**
+     * 
+     * @type {CreateGuildChannelRequestDefaultForumLayout}
+     * @memberof UpdateGuildChannelRequestPartial
+     */
+    'default_forum_layout'?: CreateGuildChannelRequestDefaultForumLayout;
+    /**
+     * 
+     * @type {CreateGuildChannelRequestDefaultTagSetting}
+     * @memberof UpdateGuildChannelRequestPartial
+     */
+    'default_tag_setting'?: CreateGuildChannelRequestDefaultTagSetting;
     /**
      * 
      * @type {number}
      * @memberof UpdateGuildChannelRequestPartial
      */
-    'default_auto_archive_duration'?: number;
-    /**
-     * 
-     * @type {UpdateDefaultReactionEmojiRequest}
-     * @memberof UpdateGuildChannelRequestPartial
-     */
-    'default_reaction_emoji'?: UpdateDefaultReactionEmojiRequest | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateGuildChannelRequestPartial
-     */
-    'default_thread_rate_limit_per_user'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateGuildChannelRequestPartial
-     */
-    'default_sort_order'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateGuildChannelRequestPartial
-     */
-    'default_forum_layout'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateGuildChannelRequestPartial
-     */
-    'default_tag_setting'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateGuildChannelRequestPartial
-     */
-    'flags'?: number | null;
+    'flags'?: number;
     /**
      * 
      * @type {Array<UpdateThreadTagRequest>}
      * @memberof UpdateGuildChannelRequestPartial
      */
-    'available_tags'?: Array<UpdateThreadTagRequest> | null;
+    'available_tags'?: Array<UpdateThreadTagRequest>;
 }
 /**
  * 
@@ -16927,10 +17992,10 @@ export interface UpdateGuildEmojiRequest {
     'name'?: string;
     /**
      * 
-     * @type {Set<string | null>}
+     * @type {Set<GetEntitlementsSkuIdsParameterOneOfInner>}
      * @memberof UpdateGuildEmojiRequest
      */
-    'roles'?: Set<string | null> | null;
+    'roles'?: Set<GetEntitlementsSkuIdsParameterOneOfInner>;
 }
 /**
  * 
@@ -16943,43 +18008,43 @@ export interface UpdateGuildMemberRequest {
      * @type {string}
      * @memberof UpdateGuildMemberRequest
      */
-    'nick'?: string | null;
+    'nick'?: string;
     /**
      * 
-     * @type {Set<string | null>}
+     * @type {Set<GetEntitlementsSkuIdsParameterOneOfInner>}
      * @memberof UpdateGuildMemberRequest
      */
-    'roles'?: Set<string | null> | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UpdateGuildMemberRequest
-     */
-    'mute'?: boolean | null;
+    'roles'?: Set<GetEntitlementsSkuIdsParameterOneOfInner>;
     /**
      * 
      * @type {boolean}
      * @memberof UpdateGuildMemberRequest
      */
-    'deaf'?: boolean | null;
+    'mute'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UpdateGuildMemberRequest
+     */
+    'deaf'?: boolean;
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof UpdateGuildMemberRequest
+     */
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof UpdateGuildMemberRequest
      */
-    'channel_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateGuildMemberRequest
-     */
-    'communication_disabled_until'?: string | null;
+    'communication_disabled_until'?: string;
     /**
      * 
      * @type {number}
      * @memberof UpdateGuildMemberRequest
      */
-    'flags'?: number | null;
+    'flags'?: number;
 }
 /**
  * 
@@ -16992,26 +18057,32 @@ export interface UpdateGuildOnboardingRequest {
      * @type {Array<UpdateOnboardingPromptRequest>}
      * @memberof UpdateGuildOnboardingRequest
      */
-    'prompts'?: Array<UpdateOnboardingPromptRequest> | null;
+    'prompts'?: Array<UpdateOnboardingPromptRequest>;
     /**
      * 
      * @type {boolean}
      * @memberof UpdateGuildOnboardingRequest
      */
-    'enabled'?: boolean | null;
+    'enabled'?: boolean;
     /**
      * 
      * @type {Set<string>}
      * @memberof UpdateGuildOnboardingRequest
      */
-    'default_channel_ids'?: Set<string> | null;
+    'default_channel_ids'?: Set<string>;
     /**
      * 
-     * @type {number}
+     * @type {UpdateGuildOnboardingRequestMode}
      * @memberof UpdateGuildOnboardingRequest
      */
-    'mode'?: number;
+    'mode'?: UpdateGuildOnboardingRequestMode;
 }
+/**
+ * @type UpdateGuildOnboardingRequestMode
+ * @export
+ */
+export type UpdateGuildOnboardingRequestMode = GuildOnboardingMode | Null;
+
 /**
  * 
  * @export
@@ -17020,10 +18091,10 @@ export interface UpdateGuildOnboardingRequest {
 export interface UpdateGuildScheduledEventRequest {
     /**
      * 
-     * @type {number}
+     * @type {ExternalScheduledEventPatchRequestPartialStatus}
      * @memberof UpdateGuildScheduledEventRequest
      */
-    'status'?: number;
+    'status'?: ExternalScheduledEventPatchRequestPartialStatus;
     /**
      * 
      * @type {string}
@@ -17056,28 +18127,28 @@ export interface UpdateGuildScheduledEventRequest {
     'scheduled_end_time'?: string;
     /**
      * 
-     * @type {number}
+     * @type {VoiceScheduledEventPatchRequestPartialEntityType}
      * @memberof UpdateGuildScheduledEventRequest
      */
-    'entity_type'?: number | null;
+    'entity_type'?: VoiceScheduledEventPatchRequestPartialEntityType;
     /**
      * 
-     * @type {any}
+     * @type {GuildScheduledEventPrivacyLevels}
      * @memberof UpdateGuildScheduledEventRequest
      */
-    'privacy_level'?: any;
+    'privacy_level'?: GuildScheduledEventPrivacyLevels;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof UpdateGuildScheduledEventRequest
      */
-    'channel_id'?: string;
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {object}
+     * @type {VoiceScheduledEventCreateRequestEntityMetadata}
      * @memberof UpdateGuildScheduledEventRequest
      */
-    'entity_metadata'?: object;
+    'entity_metadata'?: VoiceScheduledEventCreateRequestEntityMetadata;
 }
 /**
  * 
@@ -17102,7 +18173,7 @@ export interface UpdateGuildStickerRequest {
      * @type {string}
      * @memberof UpdateGuildStickerRequest
      */
-    'description'?: string | null;
+    'description'?: string;
 }
 /**
  * 
@@ -17121,7 +18192,7 @@ export interface UpdateGuildTemplateRequest {
      * @type {string}
      * @memberof UpdateGuildTemplateRequest
      */
-    'description'?: string | null;
+    'description'?: string;
 }
 /**
  * 
@@ -17131,16 +18202,16 @@ export interface UpdateGuildTemplateRequest {
 export interface UpdateGuildWidgetSettingsRequest {
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof UpdateGuildWidgetSettingsRequest
      */
-    'channel_id'?: string;
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {boolean}
      * @memberof UpdateGuildWidgetSettingsRequest
      */
-    'enabled'?: boolean | null;
+    'enabled'?: boolean;
 }
 /**
  * 
@@ -17150,17 +18221,23 @@ export interface UpdateGuildWidgetSettingsRequest {
 export interface UpdateMessageInteractionCallbackRequest {
     /**
      * 
-     * @type {number}
+     * @type {InteractionCallbackTypes}
      * @memberof UpdateMessageInteractionCallbackRequest
      */
-    'type': number | null;
+    'type': InteractionCallbackTypes;
     /**
      * 
-     * @type {IncomingWebhookUpdateForInteractionCallbackRequestPartial}
+     * @type {UpdateMessageInteractionCallbackRequestData}
      * @memberof UpdateMessageInteractionCallbackRequest
      */
-    'data'?: IncomingWebhookUpdateForInteractionCallbackRequestPartial | null;
+    'data'?: UpdateMessageInteractionCallbackRequestData;
 }
+/**
+ * @type UpdateMessageInteractionCallbackRequestData
+ * @export
+ */
+export type UpdateMessageInteractionCallbackRequestData = IncomingWebhookUpdateForInteractionCallbackRequestPartial | Null;
+
 /**
  * 
  * @export
@@ -17169,10 +18246,10 @@ export interface UpdateMessageInteractionCallbackRequest {
 export interface UpdateMessageInteractionCallbackResponse {
     /**
      * 
-     * @type {number}
+     * @type {InteractionCallbackTypes}
      * @memberof UpdateMessageInteractionCallbackResponse
      */
-    'type': number | null;
+    'type': InteractionCallbackTypes;
     /**
      * 
      * @type {MessageResponse}
@@ -17191,7 +18268,25 @@ export interface UpdateMyGuildMemberRequest {
      * @type {string}
      * @memberof UpdateMyGuildMemberRequest
      */
-    'nick'?: string | null;
+    'nick'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateMyGuildMemberRequest
+     */
+    'avatar'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateMyGuildMemberRequest
+     */
+    'bio'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateMyGuildMemberRequest
+     */
+    'banner'?: string;
 }
 /**
  * 
@@ -17222,50 +18317,130 @@ export interface UpdateOnboardingPromptRequest {
      * @type {boolean}
      * @memberof UpdateOnboardingPromptRequest
      */
-    'single_select'?: boolean | null;
+    'single_select'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof UpdateOnboardingPromptRequest
      */
-    'required'?: boolean | null;
+    'required'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof UpdateOnboardingPromptRequest
      */
-    'in_onboarding'?: boolean | null;
+    'in_onboarding'?: boolean;
+    /**
+     * 
+     * @type {UpdateOnboardingPromptRequestType}
+     * @memberof UpdateOnboardingPromptRequest
+     */
+    'type'?: UpdateOnboardingPromptRequestType;
+}
+/**
+ * @type UpdateOnboardingPromptRequestType
+ * @export
+ */
+export type UpdateOnboardingPromptRequestType = Null | OnboardingPromptType;
+
+/**
+ * 
+ * @export
+ * @interface UpdateRolePositionsRequest
+ */
+export interface UpdateRolePositionsRequest {
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof UpdateRolePositionsRequest
+     */
+    'id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {number}
-     * @memberof UpdateOnboardingPromptRequest
+     * @memberof UpdateRolePositionsRequest
      */
-    'type'?: number;
+    'position'?: number;
 }
 /**
  * 
  * @export
- * @interface UpdateSelfVoiceStateRequest
+ * @interface UpdateRoleRequestPartial
  */
-export interface UpdateSelfVoiceStateRequest {
+export interface UpdateRoleRequestPartial {
     /**
      * 
      * @type {string}
-     * @memberof UpdateSelfVoiceStateRequest
+     * @memberof UpdateRoleRequestPartial
      */
-    'request_to_speak_timestamp'?: string | null;
+    'name'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof UpdateRoleRequestPartial
+     */
+    'permissions'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof UpdateRoleRequestPartial
+     */
+    'color'?: number;
+    /**
+     * 
+     * @type {CreateRoleRequestColors}
+     * @memberof UpdateRoleRequestPartial
+     */
+    'colors'?: CreateRoleRequestColors;
     /**
      * 
      * @type {boolean}
-     * @memberof UpdateSelfVoiceStateRequest
+     * @memberof UpdateRoleRequestPartial
      */
-    'suppress'?: boolean | null;
+    'hoist'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UpdateRoleRequestPartial
+     */
+    'mentionable'?: boolean;
     /**
      * 
      * @type {string}
-     * @memberof UpdateSelfVoiceStateRequest
+     * @memberof UpdateRoleRequestPartial
      */
-    'channel_id'?: string;
+    'icon'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateRoleRequestPartial
+     */
+    'unicode_emoji'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UpdateSelfVoiceStateRequestPartial
+ */
+export interface UpdateSelfVoiceStateRequestPartial {
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateSelfVoiceStateRequestPartial
+     */
+    'request_to_speak_timestamp'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UpdateSelfVoiceStateRequestPartial
+     */
+    'suppress'?: boolean;
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof UpdateSelfVoiceStateRequestPartial
+     */
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
 }
 /**
  * 
@@ -17281,10 +18456,10 @@ export interface UpdateStageInstanceRequest {
     'topic'?: string;
     /**
      * 
-     * @type {number}
+     * @type {StageInstancesPrivacyLevels}
      * @memberof UpdateStageInstanceRequest
      */
-    'privacy_level'?: number;
+    'privacy_level'?: StageInstancesPrivacyLevels;
 }
 /**
  * 
@@ -17297,73 +18472,73 @@ export interface UpdateThreadRequestPartial {
      * @type {string}
      * @memberof UpdateThreadRequestPartial
      */
-    'name'?: string | null;
+    'name'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof UpdateThreadRequestPartial
      */
-    'archived'?: boolean | null;
+    'archived'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof UpdateThreadRequestPartial
      */
-    'locked'?: boolean | null;
+    'locked'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof UpdateThreadRequestPartial
      */
-    'invitable'?: boolean | null;
+    'invitable'?: boolean;
+    /**
+     * 
+     * @type {CreateForumThreadRequestAutoArchiveDuration}
+     * @memberof UpdateThreadRequestPartial
+     */
+    'auto_archive_duration'?: CreateForumThreadRequestAutoArchiveDuration;
     /**
      * 
      * @type {number}
      * @memberof UpdateThreadRequestPartial
      */
-    'auto_archive_duration'?: number;
+    'rate_limit_per_user'?: number;
     /**
      * 
      * @type {number}
      * @memberof UpdateThreadRequestPartial
      */
-    'rate_limit_per_user'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateThreadRequestPartial
-     */
-    'flags'?: number | null;
+    'flags'?: number;
     /**
      * 
      * @type {Array<string>}
      * @memberof UpdateThreadRequestPartial
      */
-    'applied_tags'?: Array<string> | null;
+    'applied_tags'?: Array<string>;
     /**
      * 
      * @type {number}
      * @memberof UpdateThreadRequestPartial
      */
-    'bitrate'?: number | null;
+    'bitrate'?: number;
     /**
      * 
      * @type {number}
      * @memberof UpdateThreadRequestPartial
      */
-    'user_limit'?: number | null;
+    'user_limit'?: number;
     /**
      * 
      * @type {string}
      * @memberof UpdateThreadRequestPartial
      */
-    'rtc_region'?: string | null;
+    'rtc_region'?: string;
     /**
      * 
-     * @type {number}
+     * @type {CreateGuildChannelRequestVideoQualityMode}
      * @memberof UpdateThreadRequestPartial
      */
-    'video_quality_mode'?: number;
+    'video_quality_mode'?: CreateGuildChannelRequestVideoQualityMode;
 }
 /**
  * 
@@ -17379,47 +18554,47 @@ export interface UpdateThreadTagRequest {
     'name': string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof UpdateThreadTagRequest
      */
-    'emoji_id'?: string;
+    'emoji_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {string}
      * @memberof UpdateThreadTagRequest
      */
-    'emoji_name'?: string | null;
+    'emoji_name'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof UpdateThreadTagRequest
      */
-    'moderated'?: boolean | null;
+    'moderated'?: boolean;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof UpdateThreadTagRequest
      */
-    'id'?: string;
+    'id'?: GetEntitlementsSkuIdsParameterOneOfInner;
 }
 /**
  * 
  * @export
- * @interface UpdateVoiceStateRequest
+ * @interface UpdateVoiceStateRequestPartial
  */
-export interface UpdateVoiceStateRequest {
+export interface UpdateVoiceStateRequestPartial {
     /**
      * 
      * @type {boolean}
-     * @memberof UpdateVoiceStateRequest
+     * @memberof UpdateVoiceStateRequestPartial
      */
-    'suppress'?: boolean | null;
+    'suppress'?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof UpdateVoiceStateRequest
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof UpdateVoiceStateRequestPartial
      */
-    'channel_id'?: string;
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
 }
 /**
  * 
@@ -17438,7 +18613,7 @@ export interface UpdateWebhookByTokenRequest {
      * @type {string}
      * @memberof UpdateWebhookByTokenRequest
      */
-    'avatar'?: string | null;
+    'avatar'?: string;
 }
 /**
  * 
@@ -17457,13 +18632,13 @@ export interface UpdateWebhookRequest {
      * @type {string}
      * @memberof UpdateWebhookRequest
      */
-    'avatar'?: string | null;
+    'avatar'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof UpdateWebhookRequest
      */
-    'channel_id'?: string;
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
 }
 /**
  * 
@@ -17479,10 +18654,10 @@ export interface UserAvatarDecorationResponse {
     'asset': string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof UserAvatarDecorationResponse
      */
-    'sku_id'?: string;
+    'sku_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
 }
 /**
  * 
@@ -17492,11 +18667,17 @@ export interface UserAvatarDecorationResponse {
 export interface UserCollectiblesResponse {
     /**
      * 
-     * @type {UserNameplateResponse}
+     * @type {UserCollectiblesResponseNameplate}
      * @memberof UserCollectiblesResponse
      */
-    'nameplate'?: UserNameplateResponse | null;
+    'nameplate'?: UserCollectiblesResponseNameplate;
 }
+/**
+ * @type UserCollectiblesResponseNameplate
+ * @export
+ */
+export type UserCollectiblesResponseNameplate = Null | UserNameplateResponse;
+
 /**
  * 
  * @export
@@ -17505,10 +18686,10 @@ export interface UserCollectiblesResponse {
 export interface UserCommunicationDisabledAction {
     /**
      * 
-     * @type {number}
+     * @type {AutomodActionType}
      * @memberof UserCommunicationDisabledAction
      */
-    'type': number;
+    'type': AutomodActionType;
     /**
      * 
      * @type {UserCommunicationDisabledActionMetadata}
@@ -17527,7 +18708,7 @@ export interface UserCommunicationDisabledActionMetadata {
      * @type {number}
      * @memberof UserCommunicationDisabledActionMetadata
      */
-    'duration_seconds'?: number | null;
+    'duration_seconds'?: number;
 }
 /**
  * 
@@ -17550,10 +18731,10 @@ export interface UserCommunicationDisabledActionMetadataResponse {
 export interface UserCommunicationDisabledActionResponse {
     /**
      * 
-     * @type {number}
+     * @type {AutomodActionType}
      * @memberof UserCommunicationDisabledActionResponse
      */
-    'type': number;
+    'type': AutomodActionType;
     /**
      * 
      * @type {UserCommunicationDisabledActionMetadataResponse}
@@ -17603,26 +18784,32 @@ export interface UserNameplateResponse {
      * @type {string}
      * @memberof UserNameplateResponse
      */
-    'sku_id'?: string;
+    'asset': string;
     /**
      * 
      * @type {string}
      * @memberof UserNameplateResponse
      */
-    'asset'?: string | null;
+    'label': string;
     /**
      * 
      * @type {string}
      * @memberof UserNameplateResponse
      */
-    'label'?: string | null;
+    'palette': string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof UserNameplateResponse
      */
-    'palette'?: string;
+    'sku_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
 }
+/**
+ * @type UserNotificationSettings
+ * @export
+ */
+export type UserNotificationSettings = any;
+
 /**
  * 
  * @export
@@ -17667,83 +18854,89 @@ export interface UserPIIResponse {
     'mfa_enabled': boolean;
     /**
      * 
-     * @type {string}
+     * @type {AvailableLocalesEnum}
      * @memberof UserPIIResponse
      */
-    'locale': string;
+    'locale': AvailableLocalesEnum;
     /**
      * 
      * @type {string}
      * @memberof UserPIIResponse
      */
-    'avatar'?: string | null;
+    'avatar'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof UserPIIResponse
      */
-    'bot'?: boolean | null;
+    'bot'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof UserPIIResponse
      */
-    'system'?: boolean | null;
+    'system'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof UserPIIResponse
      */
-    'banner'?: string | null;
+    'banner'?: string;
     /**
      * 
      * @type {number}
      * @memberof UserPIIResponse
      */
-    'accent_color'?: number | null;
+    'accent_color'?: number;
     /**
      * 
      * @type {string}
      * @memberof UserPIIResponse
      */
-    'global_name'?: string | null;
+    'global_name'?: string;
     /**
      * 
-     * @type {UserAvatarDecorationResponse}
+     * @type {BasicGuildMemberResponseAvatarDecorationData}
      * @memberof UserPIIResponse
      */
-    'avatar_decoration_data'?: UserAvatarDecorationResponse | null;
+    'avatar_decoration_data'?: BasicGuildMemberResponseAvatarDecorationData;
     /**
      * 
-     * @type {UserCollectiblesResponse}
+     * @type {BasicGuildMemberResponseCollectibles}
      * @memberof UserPIIResponse
      */
-    'collectibles'?: UserCollectiblesResponse | null;
+    'collectibles'?: BasicGuildMemberResponseCollectibles;
     /**
      * 
-     * @type {UserPrimaryGuildResponse}
+     * @type {UserPIIResponsePrimaryGuild}
      * @memberof UserPIIResponse
      */
-    'primary_guild'?: UserPrimaryGuildResponse | null;
+    'primary_guild'?: UserPIIResponsePrimaryGuild;
     /**
      * 
-     * @type {number}
+     * @type {PremiumTypes}
      * @memberof UserPIIResponse
      */
-    'premium_type'?: number;
+    'premium_type'?: PremiumTypes;
     /**
      * 
      * @type {string}
      * @memberof UserPIIResponse
      */
-    'email'?: string | null;
+    'email'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof UserPIIResponse
      */
-    'verified'?: boolean | null;
+    'verified'?: boolean;
 }
+/**
+ * @type UserPIIResponsePrimaryGuild
+ * @export
+ */
+export type UserPIIResponsePrimaryGuild = Null | UserPrimaryGuildResponse;
+
 /**
  * 
  * @export
@@ -17752,28 +18945,28 @@ export interface UserPIIResponse {
 export interface UserPrimaryGuildResponse {
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof UserPrimaryGuildResponse
      */
-    'identity_guild_id'?: string;
+    'identity_guild_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {boolean}
      * @memberof UserPrimaryGuildResponse
      */
-    'identity_enabled'?: boolean | null;
+    'identity_enabled'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof UserPrimaryGuildResponse
      */
-    'tag'?: string | null;
+    'tag'?: string;
     /**
      * 
      * @type {string}
      * @memberof UserPrimaryGuildResponse
      */
-    'badge'?: string | null;
+    'badge'?: string;
 }
 /**
  * 
@@ -17816,55 +19009,55 @@ export interface UserResponse {
      * @type {string}
      * @memberof UserResponse
      */
-    'avatar'?: string | null;
+    'avatar'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof UserResponse
      */
-    'bot'?: boolean | null;
+    'bot'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof UserResponse
      */
-    'system'?: boolean | null;
+    'system'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof UserResponse
      */
-    'banner'?: string | null;
+    'banner'?: string;
     /**
      * 
      * @type {number}
      * @memberof UserResponse
      */
-    'accent_color'?: number | null;
+    'accent_color'?: number;
     /**
      * 
      * @type {string}
      * @memberof UserResponse
      */
-    'global_name'?: string | null;
+    'global_name'?: string;
     /**
      * 
-     * @type {UserAvatarDecorationResponse}
+     * @type {BasicGuildMemberResponseAvatarDecorationData}
      * @memberof UserResponse
      */
-    'avatar_decoration_data'?: UserAvatarDecorationResponse | null;
+    'avatar_decoration_data'?: BasicGuildMemberResponseAvatarDecorationData;
     /**
      * 
-     * @type {UserCollectiblesResponse}
+     * @type {BasicGuildMemberResponseCollectibles}
      * @memberof UserResponse
      */
-    'collectibles'?: UserCollectiblesResponse | null;
+    'collectibles'?: BasicGuildMemberResponseCollectibles;
     /**
      * 
-     * @type {UserPrimaryGuildResponse}
+     * @type {UserPIIResponsePrimaryGuild}
      * @memberof UserResponse
      */
-    'primary_guild'?: UserPrimaryGuildResponse | null;
+    'primary_guild'?: UserPIIResponsePrimaryGuild;
 }
 /**
  * 
@@ -17874,10 +19067,10 @@ export interface UserResponse {
 export interface UserSelectComponentForMessageRequest {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof UserSelectComponentForMessageRequest
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {string}
@@ -17886,34 +19079,107 @@ export interface UserSelectComponentForMessageRequest {
     'custom_id': string;
     /**
      * 
+     * @type {number}
+     * @memberof UserSelectComponentForMessageRequest
+     */
+    'id'?: number;
+    /**
+     * 
      * @type {string}
      * @memberof UserSelectComponentForMessageRequest
      */
-    'placeholder'?: string | null;
+    'placeholder'?: string;
     /**
      * 
      * @type {number}
      * @memberof UserSelectComponentForMessageRequest
      */
-    'min_values'?: number | null;
+    'min_values'?: number;
     /**
      * 
      * @type {number}
      * @memberof UserSelectComponentForMessageRequest
      */
-    'max_values'?: number | null;
+    'max_values'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof UserSelectComponentForMessageRequest
      */
-    'disabled'?: boolean | null;
+    'disabled'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UserSelectComponentForMessageRequest
+     */
+    'required'?: boolean;
     /**
      * 
      * @type {Array<UserSelectDefaultValue>}
      * @memberof UserSelectComponentForMessageRequest
      */
-    'default_values'?: Array<UserSelectDefaultValue> | null;
+    'default_values'?: Array<UserSelectDefaultValue>;
+}
+/**
+ * 
+ * @export
+ * @interface UserSelectComponentForModalRequest
+ */
+export interface UserSelectComponentForModalRequest {
+    /**
+     * 
+     * @type {MessageComponentTypes}
+     * @memberof UserSelectComponentForModalRequest
+     */
+    'type': MessageComponentTypes;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserSelectComponentForModalRequest
+     */
+    'custom_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof UserSelectComponentForModalRequest
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserSelectComponentForModalRequest
+     */
+    'placeholder'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof UserSelectComponentForModalRequest
+     */
+    'min_values'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof UserSelectComponentForModalRequest
+     */
+    'max_values'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UserSelectComponentForModalRequest
+     */
+    'disabled'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UserSelectComponentForModalRequest
+     */
+    'required'?: boolean;
+    /**
+     * 
+     * @type {Array<UserSelectDefaultValue>}
+     * @memberof UserSelectComponentForModalRequest
+     */
+    'default_values'?: Array<UserSelectDefaultValue>;
 }
 /**
  * 
@@ -17923,10 +19189,10 @@ export interface UserSelectComponentForMessageRequest {
 export interface UserSelectComponentResponse {
     /**
      * 
-     * @type {number}
+     * @type {MessageComponentTypes}
      * @memberof UserSelectComponentResponse
      */
-    'type': number;
+    'type': MessageComponentTypes;
     /**
      * 
      * @type {number}
@@ -17944,31 +19210,31 @@ export interface UserSelectComponentResponse {
      * @type {string}
      * @memberof UserSelectComponentResponse
      */
-    'placeholder'?: string | null;
+    'placeholder'?: string;
     /**
      * 
      * @type {number}
      * @memberof UserSelectComponentResponse
      */
-    'min_values'?: number | null;
+    'min_values'?: number;
     /**
      * 
      * @type {number}
      * @memberof UserSelectComponentResponse
      */
-    'max_values'?: number | null;
+    'max_values'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof UserSelectComponentResponse
      */
-    'disabled'?: boolean | null;
+    'disabled'?: boolean;
     /**
      * 
      * @type {Array<UserSelectDefaultValueResponse>}
      * @memberof UserSelectComponentResponse
      */
-    'default_values'?: Array<UserSelectDefaultValueResponse> | null;
+    'default_values'?: Array<UserSelectDefaultValueResponse>;
 }
 /**
  * 
@@ -17978,10 +19244,10 @@ export interface UserSelectComponentResponse {
 export interface UserSelectDefaultValue {
     /**
      * 
-     * @type {string}
+     * @type {SnowflakeSelectDefaultValueTypes}
      * @memberof UserSelectDefaultValue
      */
-    'type': string | null;
+    'type': SnowflakeSelectDefaultValueTypes;
     /**
      * 
      * @type {string}
@@ -17997,10 +19263,10 @@ export interface UserSelectDefaultValue {
 export interface UserSelectDefaultValueResponse {
     /**
      * 
-     * @type {string}
+     * @type {SnowflakeSelectDefaultValueTypes}
      * @memberof UserSelectDefaultValueResponse
      */
-    'type': string | null;
+    'type': SnowflakeSelectDefaultValueTypes;
     /**
      * 
      * @type {string}
@@ -18044,14 +19310,32 @@ export interface VanityURLResponse {
      * @type {string}
      * @memberof VanityURLResponse
      */
-    'code'?: string | null;
+    'code'?: string;
     /**
      * 
-     * @type {VanityURLErrorResponse}
+     * @type {VanityURLResponseError}
      * @memberof VanityURLResponse
      */
-    'error'?: VanityURLErrorResponse | null;
+    'error'?: VanityURLResponseError;
 }
+/**
+ * @type VanityURLResponseError
+ * @export
+ */
+export type VanityURLResponseError = Null | VanityURLErrorResponse;
+
+/**
+ * @type VerificationLevels
+ * @export
+ */
+export type VerificationLevels = any;
+
+/**
+ * @type VideoQualityModes
+ * @export
+ */
+export type VideoQualityModes = any;
+
 /**
  * 
  * @export
@@ -18109,47 +19393,53 @@ export interface VoiceScheduledEventCreateRequest {
     'scheduled_start_time': string;
     /**
      * 
-     * @type {any}
+     * @type {GuildScheduledEventPrivacyLevels}
      * @memberof VoiceScheduledEventCreateRequest
      */
-    'privacy_level': any;
+    'privacy_level': GuildScheduledEventPrivacyLevels;
     /**
      * 
-     * @type {number}
+     * @type {GuildScheduledEventEntityTypes}
      * @memberof VoiceScheduledEventCreateRequest
      */
-    'entity_type': number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof VoiceScheduledEventCreateRequest
-     */
-    'description'?: string | null;
+    'entity_type': GuildScheduledEventEntityTypes;
     /**
      * 
      * @type {string}
      * @memberof VoiceScheduledEventCreateRequest
      */
-    'image'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof VoiceScheduledEventCreateRequest
      */
-    'scheduled_end_time'?: string | null;
+    'image'?: string;
     /**
      * 
      * @type {string}
      * @memberof VoiceScheduledEventCreateRequest
      */
-    'channel_id'?: string;
+    'scheduled_end_time'?: string;
     /**
      * 
-     * @type {object}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof VoiceScheduledEventCreateRequest
      */
-    'entity_metadata'?: object;
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
+    /**
+     * 
+     * @type {VoiceScheduledEventCreateRequestEntityMetadata}
+     * @memberof VoiceScheduledEventCreateRequest
+     */
+    'entity_metadata'?: VoiceScheduledEventCreateRequestEntityMetadata;
 }
+/**
+ * @type VoiceScheduledEventCreateRequestEntityMetadata
+ * @export
+ */
+export type VoiceScheduledEventCreateRequestEntityMetadata = Null | object;
+
 /**
  * 
  * @export
@@ -18158,10 +19448,10 @@ export interface VoiceScheduledEventCreateRequest {
 export interface VoiceScheduledEventPatchRequestPartial {
     /**
      * 
-     * @type {number}
+     * @type {ExternalScheduledEventPatchRequestPartialStatus}
      * @memberof VoiceScheduledEventPatchRequestPartial
      */
-    'status'?: number | null;
+    'status'?: ExternalScheduledEventPatchRequestPartialStatus;
     /**
      * 
      * @type {string}
@@ -18173,13 +19463,13 @@ export interface VoiceScheduledEventPatchRequestPartial {
      * @type {string}
      * @memberof VoiceScheduledEventPatchRequestPartial
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof VoiceScheduledEventPatchRequestPartial
      */
-    'image'?: string | null;
+    'image'?: string;
     /**
      * 
      * @type {string}
@@ -18191,32 +19481,38 @@ export interface VoiceScheduledEventPatchRequestPartial {
      * @type {string}
      * @memberof VoiceScheduledEventPatchRequestPartial
      */
-    'scheduled_end_time'?: string | null;
+    'scheduled_end_time'?: string;
     /**
      * 
-     * @type {number}
+     * @type {VoiceScheduledEventPatchRequestPartialEntityType}
      * @memberof VoiceScheduledEventPatchRequestPartial
      */
-    'entity_type'?: number | null;
+    'entity_type'?: VoiceScheduledEventPatchRequestPartialEntityType;
     /**
      * 
-     * @type {any}
+     * @type {GuildScheduledEventPrivacyLevels}
      * @memberof VoiceScheduledEventPatchRequestPartial
      */
-    'privacy_level'?: any;
+    'privacy_level'?: GuildScheduledEventPrivacyLevels;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof VoiceScheduledEventPatchRequestPartial
      */
-    'channel_id'?: string;
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {object}
+     * @type {VoiceScheduledEventCreateRequestEntityMetadata}
      * @memberof VoiceScheduledEventPatchRequestPartial
      */
-    'entity_metadata'?: object;
+    'entity_metadata'?: VoiceScheduledEventCreateRequestEntityMetadata;
 }
+/**
+ * @type VoiceScheduledEventPatchRequestPartialEntityType
+ * @export
+ */
+export type VoiceScheduledEventPatchRequestPartialEntityType = GuildScheduledEventEntityTypes | Null;
+
 /**
  * 
  * @export
@@ -18249,83 +19545,89 @@ export interface VoiceScheduledEventResponse {
     'scheduled_start_time': string;
     /**
      * 
-     * @type {number}
+     * @type {GuildScheduledEventStatuses}
      * @memberof VoiceScheduledEventResponse
      */
-    'status': number | null;
+    'status': GuildScheduledEventStatuses;
     /**
      * 
-     * @type {number}
+     * @type {GuildScheduledEventEntityTypes}
      * @memberof VoiceScheduledEventResponse
      */
-    'entity_type': number | null;
+    'entity_type': GuildScheduledEventEntityTypes;
     /**
      * 
-     * @type {any}
+     * @type {GuildScheduledEventPrivacyLevels}
      * @memberof VoiceScheduledEventResponse
      */
-    'privacy_level': any;
-    /**
-     * 
-     * @type {string}
-     * @memberof VoiceScheduledEventResponse
-     */
-    'description'?: string | null;
+    'privacy_level': GuildScheduledEventPrivacyLevels;
     /**
      * 
      * @type {string}
      * @memberof VoiceScheduledEventResponse
      */
-    'channel_id'?: string;
+    'description'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof VoiceScheduledEventResponse
      */
-    'creator_id'?: string;
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
+    /**
+     * 
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
+     * @memberof VoiceScheduledEventResponse
+     */
+    'creator_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {UserResponse}
      * @memberof VoiceScheduledEventResponse
      */
-    'creator'?: UserResponse | null;
+    'creator'?: UserResponse;
     /**
      * 
      * @type {string}
      * @memberof VoiceScheduledEventResponse
      */
-    'image'?: string | null;
+    'image'?: string;
     /**
      * 
      * @type {string}
      * @memberof VoiceScheduledEventResponse
      */
-    'scheduled_end_time'?: string | null;
+    'scheduled_end_time'?: string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof VoiceScheduledEventResponse
      */
-    'entity_id'?: string;
+    'entity_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {number}
      * @memberof VoiceScheduledEventResponse
      */
-    'user_count'?: number | null;
+    'user_count'?: number;
     /**
      * 
-     * @type {ScheduledEventUserResponse}
+     * @type {ExternalScheduledEventResponseUserRsvp}
      * @memberof VoiceScheduledEventResponse
      */
-    'user_rsvp'?: ScheduledEventUserResponse | null;
+    'user_rsvp'?: ExternalScheduledEventResponseUserRsvp;
     /**
      * 
-     * @type {object}
+     * @type {VoiceScheduledEventResponseEntityMetadata}
      * @memberof VoiceScheduledEventResponse
      */
-    'entity_metadata'?: object;
+    'entity_metadata'?: VoiceScheduledEventResponseEntityMetadata;
 }
+/**
+ * @type VoiceScheduledEventResponseEntityMetadata
+ * @export
+ */
+export type VoiceScheduledEventResponseEntityMetadata = Null | object;
+
 /**
  * 
  * @export
@@ -18382,34 +19684,34 @@ export interface VoiceStateResponse {
     'user_id': string;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof VoiceStateResponse
      */
-    'channel_id'?: string;
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof VoiceStateResponse
      */
-    'guild_id'?: string;
+    'guild_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
     /**
      * 
      * @type {GuildMemberResponse}
      * @memberof VoiceStateResponse
      */
-    'member'?: GuildMemberResponse | null;
+    'member'?: GuildMemberResponse;
     /**
      * 
      * @type {string}
      * @memberof VoiceStateResponse
      */
-    'request_to_speak_timestamp'?: string | null;
+    'request_to_speak_timestamp'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof VoiceStateResponse
      */
-    'self_stream'?: boolean | null;
+    'self_stream'?: boolean;
 }
 /**
  * 
@@ -18422,85 +19724,85 @@ export interface WebhookSlackEmbed {
      * @type {string}
      * @memberof WebhookSlackEmbed
      */
-    'title'?: string | null;
+    'title'?: string;
     /**
      * 
      * @type {string}
      * @memberof WebhookSlackEmbed
      */
-    'title_link'?: string | null;
+    'title_link'?: string;
     /**
      * 
      * @type {string}
      * @memberof WebhookSlackEmbed
      */
-    'text'?: string | null;
+    'text'?: string;
     /**
      * 
      * @type {string}
      * @memberof WebhookSlackEmbed
      */
-    'color'?: string | null;
+    'color'?: string;
     /**
      * 
      * @type {number}
      * @memberof WebhookSlackEmbed
      */
-    'ts'?: number | null;
+    'ts'?: number;
     /**
      * 
      * @type {string}
      * @memberof WebhookSlackEmbed
      */
-    'pretext'?: string | null;
+    'pretext'?: string;
     /**
      * 
      * @type {string}
      * @memberof WebhookSlackEmbed
      */
-    'footer'?: string | null;
+    'footer'?: string;
     /**
      * 
      * @type {string}
      * @memberof WebhookSlackEmbed
      */
-    'footer_icon'?: string | null;
+    'footer_icon'?: string;
     /**
      * 
      * @type {string}
      * @memberof WebhookSlackEmbed
      */
-    'author_name'?: string | null;
+    'author_name'?: string;
     /**
      * 
      * @type {string}
      * @memberof WebhookSlackEmbed
      */
-    'author_link'?: string | null;
+    'author_link'?: string;
     /**
      * 
      * @type {string}
      * @memberof WebhookSlackEmbed
      */
-    'author_icon'?: string | null;
+    'author_icon'?: string;
     /**
      * 
      * @type {string}
      * @memberof WebhookSlackEmbed
      */
-    'image_url'?: string | null;
+    'image_url'?: string;
     /**
      * 
      * @type {string}
      * @memberof WebhookSlackEmbed
      */
-    'thumb_url'?: string | null;
+    'thumb_url'?: string;
     /**
      * 
      * @type {Array<WebhookSlackEmbedField>}
      * @memberof WebhookSlackEmbed
      */
-    'fields'?: Array<WebhookSlackEmbedField> | null;
+    'fields'?: Array<WebhookSlackEmbedField>;
 }
 /**
  * 
@@ -18513,19 +19815,19 @@ export interface WebhookSlackEmbedField {
      * @type {string}
      * @memberof WebhookSlackEmbedField
      */
-    'name'?: string | null;
+    'name'?: string;
     /**
      * 
      * @type {string}
      * @memberof WebhookSlackEmbedField
      */
-    'value'?: string | null;
+    'value'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof WebhookSlackEmbedField
      */
-    'inline'?: boolean | null;
+    'inline'?: boolean;
 }
 /**
  * 
@@ -18569,8 +19871,14 @@ export interface WebhookSourceGuildResponse {
      * @type {string}
      * @memberof WebhookSourceGuildResponse
      */
-    'icon'?: string | null;
+    'icon'?: string;
 }
+/**
+ * @type WebhookTypes
+ * @export
+ */
+export type WebhookTypes = any;
+
 /**
  * 
  * @export
@@ -18601,19 +19909,19 @@ export interface WelcomeScreenPatchRequestPartial {
      * @type {string}
      * @memberof WelcomeScreenPatchRequestPartial
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * 
      * @type {Array<GuildWelcomeChannel>}
      * @memberof WelcomeScreenPatchRequestPartial
      */
-    'welcome_channels'?: Array<GuildWelcomeChannel> | null;
+    'welcome_channels'?: Array<GuildWelcomeChannel>;
     /**
      * 
      * @type {boolean}
      * @memberof WelcomeScreenPatchRequestPartial
      */
-    'enabled'?: boolean | null;
+    'enabled'?: boolean;
 }
 /**
  * 
@@ -18654,6 +19962,12 @@ export interface WidgetChannel {
     'position': number;
 }
 /**
+ * @type WidgetImageStyles
+ * @export
+ */
+export type WidgetImageStyles = any;
+
+/**
  * 
  * @export
  * @interface WidgetMember
@@ -18673,10 +19987,10 @@ export interface WidgetMember {
     'username': string;
     /**
      * 
-     * @type {string}
+     * @type {WidgetUserDiscriminator}
      * @memberof WidgetMember
      */
-    'discriminator': string | null;
+    'discriminator': WidgetUserDiscriminator;
     /**
      * 
      * @type {string}
@@ -18691,46 +20005,46 @@ export interface WidgetMember {
     'avatar_url': string;
     /**
      * 
-     * @type {any}
+     * @type {Null}
      * @memberof WidgetMember
      */
-    'avatar'?: any | null;
+    'avatar'?: Null;
     /**
      * 
      * @type {WidgetActivity}
      * @memberof WidgetMember
      */
-    'activity'?: WidgetActivity | null;
+    'activity'?: WidgetActivity;
     /**
      * 
      * @type {boolean}
      * @memberof WidgetMember
      */
-    'deaf'?: boolean | null;
+    'deaf'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof WidgetMember
      */
-    'mute'?: boolean | null;
+    'mute'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof WidgetMember
      */
-    'self_deaf'?: boolean | null;
+    'self_deaf'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof WidgetMember
      */
-    'self_mute'?: boolean | null;
+    'self_mute'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof WidgetMember
      */
-    'suppress'?: boolean | null;
+    'suppress'?: boolean;
     /**
      * 
      * @type {string}
@@ -18779,7 +20093,7 @@ export interface WidgetResponse {
      * @type {string}
      * @memberof WidgetResponse
      */
-    'instant_invite'?: string | null;
+    'instant_invite'?: string;
 }
 /**
  * 
@@ -18795,11 +20109,17 @@ export interface WidgetSettingsResponse {
     'enabled': boolean;
     /**
      * 
-     * @type {string}
+     * @type {GetEntitlementsSkuIdsParameterOneOfInner}
      * @memberof WidgetSettingsResponse
      */
-    'channel_id'?: string;
+    'channel_id'?: GetEntitlementsSkuIdsParameterOneOfInner;
 }
+/**
+ * @type WidgetUserDiscriminator
+ * @export
+ */
+export type WidgetUserDiscriminator = any;
+
 
 /**
  * DefaultApi - axios parameter creator
@@ -18857,17 +20177,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @param {string} guildId 
          * @param {string} userId 
-         * @param {AddGuildMemberRequest} addGuildMemberRequest 
+         * @param {BotAddGuildMemberRequest} botAddGuildMemberRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addGuildMember: async (guildId: string, userId: string, addGuildMemberRequest: AddGuildMemberRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        addGuildMember: async (guildId: string, userId: string, botAddGuildMemberRequest: BotAddGuildMemberRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'guildId' is not null or undefined
             assertParamExists('addGuildMember', 'guildId', guildId)
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('addGuildMember', 'userId', userId)
-            // verify required parameter 'addGuildMemberRequest' is not null or undefined
-            assertParamExists('addGuildMember', 'addGuildMemberRequest', addGuildMemberRequest)
+            // verify required parameter 'botAddGuildMemberRequest' is not null or undefined
+            assertParamExists('addGuildMember', 'botAddGuildMemberRequest', botAddGuildMemberRequest)
             const localVarPath = `/guilds/{guild_id}/members/{user_id}`
                 .replace(`{${"guild_id"}}`, encodeURIComponent(String(guildId)))
                 .replace(`{${"user_id"}}`, encodeURIComponent(String(userId)));
@@ -18892,7 +20212,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(addGuildMemberRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(botAddGuildMemberRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -19161,16 +20481,92 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} guildId 
-         * @param {BulkBanUsersFromGuildRequest} bulkBanUsersFromGuildRequest 
+         * @param {BotPartnerSdkTokenRequest} botPartnerSdkTokenRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bulkBanUsersFromGuild: async (guildId: string, bulkBanUsersFromGuildRequest: BulkBanUsersFromGuildRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        botPartnerSdkToken: async (botPartnerSdkTokenRequest: BotPartnerSdkTokenRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'botPartnerSdkTokenRequest' is not null or undefined
+            assertParamExists('botPartnerSdkToken', 'botPartnerSdkTokenRequest', botPartnerSdkTokenRequest)
+            const localVarPath = `/partner-sdk/token/bot`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BotToken required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(botPartnerSdkTokenRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {BotPartnerSdkUnmergeProvisionalAccountRequest} botPartnerSdkUnmergeProvisionalAccountRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        botPartnerSdkUnmergeProvisionalAccount: async (botPartnerSdkUnmergeProvisionalAccountRequest: BotPartnerSdkUnmergeProvisionalAccountRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'botPartnerSdkUnmergeProvisionalAccountRequest' is not null or undefined
+            assertParamExists('botPartnerSdkUnmergeProvisionalAccount', 'botPartnerSdkUnmergeProvisionalAccountRequest', botPartnerSdkUnmergeProvisionalAccountRequest)
+            const localVarPath = `/partner-sdk/provisional-accounts/unmerge/bot`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BotToken required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(botPartnerSdkUnmergeProvisionalAccountRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} guildId 
+         * @param {BulkBanUsersRequest} bulkBanUsersRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bulkBanUsersFromGuild: async (guildId: string, bulkBanUsersRequest: BulkBanUsersRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'guildId' is not null or undefined
             assertParamExists('bulkBanUsersFromGuild', 'guildId', guildId)
-            // verify required parameter 'bulkBanUsersFromGuildRequest' is not null or undefined
-            assertParamExists('bulkBanUsersFromGuild', 'bulkBanUsersFromGuildRequest', bulkBanUsersFromGuildRequest)
+            // verify required parameter 'bulkBanUsersRequest' is not null or undefined
+            assertParamExists('bulkBanUsersFromGuild', 'bulkBanUsersRequest', bulkBanUsersRequest)
             const localVarPath = `/guilds/{guild_id}/bulk-ban`
                 .replace(`{${"guild_id"}}`, encodeURIComponent(String(guildId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -19194,7 +20590,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bulkBanUsersFromGuildRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(bulkBanUsersRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -19246,11 +20642,11 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @param {string} applicationId 
-         * @param {Array<ApplicationCommandUpdateRequest> | null} applicationCommandUpdateRequest 
+         * @param {Array<ApplicationCommandUpdateRequest>} applicationCommandUpdateRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bulkSetApplicationCommands: async (applicationId: string, applicationCommandUpdateRequest: Array<ApplicationCommandUpdateRequest> | null, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        bulkSetApplicationCommands: async (applicationId: string, applicationCommandUpdateRequest: Array<ApplicationCommandUpdateRequest>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'applicationId' is not null or undefined
             assertParamExists('bulkSetApplicationCommands', 'applicationId', applicationId)
             // verify required parameter 'applicationCommandUpdateRequest' is not null or undefined
@@ -19301,11 +20697,11 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @param {string} applicationId 
          * @param {string} guildId 
-         * @param {Array<ApplicationCommandUpdateRequest> | null} applicationCommandUpdateRequest 
+         * @param {Array<ApplicationCommandUpdateRequest>} applicationCommandUpdateRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bulkSetGuildApplicationCommands: async (applicationId: string, guildId: string, applicationCommandUpdateRequest: Array<ApplicationCommandUpdateRequest> | null, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        bulkSetGuildApplicationCommands: async (applicationId: string, guildId: string, applicationCommandUpdateRequest: Array<ApplicationCommandUpdateRequest>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'applicationId' is not null or undefined
             assertParamExists('bulkSetGuildApplicationCommands', 'applicationId', applicationId)
             // verify required parameter 'guildId' is not null or undefined
@@ -19400,15 +20796,15 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @param {string} guildId 
-         * @param {Array<BulkUpdateGuildRolesRequestInner>} bulkUpdateGuildRolesRequestInner 
+         * @param {Array<UpdateRolePositionsRequest>} updateRolePositionsRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bulkUpdateGuildRoles: async (guildId: string, bulkUpdateGuildRolesRequestInner: Array<BulkUpdateGuildRolesRequestInner>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        bulkUpdateGuildRoles: async (guildId: string, updateRolePositionsRequest: Array<UpdateRolePositionsRequest>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'guildId' is not null or undefined
             assertParamExists('bulkUpdateGuildRoles', 'guildId', guildId)
-            // verify required parameter 'bulkUpdateGuildRolesRequestInner' is not null or undefined
-            assertParamExists('bulkUpdateGuildRoles', 'bulkUpdateGuildRolesRequestInner', bulkUpdateGuildRolesRequestInner)
+            // verify required parameter 'updateRolePositionsRequest' is not null or undefined
+            assertParamExists('bulkUpdateGuildRoles', 'updateRolePositionsRequest', updateRolePositionsRequest)
             const localVarPath = `/guilds/{guild_id}/roles`
                 .replace(`{${"guild_id"}}`, encodeURIComponent(String(guildId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -19432,7 +20828,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bulkUpdateGuildRolesRequestInner, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(updateRolePositionsRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -19442,11 +20838,11 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @param {string} lobbyId 
-         * @param {Array<BulkLobbyMemberRequest> | null} bulkLobbyMemberRequest 
+         * @param {Array<BulkLobbyMemberRequest>} bulkLobbyMemberRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bulkUpdateLobbyMembers: async (lobbyId: string, bulkLobbyMemberRequest: Array<BulkLobbyMemberRequest> | null, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        bulkUpdateLobbyMembers: async (lobbyId: string, bulkLobbyMemberRequest: Array<BulkLobbyMemberRequest>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'lobbyId' is not null or undefined
             assertParamExists('bulkUpdateLobbyMembers', 'lobbyId', lobbyId)
             // verify required parameter 'bulkLobbyMemberRequest' is not null or undefined
@@ -19795,44 +21191,6 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {GuildCreateRequest} guildCreateRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createGuild: async (guildCreateRequest: GuildCreateRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'guildCreateRequest' is not null or undefined
-            assertParamExists('createGuild', 'guildCreateRequest', guildCreateRequest)
-            const localVarPath = `/guilds`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication BotToken required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(guildCreateRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
          * @param {string} applicationId 
          * @param {string} guildId 
          * @param {ApplicationCommandCreateRequest} applicationCommandCreateRequest 
@@ -19975,58 +21333,16 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} code 
-         * @param {CreateGuildFromTemplateRequest} createGuildFromTemplateRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createGuildFromTemplate: async (code: string, createGuildFromTemplateRequest: CreateGuildFromTemplateRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'code' is not null or undefined
-            assertParamExists('createGuildFromTemplate', 'code', code)
-            // verify required parameter 'createGuildFromTemplateRequest' is not null or undefined
-            assertParamExists('createGuildFromTemplate', 'createGuildFromTemplateRequest', createGuildFromTemplateRequest)
-            const localVarPath = `/guilds/templates/{code}`
-                .replace(`{${"code"}}`, encodeURIComponent(String(code)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication BotToken required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createGuildFromTemplateRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
          * @param {string} guildId 
-         * @param {CreateGuildRoleRequest} createGuildRoleRequest 
+         * @param {CreateRoleRequest} createRoleRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createGuildRole: async (guildId: string, createGuildRoleRequest: CreateGuildRoleRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createGuildRole: async (guildId: string, createRoleRequest: CreateRoleRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'guildId' is not null or undefined
             assertParamExists('createGuildRole', 'guildId', guildId)
-            // verify required parameter 'createGuildRoleRequest' is not null or undefined
-            assertParamExists('createGuildRole', 'createGuildRoleRequest', createGuildRoleRequest)
+            // verify required parameter 'createRoleRequest' is not null or undefined
+            assertParamExists('createGuildRole', 'createRoleRequest', createRoleRequest)
             const localVarPath = `/guilds/{guild_id}/roles`
                 .replace(`{${"guild_id"}}`, encodeURIComponent(String(guildId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -20050,7 +21366,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createGuildRoleRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(createRoleRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -20147,11 +21463,11 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} name 
          * @param {string} tags 
          * @param {string} file 
-         * @param {string | null} [description] 
+         * @param {string} [description] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createGuildSticker: async (guildId: string, name: string, tags: string, file: string, description?: string | null, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createGuildSticker: async (guildId: string, name: string, tags: string, file: string, description?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'guildId' is not null or undefined
             assertParamExists('createGuildSticker', 'guildId', guildId)
             // verify required parameter 'name' is not null or undefined
@@ -20294,6 +21610,94 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(createInteractionResponseRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} lobbyId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createLinkedLobbyGuildInviteForSelf: async (lobbyId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'lobbyId' is not null or undefined
+            assertParamExists('createLinkedLobbyGuildInviteForSelf', 'lobbyId', lobbyId)
+            const localVarPath = `/lobbies/{lobby_id}/members/@me/invites`
+                .replace(`{${"lobby_id"}}`, encodeURIComponent(String(lobbyId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2", [], configuration)
+
+            // authentication OAuth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2", [], configuration)
+
+            // authentication OAuth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2", [], configuration)
+
+            // authentication BotToken required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} lobbyId 
+         * @param {string} userId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createLinkedLobbyGuildInviteForUser: async (lobbyId: string, userId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'lobbyId' is not null or undefined
+            assertParamExists('createLinkedLobbyGuildInviteForUser', 'lobbyId', lobbyId)
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('createLinkedLobbyGuildInviteForUser', 'userId', userId)
+            const localVarPath = `/lobbies/{lobby_id}/members/{user_id}/invites`
+                .replace(`{${"lobby_id"}}`, encodeURIComponent(String(lobbyId)))
+                .replace(`{${"user_id"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BotToken required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -21136,42 +22540,6 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarPath = `/channels/{channel_id}/recipients/{user_id}`
                 .replace(`{${"channel_id"}}`, encodeURIComponent(String(channelId)))
                 .replace(`{${"user_id"}}`, encodeURIComponent(String(userId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication BotToken required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} guildId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteGuild: async (guildId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'guildId' is not null or undefined
-            assertParamExists('deleteGuild', 'guildId', guildId)
-            const localVarPath = `/guilds/{guild_id}`
-                .replace(`{${"guild_id"}}`, encodeURIComponent(String(guildId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -22912,6 +24280,63 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @param {string} applicationId 
+         * @param {GetEntitlementsSkuIdsParameter} [skuIds] 
+         * @param {boolean} [excludeConsumed] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCurrentUserApplicationEntitlements: async (applicationId: string, skuIds?: GetEntitlementsSkuIdsParameter, excludeConsumed?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'applicationId' is not null or undefined
+            assertParamExists('getCurrentUserApplicationEntitlements', 'applicationId', applicationId)
+            const localVarPath = `/users/@me/applications/{application_id}/entitlements`
+                .replace(`{${"application_id"}}`, encodeURIComponent(String(applicationId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2", ["activities.invites.write", "activities.read", "activities.write", "applications.builds.read", "applications.builds.upload", "applications.commands", "applications.commands.permissions.update", "applications.entitlements", "applications.store.update", "bot", "connections", "dm_channels.read", "email", "gdm.join", "guilds", "guilds.join", "guilds.members.read", "identify", "messages.read", "openid", "relationships.read", "rpc", "rpc.activities.write", "rpc.notifications.read", "rpc.screenshare.read", "rpc.screenshare.write", "rpc.video.read", "rpc.video.write", "rpc.voice.read", "rpc.voice.write", "voice", "webhook.incoming"], configuration)
+
+            // authentication OAuth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2", ["activities.invites.write", "activities.read", "activities.write", "applications.builds.read", "applications.builds.upload", "applications.commands", "applications.commands.permissions.update", "applications.commands.update", "applications.entitlements", "applications.store.update", "bot", "connections", "dm_channels.read", "email", "gdm.join", "guilds", "guilds.join", "guilds.members.read", "identify", "messages.read", "openid", "relationships.read", "rpc", "rpc.activities.write", "rpc.notifications.read", "rpc.screenshare.read", "rpc.screenshare.write", "rpc.video.read", "rpc.video.write", "rpc.voice.read", "rpc.voice.write", "voice", "webhook.incoming"], configuration)
+
+            // authentication OAuth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2", ["activities.invites.write", "activities.read", "activities.write", "applications.builds.read", "applications.builds.upload", "applications.commands", "applications.commands.permissions.update", "applications.entitlements", "applications.store.update", "bot", "connections", "dm_channels.read", "email", "gdm.join", "guilds", "guilds.join", "guilds.members.read", "identify", "messages.read", "openid", "relationships.read", "role_connections.write", "rpc", "rpc.activities.write", "rpc.notifications.read", "rpc.screenshare.read", "rpc.screenshare.write", "rpc.video.read", "rpc.video.write", "rpc.voice.read", "rpc.voice.write", "voice", "webhook.incoming"], configuration)
+
+            if (skuIds !== undefined) {
+                for (const [key, value] of Object.entries(skuIds)) {
+                    localVarQueryParameter[key] = value;
+                }
+            }
+
+            if (excludeConsumed !== undefined) {
+                localVarQueryParameter['exclude_consumed'] = excludeConsumed;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} applicationId 
          * @param {string} entitlementId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22963,9 +24388,9 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {GetEntitlementsSkuIdsParameter} skuIds 
          * @param {string} applicationId 
          * @param {string} [userId] 
+         * @param {GetEntitlementsSkuIdsParameter} [skuIds] 
          * @param {string} [guildId] 
          * @param {string} [before] 
          * @param {string} [after] 
@@ -22976,9 +24401,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getEntitlements: async (skuIds: GetEntitlementsSkuIdsParameter, applicationId: string, userId?: string, guildId?: string, before?: string, after?: string, limit?: number, excludeEnded?: boolean, excludeDeleted?: boolean, onlyActive?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'skuIds' is not null or undefined
-            assertParamExists('getEntitlements', 'skuIds', skuIds)
+        getEntitlements: async (applicationId: string, userId?: string, skuIds?: GetEntitlementsSkuIdsParameter, guildId?: string, before?: string, after?: string, limit?: number, excludeEnded?: boolean, excludeDeleted?: boolean, onlyActive?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'applicationId' is not null or undefined
             assertParamExists('getEntitlements', 'applicationId', applicationId)
             const localVarPath = `/applications/{application_id}/entitlements`
@@ -23783,11 +25206,11 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @param {string} guildId 
-         * @param {string} [style] 
+         * @param {WidgetImageStyles} [style] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getGuildWidgetPng: async (guildId: string, style?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getGuildWidgetPng: async (guildId: string, style?: WidgetImageStyles, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'guildId' is not null or undefined
             assertParamExists('getGuildWidgetPng', 'guildId', guildId)
             const localVarPath = `/guilds/{guild_id}/widget.png`
@@ -23868,6 +25291,78 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             assertParamExists('getGuildsOnboarding', 'guildId', guildId)
             const localVarPath = `/guilds/{guild_id}/onboarding`
                 .replace(`{${"guild_id"}}`, encodeURIComponent(String(guildId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BotToken required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get the target users for an invite.
+         * @param {string} code 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInviteTargetUsers: async (code: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'code' is not null or undefined
+            assertParamExists('getInviteTargetUsers', 'code', code)
+            const localVarPath = `/invites/{code}/target-users`
+                .replace(`{${"code"}}`, encodeURIComponent(String(code)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BotToken required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get the target users job status for an invite.
+         * @param {string} code 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInviteTargetUsersJobStatus: async (code: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'code' is not null or undefined
+            assertParamExists('getInviteTargetUsersJobStatus', 'code', code)
+            const localVarPath = `/invites/{code}/target-users/job-status`
+                .replace(`{${"code"}}`, encodeURIComponent(String(code)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -24764,6 +26259,42 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @param {string} guildId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        guildRoleMemberCounts: async (guildId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'guildId' is not null or undefined
+            assertParamExists('guildRoleMemberCounts', 'guildId', guildId)
+            const localVarPath = `/guilds/{guild_id}/roles/member-counts`
+                .replace(`{${"guild_id"}}`, encodeURIComponent(String(guildId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BotToken required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {string} code 
          * @param {boolean} [withCounts] 
          * @param {string} [guildScheduledEventId] 
@@ -25311,14 +26842,14 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} guildId 
          * @param {string} [userId] 
          * @param {string} [targetId] 
-         * @param {number} [actionType] 
+         * @param {AuditLogActionTypes} [actionType] 
          * @param {string} [before] 
          * @param {string} [after] 
          * @param {number} [limit] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listGuildAuditLogEntries: async (guildId: string, userId?: string, targetId?: string, actionType?: number, before?: string, after?: string, limit?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listGuildAuditLogEntries: async (guildId: string, userId?: string, targetId?: string, actionType?: AuditLogActionTypes, before?: string, after?: string, limit?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'guildId' is not null or undefined
             assertParamExists('listGuildAuditLogEntries', 'guildId', guildId)
             const localVarPath = `/guilds/{guild_id}/audit-logs`
@@ -25913,11 +27444,11 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} emojiName 
          * @param {string} [after] 
          * @param {number} [limit] 
-         * @param {number} [type] 
+         * @param {ReactionTypes} [type] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listMessageReactionsByEmoji: async (channelId: string, messageId: string, emojiName: string, after?: string, limit?: number, type?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listMessageReactionsByEmoji: async (channelId: string, messageId: string, emojiName: string, after?: string, limit?: number, type?: ReactionTypes, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'channelId' is not null or undefined
             assertParamExists('listMessageReactionsByEmoji', 'channelId', channelId)
             // verify required parameter 'messageId' is not null or undefined
@@ -26684,15 +28215,13 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {number} limit 
          * @param {string} query 
          * @param {string} guildId 
+         * @param {number} [limit] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchGuildMembers: async (limit: number, query: string, guildId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'limit' is not null or undefined
-            assertParamExists('searchGuildMembers', 'limit', limit)
+        searchGuildMembers: async (query: string, guildId: string, limit?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'query' is not null or undefined
             assertParamExists('searchGuildMembers', 'query', query)
             // verify required parameter 'guildId' is not null or undefined
@@ -26885,48 +28414,6 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @param {string} guildId 
-         * @param {SetGuildMfaLevelRequest} setGuildMfaLevelRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        setGuildMfaLevel: async (guildId: string, setGuildMfaLevelRequest: SetGuildMfaLevelRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'guildId' is not null or undefined
-            assertParamExists('setGuildMfaLevel', 'guildId', guildId)
-            // verify required parameter 'setGuildMfaLevelRequest' is not null or undefined
-            assertParamExists('setGuildMfaLevel', 'setGuildMfaLevelRequest', setGuildMfaLevelRequest)
-            const localVarPath = `/guilds/{guild_id}/mfa`
-                .replace(`{${"guild_id"}}`, encodeURIComponent(String(guildId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication BotToken required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(setGuildMfaLevelRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} guildId 
          * @param {string} code 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -26972,16 +28459,16 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [minId] 
          * @param {string} [maxId] 
          * @param {ThreadSearchTagParameter} [tag] 
-         * @param {string} [tagSetting] 
+         * @param {ThreadSearchTagSetting} [tagSetting] 
          * @param {boolean} [archived] 
-         * @param {string | null} [sortBy] 
-         * @param {string | null} [sortOrder] 
+         * @param {ThreadSortingMode} [sortBy] 
+         * @param {SortingOrder} [sortOrder] 
          * @param {number} [limit] 
          * @param {number} [offset] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        threadSearch: async (channelId: string, name?: string, slop?: number, minId?: string, maxId?: string, tag?: ThreadSearchTagParameter, tagSetting?: string, archived?: boolean, sortBy?: string | null, sortOrder?: string | null, limit?: number, offset?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        threadSearch: async (channelId: string, name?: string, slop?: number, minId?: string, maxId?: string, tag?: ThreadSearchTagParameter, tagSetting?: ThreadSearchTagSetting, archived?: boolean, sortBy?: ThreadSortingMode, sortOrder?: SortingOrder, limit?: number, offset?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'channelId' is not null or undefined
             assertParamExists('threadSearch', 'channelId', channelId)
             const localVarPath = `/channels/{channel_id}/threads/search`
@@ -27097,14 +28584,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @param {string} guildId 
          * @param {string} userId 
+         * @param {object} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        unbanUserFromGuild: async (guildId: string, userId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        unbanUserFromGuild: async (guildId: string, userId: string, body: object, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'guildId' is not null or undefined
             assertParamExists('unbanUserFromGuild', 'guildId', guildId)
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('unbanUserFromGuild', 'userId', userId)
+            // verify required parameter 'body' is not null or undefined
+            assertParamExists('unbanUserFromGuild', 'body', body)
             const localVarPath = `/guilds/{guild_id}/bans/{user_id}`
                 .replace(`{${"guild_id"}}`, encodeURIComponent(String(guildId)))
                 .replace(`{${"user_id"}}`, encodeURIComponent(String(userId)));
@@ -27124,9 +28614,12 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -27282,11 +28775,11 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @param {string} applicationId 
-         * @param {Array<ApplicationRoleConnectionsMetadataItemRequest> | null} applicationRoleConnectionsMetadataItemRequest 
+         * @param {Array<ApplicationRoleConnectionsMetadataItemRequest>} applicationRoleConnectionsMetadataItemRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateApplicationRoleConnectionsMetadata: async (applicationId: string, applicationRoleConnectionsMetadataItemRequest: Array<ApplicationRoleConnectionsMetadataItemRequest> | null, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateApplicationRoleConnectionsMetadata: async (applicationId: string, applicationRoleConnectionsMetadataItemRequest: Array<ApplicationRoleConnectionsMetadataItemRequest>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'applicationId' is not null or undefined
             assertParamExists('updateApplicationRoleConnectionsMetadata', 'applicationId', applicationId)
             // verify required parameter 'applicationRoleConnectionsMetadataItemRequest' is not null or undefined
@@ -27660,17 +29153,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @param {string} guildId 
          * @param {string} roleId 
-         * @param {CreateGuildRoleRequest} createGuildRoleRequest 
+         * @param {UpdateRoleRequestPartial} updateRoleRequestPartial 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateGuildRole: async (guildId: string, roleId: string, createGuildRoleRequest: CreateGuildRoleRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateGuildRole: async (guildId: string, roleId: string, updateRoleRequestPartial: UpdateRoleRequestPartial, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'guildId' is not null or undefined
             assertParamExists('updateGuildRole', 'guildId', guildId)
             // verify required parameter 'roleId' is not null or undefined
             assertParamExists('updateGuildRole', 'roleId', roleId)
-            // verify required parameter 'createGuildRoleRequest' is not null or undefined
-            assertParamExists('updateGuildRole', 'createGuildRoleRequest', createGuildRoleRequest)
+            // verify required parameter 'updateRoleRequestPartial' is not null or undefined
+            assertParamExists('updateGuildRole', 'updateRoleRequestPartial', updateRoleRequestPartial)
             const localVarPath = `/guilds/{guild_id}/roles/{role_id}`
                 .replace(`{${"guild_id"}}`, encodeURIComponent(String(guildId)))
                 .replace(`{${"role_id"}}`, encodeURIComponent(String(roleId)));
@@ -27695,7 +29188,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createGuildRoleRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(updateRoleRequestPartial, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -27971,6 +29464,53 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Update the target users for an existing invite.
+         * @param {string} code 
+         * @param {string} targetUsersFile 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateInviteTargetUsers: async (code: string, targetUsersFile: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'code' is not null or undefined
+            assertParamExists('updateInviteTargetUsers', 'code', code)
+            // verify required parameter 'targetUsersFile' is not null or undefined
+            assertParamExists('updateInviteTargetUsers', 'targetUsersFile', targetUsersFile)
+            const localVarPath = `/invites/{code}/target-users`
+                .replace(`{${"code"}}`, encodeURIComponent(String(code)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+            const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
+
+            // authentication BotToken required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+            if (targetUsersFile !== undefined) { 
+                localVarFormParams.append('target_users_file', targetUsersFile as any);
+            }
+    
+    
+            localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = localVarFormParams;
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * 
          * @param {string} channelId 
          * @param {string} messageId 
@@ -28193,15 +29733,15 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @param {string} guildId 
-         * @param {UpdateSelfVoiceStateRequest} updateSelfVoiceStateRequest 
+         * @param {UpdateSelfVoiceStateRequestPartial} updateSelfVoiceStateRequestPartial 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateSelfVoiceState: async (guildId: string, updateSelfVoiceStateRequest: UpdateSelfVoiceStateRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateSelfVoiceState: async (guildId: string, updateSelfVoiceStateRequestPartial: UpdateSelfVoiceStateRequestPartial, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'guildId' is not null or undefined
             assertParamExists('updateSelfVoiceState', 'guildId', guildId)
-            // verify required parameter 'updateSelfVoiceStateRequest' is not null or undefined
-            assertParamExists('updateSelfVoiceState', 'updateSelfVoiceStateRequest', updateSelfVoiceStateRequest)
+            // verify required parameter 'updateSelfVoiceStateRequestPartial' is not null or undefined
+            assertParamExists('updateSelfVoiceState', 'updateSelfVoiceStateRequestPartial', updateSelfVoiceStateRequestPartial)
             const localVarPath = `/guilds/{guild_id}/voice-states/@me`
                 .replace(`{${"guild_id"}}`, encodeURIComponent(String(guildId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -28225,7 +29765,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateSelfVoiceStateRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(updateSelfVoiceStateRequestPartial, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -28278,17 +29818,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @param {string} guildId 
          * @param {string} userId 
-         * @param {UpdateVoiceStateRequest} updateVoiceStateRequest 
+         * @param {UpdateVoiceStateRequestPartial} updateVoiceStateRequestPartial 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateVoiceState: async (guildId: string, userId: string, updateVoiceStateRequest: UpdateVoiceStateRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateVoiceState: async (guildId: string, userId: string, updateVoiceStateRequestPartial: UpdateVoiceStateRequestPartial, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'guildId' is not null or undefined
             assertParamExists('updateVoiceState', 'guildId', guildId)
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('updateVoiceState', 'userId', userId)
-            // verify required parameter 'updateVoiceStateRequest' is not null or undefined
-            assertParamExists('updateVoiceState', 'updateVoiceStateRequest', updateVoiceStateRequest)
+            // verify required parameter 'updateVoiceStateRequestPartial' is not null or undefined
+            assertParamExists('updateVoiceState', 'updateVoiceStateRequestPartial', updateVoiceStateRequestPartial)
             const localVarPath = `/guilds/{guild_id}/voice-states/{user_id}`
                 .replace(`{${"guild_id"}}`, encodeURIComponent(String(guildId)))
                 .replace(`{${"user_id"}}`, encodeURIComponent(String(userId)));
@@ -28313,7 +29853,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateVoiceStateRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(updateVoiceStateRequestPartial, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -28555,12 +30095,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} guildId 
          * @param {string} userId 
-         * @param {AddGuildMemberRequest} addGuildMemberRequest 
+         * @param {BotAddGuildMemberRequest} botAddGuildMemberRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addGuildMember(guildId: string, userId: string, addGuildMemberRequest: AddGuildMemberRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildMemberResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.addGuildMember(guildId, userId, addGuildMemberRequest, options);
+        async addGuildMember(guildId: string, userId: string, botAddGuildMemberRequest: BotAddGuildMemberRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildMemberResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addGuildMember(guildId, userId, botAddGuildMemberRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.addGuildMember']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -28649,13 +30189,37 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} guildId 
-         * @param {BulkBanUsersFromGuildRequest} bulkBanUsersFromGuildRequest 
+         * @param {BotPartnerSdkTokenRequest} botPartnerSdkTokenRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async bulkBanUsersFromGuild(guildId: string, bulkBanUsersFromGuildRequest: BulkBanUsersFromGuildRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BulkBanUsersResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.bulkBanUsersFromGuild(guildId, bulkBanUsersFromGuildRequest, options);
+        async botPartnerSdkToken(botPartnerSdkTokenRequest: BotPartnerSdkTokenRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProvisionalTokenResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.botPartnerSdkToken(botPartnerSdkTokenRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.botPartnerSdkToken']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {BotPartnerSdkUnmergeProvisionalAccountRequest} botPartnerSdkUnmergeProvisionalAccountRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async botPartnerSdkUnmergeProvisionalAccount(botPartnerSdkUnmergeProvisionalAccountRequest: BotPartnerSdkUnmergeProvisionalAccountRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.botPartnerSdkUnmergeProvisionalAccount(botPartnerSdkUnmergeProvisionalAccountRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.botPartnerSdkUnmergeProvisionalAccount']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} guildId 
+         * @param {BulkBanUsersRequest} bulkBanUsersRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async bulkBanUsersFromGuild(guildId: string, bulkBanUsersRequest: BulkBanUsersRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BulkBanUsersResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.bulkBanUsersFromGuild(guildId, bulkBanUsersRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.bulkBanUsersFromGuild']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -28676,11 +30240,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} applicationId 
-         * @param {Array<ApplicationCommandUpdateRequest> | null} applicationCommandUpdateRequest 
+         * @param {Array<ApplicationCommandUpdateRequest>} applicationCommandUpdateRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async bulkSetApplicationCommands(applicationId: string, applicationCommandUpdateRequest: Array<ApplicationCommandUpdateRequest> | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ApplicationCommandResponse>>> {
+        async bulkSetApplicationCommands(applicationId: string, applicationCommandUpdateRequest: Array<ApplicationCommandUpdateRequest>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ApplicationCommandResponse>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.bulkSetApplicationCommands(applicationId, applicationCommandUpdateRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.bulkSetApplicationCommands']?.[localVarOperationServerIndex]?.url;
@@ -28690,11 +30254,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} applicationId 
          * @param {string} guildId 
-         * @param {Array<ApplicationCommandUpdateRequest> | null} applicationCommandUpdateRequest 
+         * @param {Array<ApplicationCommandUpdateRequest>} applicationCommandUpdateRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async bulkSetGuildApplicationCommands(applicationId: string, guildId: string, applicationCommandUpdateRequest: Array<ApplicationCommandUpdateRequest> | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ApplicationCommandResponse>>> {
+        async bulkSetGuildApplicationCommands(applicationId: string, guildId: string, applicationCommandUpdateRequest: Array<ApplicationCommandUpdateRequest>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ApplicationCommandResponse>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.bulkSetGuildApplicationCommands(applicationId, guildId, applicationCommandUpdateRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.bulkSetGuildApplicationCommands']?.[localVarOperationServerIndex]?.url;
@@ -28716,12 +30280,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} guildId 
-         * @param {Array<BulkUpdateGuildRolesRequestInner>} bulkUpdateGuildRolesRequestInner 
+         * @param {Array<UpdateRolePositionsRequest>} updateRolePositionsRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async bulkUpdateGuildRoles(guildId: string, bulkUpdateGuildRolesRequestInner: Array<BulkUpdateGuildRolesRequestInner>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GuildRoleResponse>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.bulkUpdateGuildRoles(guildId, bulkUpdateGuildRolesRequestInner, options);
+        async bulkUpdateGuildRoles(guildId: string, updateRolePositionsRequest: Array<UpdateRolePositionsRequest>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GuildRoleResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.bulkUpdateGuildRoles(guildId, updateRolePositionsRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.bulkUpdateGuildRoles']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -28729,11 +30293,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} lobbyId 
-         * @param {Array<BulkLobbyMemberRequest> | null} bulkLobbyMemberRequest 
+         * @param {Array<BulkLobbyMemberRequest>} bulkLobbyMemberRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async bulkUpdateLobbyMembers(lobbyId: string, bulkLobbyMemberRequest: Array<BulkLobbyMemberRequest> | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<LobbyMemberResponse>>> {
+        async bulkUpdateLobbyMembers(lobbyId: string, bulkLobbyMemberRequest: Array<BulkLobbyMemberRequest>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<LobbyMemberResponse>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.bulkUpdateLobbyMembers(lobbyId, bulkLobbyMemberRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.bulkUpdateLobbyMembers']?.[localVarOperationServerIndex]?.url;
@@ -28798,7 +30362,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createChannelInvite(channelId: string, createChannelInviteRequest: CreateChannelInviteRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListChannelInvites200ResponseInner>> {
+        async createChannelInvite(channelId: string, createChannelInviteRequest: CreateChannelInviteRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateChannelInvite200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createChannelInvite(channelId, createChannelInviteRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.createChannelInvite']?.[localVarOperationServerIndex]?.url;
@@ -28827,18 +30391,6 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createEntitlement(applicationId, createEntitlementRequestData, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.createEntitlement']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {GuildCreateRequest} guildCreateRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async createGuild(guildCreateRequest: GuildCreateRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createGuild(guildCreateRequest, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.createGuild']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -28883,26 +30435,13 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} code 
-         * @param {CreateGuildFromTemplateRequest} createGuildFromTemplateRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async createGuildFromTemplate(code: string, createGuildFromTemplateRequest: CreateGuildFromTemplateRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createGuildFromTemplate(code, createGuildFromTemplateRequest, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.createGuildFromTemplate']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
          * @param {string} guildId 
-         * @param {CreateGuildRoleRequest} createGuildRoleRequest 
+         * @param {CreateRoleRequest} createRoleRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createGuildRole(guildId: string, createGuildRoleRequest: CreateGuildRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildRoleResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createGuildRole(guildId, createGuildRoleRequest, options);
+        async createGuildRole(guildId: string, createRoleRequest: CreateRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildRoleResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createGuildRole(guildId, createRoleRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.createGuildRole']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -28939,11 +30478,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} name 
          * @param {string} tags 
          * @param {string} file 
-         * @param {string | null} [description] 
+         * @param {string} [description] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createGuildSticker(guildId: string, name: string, tags: string, file: string, description?: string | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildStickerResponse>> {
+        async createGuildSticker(guildId: string, name: string, tags: string, file: string, description?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildStickerResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createGuildSticker(guildId, name, tags, file, description, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.createGuildSticker']?.[localVarOperationServerIndex]?.url;
@@ -28975,6 +30514,31 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createInteractionResponse(interactionId, interactionToken, createInteractionResponseRequest, withResponse, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.createInteractionResponse']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} lobbyId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createLinkedLobbyGuildInviteForSelf(lobbyId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LobbyGuildInviteResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createLinkedLobbyGuildInviteForSelf(lobbyId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.createLinkedLobbyGuildInviteForSelf']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} lobbyId 
+         * @param {string} userId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createLinkedLobbyGuildInviteForUser(lobbyId: string, userId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LobbyGuildInviteResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createLinkedLobbyGuildInviteForUser(lobbyId, userId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.createLinkedLobbyGuildInviteForUser']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -29232,18 +30796,6 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteGroupDmUser(channelId, userId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.deleteGroupDmUser']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} guildId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async deleteGuild(guildId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteGuild(guildId, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.deleteGuild']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -29780,6 +31332,20 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} applicationId 
+         * @param {GetEntitlementsSkuIdsParameter} [skuIds] 
+         * @param {boolean} [excludeConsumed] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getCurrentUserApplicationEntitlements(applicationId: string, skuIds?: GetEntitlementsSkuIdsParameter, excludeConsumed?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GetEntitlements200ResponseInner>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getCurrentUserApplicationEntitlements(applicationId, skuIds, excludeConsumed, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getCurrentUserApplicationEntitlements']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} applicationId 
          * @param {string} entitlementId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -29792,9 +31358,9 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {GetEntitlementsSkuIdsParameter} skuIds 
          * @param {string} applicationId 
          * @param {string} [userId] 
+         * @param {GetEntitlementsSkuIdsParameter} [skuIds] 
          * @param {string} [guildId] 
          * @param {string} [before] 
          * @param {string} [after] 
@@ -29805,8 +31371,8 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getEntitlements(skuIds: GetEntitlementsSkuIdsParameter, applicationId: string, userId?: string, guildId?: string, before?: string, after?: string, limit?: number, excludeEnded?: boolean, excludeDeleted?: boolean, onlyActive?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<EntitlementResponse | null>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getEntitlements(skuIds, applicationId, userId, guildId, before, after, limit, excludeEnded, excludeDeleted, onlyActive, options);
+        async getEntitlements(applicationId: string, userId?: string, skuIds?: GetEntitlementsSkuIdsParameter, guildId?: string, before?: string, after?: string, limit?: number, excludeEnded?: boolean, excludeDeleted?: boolean, onlyActive?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GetEntitlements200ResponseInner>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getEntitlements(applicationId, userId, skuIds, guildId, before, after, limit, excludeEnded, excludeDeleted, onlyActive, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getEntitlements']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -30042,11 +31608,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} guildId 
-         * @param {string} [style] 
+         * @param {WidgetImageStyles} [style] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getGuildWidgetPng(guildId: string, style?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async getGuildWidgetPng(guildId: string, style?: WidgetImageStyles, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getGuildWidgetPng(guildId, style, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getGuildWidgetPng']?.[localVarOperationServerIndex]?.url;
@@ -30074,6 +31640,30 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getGuildsOnboarding(guildId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getGuildsOnboarding']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Get the target users for an invite.
+         * @param {string} code 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getInviteTargetUsers(code: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getInviteTargetUsers(code, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getInviteTargetUsers']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Get the target users job status for an invite.
+         * @param {string} code 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getInviteTargetUsersJobStatus(code: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TargetUsersJobStatusResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getInviteTargetUsersJobStatus(code, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getInviteTargetUsersJobStatus']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -30346,13 +31936,25 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {string} guildId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async guildRoleMemberCounts(guildId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<{ [key: string]: number; }>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.guildRoleMemberCounts(guildId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.guildRoleMemberCounts']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {string} code 
          * @param {boolean} [withCounts] 
          * @param {string} [guildScheduledEventId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async inviteResolve(code: string, withCounts?: boolean, guildScheduledEventId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListChannelInvites200ResponseInner>> {
+        async inviteResolve(code: string, withCounts?: boolean, guildScheduledEventId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateChannelInvite200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.inviteResolve(code, withCounts, guildScheduledEventId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.inviteResolve']?.[localVarOperationServerIndex]?.url;
@@ -30364,7 +31966,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async inviteRevoke(code: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListChannelInvites200ResponseInner>> {
+        async inviteRevoke(code: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateChannelInvite200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.inviteRevoke(code, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.inviteRevoke']?.[localVarOperationServerIndex]?.url;
@@ -30511,14 +32113,14 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} guildId 
          * @param {string} [userId] 
          * @param {string} [targetId] 
-         * @param {number} [actionType] 
+         * @param {AuditLogActionTypes} [actionType] 
          * @param {string} [before] 
          * @param {string} [after] 
          * @param {number} [limit] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listGuildAuditLogEntries(guildId: string, userId?: string, targetId?: string, actionType?: number, before?: string, after?: string, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildAuditLogResponse>> {
+        async listGuildAuditLogEntries(guildId: string, userId?: string, targetId?: string, actionType?: AuditLogActionTypes, before?: string, after?: string, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildAuditLogResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listGuildAuditLogEntries(guildId, userId, targetId, actionType, before, after, limit, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.listGuildAuditLogEntries']?.[localVarOperationServerIndex]?.url;
@@ -30698,11 +32300,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} emojiName 
          * @param {string} [after] 
          * @param {number} [limit] 
-         * @param {number} [type] 
+         * @param {ReactionTypes} [type] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listMessageReactionsByEmoji(channelId: string, messageId: string, emojiName: string, after?: string, limit?: number, type?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserResponse>>> {
+        async listMessageReactionsByEmoji(channelId: string, messageId: string, emojiName: string, after?: string, limit?: number, type?: ReactionTypes, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserResponse>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listMessageReactionsByEmoji(channelId, messageId, emojiName, after, limit, type, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.listMessageReactionsByEmoji']?.[localVarOperationServerIndex]?.url;
@@ -30922,14 +32524,14 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {number} limit 
          * @param {string} query 
          * @param {string} guildId 
+         * @param {number} [limit] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async searchGuildMembers(limit: number, query: string, guildId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GuildMemberResponse>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.searchGuildMembers(limit, query, guildId, options);
+        async searchGuildMembers(query: string, guildId: string, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GuildMemberResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.searchGuildMembers(query, guildId, limit, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.searchGuildMembers']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -30979,19 +32581,6 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} guildId 
-         * @param {SetGuildMfaLevelRequest} setGuildMfaLevelRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async setGuildMfaLevel(guildId: string, setGuildMfaLevelRequest: SetGuildMfaLevelRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildMFALevelResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.setGuildMfaLevel(guildId, setGuildMfaLevelRequest, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.setGuildMfaLevel']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} guildId 
          * @param {string} code 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -31010,16 +32599,16 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [minId] 
          * @param {string} [maxId] 
          * @param {ThreadSearchTagParameter} [tag] 
-         * @param {string} [tagSetting] 
+         * @param {ThreadSearchTagSetting} [tagSetting] 
          * @param {boolean} [archived] 
-         * @param {string | null} [sortBy] 
-         * @param {string | null} [sortOrder] 
+         * @param {ThreadSortingMode} [sortBy] 
+         * @param {SortingOrder} [sortOrder] 
          * @param {number} [limit] 
          * @param {number} [offset] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async threadSearch(channelId: string, name?: string, slop?: number, minId?: string, maxId?: string, tag?: ThreadSearchTagParameter, tagSetting?: string, archived?: boolean, sortBy?: string | null, sortOrder?: string | null, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ThreadSearchResponse>> {
+        async threadSearch(channelId: string, name?: string, slop?: number, minId?: string, maxId?: string, tag?: ThreadSearchTagParameter, tagSetting?: ThreadSearchTagSetting, archived?: boolean, sortBy?: ThreadSortingMode, sortOrder?: SortingOrder, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ThreadSearchResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.threadSearch(channelId, name, slop, minId, maxId, tag, tagSetting, archived, sortBy, sortOrder, limit, offset, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.threadSearch']?.[localVarOperationServerIndex]?.url;
@@ -31041,11 +32630,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} guildId 
          * @param {string} userId 
+         * @param {object} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async unbanUserFromGuild(guildId: string, userId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.unbanUserFromGuild(guildId, userId, options);
+        async unbanUserFromGuild(guildId: string, userId: string, body: object, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.unbanUserFromGuild(guildId, userId, body, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.unbanUserFromGuild']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -31094,11 +32684,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} applicationId 
-         * @param {Array<ApplicationRoleConnectionsMetadataItemRequest> | null} applicationRoleConnectionsMetadataItemRequest 
+         * @param {Array<ApplicationRoleConnectionsMetadataItemRequest>} applicationRoleConnectionsMetadataItemRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateApplicationRoleConnectionsMetadata(applicationId: string, applicationRoleConnectionsMetadataItemRequest: Array<ApplicationRoleConnectionsMetadataItemRequest> | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ApplicationRoleConnectionsMetadataItemResponse>>> {
+        async updateApplicationRoleConnectionsMetadata(applicationId: string, applicationRoleConnectionsMetadataItemRequest: Array<ApplicationRoleConnectionsMetadataItemRequest>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ApplicationRoleConnectionsMetadataItemResponse>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateApplicationRoleConnectionsMetadata(applicationId, applicationRoleConnectionsMetadataItemRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateApplicationRoleConnectionsMetadata']?.[localVarOperationServerIndex]?.url;
@@ -31204,12 +32794,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} guildId 
          * @param {string} roleId 
-         * @param {CreateGuildRoleRequest} createGuildRoleRequest 
+         * @param {UpdateRoleRequestPartial} updateRoleRequestPartial 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateGuildRole(guildId: string, roleId: string, createGuildRoleRequest: CreateGuildRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildRoleResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateGuildRole(guildId, roleId, createGuildRoleRequest, options);
+        async updateGuildRole(guildId: string, roleId: string, updateRoleRequestPartial: UpdateRoleRequestPartial, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GuildRoleResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateGuildRole(guildId, roleId, updateRoleRequestPartial, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateGuildRole']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -31297,6 +32887,19 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Update the target users for an existing invite.
+         * @param {string} code 
+         * @param {string} targetUsersFile 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateInviteTargetUsers(code: string, targetUsersFile: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateInviteTargetUsers(code, targetUsersFile, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateInviteTargetUsers']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * 
          * @param {string} channelId 
          * @param {string} messageId 
@@ -31366,12 +32969,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} guildId 
-         * @param {UpdateSelfVoiceStateRequest} updateSelfVoiceStateRequest 
+         * @param {UpdateSelfVoiceStateRequestPartial} updateSelfVoiceStateRequestPartial 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateSelfVoiceState(guildId: string, updateSelfVoiceStateRequest: UpdateSelfVoiceStateRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateSelfVoiceState(guildId, updateSelfVoiceStateRequest, options);
+        async updateSelfVoiceState(guildId: string, updateSelfVoiceStateRequestPartial: UpdateSelfVoiceStateRequestPartial, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateSelfVoiceState(guildId, updateSelfVoiceStateRequestPartial, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateSelfVoiceState']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -31393,12 +32996,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} guildId 
          * @param {string} userId 
-         * @param {UpdateVoiceStateRequest} updateVoiceStateRequest 
+         * @param {UpdateVoiceStateRequestPartial} updateVoiceStateRequestPartial 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateVoiceState(guildId: string, userId: string, updateVoiceStateRequest: UpdateVoiceStateRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateVoiceState(guildId, userId, updateVoiceStateRequest, options);
+        async updateVoiceState(guildId: string, userId: string, updateVoiceStateRequestPartial: UpdateVoiceStateRequestPartial, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateVoiceState(guildId, userId, updateVoiceStateRequestPartial, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateVoiceState']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -31485,12 +33088,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * 
          * @param {string} guildId 
          * @param {string} userId 
-         * @param {AddGuildMemberRequest} addGuildMemberRequest 
+         * @param {BotAddGuildMemberRequest} botAddGuildMemberRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addGuildMember(guildId: string, userId: string, addGuildMemberRequest: AddGuildMemberRequest, options?: RawAxiosRequestConfig): AxiosPromise<GuildMemberResponse> {
-            return localVarFp.addGuildMember(guildId, userId, addGuildMemberRequest, options).then((request) => request(axios, basePath));
+        addGuildMember(guildId: string, userId: string, botAddGuildMemberRequest: BotAddGuildMemberRequest, options?: RawAxiosRequestConfig): AxiosPromise<GuildMemberResponse> {
+            return localVarFp.addGuildMember(guildId, userId, botAddGuildMemberRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -31558,13 +33161,31 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @param {string} guildId 
-         * @param {BulkBanUsersFromGuildRequest} bulkBanUsersFromGuildRequest 
+         * @param {BotPartnerSdkTokenRequest} botPartnerSdkTokenRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bulkBanUsersFromGuild(guildId: string, bulkBanUsersFromGuildRequest: BulkBanUsersFromGuildRequest, options?: RawAxiosRequestConfig): AxiosPromise<BulkBanUsersResponse> {
-            return localVarFp.bulkBanUsersFromGuild(guildId, bulkBanUsersFromGuildRequest, options).then((request) => request(axios, basePath));
+        botPartnerSdkToken(botPartnerSdkTokenRequest: BotPartnerSdkTokenRequest, options?: RawAxiosRequestConfig): AxiosPromise<ProvisionalTokenResponse> {
+            return localVarFp.botPartnerSdkToken(botPartnerSdkTokenRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {BotPartnerSdkUnmergeProvisionalAccountRequest} botPartnerSdkUnmergeProvisionalAccountRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        botPartnerSdkUnmergeProvisionalAccount(botPartnerSdkUnmergeProvisionalAccountRequest: BotPartnerSdkUnmergeProvisionalAccountRequest, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.botPartnerSdkUnmergeProvisionalAccount(botPartnerSdkUnmergeProvisionalAccountRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} guildId 
+         * @param {BulkBanUsersRequest} bulkBanUsersRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bulkBanUsersFromGuild(guildId: string, bulkBanUsersRequest: BulkBanUsersRequest, options?: RawAxiosRequestConfig): AxiosPromise<BulkBanUsersResponse> {
+            return localVarFp.bulkBanUsersFromGuild(guildId, bulkBanUsersRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -31579,22 +33200,22 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @param {string} applicationId 
-         * @param {Array<ApplicationCommandUpdateRequest> | null} applicationCommandUpdateRequest 
+         * @param {Array<ApplicationCommandUpdateRequest>} applicationCommandUpdateRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bulkSetApplicationCommands(applicationId: string, applicationCommandUpdateRequest: Array<ApplicationCommandUpdateRequest> | null, options?: RawAxiosRequestConfig): AxiosPromise<Array<ApplicationCommandResponse>> {
+        bulkSetApplicationCommands(applicationId: string, applicationCommandUpdateRequest: Array<ApplicationCommandUpdateRequest>, options?: RawAxiosRequestConfig): AxiosPromise<Array<ApplicationCommandResponse>> {
             return localVarFp.bulkSetApplicationCommands(applicationId, applicationCommandUpdateRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {string} applicationId 
          * @param {string} guildId 
-         * @param {Array<ApplicationCommandUpdateRequest> | null} applicationCommandUpdateRequest 
+         * @param {Array<ApplicationCommandUpdateRequest>} applicationCommandUpdateRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bulkSetGuildApplicationCommands(applicationId: string, guildId: string, applicationCommandUpdateRequest: Array<ApplicationCommandUpdateRequest> | null, options?: RawAxiosRequestConfig): AxiosPromise<Array<ApplicationCommandResponse>> {
+        bulkSetGuildApplicationCommands(applicationId: string, guildId: string, applicationCommandUpdateRequest: Array<ApplicationCommandUpdateRequest>, options?: RawAxiosRequestConfig): AxiosPromise<Array<ApplicationCommandResponse>> {
             return localVarFp.bulkSetGuildApplicationCommands(applicationId, guildId, applicationCommandUpdateRequest, options).then((request) => request(axios, basePath));
         },
         /**
@@ -31610,21 +33231,21 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @param {string} guildId 
-         * @param {Array<BulkUpdateGuildRolesRequestInner>} bulkUpdateGuildRolesRequestInner 
+         * @param {Array<UpdateRolePositionsRequest>} updateRolePositionsRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bulkUpdateGuildRoles(guildId: string, bulkUpdateGuildRolesRequestInner: Array<BulkUpdateGuildRolesRequestInner>, options?: RawAxiosRequestConfig): AxiosPromise<Array<GuildRoleResponse>> {
-            return localVarFp.bulkUpdateGuildRoles(guildId, bulkUpdateGuildRolesRequestInner, options).then((request) => request(axios, basePath));
+        bulkUpdateGuildRoles(guildId: string, updateRolePositionsRequest: Array<UpdateRolePositionsRequest>, options?: RawAxiosRequestConfig): AxiosPromise<Array<GuildRoleResponse>> {
+            return localVarFp.bulkUpdateGuildRoles(guildId, updateRolePositionsRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {string} lobbyId 
-         * @param {Array<BulkLobbyMemberRequest> | null} bulkLobbyMemberRequest 
+         * @param {Array<BulkLobbyMemberRequest>} bulkLobbyMemberRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bulkUpdateLobbyMembers(lobbyId: string, bulkLobbyMemberRequest: Array<BulkLobbyMemberRequest> | null, options?: RawAxiosRequestConfig): AxiosPromise<Array<LobbyMemberResponse>> {
+        bulkUpdateLobbyMembers(lobbyId: string, bulkLobbyMemberRequest: Array<BulkLobbyMemberRequest>, options?: RawAxiosRequestConfig): AxiosPromise<Array<LobbyMemberResponse>> {
             return localVarFp.bulkUpdateLobbyMembers(lobbyId, bulkLobbyMemberRequest, options).then((request) => request(axios, basePath));
         },
         /**
@@ -31674,7 +33295,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createChannelInvite(channelId: string, createChannelInviteRequest: CreateChannelInviteRequest, options?: RawAxiosRequestConfig): AxiosPromise<ListChannelInvites200ResponseInner> {
+        createChannelInvite(channelId: string, createChannelInviteRequest: CreateChannelInviteRequest, options?: RawAxiosRequestConfig): AxiosPromise<CreateChannelInvite200Response> {
             return localVarFp.createChannelInvite(channelId, createChannelInviteRequest, options).then((request) => request(axios, basePath));
         },
         /**
@@ -31695,15 +33316,6 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         createEntitlement(applicationId: string, createEntitlementRequestData: CreateEntitlementRequestData, options?: RawAxiosRequestConfig): AxiosPromise<EntitlementResponse> {
             return localVarFp.createEntitlement(applicationId, createEntitlementRequestData, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {GuildCreateRequest} guildCreateRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createGuild(guildCreateRequest: GuildCreateRequest, options?: RawAxiosRequestConfig): AxiosPromise<GuildResponse> {
-            return localVarFp.createGuild(guildCreateRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -31738,23 +33350,13 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @param {string} code 
-         * @param {CreateGuildFromTemplateRequest} createGuildFromTemplateRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createGuildFromTemplate(code: string, createGuildFromTemplateRequest: CreateGuildFromTemplateRequest, options?: RawAxiosRequestConfig): AxiosPromise<GuildResponse> {
-            return localVarFp.createGuildFromTemplate(code, createGuildFromTemplateRequest, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @param {string} guildId 
-         * @param {CreateGuildRoleRequest} createGuildRoleRequest 
+         * @param {CreateRoleRequest} createRoleRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createGuildRole(guildId: string, createGuildRoleRequest: CreateGuildRoleRequest, options?: RawAxiosRequestConfig): AxiosPromise<GuildRoleResponse> {
-            return localVarFp.createGuildRole(guildId, createGuildRoleRequest, options).then((request) => request(axios, basePath));
+        createGuildRole(guildId: string, createRoleRequest: CreateRoleRequest, options?: RawAxiosRequestConfig): AxiosPromise<GuildRoleResponse> {
+            return localVarFp.createGuildRole(guildId, createRoleRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -31782,11 +33384,11 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {string} name 
          * @param {string} tags 
          * @param {string} file 
-         * @param {string | null} [description] 
+         * @param {string} [description] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createGuildSticker(guildId: string, name: string, tags: string, file: string, description?: string | null, options?: RawAxiosRequestConfig): AxiosPromise<GuildStickerResponse> {
+        createGuildSticker(guildId: string, name: string, tags: string, file: string, description?: string, options?: RawAxiosRequestConfig): AxiosPromise<GuildStickerResponse> {
             return localVarFp.createGuildSticker(guildId, name, tags, file, description, options).then((request) => request(axios, basePath));
         },
         /**
@@ -31810,6 +33412,25 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         createInteractionResponse(interactionId: string, interactionToken: string, createInteractionResponseRequest: CreateInteractionResponseRequest, withResponse?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<InteractionCallbackResponse> {
             return localVarFp.createInteractionResponse(interactionId, interactionToken, createInteractionResponseRequest, withResponse, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} lobbyId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createLinkedLobbyGuildInviteForSelf(lobbyId: string, options?: RawAxiosRequestConfig): AxiosPromise<LobbyGuildInviteResponse> {
+            return localVarFp.createLinkedLobbyGuildInviteForSelf(lobbyId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} lobbyId 
+         * @param {string} userId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createLinkedLobbyGuildInviteForUser(lobbyId: string, userId: string, options?: RawAxiosRequestConfig): AxiosPromise<LobbyGuildInviteResponse> {
+            return localVarFp.createLinkedLobbyGuildInviteForUser(lobbyId, userId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -32007,15 +33628,6 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         deleteGroupDmUser(channelId: string, userId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.deleteGroupDmUser(channelId, userId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} guildId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteGuild(guildId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.deleteGuild(guildId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -32431,6 +34043,17 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @param {string} applicationId 
+         * @param {GetEntitlementsSkuIdsParameter} [skuIds] 
+         * @param {boolean} [excludeConsumed] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCurrentUserApplicationEntitlements(applicationId: string, skuIds?: GetEntitlementsSkuIdsParameter, excludeConsumed?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<Array<GetEntitlements200ResponseInner>> {
+            return localVarFp.getCurrentUserApplicationEntitlements(applicationId, skuIds, excludeConsumed, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} applicationId 
          * @param {string} entitlementId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -32440,9 +34063,9 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @param {GetEntitlementsSkuIdsParameter} skuIds 
          * @param {string} applicationId 
          * @param {string} [userId] 
+         * @param {GetEntitlementsSkuIdsParameter} [skuIds] 
          * @param {string} [guildId] 
          * @param {string} [before] 
          * @param {string} [after] 
@@ -32453,8 +34076,8 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getEntitlements(skuIds: GetEntitlementsSkuIdsParameter, applicationId: string, userId?: string, guildId?: string, before?: string, after?: string, limit?: number, excludeEnded?: boolean, excludeDeleted?: boolean, onlyActive?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<Array<EntitlementResponse | null>> {
-            return localVarFp.getEntitlements(skuIds, applicationId, userId, guildId, before, after, limit, excludeEnded, excludeDeleted, onlyActive, options).then((request) => request(axios, basePath));
+        getEntitlements(applicationId: string, userId?: string, skuIds?: GetEntitlementsSkuIdsParameter, guildId?: string, before?: string, after?: string, limit?: number, excludeEnded?: boolean, excludeDeleted?: boolean, onlyActive?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<Array<GetEntitlements200ResponseInner>> {
+            return localVarFp.getEntitlements(applicationId, userId, skuIds, guildId, before, after, limit, excludeEnded, excludeDeleted, onlyActive, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -32633,11 +34256,11 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @param {string} guildId 
-         * @param {string} [style] 
+         * @param {WidgetImageStyles} [style] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getGuildWidgetPng(guildId: string, style?: string, options?: RawAxiosRequestConfig): AxiosPromise<string> {
+        getGuildWidgetPng(guildId: string, style?: WidgetImageStyles, options?: RawAxiosRequestConfig): AxiosPromise<string> {
             return localVarFp.getGuildWidgetPng(guildId, style, options).then((request) => request(axios, basePath));
         },
         /**
@@ -32657,6 +34280,24 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         getGuildsOnboarding(guildId: string, options?: RawAxiosRequestConfig): AxiosPromise<UserGuildOnboardingResponse> {
             return localVarFp.getGuildsOnboarding(guildId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Get the target users for an invite.
+         * @param {string} code 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInviteTargetUsers(code: string, options?: RawAxiosRequestConfig): AxiosPromise<string> {
+            return localVarFp.getInviteTargetUsers(code, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Get the target users job status for an invite.
+         * @param {string} code 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInviteTargetUsersJobStatus(code: string, options?: RawAxiosRequestConfig): AxiosPromise<TargetUsersJobStatusResponse> {
+            return localVarFp.getInviteTargetUsersJobStatus(code, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -32862,13 +34503,22 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
+         * @param {string} guildId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        guildRoleMemberCounts(guildId: string, options?: RawAxiosRequestConfig): AxiosPromise<{ [key: string]: number; }> {
+            return localVarFp.guildRoleMemberCounts(guildId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {string} code 
          * @param {boolean} [withCounts] 
          * @param {string} [guildScheduledEventId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        inviteResolve(code: string, withCounts?: boolean, guildScheduledEventId?: string, options?: RawAxiosRequestConfig): AxiosPromise<ListChannelInvites200ResponseInner> {
+        inviteResolve(code: string, withCounts?: boolean, guildScheduledEventId?: string, options?: RawAxiosRequestConfig): AxiosPromise<CreateChannelInvite200Response> {
             return localVarFp.inviteResolve(code, withCounts, guildScheduledEventId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -32877,7 +34527,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        inviteRevoke(code: string, options?: RawAxiosRequestConfig): AxiosPromise<ListChannelInvites200ResponseInner> {
+        inviteRevoke(code: string, options?: RawAxiosRequestConfig): AxiosPromise<CreateChannelInvite200Response> {
             return localVarFp.inviteRevoke(code, options).then((request) => request(axios, basePath));
         },
         /**
@@ -32988,14 +34638,14 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {string} guildId 
          * @param {string} [userId] 
          * @param {string} [targetId] 
-         * @param {number} [actionType] 
+         * @param {AuditLogActionTypes} [actionType] 
          * @param {string} [before] 
          * @param {string} [after] 
          * @param {number} [limit] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listGuildAuditLogEntries(guildId: string, userId?: string, targetId?: string, actionType?: number, before?: string, after?: string, limit?: number, options?: RawAxiosRequestConfig): AxiosPromise<GuildAuditLogResponse> {
+        listGuildAuditLogEntries(guildId: string, userId?: string, targetId?: string, actionType?: AuditLogActionTypes, before?: string, after?: string, limit?: number, options?: RawAxiosRequestConfig): AxiosPromise<GuildAuditLogResponse> {
             return localVarFp.listGuildAuditLogEntries(guildId, userId, targetId, actionType, before, after, limit, options).then((request) => request(axios, basePath));
         },
         /**
@@ -33133,11 +34783,11 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {string} emojiName 
          * @param {string} [after] 
          * @param {number} [limit] 
-         * @param {number} [type] 
+         * @param {ReactionTypes} [type] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listMessageReactionsByEmoji(channelId: string, messageId: string, emojiName: string, after?: string, limit?: number, type?: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<UserResponse>> {
+        listMessageReactionsByEmoji(channelId: string, messageId: string, emojiName: string, after?: string, limit?: number, type?: ReactionTypes, options?: RawAxiosRequestConfig): AxiosPromise<Array<UserResponse>> {
             return localVarFp.listMessageReactionsByEmoji(channelId, messageId, emojiName, after, limit, type, options).then((request) => request(axios, basePath));
         },
         /**
@@ -33306,14 +34956,14 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @param {number} limit 
          * @param {string} query 
          * @param {string} guildId 
+         * @param {number} [limit] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchGuildMembers(limit: number, query: string, guildId: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<GuildMemberResponse>> {
-            return localVarFp.searchGuildMembers(limit, query, guildId, options).then((request) => request(axios, basePath));
+        searchGuildMembers(query: string, guildId: string, limit?: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<GuildMemberResponse>> {
+            return localVarFp.searchGuildMembers(query, guildId, limit, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -33351,16 +35001,6 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @param {string} guildId 
-         * @param {SetGuildMfaLevelRequest} setGuildMfaLevelRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        setGuildMfaLevel(guildId: string, setGuildMfaLevelRequest: SetGuildMfaLevelRequest, options?: RawAxiosRequestConfig): AxiosPromise<GuildMFALevelResponse> {
-            return localVarFp.setGuildMfaLevel(guildId, setGuildMfaLevelRequest, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} guildId 
          * @param {string} code 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -33376,16 +35016,16 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {string} [minId] 
          * @param {string} [maxId] 
          * @param {ThreadSearchTagParameter} [tag] 
-         * @param {string} [tagSetting] 
+         * @param {ThreadSearchTagSetting} [tagSetting] 
          * @param {boolean} [archived] 
-         * @param {string | null} [sortBy] 
-         * @param {string | null} [sortOrder] 
+         * @param {ThreadSortingMode} [sortBy] 
+         * @param {SortingOrder} [sortOrder] 
          * @param {number} [limit] 
          * @param {number} [offset] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        threadSearch(channelId: string, name?: string, slop?: number, minId?: string, maxId?: string, tag?: ThreadSearchTagParameter, tagSetting?: string, archived?: boolean, sortBy?: string | null, sortOrder?: string | null, limit?: number, offset?: number, options?: RawAxiosRequestConfig): AxiosPromise<ThreadSearchResponse> {
+        threadSearch(channelId: string, name?: string, slop?: number, minId?: string, maxId?: string, tag?: ThreadSearchTagParameter, tagSetting?: ThreadSearchTagSetting, archived?: boolean, sortBy?: ThreadSortingMode, sortOrder?: SortingOrder, limit?: number, offset?: number, options?: RawAxiosRequestConfig): AxiosPromise<ThreadSearchResponse> {
             return localVarFp.threadSearch(channelId, name, slop, minId, maxId, tag, tagSetting, archived, sortBy, sortOrder, limit, offset, options).then((request) => request(axios, basePath));
         },
         /**
@@ -33401,11 +35041,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * 
          * @param {string} guildId 
          * @param {string} userId 
+         * @param {object} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        unbanUserFromGuild(guildId: string, userId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.unbanUserFromGuild(guildId, userId, options).then((request) => request(axios, basePath));
+        unbanUserFromGuild(guildId: string, userId: string, body: object, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.unbanUserFromGuild(guildId, userId, body, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -33442,11 +35083,11 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @param {string} applicationId 
-         * @param {Array<ApplicationRoleConnectionsMetadataItemRequest> | null} applicationRoleConnectionsMetadataItemRequest 
+         * @param {Array<ApplicationRoleConnectionsMetadataItemRequest>} applicationRoleConnectionsMetadataItemRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateApplicationRoleConnectionsMetadata(applicationId: string, applicationRoleConnectionsMetadataItemRequest: Array<ApplicationRoleConnectionsMetadataItemRequest> | null, options?: RawAxiosRequestConfig): AxiosPromise<Array<ApplicationRoleConnectionsMetadataItemResponse>> {
+        updateApplicationRoleConnectionsMetadata(applicationId: string, applicationRoleConnectionsMetadataItemRequest: Array<ApplicationRoleConnectionsMetadataItemRequest>, options?: RawAxiosRequestConfig): AxiosPromise<Array<ApplicationRoleConnectionsMetadataItemResponse>> {
             return localVarFp.updateApplicationRoleConnectionsMetadata(applicationId, applicationRoleConnectionsMetadataItemRequest, options).then((request) => request(axios, basePath));
         },
         /**
@@ -33528,12 +35169,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * 
          * @param {string} guildId 
          * @param {string} roleId 
-         * @param {CreateGuildRoleRequest} createGuildRoleRequest 
+         * @param {UpdateRoleRequestPartial} updateRoleRequestPartial 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateGuildRole(guildId: string, roleId: string, createGuildRoleRequest: CreateGuildRoleRequest, options?: RawAxiosRequestConfig): AxiosPromise<GuildRoleResponse> {
-            return localVarFp.updateGuildRole(guildId, roleId, createGuildRoleRequest, options).then((request) => request(axios, basePath));
+        updateGuildRole(guildId: string, roleId: string, updateRoleRequestPartial: UpdateRoleRequestPartial, options?: RawAxiosRequestConfig): AxiosPromise<GuildRoleResponse> {
+            return localVarFp.updateGuildRole(guildId, roleId, updateRoleRequestPartial, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -33600,6 +35241,16 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.updateGuildWidgetSettings(guildId, updateGuildWidgetSettingsRequest, options).then((request) => request(axios, basePath));
         },
         /**
+         * Update the target users for an existing invite.
+         * @param {string} code 
+         * @param {string} targetUsersFile 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateInviteTargetUsers(code: string, targetUsersFile: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.updateInviteTargetUsers(code, targetUsersFile, options).then((request) => request(axios, basePath));
+        },
+        /**
          * 
          * @param {string} channelId 
          * @param {string} messageId 
@@ -33654,12 +35305,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @param {string} guildId 
-         * @param {UpdateSelfVoiceStateRequest} updateSelfVoiceStateRequest 
+         * @param {UpdateSelfVoiceStateRequestPartial} updateSelfVoiceStateRequestPartial 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateSelfVoiceState(guildId: string, updateSelfVoiceStateRequest: UpdateSelfVoiceStateRequest, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.updateSelfVoiceState(guildId, updateSelfVoiceStateRequest, options).then((request) => request(axios, basePath));
+        updateSelfVoiceState(guildId: string, updateSelfVoiceStateRequestPartial: UpdateSelfVoiceStateRequestPartial, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.updateSelfVoiceState(guildId, updateSelfVoiceStateRequestPartial, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -33675,12 +35326,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * 
          * @param {string} guildId 
          * @param {string} userId 
-         * @param {UpdateVoiceStateRequest} updateVoiceStateRequest 
+         * @param {UpdateVoiceStateRequestPartial} updateVoiceStateRequestPartial 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateVoiceState(guildId: string, userId: string, updateVoiceStateRequest: UpdateVoiceStateRequest, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.updateVoiceState(guildId, userId, updateVoiceStateRequest, options).then((request) => request(axios, basePath));
+        updateVoiceState(guildId: string, userId: string, updateVoiceStateRequestPartial: UpdateVoiceStateRequestPartial, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.updateVoiceState(guildId, userId, updateVoiceStateRequestPartial, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -33754,13 +35405,13 @@ export class DefaultApi extends BaseAPI {
      * 
      * @param {string} guildId 
      * @param {string} userId 
-     * @param {AddGuildMemberRequest} addGuildMemberRequest 
+     * @param {BotAddGuildMemberRequest} botAddGuildMemberRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public addGuildMember(guildId: string, userId: string, addGuildMemberRequest: AddGuildMemberRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).addGuildMember(guildId, userId, addGuildMemberRequest, options).then((request) => request(this.axios, this.basePath));
+    public addGuildMember(guildId: string, userId: string, botAddGuildMemberRequest: BotAddGuildMemberRequest, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).addGuildMember(guildId, userId, botAddGuildMemberRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -33841,14 +35492,36 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} guildId 
-     * @param {BulkBanUsersFromGuildRequest} bulkBanUsersFromGuildRequest 
+     * @param {BotPartnerSdkTokenRequest} botPartnerSdkTokenRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public bulkBanUsersFromGuild(guildId: string, bulkBanUsersFromGuildRequest: BulkBanUsersFromGuildRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).bulkBanUsersFromGuild(guildId, bulkBanUsersFromGuildRequest, options).then((request) => request(this.axios, this.basePath));
+    public botPartnerSdkToken(botPartnerSdkTokenRequest: BotPartnerSdkTokenRequest, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).botPartnerSdkToken(botPartnerSdkTokenRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {BotPartnerSdkUnmergeProvisionalAccountRequest} botPartnerSdkUnmergeProvisionalAccountRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public botPartnerSdkUnmergeProvisionalAccount(botPartnerSdkUnmergeProvisionalAccountRequest: BotPartnerSdkUnmergeProvisionalAccountRequest, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).botPartnerSdkUnmergeProvisionalAccount(botPartnerSdkUnmergeProvisionalAccountRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} guildId 
+     * @param {BulkBanUsersRequest} bulkBanUsersRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public bulkBanUsersFromGuild(guildId: string, bulkBanUsersRequest: BulkBanUsersRequest, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).bulkBanUsersFromGuild(guildId, bulkBanUsersRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -33866,12 +35539,12 @@ export class DefaultApi extends BaseAPI {
     /**
      * 
      * @param {string} applicationId 
-     * @param {Array<ApplicationCommandUpdateRequest> | null} applicationCommandUpdateRequest 
+     * @param {Array<ApplicationCommandUpdateRequest>} applicationCommandUpdateRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public bulkSetApplicationCommands(applicationId: string, applicationCommandUpdateRequest: Array<ApplicationCommandUpdateRequest> | null, options?: RawAxiosRequestConfig) {
+    public bulkSetApplicationCommands(applicationId: string, applicationCommandUpdateRequest: Array<ApplicationCommandUpdateRequest>, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).bulkSetApplicationCommands(applicationId, applicationCommandUpdateRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -33879,12 +35552,12 @@ export class DefaultApi extends BaseAPI {
      * 
      * @param {string} applicationId 
      * @param {string} guildId 
-     * @param {Array<ApplicationCommandUpdateRequest> | null} applicationCommandUpdateRequest 
+     * @param {Array<ApplicationCommandUpdateRequest>} applicationCommandUpdateRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public bulkSetGuildApplicationCommands(applicationId: string, guildId: string, applicationCommandUpdateRequest: Array<ApplicationCommandUpdateRequest> | null, options?: RawAxiosRequestConfig) {
+    public bulkSetGuildApplicationCommands(applicationId: string, guildId: string, applicationCommandUpdateRequest: Array<ApplicationCommandUpdateRequest>, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).bulkSetGuildApplicationCommands(applicationId, guildId, applicationCommandUpdateRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -33903,24 +35576,24 @@ export class DefaultApi extends BaseAPI {
     /**
      * 
      * @param {string} guildId 
-     * @param {Array<BulkUpdateGuildRolesRequestInner>} bulkUpdateGuildRolesRequestInner 
+     * @param {Array<UpdateRolePositionsRequest>} updateRolePositionsRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public bulkUpdateGuildRoles(guildId: string, bulkUpdateGuildRolesRequestInner: Array<BulkUpdateGuildRolesRequestInner>, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).bulkUpdateGuildRoles(guildId, bulkUpdateGuildRolesRequestInner, options).then((request) => request(this.axios, this.basePath));
+    public bulkUpdateGuildRoles(guildId: string, updateRolePositionsRequest: Array<UpdateRolePositionsRequest>, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).bulkUpdateGuildRoles(guildId, updateRolePositionsRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @param {string} lobbyId 
-     * @param {Array<BulkLobbyMemberRequest> | null} bulkLobbyMemberRequest 
+     * @param {Array<BulkLobbyMemberRequest>} bulkLobbyMemberRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public bulkUpdateLobbyMembers(lobbyId: string, bulkLobbyMemberRequest: Array<BulkLobbyMemberRequest> | null, options?: RawAxiosRequestConfig) {
+    public bulkUpdateLobbyMembers(lobbyId: string, bulkLobbyMemberRequest: Array<BulkLobbyMemberRequest>, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).bulkUpdateLobbyMembers(lobbyId, bulkLobbyMemberRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -34009,17 +35682,6 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @param {GuildCreateRequest} guildCreateRequest 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public createGuild(guildCreateRequest: GuildCreateRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).createGuild(guildCreateRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
      * @param {string} applicationId 
      * @param {string} guildId 
      * @param {ApplicationCommandCreateRequest} applicationCommandCreateRequest 
@@ -34057,26 +35719,14 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} code 
-     * @param {CreateGuildFromTemplateRequest} createGuildFromTemplateRequest 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public createGuildFromTemplate(code: string, createGuildFromTemplateRequest: CreateGuildFromTemplateRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).createGuildFromTemplate(code, createGuildFromTemplateRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
      * @param {string} guildId 
-     * @param {CreateGuildRoleRequest} createGuildRoleRequest 
+     * @param {CreateRoleRequest} createRoleRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public createGuildRole(guildId: string, createGuildRoleRequest: CreateGuildRoleRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).createGuildRole(guildId, createGuildRoleRequest, options).then((request) => request(this.axios, this.basePath));
+    public createGuildRole(guildId: string, createRoleRequest: CreateRoleRequest, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).createGuildRole(guildId, createRoleRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -34109,12 +35759,12 @@ export class DefaultApi extends BaseAPI {
      * @param {string} name 
      * @param {string} tags 
      * @param {string} file 
-     * @param {string | null} [description] 
+     * @param {string} [description] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public createGuildSticker(guildId: string, name: string, tags: string, file: string, description?: string | null, options?: RawAxiosRequestConfig) {
+    public createGuildSticker(guildId: string, name: string, tags: string, file: string, description?: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).createGuildSticker(guildId, name, tags, file, description, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -34142,6 +35792,29 @@ export class DefaultApi extends BaseAPI {
      */
     public createInteractionResponse(interactionId: string, interactionToken: string, createInteractionResponseRequest: CreateInteractionResponseRequest, withResponse?: boolean, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).createInteractionResponse(interactionId, interactionToken, createInteractionResponseRequest, withResponse, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} lobbyId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public createLinkedLobbyGuildInviteForSelf(lobbyId: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).createLinkedLobbyGuildInviteForSelf(lobbyId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} lobbyId 
+     * @param {string} userId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public createLinkedLobbyGuildInviteForUser(lobbyId: string, userId: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).createLinkedLobbyGuildInviteForUser(lobbyId, userId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -34379,17 +36052,6 @@ export class DefaultApi extends BaseAPI {
      */
     public deleteGroupDmUser(channelId: string, userId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).deleteGroupDmUser(channelId, userId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} guildId 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public deleteGuild(guildId: string, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).deleteGuild(guildId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -34886,6 +36548,19 @@ export class DefaultApi extends BaseAPI {
     /**
      * 
      * @param {string} applicationId 
+     * @param {GetEntitlementsSkuIdsParameter} [skuIds] 
+     * @param {boolean} [excludeConsumed] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getCurrentUserApplicationEntitlements(applicationId: string, skuIds?: GetEntitlementsSkuIdsParameter, excludeConsumed?: boolean, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getCurrentUserApplicationEntitlements(applicationId, skuIds, excludeConsumed, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} applicationId 
      * @param {string} entitlementId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -34897,9 +36572,9 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @param {GetEntitlementsSkuIdsParameter} skuIds 
      * @param {string} applicationId 
      * @param {string} [userId] 
+     * @param {GetEntitlementsSkuIdsParameter} [skuIds] 
      * @param {string} [guildId] 
      * @param {string} [before] 
      * @param {string} [after] 
@@ -34911,8 +36586,8 @@ export class DefaultApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getEntitlements(skuIds: GetEntitlementsSkuIdsParameter, applicationId: string, userId?: string, guildId?: string, before?: string, after?: string, limit?: number, excludeEnded?: boolean, excludeDeleted?: boolean, onlyActive?: boolean, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getEntitlements(skuIds, applicationId, userId, guildId, before, after, limit, excludeEnded, excludeDeleted, onlyActive, options).then((request) => request(this.axios, this.basePath));
+    public getEntitlements(applicationId: string, userId?: string, skuIds?: GetEntitlementsSkuIdsParameter, guildId?: string, before?: string, after?: string, limit?: number, excludeEnded?: boolean, excludeDeleted?: boolean, onlyActive?: boolean, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getEntitlements(applicationId, userId, skuIds, guildId, before, after, limit, excludeEnded, excludeDeleted, onlyActive, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -35128,12 +36803,12 @@ export class DefaultApi extends BaseAPI {
     /**
      * 
      * @param {string} guildId 
-     * @param {string} [style] 
+     * @param {WidgetImageStyles} [style] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getGuildWidgetPng(guildId: string, style?: string, options?: RawAxiosRequestConfig) {
+    public getGuildWidgetPng(guildId: string, style?: WidgetImageStyles, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getGuildWidgetPng(guildId, style, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -35157,6 +36832,28 @@ export class DefaultApi extends BaseAPI {
      */
     public getGuildsOnboarding(guildId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getGuildsOnboarding(guildId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Get the target users for an invite.
+     * @param {string} code 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getInviteTargetUsers(code: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getInviteTargetUsers(code, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Get the target users job status for an invite.
+     * @param {string} code 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getInviteTargetUsersJobStatus(code: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getInviteTargetUsersJobStatus(code, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -35407,6 +37104,17 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
+     * @param {string} guildId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public guildRoleMemberCounts(guildId: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).guildRoleMemberCounts(guildId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @param {string} code 
      * @param {boolean} [withCounts] 
      * @param {string} [guildScheduledEventId] 
@@ -35559,7 +37267,7 @@ export class DefaultApi extends BaseAPI {
      * @param {string} guildId 
      * @param {string} [userId] 
      * @param {string} [targetId] 
-     * @param {number} [actionType] 
+     * @param {AuditLogActionTypes} [actionType] 
      * @param {string} [before] 
      * @param {string} [after] 
      * @param {number} [limit] 
@@ -35567,7 +37275,7 @@ export class DefaultApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public listGuildAuditLogEntries(guildId: string, userId?: string, targetId?: string, actionType?: number, before?: string, after?: string, limit?: number, options?: RawAxiosRequestConfig) {
+    public listGuildAuditLogEntries(guildId: string, userId?: string, targetId?: string, actionType?: AuditLogActionTypes, before?: string, after?: string, limit?: number, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listGuildAuditLogEntries(guildId, userId, targetId, actionType, before, after, limit, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -35732,12 +37440,12 @@ export class DefaultApi extends BaseAPI {
      * @param {string} emojiName 
      * @param {string} [after] 
      * @param {number} [limit] 
-     * @param {number} [type] 
+     * @param {ReactionTypes} [type] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public listMessageReactionsByEmoji(channelId: string, messageId: string, emojiName: string, after?: string, limit?: number, type?: number, options?: RawAxiosRequestConfig) {
+    public listMessageReactionsByEmoji(channelId: string, messageId: string, emojiName: string, after?: string, limit?: number, type?: ReactionTypes, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listMessageReactionsByEmoji(channelId, messageId, emojiName, after, limit, type, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -35939,15 +37647,15 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @param {number} limit 
      * @param {string} query 
      * @param {string} guildId 
+     * @param {number} [limit] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public searchGuildMembers(limit: number, query: string, guildId: string, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).searchGuildMembers(limit, query, guildId, options).then((request) => request(this.axios, this.basePath));
+    public searchGuildMembers(query: string, guildId: string, limit?: number, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).searchGuildMembers(query, guildId, limit, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -35992,18 +37700,6 @@ export class DefaultApi extends BaseAPI {
     /**
      * 
      * @param {string} guildId 
-     * @param {SetGuildMfaLevelRequest} setGuildMfaLevelRequest 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public setGuildMfaLevel(guildId: string, setGuildMfaLevelRequest: SetGuildMfaLevelRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).setGuildMfaLevel(guildId, setGuildMfaLevelRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} guildId 
      * @param {string} code 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -36021,17 +37717,17 @@ export class DefaultApi extends BaseAPI {
      * @param {string} [minId] 
      * @param {string} [maxId] 
      * @param {ThreadSearchTagParameter} [tag] 
-     * @param {string} [tagSetting] 
+     * @param {ThreadSearchTagSetting} [tagSetting] 
      * @param {boolean} [archived] 
-     * @param {string | null} [sortBy] 
-     * @param {string | null} [sortOrder] 
+     * @param {ThreadSortingMode} [sortBy] 
+     * @param {SortingOrder} [sortOrder] 
      * @param {number} [limit] 
      * @param {number} [offset] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public threadSearch(channelId: string, name?: string, slop?: number, minId?: string, maxId?: string, tag?: ThreadSearchTagParameter, tagSetting?: string, archived?: boolean, sortBy?: string | null, sortOrder?: string | null, limit?: number, offset?: number, options?: RawAxiosRequestConfig) {
+    public threadSearch(channelId: string, name?: string, slop?: number, minId?: string, maxId?: string, tag?: ThreadSearchTagParameter, tagSetting?: ThreadSearchTagSetting, archived?: boolean, sortBy?: ThreadSortingMode, sortOrder?: SortingOrder, limit?: number, offset?: number, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).threadSearch(channelId, name, slop, minId, maxId, tag, tagSetting, archived, sortBy, sortOrder, limit, offset, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -36050,12 +37746,13 @@ export class DefaultApi extends BaseAPI {
      * 
      * @param {string} guildId 
      * @param {string} userId 
+     * @param {object} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public unbanUserFromGuild(guildId: string, userId: string, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).unbanUserFromGuild(guildId, userId, options).then((request) => request(this.axios, this.basePath));
+    public unbanUserFromGuild(guildId: string, userId: string, body: object, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).unbanUserFromGuild(guildId, userId, body, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -36099,12 +37796,12 @@ export class DefaultApi extends BaseAPI {
     /**
      * 
      * @param {string} applicationId 
-     * @param {Array<ApplicationRoleConnectionsMetadataItemRequest> | null} applicationRoleConnectionsMetadataItemRequest 
+     * @param {Array<ApplicationRoleConnectionsMetadataItemRequest>} applicationRoleConnectionsMetadataItemRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public updateApplicationRoleConnectionsMetadata(applicationId: string, applicationRoleConnectionsMetadataItemRequest: Array<ApplicationRoleConnectionsMetadataItemRequest> | null, options?: RawAxiosRequestConfig) {
+    public updateApplicationRoleConnectionsMetadata(applicationId: string, applicationRoleConnectionsMetadataItemRequest: Array<ApplicationRoleConnectionsMetadataItemRequest>, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).updateApplicationRoleConnectionsMetadata(applicationId, applicationRoleConnectionsMetadataItemRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -36201,13 +37898,13 @@ export class DefaultApi extends BaseAPI {
      * 
      * @param {string} guildId 
      * @param {string} roleId 
-     * @param {CreateGuildRoleRequest} createGuildRoleRequest 
+     * @param {UpdateRoleRequestPartial} updateRoleRequestPartial 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public updateGuildRole(guildId: string, roleId: string, createGuildRoleRequest: CreateGuildRoleRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).updateGuildRole(guildId, roleId, createGuildRoleRequest, options).then((request) => request(this.axios, this.basePath));
+    public updateGuildRole(guildId: string, roleId: string, updateRoleRequestPartial: UpdateRoleRequestPartial, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).updateGuildRole(guildId, roleId, updateRoleRequestPartial, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -36287,6 +37984,18 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
+     * Update the target users for an existing invite.
+     * @param {string} code 
+     * @param {string} targetUsersFile 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public updateInviteTargetUsers(code: string, targetUsersFile: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).updateInviteTargetUsers(code, targetUsersFile, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * 
      * @param {string} channelId 
      * @param {string} messageId 
@@ -36351,13 +38060,13 @@ export class DefaultApi extends BaseAPI {
     /**
      * 
      * @param {string} guildId 
-     * @param {UpdateSelfVoiceStateRequest} updateSelfVoiceStateRequest 
+     * @param {UpdateSelfVoiceStateRequestPartial} updateSelfVoiceStateRequestPartial 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public updateSelfVoiceState(guildId: string, updateSelfVoiceStateRequest: UpdateSelfVoiceStateRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).updateSelfVoiceState(guildId, updateSelfVoiceStateRequest, options).then((request) => request(this.axios, this.basePath));
+    public updateSelfVoiceState(guildId: string, updateSelfVoiceStateRequestPartial: UpdateSelfVoiceStateRequestPartial, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).updateSelfVoiceState(guildId, updateSelfVoiceStateRequestPartial, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -36376,13 +38085,13 @@ export class DefaultApi extends BaseAPI {
      * 
      * @param {string} guildId 
      * @param {string} userId 
-     * @param {UpdateVoiceStateRequest} updateVoiceStateRequest 
+     * @param {UpdateVoiceStateRequestPartial} updateVoiceStateRequestPartial 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public updateVoiceState(guildId: string, userId: string, updateVoiceStateRequest: UpdateVoiceStateRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).updateVoiceState(guildId, userId, updateVoiceStateRequest, options).then((request) => request(this.axios, this.basePath));
+    public updateVoiceState(guildId: string, userId: string, updateVoiceStateRequestPartial: UpdateVoiceStateRequestPartial, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).updateVoiceState(guildId, userId, updateVoiceStateRequestPartial, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -36438,6 +38147,5 @@ export class DefaultApi extends BaseAPI {
         return DefaultApiFp(this.configuration).uploadApplicationAttachment(applicationId, file, options).then((request) => request(this.axios, this.basePath));
     }
 }
-
 
 

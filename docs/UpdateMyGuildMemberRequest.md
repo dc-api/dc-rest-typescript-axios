@@ -6,6 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **nick** | **string** |  | [optional] [default to undefined]
+**avatar** | **string** |  | [optional] [default to undefined]
+**bio** | **string** |  | [optional] [default to undefined]
+**banner** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -14,6 +17,9 @@ import { UpdateMyGuildMemberRequest } from 'dc_rest';
 
 const instance: UpdateMyGuildMemberRequest = {
     nick,
+    avatar,
+    bio,
+    banner,
 };
 ```
 

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **source_guild_id** | **string** |  | [default to undefined]
 **serialized_source_guild** | [**GuildTemplateSnapshotResponse**](GuildTemplateSnapshotResponse.md) |  | [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
-**creator** | [**UserResponse**](UserResponse.md) |  | [optional] [default to undefined]
+**creator** | [**GuildTemplateResponseCreator**](GuildTemplateResponseCreator.md) |  | [optional] [default to undefined]
 **is_dirty** | **boolean** |  | [optional] [default to undefined]
 
 ## Example

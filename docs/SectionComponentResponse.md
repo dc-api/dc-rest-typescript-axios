@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
+**type** | [**MessageComponentTypes**](MessageComponentTypes.md) |  | [default to undefined]
 **id** | **number** |  | [default to undefined]
 **components** | [**Array&lt;TextDisplayComponentResponse&gt;**](TextDisplayComponentResponse.md) |  | [default to undefined]
 **accessory** | [**SectionComponentResponseAccessory**](SectionComponentResponseAccessory.md) |  | [default to undefined]

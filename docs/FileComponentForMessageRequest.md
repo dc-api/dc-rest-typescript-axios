@@ -5,8 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
+**type** | [**MessageComponentTypes**](MessageComponentTypes.md) |  | [default to undefined]
 **file** | [**UnfurledMediaRequestWithAttachmentReferenceRequired**](UnfurledMediaRequestWithAttachmentReferenceRequired.md) |  | [default to undefined]
+**id** | **number** |  | [optional] [default to undefined]
 **spoiler** | **boolean** |  | [optional] [default to undefined]
 
 ## Example
@@ -17,6 +18,7 @@ import { FileComponentForMessageRequest } from 'dc_rest';
 const instance: FileComponentForMessageRequest = {
     type,
     file,
+    id,
     spoiler,
 };
 ```

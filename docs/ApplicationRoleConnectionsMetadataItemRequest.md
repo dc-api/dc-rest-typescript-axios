@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **number** |  | [default to undefined]
+**type** | [**MetadataItemTypes**](MetadataItemTypes.md) |  | [default to undefined]
 **key** | **string** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
 **description** | **string** |  | [default to undefined]
-**name_localizations** | **{ [key: string]: string | null; }** |  | [optional] [default to undefined]
-**description_localizations** | **{ [key: string]: string | null; }** |  | [optional] [default to undefined]
+**name_localizations** | **{ [key: string]: string; }** |  | [optional] [default to undefined]
+**description_localizations** | **{ [key: string]: string; }** |  | [optional] [default to undefined]
 
 ## Example
 

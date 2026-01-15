@@ -6,13 +6,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  | [optional] [default to undefined]
-**event_type** | **number** |  | [optional] [default to undefined]
+**event_type** | [**AutomodEventType**](AutomodEventType.md) |  | [optional] [default to undefined]
 **actions** | [**Array&lt;DefaultKeywordListUpsertRequestActionsInner&gt;**](DefaultKeywordListUpsertRequestActionsInner.md) |  | [optional] [default to undefined]
 **enabled** | **boolean** |  | [optional] [default to undefined]
 **exempt_roles** | **Set&lt;string&gt;** |  | [optional] [default to undefined]
 **exempt_channels** | **Set&lt;string&gt;** |  | [optional] [default to undefined]
-**trigger_type** | **number** |  | [optional] [default to undefined]
-**trigger_metadata** | [**KeywordTriggerMetadata**](KeywordTriggerMetadata.md) |  | [optional] [default to undefined]
+**trigger_type** | [**AutomodTriggerType**](AutomodTriggerType.md) |  | [optional] [default to undefined]
+**trigger_metadata** | [**KeywordUpsertRequestTriggerMetadata**](KeywordUpsertRequestTriggerMetadata.md) |  | [optional] [default to undefined]
 
 ## Example
 

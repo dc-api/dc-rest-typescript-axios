@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  | [default to undefined]
-**auto_archive_duration** | **number** |  | [optional] [default to undefined]
+**auto_archive_duration** | [**CreateForumThreadRequestAutoArchiveDuration**](CreateForumThreadRequestAutoArchiveDuration.md) |  | [optional] [default to undefined]
 **rate_limit_per_user** | **number** |  | [optional] [default to undefined]
 
 ## Example

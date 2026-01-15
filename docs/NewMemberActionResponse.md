@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **channel_id** | **string** |  | [default to undefined]
-**action_type** | **number** |  | [default to undefined]
+**action_type** | [**NewMemberActionType**](NewMemberActionType.md) |  | [default to undefined]
 **title** | **string** |  | [default to undefined]
 **description** | **string** |  | [default to undefined]
 **emoji** | [**SettingsEmojiResponse**](SettingsEmojiResponse.md) |  | [optional] [default to undefined]

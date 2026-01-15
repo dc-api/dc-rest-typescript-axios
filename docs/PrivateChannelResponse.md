@@ -6,10 +6,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [default to undefined]
-**type** | **number** |  | [default to undefined]
+**type** | [**ChannelTypes**](ChannelTypes.md) |  | [default to undefined]
 **flags** | **number** |  | [default to undefined]
 **recipients** | [**Array&lt;UserResponse&gt;**](UserResponse.md) |  | [default to undefined]
-**last_message_id** | **string** |  | [optional] [default to undefined]
+**last_message_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 **last_pin_timestamp** | **string** |  | [optional] [default to undefined]
 
 ## Example

@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  | [default to undefined]
 **scheduled_start_time** | **string** |  | [default to undefined]
-**privacy_level** | **any** |  | [default to undefined]
-**entity_type** | **number** |  | [default to undefined]
-**entity_metadata** | **object** |  | [default to undefined]
+**privacy_level** | [**GuildScheduledEventPrivacyLevels**](GuildScheduledEventPrivacyLevels.md) |  | [default to undefined]
+**entity_type** | [**GuildScheduledEventEntityTypes**](GuildScheduledEventEntityTypes.md) |  | [default to undefined]
+**entity_metadata** | [**VoiceScheduledEventCreateRequestEntityMetadata**](VoiceScheduledEventCreateRequestEntityMetadata.md) |  | [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
 **image** | **string** |  | [optional] [default to undefined]
 **scheduled_end_time** | **string** |  | [optional] [default to undefined]
-**channel_id** | **string** |  | [optional] [default to undefined]
+**channel_id** | [**GetEntitlementsSkuIdsParameterOneOfInner**](GetEntitlementsSkuIdsParameterOneOfInner.md) |  | [optional] [default to undefined]
 
 ## Example
 

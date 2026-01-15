@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **topic** | **string** |  | [optional] [default to undefined]
-**privacy_level** | **number** |  | [optional] [default to undefined]
+**privacy_level** | [**StageInstancesPrivacyLevels**](StageInstancesPrivacyLevels.md) |  | [optional] [default to undefined]
 
 ## Example
 

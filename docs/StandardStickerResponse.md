@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 **id** | **string** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
 **tags** | **string** |  | [default to undefined]
-**type** | **number** |  | [default to undefined]
+**type** | [**StickerTypes**](StickerTypes.md) |  | [default to undefined]
 **pack_id** | **string** |  | [default to undefined]
 **sort_value** | **number** |  | [default to undefined]
-**format_type** | **number** |  | [optional] [default to undefined]
+**format_type** | [**GuildStickerResponseFormatType**](GuildStickerResponseFormatType.md) |  | [optional] [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
 
 ## Example

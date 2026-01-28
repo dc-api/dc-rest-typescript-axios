@@ -1,19 +1,21 @@
-# SetGuildMfaLevelRequest
+# UpdateVoiceStateRequestPartial
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**level** | **number** |  | [default to undefined]
+**suppress** | **boolean** |  | [optional] [default to undefined]
+**channel_id** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { SetGuildMfaLevelRequest } from 'dc_rest';
+import { UpdateVoiceStateRequestPartial } from 'dc_rest';
 
-const instance: SetGuildMfaLevelRequest = {
-    level,
+const instance: UpdateVoiceStateRequestPartial = {
+    suppress,
+    channel_id,
 };
 ```
 

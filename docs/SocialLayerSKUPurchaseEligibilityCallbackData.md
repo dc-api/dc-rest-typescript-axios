@@ -1,19 +1,19 @@
-# GuildMFALevelResponse
+# SocialLayerSKUPurchaseEligibilityCallbackData
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**level** | **number** |  | [default to undefined]
+**eligible** | **boolean** |  | [default to undefined]
 
 ## Example
 
 ```typescript
-import { GuildMFALevelResponse } from 'dc_rest';
+import { SocialLayerSKUPurchaseEligibilityCallbackData } from 'dc_rest';
 
-const instance: GuildMFALevelResponse = {
-    level,
+const instance: SocialLayerSKUPurchaseEligibilityCallbackData = {
+    eligible,
 };
 ```
 

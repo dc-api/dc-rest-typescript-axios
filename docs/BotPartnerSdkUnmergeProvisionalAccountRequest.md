@@ -1,21 +1,19 @@
-# CreateGuildFromTemplateRequest
+# BotPartnerSdkUnmergeProvisionalAccountRequest
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** |  | [default to undefined]
-**icon** | **string** |  | [optional] [default to undefined]
+**external_user_id** | **string** |  | [default to undefined]
 
 ## Example
 
 ```typescript
-import { CreateGuildFromTemplateRequest } from 'dc_rest';
+import { BotPartnerSdkUnmergeProvisionalAccountRequest } from 'dc_rest';
 
-const instance: CreateGuildFromTemplateRequest = {
-    name,
-    icon,
+const instance: BotPartnerSdkUnmergeProvisionalAccountRequest = {
+    external_user_id,
 };
 ```
 

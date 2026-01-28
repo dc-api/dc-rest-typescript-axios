@@ -6,11 +6,11 @@
  * 
  * ## Metadata
  *   
- * - **Copyright**: Copyright (c) 2025 Qntx
+ * - **Copyright**: Copyright (c) 2026 Qntx
  * - **Author**: ΣX <gitctrlx@gmail.com>
  * - **Version**: 10
- * - **Modified**: 2025-07-05T02:42:23.045889949Z[Etc/UTC]
- * - **Generator Version**: 7.14.0
+ * - **Modified**: 2026-01-28T06:15:03.517804866Z[Etc/UTC]
+ * - **Generator Version**: 7.19.0
  *
  * <details>
  * <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -44,7 +44,6 @@
  *
  * </details>
  */
-
 
 import type { Configuration } from "./configuration";
 import type { RequestArgs } from "./base";

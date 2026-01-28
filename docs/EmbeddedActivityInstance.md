@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **application_id** | **string** |  | [default to undefined]
 **instance_id** | **string** |  | [default to undefined]
 **launch_id** | **string** |  | [default to undefined]
+**location** | [**EmbeddedActivityInstanceLocation**](EmbeddedActivityInstanceLocation.md) |  | [default to undefined]
 **users** | **Array&lt;string&gt;** |  | [default to undefined]
-**location** | [**EmbeddedActivityInstanceLocation**](EmbeddedActivityInstanceLocation.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -20,8 +20,8 @@ const instance: EmbeddedActivityInstance = {
     application_id,
     instance_id,
     launch_id,
-    users,
     location,
+    users,
 };
 ```
 
